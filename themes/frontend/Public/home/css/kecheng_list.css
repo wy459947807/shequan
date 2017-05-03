@@ -1,0 +1,10 @@
+.list_search li{list-style: none; float:left; padding:0 10px; text-align: center; height:30px; line-height: 30px;}
+.list_search li.act{background:#fc534c; color:white;}
+#list_content{background:white;}
+#list_content p{text-align: center; height:30px; line-height: 30px; margin-top:10px;}
+#list_content p a{display: inline-block; border:1px solid #f53232; padding:0 10px; border-radius: 3px; color:#f53232; margin-left:10px;}
+#list_content .col-md-3{padding-top:10px;}
+
+
+
+

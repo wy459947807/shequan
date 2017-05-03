@@ -1,0 +1,166 @@
+<tc_include file="Public:theader"/>
+<link rel="stylesheet" href="__TMPL__Public/home/css/master.css">
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" id="user_list">
+            <div class="user_info">
+                <img width="112" height="112" src="{:sp_get_asset_upload_path($tuser['avatar'])}" alt="" style="">
+                <h3><?php echo $tuser['real_name'];?></h3>
+                <div class="user_moods">
+                    <!--<div class="col-md-4 text-center"-->
+                         <!--style=" border-color: #eae9e9;height: 78px;width: 33.33333333%;border-right:1px solid #eae9e9;">-->
+                        <!--<p>10</p> <h4 style="font-weight: normal;">关注</h4></div>-->
+                    <div class="col-md-4 text-center"
+                         style=" height: 78px;width: 50%;border-right:1px solid #eae9e9;">
+                        <p><?php echo $tuser['fans'];?></p>
+                        <h4 style=" font-weight: normal;">粉丝</h4></div>
+                    <div class="col-md-4 text-center"><p><?php echo $tuser['views'];?></p>
+                        <h4 style="font-weight: normal;">人气</h4></div>
+                </div>
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item act">直播间</li>
+                <li class="list-group-item ">订阅标准</li>
+                <li class="list-group-item">已收到礼物</li>
+                <li class="list-group-item">我的粉丝</li>
+                <li class="list-group-item">个人资料</li>
+            </ul>
+        </div>
+        <!--个人资料开始-->
+        <div class="col-md-9" id="usercon_1" style="display: block;">
+
+            <div class="user_body">
+                <a href="{:U('tlive/live/index')}" target="_blank"> <span>进入直播间>></span> </a>
+            </div>
+        </div>
+        <!--个人资料结束-->
+        <!--订阅标准开始-->
+        <div class="col-md-9" id="usercon_2" style="display: none;">
+            <div class="user_header">
+                <span>订阅标准</span>
+            </div>
+            <div class="user_body">
+                <div class="data_kongjian">
+                    私密内容订阅标准：
+                </div>
+                <div class="dingdan_info">
+                    <div class="dingdan_info_content">
+                        <p><span class="goods_name">订购方式</span>
+                            <span class="goods_price">单价（赢家宝）</span></p>
+                        <h4>
+                            <span class="goods_name"><input name="gender" value="1" type="radio" checked="">&nbsp;&nbsp;&nbsp;条</span>
+                            <span class="goods_price">5.00元</span>
+                            <div class=" goods_Modify"><img src="__TMPL__Public/home/images/user/Modify.png">&nbsp;&nbsp;&nbsp;修改
+                            </div>
+                        </h4>
+                        <h4>
+                            <span class="goods_name"><input name="gender" value="1" type="radio" checked="">&nbsp;&nbsp;&nbsp;天</span>
+                            <span class="goods_price">1999.00元</span>
+                        </h4>
+                        <h4>
+                            <span class="goods_name"><input name="gender" value="1" type="radio" checked="">&nbsp;&nbsp;&nbsp;周</span>
+                            <span class="goods_price">1999.00元</span>
+
+                        </h4>
+
+                        <h4>
+                            <span class="goods_name"><input name="gender" value="1" type="radio" checked="">&nbsp;&nbsp;&nbsp;月</span>
+                            <span class="goods_price">1999.00元</span>
+
+                        </h4>
+                        <h4>
+                            <span class="goods_name"><input name="gender" value="1" type="radio" checked="">&nbsp;&nbsp;&nbsp;季</span>
+                            <span class="goods_price">1999.00元</span>
+                        </h4>
+                        <h4>
+                            <span class="goods_name"><input name="gender" value="1" type="radio" checked="">&nbsp;&nbsp;&nbsp;年</span>
+                            <span class="goods_price">1999.00元</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--订阅结束开始-->
+
+        <!--已收到礼物开始-->
+        <div class="col-md-9 " id="usercon_3" style="display: none;">
+            <div class="user_header">
+                <span>已收到礼物</span>
+                <!--<div class="user_header_right"><p><img src="__TMPL__Public/home/images/user/Modify.png">&nbsp;&nbsp;&nbsp;修改-->
+                <!--</p></div>-->
+            </div>
+            <div class="guanzhu_list clearfix">
+                <div class="face">
+                    <div class="img_box">
+                        <img src="__TMPL__Public/home/images/user/face_01.gif" alt="">
+                    </div>
+                    <div class="text_info">
+                        <p class="gz_title">玫瑰骑士</p>
+                        <a href="">2017-3-4 17:21:36</a>
+                    </div>
+                </div>
+                <div class="face">
+                    <div class="img_box">
+                        <img src="__TMPL__Public/home/images/user/face_01.gif" alt="">
+                    </div>
+                    <div class="text_info">
+                        <p class="gz_title">玫瑰骑士</p>
+                        <a href="">2017-3-4 17:21:36</a>
+                    </div>
+                </div>
+                <div class="face">
+                    <div class="img_box">
+                        <img src="__TMPL__Public/home/images/user/face_01.gif" alt="">
+                    </div>
+                    <div class="text_info">
+                        <p class="gz_title">玫瑰骑士</p>
+                        <a href="">2017-3-4 17:21:36</a>
+                    </div>
+                </div>
+                <div class="face">
+                    <div class="img_box">
+                        <img src="__TMPL__Public/home/images/user/face_01.gif" alt="">
+                    </div>
+                    <div class="text_info">
+                        <p class="gz_title">玫瑰骑士</p>
+                        <a href="">2017-3-4 17:21:36</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--已收到礼物结束-->
+        <!--我的粉丝开始-->
+        <div class="col-md-9 " id="usercon_4" style="display: none;">
+            <div class="user_header">
+                <p><span>我的粉丝</span>&nbsp;&nbsp;&nbsp;&nbsp;1660人</p>
+            </div>
+            <div class="guanzhu_list clearfix">
+
+
+                <div class="fans">
+                    <div class="img_box">
+                        <img width="77" height="77" src="__TMPL__Public/home/images/user/fans_01.png" alt="">
+                    </div>
+                    <div class="text_info">
+                        <p class="gz_title">玫瑰骑士</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--我的粉丝结束-->
+        <!--我关注的开始-->
+        <div class="col-md-9 " id="usercon_5" style="display: none;">
+            <div class="user_header">
+                <span>个人资料</span>
+                <div class="user_header_right"><p><img src="__TMPL__Public/home/images/user/Modify.png">&nbsp;&nbsp;&nbsp;修改
+                </p></div>
+            </div>
+        </div>
+        <!--我关注的结束-->
+    </div>
+</div>
+
+<tc_include file="Public:footer"/>

@@ -1,0 +1,61 @@
+#home_banner{padding:0;}
+#home_banner>img{width:100%;}
+#today_recommend{padding-top:20px;}
+#today_recommend .swiper-slide{height:266px; cursor: pointer; border:1px solid #ccc; padding:27px 15px; position: relative; background:white;}
+#today_recommend .swiper-slide:hover{border-color:red;}
+#today_recommend .col-md-5 .l_icon{position: absolute; bottom:0; font-size: 14px; left:0; border-radius: 0 10px 0 0; width:64px; height:28px;  background:#ca2c2c; color:white; line-height: 28px; text-align: center;}
+#today_recommend .col-md-5 .img_box{position: relative;}
+#today_recommend .col-md-5 .l_tearch_name{margin-top:15px;}
+#today_recommend .l_rennum span{font-size: 24px; font-weight: bold;color:#fc3737;}
+#today_recommend .l_text{color:#666; font-size: 14px; line-height: 25px;}
+#today_recommend .l_reply{color:#666; margin-top:20px;}
+#today_recommend .l_reply i{margin-right:10px;}
+#today_recommend .swiper-slide .l_live_icon{position: absolute; top:0; left:0;}
+#today_recommend .col-md-7 .btn-danger{width:128px; background:white; color:#fc3737; border-color:#fc3737; height:40px; margin-top:4px;}
+#today_recommend .col-md-7 .btn-danger:hover{color:white; background:#fc3737}
+
+#home_main_context {padding-top:20px; margin-top:20px;}
+#home_main_context .tabbable{ padding:10px; border:1px solid #dadada; background:white;}
+#home_main_context .tabbable li.active a{color:red;}
+#home_main_context .tabbable .tab-content{padding-top:10px;}
+#home_tab_content .home_item{background:#f0f1f1; padding:27px 17px 10px 17px; position: relative;}
+#home_tab_content .home_item .tab_title{color:black;}
+#home_tab_content .home_item .sing_1{font-size: 14px; line-height: 10px;}
+#home_tab_content .home_item .sing_2{font-size: 14px; line-height: 10px;}
+#home_tab_content .home_item .absoult_box{position: absolute; bottom:0; left:0; background:#d65d5b; color:white; font-size: 14px; padding:2px; border-radius:0 10px 0 0; }
+#home_tab_content .home_item  .home_tab_bottom button{padding: 2px 8px; border-radius: 2px; font-size: 14px; margin-top:5px;}
+#home_tab_content .home_item  .home_tab_bottom .tab_bottom_info{font-size: 12px; margin-top:10px;}
+#home_tab_content .home_item  .home_tab_bottom .tab_bottom_info span{color:#fc3d3d; font-weight: bold;}
+#home_tab_content .home_item .tab_biaoqian{position: absolute; top:0; left:0;}
+#home_tab_content>.tab-pane>.row>div{margin-top: 10px;}
+#home_main_context .shares_top5{padding:0; background:white; border:1px solid #ccc;}
+#home_main_context .shares_top5 h4{background:#E7E7E7; height:47px; line-height: 47px; color:#F02C2C; margin:0; }
+#home_main_context .shares_top5 h5{background-color:#ff6561; height:55px; line-height: 47px; color:white; margin:0;font-size: 18px; }
+#home_main_context .shares_top5 p{height:50px; line-height: 50px;}
+
+/*分页标签部分*/
+button {cursor: pointer}
+i,em,cite {font-style: normal}
+a,a:link {text-decoration: none}
+a:active,a:hover {text-decoration: none}
+a:focus { outline: none}
+.fixed:after { content: ".";display: block;clear: both; height: 0; visibility: hidden}
+.pages {width:720px;margin:40px auto 0 auto;}
+.pages #Pagination {float: left;overflow: hidden;}
+.pages #Pagination .pagination { height: 40px;text-align: right;font-family: \u5b8b\u4f53,Arial;}
+.pages #Pagination .pagination a,
+.pages #Pagination .pagination span {margin-left: 8px;border-radius: 4px;float: left; display: inline; padding: 11px 13px;border: 1px solid #e6e6e6;background: #f6f6f6;color: #666666;font-family: \u5b8b\u4f53,Arial;font-size: 14px;cursor: pointer;}
+.pages #Pagination .pagination .current {background:#ff6561;color: #fff;}
+.pages #Pagination .pagination .prev,
+.pages #Pagination .pagination .next {float: left;padding: 11px 13px;border: 1px solid #e6e6e6;background: #f6f6f6;color: #666666;cursor: pointer;}
+.pages #Pagination .pagination .prev i,
+.pages #Pagination .pagination .next i {display: inline-block;width: 4px;height: 11px;margin-right: 5px; background: url(../images/icon.fw.png) no-repeat;}
+.pages #Pagination .pagination .prev { border-right: none;}
+.pages #Pagination .pagination .prev i {background-position: -144px -1px;*background-position: -144px -4px;}
+.pages #Pagination .pagination .next i { background-position: -156px -1px;*background-position: -156px -4px;}
+.pages #Pagination .pagination .pagination-break { padding: 11px 5px;border: none;background: none;cursor: default;}
+.pages .searchPage {float: left; padding: 30px 0;}
+.pages .searchPage .page-sum {padding: 11px 13px;color: #999999;font-family: \u5b8b\u4f53,Arial;font-size: 14px;}
+.pages .searchPage .page-go {padding: 8px 0;color: #999999;font-family: \u5b8b\u4f53,Arial;font-size: 14px;padding: 10px 0\9;*padding: 6px 0;}
+.pages .searchPage .page-go input {width: 21px;height: 20px; margin: 0 5px;padding-left: 5px;border: 1px solid #e4e4e4;}
+.pages .searchPage .page-btn { margin: 9px 0 5px 5px;padding: 2px 5px; background: #ff6561;border-radius: 2px;color: #ffffff;font-family: Arial, 'Microsoft YaHei';font-size: 14px;text-decoration: none;}

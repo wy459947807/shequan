@@ -1,0 +1,46 @@
+body{font-family: "Helvetica Neue",  Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif; font-size: 16px; background:#f1f2f2;}
+body a{color:#666;}
+body a:hover{text-decoration: none; color:#666;}
+#header_nav{background:white; padding-bottom:10px;}
+
+li,ul{list-style: none;}
+#foot{background:white; margin-top:30px; padding-top:30px;}
+.public_foot{width:1140px; margin:0 auto;}
+.public_foot .imgbox{width:178px; float:left; margin-right:20px;}
+.public_foot .item{width:132px; float:left; margin-left:20px;}
+.public_foot .item ul{padding:0; margin:0;}
+.public_foot .item li{line-height: 30px;}
+.public_foot .item5 {width:160px;}
+.public_foot .item5 h3{color:#fc4444;}
+.public_foot .item6{text-align: center; }
+.public_foot .item6 p{background:#fc4444; height:32px; line-height: 32px; border-radius: 3px; margin:0; color:white;}
+.public_foot .item6 .img1{padding-top:10px;}
+.public_foot .item6 .img1 img{width:100%;}
+.public_foot .item6 .img1 span{font-size: 14px; color:#666;}
+.zhengJianHui{width:750px; margin:0 auto;line-height: 25px;color: #666;font-size: 15px;}
+.zhengJianHui .f_img_box{width:100px; float:left; margin-right:20px;}
+.zhengJianHui .f_text{width:630px; float:left; line-height: 26px; color:#666;}
+.f_banquan{ width:1140px; margin:0 auto; text-align: center;}
+.f_banquan p{font-size: 15px; color:#666; margin:0; line-height: 25px;}
+.firendlink{text-align: center; line-height: 30px;}
+.hezuo_box{text-align: center; padding:10px 0;}
+.hezuo_box a{margin:0 5px;}
+/*新增导航*/
+.header {height: 45px;line-height: 45px;background: #A21217;}
+.header>ul {margin: 0 auto;width: 1000px;}
+.clearfix {clear: both;zoom: 1;}
+.header>ul>li {float: left;}
+.header>ul>li>a {color: white;font-size: 14px;display: inline-block;line-height: 45px;padding: 0 22px;}
+
+
+
+
+
+
+
+
+
+
+
+
+

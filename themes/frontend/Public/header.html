@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>炒股培训课程_期货培训课程_股票期货高手-十年金融网</title>
+    <meta name="keywords" content="炒股培训课程、期货培训课程、期货培训高手、股票培训高手"/>
+    <meta name="description" content="深圳十年网络科技有限公司（十年金融网）是一家专注于金融领域教育与培训的线上平台型公司。以传播正确的金融投资理念为己任，关注于投资者风险教育与知识传播。"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Bootstrap -->
+    <link href="__TMPL__Public/home/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__TMPL__Public/home/bower_components/bootstrap/dist/css/bootstrap-switch.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__TMPL__Public/home/css/global.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="__TMPL__Public/home/js/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="__TMPL__Public/home/bower_components/swiper/dist/css/swiper.min.css">
+    <script src="__TMPL__Public/home/bower_components/swiper/dist/js/swiper.jquery.min.js"></script>
+    <script src="__TMPL__Public/home/lib/date/WdatePicker.js"></script>
+    <script src="__TMPL__Public/home/lib/layer/layer.js"></script>
+    <script src="__TMPL__Public/home/js/common.js"></script>
+</head>
+<body>
+<!--导航部分-->
+<div class="header" style="position: relative;">
+    <ul class="clearfix">
+        <li><a href="http://www.10jrw.com">首页</a></li>
+        <li><a href="http://www.10jrw.com/cream.html">精华专区</a></li>
+        <li><a href="http://www.10jrw.com/live.html">在线分享</a></li>
+        <li><a href="http://www.10jrw.com/basic/">基础知识</a></li>
+        <li><a href="http://www.10jrw.com/welfare/signup.html">线下培训</a></li>
+        <li><a href="http://www.10jrw.com/news_18/">主题活动</a></li>
+        <li><a href="http://www.10jrw.com/rank.html">实战排行</a></li>
+        <!--<li><a href="#">国诚投顾专区</a></li>--><!--<li><a href="#">金融服务专区</a></li>-->
+        <li>
+            <a href="/moni.html">模拟炒股</a></li>
+        <li><a href="http://www.10jrw.com/playback_94.html">张宏建</a></li>
+        <li><a href="http://www.10jrw.com/playback_1.html">邵立胜</a></li>
+    </ul>
+</div>
+<!--导航部分结束-->
+<div id="header_nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-9 col-md-3">
+                <div class="row">
+                    <?php
+                       if(!empty($user)){
+                    ?>
+                    <div class="col-md-8 text-right">
+                        <?php if(!empty($user['avatar'])) { ?>
+                        <img width="50" height="50" src="{:sp_get_asset_upload_path($user['avatar'])}" alt="">
+                        <?php } else {?>
+                        <img width="50" height="50" src="__TMPL__Public/home/images/public_header/header_img.png"
+                             alt="">
+                        <?php } ?>
+
+                        &nbsp;&nbsp;<?php echo $user['user_nicename'];?>
+                    </div>
+                    <div class="col-md-4 text-center" style="height:50px; line-height: 50px;">
+                        <a href="{:U('user/index/logout')}" id="user_tunchu">退出</a>
+                    </div>
+                    <?php }else{ ?>
+                    <div class="col-md-4 text-center" style="height:50px; line-height: 50px; width: 200px">
+                        <a target="_blank" href="{$jrw_url}/userlogin.html">登录</a> |
+                        <a target="_blank" href="{$jrw_url}/userregister.html">注册</a> |
+                        <a target="_blank" href="{:U('tlive/index/index')}">高手登录</a>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="__TMPL__Public/home/images/public_header/header_logo.png" alt="">
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="__TMPL__Public/home/images/public_header/header_logo_1.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-1  col-md-6" style="margin-top:26px; font-size: 16px;">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-2 text-right">
+                    <a id="nav_one_1" href="/">社圈首页</a>
+                </div>
+                <div class="col-md-2 text-right">
+                    <a id="nav_one_2" href="{:U('course/index')}">培训课程</a>
+                </div>
+                <div class="col-md-2 text-right">
+                    <a id="nav_one_3" href="{:U('test/user')}">个人中心</a>
+                </div>
+                <div class="col-md-2 text-right">
+                    <a id="nav_one_4" href="{:U('test/index')}">民间高手</a>
+                </div>
+                <div class="col-md-2 text-right">
+                    <a id="nav_one_5" href="{:U('test/help_page')}">帮助中心</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<tc_include file=":config"/>
+<!--以上是公共部分-->

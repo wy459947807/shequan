@@ -1,0 +1,54 @@
+#user_list{ padding-top:40px;}
+#user_list .user_info{background:#fc534c; padding:30px; color:white;}
+#user_list ul.list-group{border-radius: 0; padding-top:10px;}
+#user_list li{border:none; height:50px;border-radius: 0;  line-height: 50px; padding:0; text-align: center; cursor: pointer;}
+#user_list li:hover{background:#eee;}
+#user_list li.act{background:#fc534c; color:white;}
+
+#usercon_1,#usercon_2,#usercon_3,#usercon_4 {background:white; margin-top:40px; padding:20px;}
+.user_header{height:40px; line-height: 40px; border-bottom:2px solid #ccc;}
+.user_header span{display: inline-block; height:40px; border-bottom:2px solid #fc534c;}
+.user_header em{float:right;font-style: normal; color:#666;}
+.user_header em i{font-style: normal; font-size: 24px; color:#fc534c;}
+#usercon_1 .user_body{background:url(../images/user/user_img_2.png) no-repeat center; height:500px; padding-top:100px; text-align: center; }
+#usercon_1 .user_body span{color:#fc534c; font-weight: bold; font-size: 18px;}
+.data_kongjian {height:80px; line-height: 80px; position: relative;}
+.data_kongjian input{ height:30px;  border-radius: 2px; border-color:#999; padding-left:10px; box-sizing: border-box; font-size: 14px;}
+.data_kongjian .btn-danger{position: absolute; right:80px; top:20px; background:#fc534c; width:80px; text-align: center;}
+.dingdan_info h4{height:50px; line-height: 50px; background:#f0f0f0; font-size: 14px; padding: 0 20px;}
+.dingdan_info span.goods_name{width:200px; display: inline-block;}
+.dingdan_info span.goods_price{width:180px; display: inline-block;}
+.dingdan_info span.goods_static{width:220px; display: inline-block;}
+.dingdan_info span.yingjiabao{width:180px; display: inline-block;}
+.dingdan_info_content{margin-top:20px; border:1px solid #ccc; border-top:none;}
+.dingdan_info_content p{background:#f5f8fa; height:36px; line-height: 36px; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding-left:20px; font-size: 14px; margin:0;}
+.dingdan_info_content h4{margin:0; background:white;}
+.dingdan_info_content h4 span.goods_name{color:#999;}
+.dingdan_info_content h4 span.goods_price{color:red;}
+.dingdan_info_content h4 span.goods_static{color:red;}
+.dingdan_info_content h4 span.yingjiabao{color:#999;}
+.guanzhu_list{width:897px; margin-left:-15px;}
+.guanzhu_list .item{ background:#f2f3f3; border:1px solid #ddd; float:left; width:400px; margin:15px; padding:40px; position: relative; }
+.guanzhu_list .item .img_box{float:left;}
+.guanzhu_list .item .text_info{float:left; padding-left:20px; font-size: 14px;}
+.guanzhu_list .item .text_info .gz_title{font-size: 16px;}
+.guanzhu_list .item .text_info img{margin-right:5px;}
+.guanzhu_list .item .text_info .biao_1,.guanzhu_list .item .text_info .biao_2{color:#666; line-height: 18px;}
+.guanzhu_list .item .text_info a{display: inline-block; width:90px; height:30px; border:1px solid #ff6561; line-height: 30px; color:#ff6561; margin:0; text-align: center; border-radius: 3px; margin-top:10px;}
+.guanzhu_list .item .text_info a:hover{background:#ff6561; color:white;}
+.guanzhu_list .item .biao_3{position: absolute; left:0; top:0;}
+.guanzhu_list .item .biao_4{position: absolute; right:5px; top:5px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

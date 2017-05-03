@@ -1,0 +1,46 @@
+#tearch_info{padding:50px; background:#f1f2f2;}
+#tearch_info .up_text{margin-top:50px;}
+#tearch_info .up_good_at{margin-top:15px;}
+#tearch_info .up_good_at em{background:#fc3838; padding:5px 8px; color:white; font-style: normal; font-size: 14px; }
+#tearch_info .up_btn_dingyue{display: block; width:174px; margin-left:97px; height:50px; line-height: 40px; border-radius: 25px; border-color:#e62e2e; color:#e62e2e;}
+#tearch_info .up_btn_dingyue:hover{background:#e62e2e; color:white;}
+.up_live_title{background:white; padding-top:30px;}
+.up_live_title .up_title_red{height:70px; line-height: 70px; color:white; background:#f45350; padding: 0 15px; overflow: hidden}
+.up_live_title .up_title_red span{font-size: 18px; color:white; font-weight: bold;}
+.up_live_title .up_title_gred{ height:70px; line-height: 70px; background:#eaebeb; padding-left:15px;}
+.up_live_title .up_title_gred span{ color:#fc3838; font-weight: bold; font-size: 20px;}
+#live_jilu {margin-top:20px; padding:38px; border:1px solid #ccc;}
+#live_jilu  .media-body h4{line-height: 40px;}
+#live_jilu  .media-body h4 span.up_time{float:right; font-size: 14px; color:#666;}
+#live_jilu  .media-body p{padding:20px; background:#f2f3f3; border-radius: 5px; font-size: 14px; line-height: 25px;}
+#live_jilu  .media-body p.up_yuyin{background:#a3e675; border:1px solid #85cd54; cursor: pointer;}
+#live_jilu  .media-body p.up_yuyin i{float: right;}
+#live_jilu  .media-body p.up_yuyin em{color:#538e2c; font-style: normal; margin-right:10px;}
+#live_jilu  .media-body p.up_text_fee{padding-right:120px; border:1px solid #fc534c; overflow: hidden; position: relative;}
+#live_jilu  .media-body p.up_text_fee i{display: block; cursor: pointer; width:120px; height:100px; background:#fc534c; position: absolute; top:0;right:0; text-align: center; padding-top:10px;}
+#live_jilu  .media-body p.up_text_fee i span{display: block; color:white; padding-top:10px; font-style: normal;}
+.up_tarea_bottom{margin-top:10px;}
+.up_tarea_bottom p {height:40px; line-height: 40px;}
+.up_tarea_bottom a{margin-left:10px; border-radius: 3px; background:#fc5454;}
+#send_hua .swiper-slide{height:150px; text-align: center; padding-top:30px;}
+#send_hua .swiper-slide p.text{color:#fc3838; font-size: 14px;}
+body{background:white;}
+/*只看老师发言*/
+.up_live_title .up_title_gred span div a{color: red;float: right; width: 205px;height:60px; top: 27px;border:1px solid red;margin-top: 9px;padding-left: 41px;border-bottom-left-radius: 10px;
+border-top-left-radius: 10px;background-color: white; box-shadow: -5px 3px 4px #C8B0B0;}
+.up_live_title .up_title_gred span div a:hover{ background:#f45350; color:white;box-shadow:none;}
+#live_jilu {margin-top:20px; padding:38px; border:1px solid #ccc;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,424 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/tearch_info.css">
+<div id="tearch_info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" style="border-right:1px solid #ccc;">
+                <div>
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img width="202" height="202" src="{:sp_get_asset_upload_path($tuser['avatar'])}" alt="...">
+                        </a>
+                        <div class="media-body">
+                            <?php
+                              $adept_type = C('ADEPT_TYPE');
+                              if(strpos($tuser['tag'],'|')){
+                              $adept_tag = explode('|',$tuser['tag']);
+                              }else{
+                                 $adept_tag = $tuser['tag'];
+                              }
+                              $adept_arr =[];
+                              $adept_str ='';
+                                      if(strpos($tuser['adept_type'],'|')){
+                                         $adepts = explode('|',$tuser['adept_type']);
+                                         foreach($adepts as $va){
+                                           $adept_arr[] = $adept_type[$va];
+
+                                         }
+                                         $adept_str = implode('/',$adept_arr);
+                                      }else{
+                                          $adept_str = $adept_type[$tuser['adept_type']];
+                                      }
+
+                            ?>
+                            <h3 class="media-heading"><?php echo $tuser['real_name'];?> <span class="text-muted" style="font-size: 16px;"><?php echo $adept_str;?>高手</span></h3>
+                            <h4><i style="padding-right:5px;"><img src="__TMPL__Public/home/images/user_live_page/user_page_icon_1.png" alt=""></i>投资顾问</h4>
+                            <p class="up_text">简介：<?php echo $tuser['intro'];?></p>
+                            <p class="up_good_at">TA的擅长
+                                <?php if(is_array($adept_tag)) {
+                                   foreach($adept_tag as $tag){
+                                ?>
+                                <em><?php echo $tag;?></em>
+                                <?php }?>
+                                <?php }else{ ?>
+                                <em><?php echo $adept_tag;?></em>
+                                <?php  }?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <p>粉丝数</p>
+                        <h4 style="font-weight: bold; color:#e62e2e"><?php echo $tuser['fans']; ?></h4>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <p>七日社圈热度</p>
+                        <h4 style="font-weight: bold; color:#e62e2e"><?php $d=ceil((strtotime($tuser['last_login_time'])-$tuser['ctime'])/(24*60*60));echo $d >0 ? $d:0 ?></h4>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <p>人气指数</p>
+                        <h4 style="font-weight: bold; color:#e62e2e"><?php echo $tuser['views']?></h4>
+                    </div>
+                </div>
+                <div class="clearfix" style="padding:30px;">
+                    <!--<p class="pull-left">已直播：<span style="font-size: 20px; color:#e62e2e; font-weight: bold;">16</span>场</p>-->
+                    <!--<p class="pull-right">收到礼物：<span style="font-size: 20px; color:#e62e2e;font-weight: bold;">88</span>个</p>-->
+                </div>
+                <div class="btn btn-default text-center up_btn_dingyue" >
+                    +订阅
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="up_live_title">
+    <div class="container">
+        <div class="up_title_red clearfix" >
+        <p class="pull-left">欢迎来到<?php echo $tuser['real_name'];?>的赢家社圈</p>
+        <p class="pull-right">当前参与人数：<span>8888</span></p>
+    </div>
+        <div class="up_title_gred">
+            <i><img style="vertical-align: -2px; padding-right:5px;" src="__TMPL__Public/home/images/user_live_page/live_icon_2.png" alt=""></i><span>赢家社圈公告：</span>行情分析仅代表老师个人观点,不应作为实际操作依据。
+            <span style="float: right">
+
+                <div class="switch switch-small">
+                <a href="#"> 只看老师发言:   <input id="viewlog" type="checkbox"/></a>
+                </div>
+            </span>
+        </div>
+        <div id="live_jilu">
+            <ul class="media-list" id="dialog" style="max-height: 400px; overflow-y: auto">
+
+
+                <!--<li class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_tearch_1.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">邵立胜 <span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p>投资要盈利，学习是关键！《赢家股票期货特训营》作为国内知名投资培训课程，深度揭示金融市场的本质和规律，颠覆股票期货投资观念，打造极具影响力的投资者实战学习平台！学投资就选十年·赢家教育！</p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!---->
+                <!---->
+                <!--<li class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_icon_3.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">股市浪子 <span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p>老师，600828怎么操作，谢谢</p>-->
+                <!--<div class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_tearch_1.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">股市浪子 <span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p>可以持有随时可以起暴!</p>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_tearch_1.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">邵立胜 <span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p>-->
+                <!--<img src="__TMPL__Public/home/images/user_live_page/live_img_1.png" alt="">-->
+                <!--</p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_tearch_1.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">邵立胜 <span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p><span style="color:red;">http://www.10jrw.com/video/v-1327.html (视频链接）</span></p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_icon_4.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">用户A <span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p>昨天尾盘市场深成指和创业板有5分钟底部，创业板指数还形成了15分钟底部，预计今天上涨概率大。昨天又有三家公司宣布高送转，大家可以继续在这方面挖掘然后先潜伏。最新高送转：山东华鹏拟10转16、北信源拟10转20、优博讯拟10转25 。老师这几个股票可以入手吗？</p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_tearch_1.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">邵立胜 <span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p class="up_yuyin">-->
+                <!--<em>语音付费消息</em>600赢家币收听-->
+                <!--<i><img src="__TMPL__Public/home/images/user_live_page/live_icon_5.png" alt=""></i>-->
+                <!--</p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_tearch_1.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">邵立胜 <span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p class="up_text_fee">-->
+                <!--600昨天尾盘市场深成指和创业板有5分钟底部，创业板指数还形成了15分钟底部，预计今天上涨概率大。昨天又有三家公司宣布高送转，大家可以继续在这方面挖掘然后先潜伏。最新高送转：山东华鹏拟10转16、北信源拟10转20、优博讯拟10转25>>>-->
+                <!--<i>-->
+                <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_6.png" alt="">-->
+                <!--<span>1000赢家币阅读</span>-->
+                <!--</i>-->
+                <!--</p>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li class="media">-->
+                <!--<a class="media-left" href="#">-->
+                <!--<img style="width:60px;" src="__TMPL__Public/home/images/user_live_page/live_icon_4.png" alt="...">-->
+                <!--</a>-->
+                <!--<div class="media-body">-->
+                <!--<h4 class="media-heading">用户A <i style="color:red;  font-style: normal;">互动回复</i><span class="up_time">2015-12-5  20：23</span></h4>-->
+                <!--<p>我也买了，估计能涨停我有内部消息哈哈！</p>-->
+                <!--</div>-->
+                <!--</li>-->
+
+
+
+
+            </ul>
+            <h4>股市浪子</h4>
+            <textarea id="textarea" class="form-control" rows="3" placeholder="我也说说...（限300字）"></textarea>
+            <div class="up_tarea_bottom clearfix">
+                <p class="pull-left"><!--<img style="margin-right:5px; vertical-align: -4px;" src="__TMPL__Public/home/images/user_live_page/live_icon_7.png" alt="">心情--></p>
+                <p class="pull-right"><a href="javascript:;"  onclick="onSubmit();" class="btn btn-danger">发送</a></p>
+            </div>
+            <!--<div id="send_hua">-->
+            <!--<div class="swiper-container">-->
+            <!--<div class="swiper-wrapper">-->
+            <!--<div class="swiper-slide">-->
+            <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_9.png" alt="...">-->
+            <!--<p class="text">点赞88金币</p>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+            <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_10.png" alt="...">-->
+            <!--<p class="text">点赞88金币</p>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+            <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_11.png" alt="...">-->
+            <!--<p class="text">点赞88金币</p>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+            <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_8.png" alt="...">-->
+            <!--<p class="text">点赞88金币</p>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+            <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_9.png" alt="...">-->
+            <!--<p class="text">点赞88金币</p>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+            <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_10.png" alt="...">-->
+            <!--<p class="text">点赞88金币</p>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+            <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_11.png" alt="...">-->
+            <!--<p class="text">点赞88金币</p>-->
+            <!--</div>-->
+            <!--<div class="swiper-slide">-->
+            <!--<img src="__TMPL__Public/home/images/user_live_page/live_icon_8.png" alt="...">-->
+            <!--<p class="text">点赞88金币</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; 如果需要导航按钮 &ndash;&gt;-->
+            <!--<div class="swiper-button-prev"></div>-->
+            <!--<div class="swiper-button-next"></div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<tc_include file="Public:footer" />
+<script type="text/javascript" src="/public/js/live/swfobject.js"></script>
+<script type="text/javascript" src="/public/js/live/web_socket.js"></script>
+<script type="text/javascript" src="/public/js/live/jquery.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 5,
+        paginationClickable: true,
+        spaceBetween: 30,
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    });
+
+    if (typeof console == "undefined") {    this.console = { log: function (msg) {  } };}
+    WEB_SOCKET_SWF_LOCATION = "/public/swf/WebSocketMain.swf";
+    WEB_SOCKET_DEBUG = true;
+    var ws,client_list={};
+    var name = '<?php echo $live_var["name"];?>';
+    var domain = "<?php echo C('LIVE_IP');?>";
+    var avatar = '<?php echo sp_get_asset_upload_path($live_var["avatar"]);?>';
+    var role  = 2;//1为高手,2为学员
+    var room_id = "<?php echo $tuser['id']?>";
+
+    // 连接服务端
+    function connect() {
+        ws = new WebSocket("ws://"+domain+":7272");
+        // 当socket连接打开时，输入用户名
+        ws.onopen = onopen;
+        // 当有消息时根据消息类型显示不同信息
+        ws.onmessage = onmessage;
+        ws.onclose = function() {
+           // console.log("连接关闭，定时重连");
+            connect();
+        };
+        ws.onerror = function() {
+            //console.log("出现错误");
+        };
+    }
+
+    // 连接建立时发送登录信息
+    function onopen()
+    {
+        // 登录
+        var login_data = '{"type":"login","role":"'+role+'","avatar":"'+avatar+'","client_name":"'+name.replace(/"/g, '\\"')+'","room_id":"'+room_id+'"}';
+        console.log("websocket握手成功，发送登录数据:"+login_data);
+        ws.send(login_data);
+    }
+
+    // 服务端发来消息时
+    function onmessage(e)
+    {
+        //console.log(e.data);
+        var data = eval("("+e.data+")");
+        show(data);
+    }
+
+    function show(data){
+        if (data == ''){
+            return false;
+        }
+        switch(data['type']){
+            // 服务端ping客户端
+            case 'ping':
+                ws.send('{"type":"pong"}');
+                break;;
+            // 登录 更新用户列表
+            case 'login':
+                //{"type":"login","client_id":xxx,"client_name":"xxx",,"time":"xxx"}
+                say(data['avatar'], data['client_name'],  data['client_name']+' 加入了赢家社圈', data['time'],data['role']);
+                //console.log(data['client_name']+"登录成功");
+                break;
+            // 发言
+            case 'say':
+                //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
+                say(data['avatar'], data['from_client_name'], data['content'], data['time'],data['role']);
+                break;
+            // 用户退出 更新用户列表
+            case 'logout':
+                //{"type":"logout","client_id":xxx,"time":"xxx"}
+                say(data['avatar'], data['from_client_name'], data['from_client_name']+' 退出了赢家社圈', data['time'],data['role']);
+                delete client_list[data['from_client_id']];
+            // flush_client_list();
+        }
+    }
+    function showlog(data){
+        if (data == ''){
+            return false;
+        }
+        switch(data['type']){
+            // 服务端ping客户端
+            case 'ping':
+                ws.send('{"type":"pong"}');
+                break;;
+            // 登录 更新用户列表
+            case 'login':
+                //{"type":"login","client_id":xxx,"client_name":"xxx",,"time":"xxx"}
+                saylog(data['avatar'], data['client_name'],  data['client_name']+' 加入了赢家社圈', data['time'],data['role']);
+                //console.log(data['client_name']+"登录成功");
+                break;
+            // 发言
+            case 'say':
+                //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
+                saylog(data['avatar'], data['from_client_name'], data['content'], data['time'],data['role']);
+                break;
+            // 用户退出 更新用户列表
+            case 'logout':
+                //{"type":"logout","client_id":xxx,"time":"xxx"}
+                saylog(data['avatar'], data['from_client_name'], data['from_client_name']+' 退出了赢家社圈', data['time'],data['role']);
+                delete client_list[data['from_client_id']];
+            // flush_client_list();
+        }
+    }
+
+    // 提交对话
+    function onSubmit() {
+        var input = document.getElementById("textarea");
+        if (input.value == ''){
+            return false;
+        }
+        var to_client_id = 'all';
+        var to_client_name = '所有人';
+        ws.send('{"type":"say","to_client_id":"'+to_client_id+'","to_client_name":"'+to_client_name+'","content":"'+input.value.replace(/"/g, '\\"').replace(/\n/g,'\\n').replace(/\r/g, '\\r')+'"}');
+        input.value = "";
+        input.focus();
+    }
+    // 发言
+    function say(avatar, from_client_name, content, time,role){
+        $("#dialog").prepend('<li data-id="'+role+'" class="media"><a class="media-left" href="#"><img style="width:60px;" src="'+avatar+'" ></a><div class="media-body"><h4 class="media-heading">'+from_client_name+' <span class="up_time">'+time+'</span></h4><p>'+content+'</p></div></li>');
+    }
+    function saylog(avatar, from_client_name, content, time,role){
+        $("#dialog").append('<li data-id="'+role+'" class="media"><a class="media-left" href="#"><img style="width:60px;" src="'+avatar+'" ></a><div class="media-body"><h4 class="media-heading">'+from_client_name+' <span class="up_time">'+time+'</span></h4><p>'+content+'</p></div></li>');
+    }
+    $(function(){
+        loadLog();
+        tobmm();
+        viewlog();
+        connect();
+
+    });
+
+    function loadLog(){
+        $.post('/index.php?g=&m=live&a=getLogs',{t_id:room_id},function(result){
+            if(result.status==1){
+                $.each(result.data,function(i,item){
+                    //var obj = eval("("+item+")");
+                    //console.log(item);
+                    showlog(item);
+                });
+            }
+        },'json');
+    }
+
+    function tobmm(){
+        $('#dialog').scrollTop( $('#dialog')[0].scrollHeight );
+    }
+
+    function viewlog(){
+        $('#viewlog').click(function(){
+           if ($(this).is(':checked')){
+               $('li').each(function(){
+                   $id = $(this).data('id');
+                   if ($id == 2) {
+                       $(this).hide();
+                   }
+               });
+           }else {
+               $('li').each(function(){
+                   $id = $(this).data('id');
+                   if ($id == 2) {
+                       $(this).show();
+                   }
+               });
+           }
+        });
+    }
+
+</script>
+
