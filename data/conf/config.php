@@ -1,0 +1,15 @@
+<?php	return array (
+  'SP_SITE_ADMIN_URL_PASSWORD' => '',
+  'SP_DEFAULT_THEME' => 'frontend',
+  'DEFAULT_THEME' => 'frontend',
+  'SP_ADMIN_STYLE' => 'flat',
+  'URL_MODEL' => '0',
+  'URL_HTML_SUFFIX' => '',
+  'COMMENT_NEED_CHECK' => 0,
+  'COMMENT_TIME_INTERVAL' => 60,
+  'MOBILE_TPL_ENABLED' => 0,
+  'HTML_CACHE_ON' => false,
+    'JRW_URL' => 'http://www.10jrw.com',
+    'TOKEN' =>'zbmf201611161338c#M8y^8C$UJ%p&75@!',
+    'LIVE_IP' =>'120.26.118.169',
+);
