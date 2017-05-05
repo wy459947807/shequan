@@ -3,6 +3,7 @@
   'SP_DEFAULT_THEME' => 'frontend',
   'DEFAULT_THEME' => 'frontend',
   'SP_ADMIN_STYLE' => 'flat',
+  'TMPL_CACHE_ON' => false,
   'URL_MODEL' => '0',
   'URL_HTML_SUFFIX' => '',
   'COMMENT_NEED_CHECK' => 0,

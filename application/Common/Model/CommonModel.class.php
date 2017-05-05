@@ -8,6 +8,67 @@ namespace Common\Model;
 use Think\Model;
 
 class CommonModel extends Model {
+    
+    
+    public $result = array(
+        "status" => 200, 
+        "info" => "操作成功！",
+        "data" => ""
+    );//返回数据格式
+    
+    public $page=1;             //当前页码
+    public $pageLimit=10;       //每页显示条数
+    
+    public $sqlFrom="";         //数据库查询表
+    public $sqlField="*";       //数据库查询字段
+    public $sqlWhere=" (1=1) "; //数据库查询条件
+    public $sqlGroupby="" ;     //数据库查询分组
+    public $sqlLimit="";        //数据库查询限制条数
+    public $sqlOrder="";        //数据库查询排序
+    public $bindValues=array(); //数据库查询pdo字段绑定
+    
+    
+    public function getPageList(){
+        $model = M();
+        $offset = ($this->page - 1) * $this->pageLimit;
+        $sqlLimit=" limit {$offset},{$this->pageLimit} ";
+        
+        $list_sql="SELECT ".$this->sqlField." FROM ".$this->sqlFrom." WHERE  ".$this->sqlWhere.$this->sqlOrder.$this->sqlGroupby.$sqlLimit;
+        $count_sql = "SELECT COUNT(*) as num FROM " .$this->sqlFrom." WHERE  ".$this->sqlWhere;
+        
+        $count = $model->query($count_sql,$this->bindValues);      
+        $list  = $model->query($list_sql,$this->bindValues);
+               
+        $resultData['list']=$list;
+        
+        //分页信息
+        $resultData['pageInfo']=array();
+        $resultData['pageInfo']['page']=$this->page;                                    //当前页数
+        $resultData['pageInfo']['pageLimit']=$this->pageLimit;                          //每页显示条数
+        $resultData['pageInfo']['num']=$count[0]['num'];                                //总条数
+        $resultData['pageInfo']['pageNum']= ceil($count[0]['num']/$this->pageLimit);    //总页数
+        $this->result['data']=$resultData;
+        return $this->result;  
+                
+    }
+    
+    public function getAll(){
+        $model = M();
+        $list_sql="SELECT ".$this->sqlField." FROM ".$this->sqlFrom." WHERE  ".$this->sqlWhere.$this->sqlOrder.$this->sqlGroupby.$this->sqlLimit;
+
+        $list  =  $model->query($list_sql,$this->bindValues);
+        $this->result['data']=$list;
+        return $this->result;  
+    }
+    
+    public function getOne(){
+        $model = M();
+        $data_sql="SELECT ".$this->sqlField." FROM ".$this->sqlFrom." WHERE  ".$this->sqlWhere.$this->sqlOrder.$this->sqlGroupby.$this->sqlLimit;
+        $data    = $model->query($data_sql,$this->bindValues);
+        $this->result['data']=$data[0];
+        return $this->result;  
+    }
+    
 
     /**
      * 删除表

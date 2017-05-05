@@ -9,27 +9,46 @@ class IndexController extends HomebaseController {
     //首页
     public function index() {
         if(!IS_POST){
-            //统合排序
-            $list = M('killer')->query("SELECT COUNT(`id`) as num FROM `tg_killer` WHERE  status = 1");
-            //按直播时间排序
-            $listOne = M('killer')->query("SELECT `id`,`real_name`,`avatar`,`adept_type`,`type`,`fans`,`ctime`,`last_login_time` FROM `tg_killer` WHERE  status = 1 ORDER BY last_login_time LIMIT 0,30");
-            //按粉丝数排序
-            $listThree = M('killer')->query("SELECT `id`,`real_name`,`avatar`,`adept_type`,`type`,`fans`,`ctime`,`last_login_time` FROM `tg_killer` WHERE  status = 1 ORDER BY fans LIMIT 0,30");
-            $this->assign('pcount',ceil($list[0]['num']/30));
-            $this->assign('listOne',$listOne);
-            $this->assign('listThree',$listThree);
+            $listInfo= D('killer')->getList(array("status"=>1,"orderType"=>0,"page"=>1,"pageLimit"=>30));//综合排序
+ 
+            $tadayTopList =D('killer')->getTopList(array("orderType"=>1,"dateTime"=>date("Y-m-d H:i:s")));//今日推荐
+            $gupiaoTopList=D('killer')->getTopList(array("orderType"=>2,"adeptType"=>1));//股票高手榜
+            $qihuoTopList =D('killer')->getTopList(array("orderType"=>2,"adeptType"=>2));//期货高手榜
+            $waihuiTopList=D('killer')->getTopList(array("orderType"=>2,"adeptType"=>3));//外汇高手榜
+            $waipanTopList=D('killer')->getTopList(array("orderType"=>2,"adeptType"=>4));//外盘高手榜
+  
+            if(empty($tadayTopList['data'])){
+                $tadayTopList=D('killer')->getTopList(array("orderType"=>1));//今日推荐
+            }
+            
+            $this->assign('tadayTopList',$tadayTopList['data']);    //今日推荐
+            $this->assign('gupiaoTopList',$gupiaoTopList['data']);  //股票高手榜
+            $this->assign('qihuoTopList' ,$qihuoTopList ['data']);  //期货高手榜
+            $this->assign('waihuiTopList',$waihuiTopList['data']);  //外汇高手榜
+            $this->assign('waipanTopList',$waipanTopList['data']);  //外盘高手榜
+            
+            $this->assign('killerList',$listInfo['data']['list']);  //列表信息
+            $this->assign('pageInfo',$listInfo['data']['pageInfo']);//分页信息
             $this->display(":home");
         }else{
-            $pageIndex = $_POST['pageIndex'];
-            $pageSize = $_POST['pageSize'];
-            $from = $pageIndex*$pageSize;
-            //统合排序
-            $listOne = M('killer')->query("SELECT `id`,`real_name`,`avatar`,`adept_type`,`type`,`fans`,`ctime`,`last_login_time` FROM `tg_killer` WHERE  status = 1 ORDER BY id LIMIT {$from},{$pageSize}");
-            $this->assign('listOne',$listOne);
+            $data=I('post.');
+            $listInfo= D('killer')->getList($data);                   //排序列表
+            $this->assign('killerList',$listInfo['data']['list']);    //列表信息
+            $this->assign('pageInfo'  ,$listInfo['data']['pageInfo']);//分页信息
             $html = $this->fetch(":home_ajax");
             exit($html);
         }
-
     }
+    
+    
+    public function ajaxPage(){
+        if(IS_POST){
+            $data=I('post.');
+            $this->assign('pageInfo'  ,$data);//分页信息
+            $html = $this->fetch(":page");
+            exit($html);
+        }
+    }
+    
 
 }
