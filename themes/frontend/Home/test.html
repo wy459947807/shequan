@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="__TMPL__Public/home/css/apply.css">
 
 
- <form id="addUser" class="form"  action="{:U('index/test')}" enctype="multipart/form-data" method="post">
+ <form id="addUser" class="form"  action="{:U('killer/test')}" enctype="multipart/form-data" method="post">
        <input type="text"  name="username"  datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确"  value="" placeholder="">
        <input type="text"  name="mobile"  value="" placeholder="">
       <input  onclick="$('#addUser').submit()" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
@@ -12,8 +12,55 @@
 <script src="__TMPL__Public/home/lib/Validform/5.3.2/Validform.min.js"></script>
 <script src="__TMPL__Public/home/lib/LG.js"></script>
 <script src="__TMPL__Public/home/js/strongWind.js"></script>
-<script>
+
+
+<div class="uploads">
+    <a id="uploaderA" href="javascript:void(0)">点击上传</a>
+</div>
+<div style="padding-top: 10px; padding-right: 50px; line-height: 25px;">
+    温馨提示：图片上传格式为<span style="color: #b80006; font-weight: bold">.jpg,.jpeg,.png,.gif</span>格式（不超过<span style="color: #b80006; font-weight: bold">4</span>M）。
+</div>
+
+
+<div class="uppic" style=" width: 260px; height: 200px">
+    <a href="" class="contFancybox">
+        <img id="picImg" src="" style=" width: 260px; height: 200px"  alt=""/>
+    </a>
+</div>
+                            
+<script src="public/js/plupload/plupload.full.min.js"></script>
+
+
     
+    
+    <script type="text/javascript">
+    var uploaderA = new plupload.Uploader({
+        runtimes: 'html5,flash,silverlight,html4',
+        browse_button: 'uploaderA', // you can pass in id...
+        url: "{:U('index/uploadImg')}",
+        max_file_size: '4mb',
+        unique_names: true,
+        filters: [{
+                title: "文件类型(jpg,jpeg,png,gif)",
+                extensions: "jpg,jpeg,png,gif"
+            }],
+        flash_swf_url: 'public/js/plupload/Moxie.swf',
+        silverlight_xap_url: 'public/js/plupload/Moxie.xap'
+    });
+    uploaderA.bind('Init', function (up, params) {
+    });
+    uploaderA.init();
+    uploaderA.bind('FileUploaded', function (up, file) {
+        alert(plupload.xmlEncode(file.target_name));
+        $('#picImg').attr('src', "tmp/" + plupload.xmlEncode(file.target_name)).show();
+        $('#upPic').val(plupload.xmlEncode(file.target_name));
+
+
+    });
+    uploaderA.bind('FilesAdded', function (up, files) {
+        uploaderA.start();
+        e.preventDefault();
+    });
 </script>
 
 <tc_include file="Public:footer" />

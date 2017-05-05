@@ -92,5 +92,26 @@ class KillerModel extends CommonModel {
         return $this->getAll();
 
     }
+    
+    //高手注册
+    public function killerRegist($params){
+        $model = M();
+        $model->startTrans();//事务处理
+        $id=$model->table(C('DB_PREFIX').'killer')->add($params); 
+        if($id){
+            $model->commit();
+            $this->result['msg']= "注册成功！";
+            return $this->result;
+        }else{
+            $model->rollback();//事物回滚
+            $this->result= array(
+                "status" => 500, 
+                "msg" => "数据插入失败！",
+                "data" => ""
+            );
+            return $this->result;
+        }
+    }
+    
 
 }

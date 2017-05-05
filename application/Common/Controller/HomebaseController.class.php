@@ -331,5 +331,17 @@ class HomebaseController extends AppframeController {
 			'data' => $data,
 		));
 	}
+        
+        protected function uploadImage($savePath) {
+            $uploadInfo=C("UPLOAD_INFO");
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     $uploadInfo['uploadImage']['maxSize'] ;// 设置附件上传大小
+            $upload->exts      =     $uploadInfo['uploadImage']['exts'];    // 设置附件上传类型
+            $upload->rootPath  =     $uploadInfo['uploadImage']['rootPath'];// 设置附件上传根目录
+            $upload->savePath  =     '/'.$savePath; // 设置附件上传（子）目录
+            // 上传文件 
+            $info   =   $upload->upload();
+            return $info;
+	}
 
 }

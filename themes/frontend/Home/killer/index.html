@@ -1,16 +1,10 @@
 <tc_include file="Public:header" />
 <link rel="stylesheet" href="__TMPL__Public/home/css/apply.css">
-<script src="__TMPL__Public/home/lib/uploadPreview.js"></script>
-<script>
-    window.onload = function () {
-        new uploadPreview({ UpBtn: "up_img", DivShow: "imgdiv", ImgShow: "imgShow" });
-    }
-</script>
 <div class="apply_banner">
     <img style="width:100%;" src="__TMPL__Public/home/images/farmerkiller/apply_banner.png" alt="">
 </div>
 <div class="container" >
-    <form id="killerRegist" class="form"  action="{:U('killer/index')}" enctype="multipart/form-data" method="post">
+    <form id="killerRegist" class="form1"  action="{:U('killer/index')}" enctype="multipart/form-data" method="post">
     <div class="apply_form">
         <p>认证方式：身份证</p>
         <div class="apply_img clearfix" >
@@ -23,38 +17,46 @@
                 <p>格式要求：支持.jpg .png格式，大小不超过2M</p>
                 <a href="javascript:;" style="position: relative; display: inline-block;" >
                     上传照片
-                    <input type="file" value="上传照片"  id="up_img" style="opacity: 0; position: absolute; width:100%; height:100%; top:0; left:0;"  />
+                    <input type="file" name='avatar'  value="上传照片"  id="up_img" style="opacity: 0; position: absolute; width:100%; height:100%; top:0; left:0;"  />
                 </a>
 
             </div>
         </div>
+        
         <div class="form_info">
-            <p>真实姓名：<input type="text" datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确" placeholder="名字和身份证必须一致"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>手机号码：<input type="text" datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确" placeholder="能联系到您的手机号码"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>微信号码：<input type="text" placeholder="填写您常用的微信(选填)"></p>
-            <p>微信号码：<input type="text" placeholder="填写您常用的微信(选填)"></p>
-            <p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input type="text" placeholder="填写您常用的邮箱(选填)"></p>
-            <p>擅长领域：<input type="text" placeholder="从右侧下拉选项选择">
-                <select >
-                    <option value="">请选择</option>
-                    <option value="">股票</option>
-                    <option value="">期货</option>
-                    <option value="">外汇</option>
-                    <option value="">外盘</option>
+            <p>真实姓名：<input name="real_name" type="text" datatype="*" nullmsg="请填写真实姓名！" errormsg="真实姓名格式不正确" placeholder="名字和身份证必须一致"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>手机号码：<input name="mobile"    type="text" datatype="*" nullmsg="请填写手机号！"   errormsg="手机号格式不正确" placeholder="能联系到您的手机号码"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>微信号码：<input name="wechat"    type="text" placeholder="填写您常用的微信(选填)"></p>
+           
+            <p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input name="email" type="text" placeholder="填写您常用的邮箱(选填)"></p>
+            <p>擅长领域：<input name="adept_info" type="text" placeholder="请填写擅长领域">
+                <select name="adept_type">
+                    <if condition=" $adeptType  neq NULL ">
+                    <foreach name="adeptType" item="val" key="key">
+                    <option value="{$key}">{$val}</option>
+                    </foreach>
+                    </if>
                 </select>
             </p>
-            <p>资格证种类：<input type="text" placeholder="从右侧下拉选项选择">
-                <select>
-                    <option value="">请选择</option>
-                    <option value="">资格证种类1</option>
-                    <option value="">资格证种类2</option>
-                    <option value="">资格证种类3</option>
-                    <option value="">资格证种类4</option>
+            <p>资格证：<input name="cert_num" type="text" placeholder="请填写证书编号">
+                <select name="cert_type" style="width: auto">
+                    <if condition=" $cardType  neq NULL ">
+                    <foreach name="cardType" item="val" key="key">
+                    <option value="{$key}">{$val}</option>
+                    </foreach>
+                    </if>
                 </select>
             </p>
+            <p>注册类型：
+                <span style="padding-right:10px;">
+                    <input name="type" type="radio" style="vertical-align:middle;margin-top:-2px;" value="0" /> &nbsp;个人&nbsp;&nbsp; 
+                    <input name="type" type="radio" style="vertical-align:middle;margin-top:-2px;" value="1" /> &nbsp;机构&nbsp;&nbsp;
+                <span>
+            </p>
+            <p>机构名称：<input name="type_name"    type="text" placeholder="填写机构名称"></p>
             <p style="height:auto; background:#f6f8f8;">
                 个人介绍：（机构/商户）
-                <textarea name="" id="" placeholder="在此输入--- "></textarea>
+                <textarea name="intro" id="" placeholder="在此输入--- "></textarea>
             </p>
         </div>
         <div class="apply_btn">
@@ -69,8 +71,13 @@
 <script src="__TMPL__Public/home/lib/Validform/5.3.2/Validform.min.js"></script>
 <script src="__TMPL__Public/home/lib/LG.js"></script>
 <script src="__TMPL__Public/home/js/strongWind.js"></script>
+
+<script src="__TMPL__Public/home/lib/uploadPreview.js"></script>
 <script>
-    
+    window.onload = function () {
+        new uploadPreview({ UpBtn: "up_img", DivShow: "imgdiv", ImgShow: "imgShow" });
+    }
 </script>
+
 
 <tc_include file="Public:footer" />
