@@ -1,0 +1,19 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/apply.css">
+
+
+ <form id="addUser" class="form"  action="{:U('index/test')}" enctype="multipart/form-data" method="post">
+       <input type="text"  name="username"  datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确"  value="" placeholder="">
+       <input type="text"  name="mobile"  value="" placeholder="">
+      <input  onclick="$('#addUser').submit()" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+ </form>
+
+
+<script src="__TMPL__Public/home/lib/Validform/5.3.2/Validform.min.js"></script>
+<script src="__TMPL__Public/home/lib/LG.js"></script>
+<script src="__TMPL__Public/home/js/strongWind.js"></script>
+<script>
+    
+</script>
+
+<tc_include file="Public:footer" />

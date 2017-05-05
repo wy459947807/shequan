@@ -9,7 +9,7 @@ class KillerController extends HomebaseController {
     public function index() {
         if(IS_POST){
             
-            
+            $this->ajaxReturn(200,"ddd","");
         }else{
             $this->display(":killer:index");
         }

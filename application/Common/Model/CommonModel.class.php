@@ -12,7 +12,7 @@ class CommonModel extends Model {
     
     public $result = array(
         "status" => 200, 
-        "info" => "操作成功！",
+        "msg" => "操作成功！",
         "data" => ""
     );//返回数据格式
     

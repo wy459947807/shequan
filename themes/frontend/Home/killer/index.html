@@ -10,6 +10,7 @@
     <img style="width:100%;" src="__TMPL__Public/home/images/farmerkiller/apply_banner.png" alt="">
 </div>
 <div class="container" >
+    <form id="killerRegist" class="form"  action="{:U('killer/index')}" enctype="multipart/form-data" method="post">
     <div class="apply_form">
         <p>认证方式：身份证</p>
         <div class="apply_img clearfix" >
@@ -28,8 +29,8 @@
             </div>
         </div>
         <div class="form_info">
-            <p>真实姓名：<input type="text" placeholder="名字和身份证必须一致"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>手机号码：<input type="text" placeholder="能联系到您的手机号码"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>真实姓名：<input type="text" datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确" placeholder="名字和身份证必须一致"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>手机号码：<input type="text" datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确" placeholder="能联系到您的手机号码"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
             <p>微信号码：<input type="text" placeholder="填写您常用的微信(选填)"></p>
             <p>微信号码：<input type="text" placeholder="填写您常用的微信(选填)"></p>
             <p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input type="text" placeholder="填写您常用的邮箱(选填)"></p>
@@ -57,13 +58,19 @@
             </p>
         </div>
         <div class="apply_btn">
-            <a href="">提交</a>
+            <a href="javascript:void(0)" onclick="$('#killerRegist').submit()" >提交</a>
         </div>
     </div>
+    </form>
 </div>
 
 
 
-
+<script src="__TMPL__Public/home/lib/Validform/5.3.2/Validform.min.js"></script>
+<script src="__TMPL__Public/home/lib/LG.js"></script>
+<script src="__TMPL__Public/home/js/strongWind.js"></script>
+<script>
+    
+</script>
 
 <tc_include file="Public:footer" />

@@ -50,5 +50,13 @@ class IndexController extends HomebaseController {
         }
     }
     
+    public function test(){
+        if(IS_POST){
+            $this->ajaxReturn(200,"666","");
+        }else{
+            $this->display(":test");
+        }
+    }
+    
 
 }
