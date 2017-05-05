@@ -23,3 +23,5 @@ function getTemplate(dataInfo, ajaxUrl, boxId, append) {
         }
     });
 }
+
+

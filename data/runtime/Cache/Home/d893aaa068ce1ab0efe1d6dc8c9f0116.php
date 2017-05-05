@@ -93,13 +93,13 @@
                     <a id="nav_one_2" href="<?php echo U('course/index');?>">培训课程</a>
                 </div>
                 <div class="col-md-2 text-right">
-                    <a id="nav_one_3" href="<?php echo U('test/user');?>">个人中心</a>
+                    <a id="nav_one_3" href="<?php echo U('killer/user');?>">个人中心</a>
                 </div>
                 <div class="col-md-2 text-right">
-                    <a id="nav_one_4" href="<?php echo U('test/index');?>">民间高手</a>
+                    <a id="nav_one_4" href="<?php echo U('killer/index');?>">民间高手</a>
                 </div>
                 <div class="col-md-2 text-right">
-                    <a id="nav_one_5" href="<?php echo U('test/help_page');?>">帮助中心</a>
+                    <a id="nav_one_5" href="<?php echo U('killer/help_page');?>">帮助中心</a>
                 </div>
             </div>
         </div>
