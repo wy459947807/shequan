@@ -236,4 +236,24 @@ class AdminbaseController extends AppframeController {
 			L($lang);
     	}
     }
+    
+    
+    protected function sendEmail($data){
+            $retInfo = array(
+                "status" => 200, 
+                "msg" => "发送成功！",
+                "data" => ""
+            );
+            
+
+            $result=sp_send_email($data['to'], $data['subject'], $data['content']);
+            if($result && empty($result['error'])){
+                return $retInfo;
+            }else{
+                $retInfo['status']=500;
+                $retInfo['msg']='发送失败：'.$result['message'];
+                return $retInfo;
+            }
+    }
+    
 }

@@ -16,4 +16,5 @@ return array(
             "rootPath"=>'data/upload/home',                 // 设置图片上传根目录
         )  
     ),
+
 );

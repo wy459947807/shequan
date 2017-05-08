@@ -11,7 +11,7 @@ class CommonController extends HomebaseController {
 
     
     //plupload插件 上传处理
-    public function uploadImg() {
+    public function plupload() {
         /**
          * upload.php
          *
@@ -29,7 +29,8 @@ class CommonController extends HomebaseController {
         header("Pragma: no-cache");
 
         // Settings
-        $targetDir = str_replace('\\', '/', dirname(dirname(__FILE__))) . '/../../data/upload/tmp';
+        //$targetDir = str_replace('\\', '/', dirname(dirname(__FILE__))) . '/../../data/upload/tmp';
+        $targetDir = TMP_UPLOAD;
         $cleanupTargetDir = true; // Remove old files
         $maxFileAge = 5 * 3600; // Temp file age in seconds
         @set_time_limit(5 * 60);

@@ -1,5 +1,6 @@
 <tc_include file="Public:header" />
 <link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+
 <div id="home_banner" class="container-fluid" >
     <div class="swiper-container2 swiper-container-horizontal" style="overflow: hidden;">
         <div class="swiper-wrapper" style="" >
@@ -164,11 +165,8 @@
 <tc_include file="Public:footer" />
 <script src="__TMPL__Public/home/js/home.js"></script>
 <script src="__TMPL__Public/home/js/strongWind.js"></script>
-
 <script>
-    $(document).ready(function () {
-
-    });
+  
 
     var killerInfo = {
         page: 1,
@@ -176,7 +174,9 @@
         status: 1,
         orderType: 0
     };
-
+    
+    getKillerList(0, 1);//加载高手列表
+    
     //获取高手列表
     function getKillerList(orderType, page) {
         killerInfo['orderType'] = orderType ? orderType : 0;

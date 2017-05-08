@@ -216,4 +216,34 @@ function getTemplate(dataInfo, ajaxUrl, boxId, append) {
     });
 }
 
+function initUploadImage(uploader,imageId,inputId){
+    var uploadPath="/data/upload/tmp/";
+    var uploaderA = new plupload.Uploader({
+        runtimes: 'html5,flash,silverlight,html4',
+        browse_button: uploader, // you can pass in id...
+        url: "index.php?g=&m=common&a=plupload",
+        max_file_size: '4mb',
+        unique_names: true,
+        filters: [{
+                title: "文件类型(jpg,jpeg,png,gif)",
+                extensions: "jpg,jpeg,png,gif"
+            }],
+        flash_swf_url: '__TMPL__Public/home/lib/plupload/Moxie.swf',
+        silverlight_xap_url: '__TMPL__Public/home/lib/plupload/Moxie.xap'
+    });
+    uploaderA.bind('Init', function (up, params) {
+    });
+    uploaderA.init();
+    uploaderA.bind('FileUploaded', function (up, file) {
+       
+        $('#'+imageId).attr('src', uploadPath + plupload.xmlEncode(file.target_name)).show();
+        $('#'+inputId).val(plupload.xmlEncode(file.target_name));
+
+    });
+    uploaderA.bind('FilesAdded', function (up, files) {
+        uploaderA.start();
+        e.preventDefault();
+    });
+}
+
 

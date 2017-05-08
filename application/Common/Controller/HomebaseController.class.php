@@ -2,7 +2,7 @@
 namespace Common\Controller;
 
 use Common\Controller\AppframeController;
-
+use Home\Lib\FileOpera;
 class HomebaseController extends AppframeController {
 	
 	public function __construct() {
@@ -343,5 +343,17 @@ class HomebaseController extends AppframeController {
             $info   =   $upload->upload();
             return $info;
 	}
+        
+        //移动文件
+        protected function moveFile($fileName){
+            if(!empty($fileName)){
+                $fileOpera=new FileOpera();
+                $source=TMP_UPLOAD."/".$fileName;
+                $dest=dirname(TMP_UPLOAD)."/".MODULE_NAME."/".CONTROLLER_NAME."/".$fileName;
+                $fileOpera->LK_move($source,$dest);//移动文件
+                $fileName="/data/upload/".MODULE_NAME."/".CONTROLLER_NAME."/".$fileName;
+                return $fileName;
+            }
+        }
 
 }

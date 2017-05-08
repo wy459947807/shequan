@@ -8,6 +8,7 @@
 </div>
 <script src="__TMPL__Public/home/js/jquery.pagination.js"></script>
 <script>
+
     var pageIndex = <?php echo $pageInfo['page']-1?>;     //页面索引初始值
     var pageSize =  <?php echo $pageInfo['pageLimit']?>;     //每页显示条数初始化，修改显示条数，修改这里即可
     var pcount =    <?php echo $pageInfo['pageNum']?>;
@@ -27,14 +28,14 @@
         autoplay : 4000,
         paginationClickable: true
     });
+    
 
-    $(document).ready(function() {
-   
-        $("#Pagination").pagination(pcount,{
-            callback: PageCallback,  //PageCallback() 为翻页调用次函数。
-            link_to:"javascript:void(0)",
-            current_page: pageIndex,   //当前页索引
-        });
+    $("#Pagination").pagination(pcount,{
+        callback: PageCallback,  //PageCallback() 为翻页调用次函数。
+        link_to:"javascript:void(0)",
+        current_page: pageIndex,   //当前页索引
     });
+    
+
 
 </script>

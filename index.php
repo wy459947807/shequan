@@ -33,6 +33,10 @@ define('SPSTATIC',   SITE_PATH.'statics/');
 define("RUNTIME_PATH", SITE_PATH . "data/runtime/");
 //静态缓存目录
 define("HTML_PATH", SITE_PATH . "data/runtime/Html/");
+
+//定义临时上传路径
+define("TMP_UPLOAD", SITE_PATH . "data/upload/tmp");
+
 //版本号
 define("THINKCMF_VERSION", 'X2.2.1');
 

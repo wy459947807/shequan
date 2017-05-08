@@ -1,0 +1,130 @@
+<admintpl file="header" />
+</head>
+<body>
+    <php>
+        $user_statuses=array("0"=>"未审核","1"=>"已审核");
+        $cert_type_array=C("CARD_TYPE");
+        $adept_type_array=C("ADEPT_TYPE");
+        $regist_type=array("0"=>"个人","1"=>"机构")
+    </php>
+    <div class="wrap">
+        <ul class="nav nav-tabs">
+
+            <li class="active"><a>高手详情</a></li>
+        </ul>
+        <form action="{:U('Killer/check')}" method="post" class="form-horizontal js-ajax-forms" enctype="multipart/form-data">
+            <input type="hidden" value="{$id}" name="ids[]"/>
+            <div class="row-fluid">
+                <div class="span12">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th width="100">头像</th>
+                            <td><img with='200' height='200' src="{$avatar}" /></td>
+                        </tr>
+                        <tr>
+                            <th>真实姓名</th>
+                            <td>{$real_name}</td>
+                        </tr>
+                        <tr>
+                            <th>手机号码</th>
+                            <td>{$mobile}</td>
+                        </tr>
+                        <tr>
+                            <th>微信号码</th>
+                            <td>{$wechat}</td>
+                        </tr>
+                        <tr>
+                            <th>电子邮件</th>
+                            <td>{$email}</td>
+                        </tr>
+                        <tr>
+                            <th>电子邮件</th>
+                            <td>{$email}</td>
+                        </tr>
+                        <tr>
+                            <th>擅长领域</th>
+                            <td>{$adept_type_array[$adept_type]}：{$adept_info}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>证书编号</th>
+                            <td>{$cert_type_array[$cert_type]}：{$cert_num}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>证件照</th>
+                            <td><img with='200' height='200'  src="{$card_img}" /></td>
+                        </tr>
+                        
+                       
+                        <tr>
+                            <th>注册类型</th>
+                            <td>{$regist_type[$type]}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>所属机构</th>
+                            <td>{$type_name}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>简介</th>
+                            <td>{$intro}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>粉丝数量</th>
+                            <td>{$fans}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>访问量</th>
+                            <td>{$views}</td>
+                        </tr>
+                        <tr>
+                            <th>回复数</th>
+                            <td>{$msgs}</td>
+                        </tr>
+                        
+                        <tr>
+                           <th>最后回复时间</th>
+                            <td>{$last_reply_time}</td>
+                        </tr>
+  
+                        <tr>
+                            <th>审核状态</th>
+                            <td>{$user_statuses[$status]}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>注册日期</th>
+                            <td><php>echo date("Y-m-d H:i:s",$ctime);</php></td>
+                        </tr>
+                        
+                        <tr>
+                            <th>最后登录IP</th>
+                            <td>{$last_login_ip}</td>
+                        </tr>
+                        <tr>
+                            <th>最后登录日期</th>
+                            <td>{$last_login_time}</td>
+                        </tr>
+
+                    </table>
+                </div>
+                
+            </div>
+            <div class="form-actions">
+                <if condition="$status neq 1">
+                    <button class="btn btn-primary " type="submit">点击审核</button>
+                <else/>
+                    <a class="btn" >已审核</a>
+                </if>
+                <a class="btn" href="{:U('Killer/index')}">返回</a>
+            </div>
+        </form>
+    </div>
+    <script src="__PUBLIC__/js/common.js"></script>
+
+</body>
+</html>

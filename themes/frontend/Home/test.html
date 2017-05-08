@@ -8,7 +8,7 @@
       <input  onclick="$('#addUser').submit()" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
  </form>
 
-
+<script src="__TMPL__Public/home/lib/plupload/plupload.full.min.js"></script>
 <script src="__TMPL__Public/home/lib/Validform/5.3.2/Validform.min.js"></script>
 <script src="__TMPL__Public/home/lib/LG.js"></script>
 <script src="__TMPL__Public/home/js/strongWind.js"></script>
@@ -28,39 +28,13 @@
     </a>
 </div>
                             
-<script src="public/js/plupload/plupload.full.min.js"></script>
+
 
 
     
     
-    <script type="text/javascript">
-    var uploaderA = new plupload.Uploader({
-        runtimes: 'html5,flash,silverlight,html4',
-        browse_button: 'uploaderA', // you can pass in id...
-        url: "{:U('index/uploadImg')}",
-        max_file_size: '4mb',
-        unique_names: true,
-        filters: [{
-                title: "文件类型(jpg,jpeg,png,gif)",
-                extensions: "jpg,jpeg,png,gif"
-            }],
-        flash_swf_url: 'public/js/plupload/Moxie.swf',
-        silverlight_xap_url: 'public/js/plupload/Moxie.xap'
-    });
-    uploaderA.bind('Init', function (up, params) {
-    });
-    uploaderA.init();
-    uploaderA.bind('FileUploaded', function (up, file) {
-        alert(plupload.xmlEncode(file.target_name));
-        $('#picImg').attr('src', "tmp/" + plupload.xmlEncode(file.target_name)).show();
-        $('#upPic').val(plupload.xmlEncode(file.target_name));
-
-
-    });
-    uploaderA.bind('FilesAdded', function (up, files) {
-        uploaderA.start();
-        e.preventDefault();
-    });
+<script type="text/javascript">
+    initUploadImage("uploaderA","picImg","upPic");//初始化图片上传
 </script>
 
 <tc_include file="Public:footer" />
