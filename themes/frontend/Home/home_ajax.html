@@ -22,9 +22,16 @@
             </div>
             <div class="row home_tab_bottom">
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-danger">
+                    <?php if($l['is_focused']){?>
+                    <button type="button"  class="focused">
+                        已关注
+                    </button>
+                    <?php }else{?>
+                    <button type="button" onclick="focusKiller(<?php echo $l['id'];?>,this)" class="btn btn-danger">
                         +关注
                     </button>
+                    <?php }?>
+                    
                 </div>
                 <div class="col-md-8">
                     <p class="tab_bottom_info">粉丝：<span><?php echo $l['fans'];?></span> 直播：<?php echo $l['live_num']; ?><span></span></p>

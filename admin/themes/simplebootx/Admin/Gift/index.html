@@ -1,0 +1,101 @@
+<admintpl file="header" />
+</head>
+<body>
+    <php>
+        $platformArray=C('platform');
+        $statusArray=array(1=>"正常",2=>"停用");
+    </php>
+    <div class="wrap js-check-wrap">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="{:U('gift/index')}">礼物列表</a></li>
+            <li><a href="{:U('gift/update')}">发布礼物</a></li>
+        </ul>
+        <form class="well form-search" method="post" action="{:U('gift/index')}"> 
+            选择状态：
+            <select id="navcid_select" name="status">
+                <option value="0">请选择</option>
+                <foreach name="statusArray" item="vo" key="key"> 
+                    <php>$selected=$key==I('request.status/d','')?"selected":"";</php>
+                    <option value="{$key}"{$selected}>{$vo}</option>
+                </foreach>
+            </select>
+            
+            发布时间：
+            <input type="text" name="start_time" class="js-datetime" value="{$formget.start_time|default=''}" style="width: 120px;" autocomplete="off">-
+            <input type="text" class="js-datetime" name="end_time" value="{$formget.end_time|default=''}" style="width: 120px;" autocomplete="off"> &nbsp; &nbsp;
+            关键字： 
+            <input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword|default=''}" placeholder="请输入关键字...">
+            <input type="submit" class="btn btn-primary" value="搜索" />
+            <a class="btn btn-danger" href="{:U('gift/index')}">清空</a>
+        </form>
+
+        
+        <form class="js-ajax-form" method="post">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+                    <th width="50">ID</th>
+                    <th>礼物图片</th>
+                    <th>礼物名称</th>
+                    <th>标识码</th>
+                    <th>状态</th>
+                    <th>创建日期</th>
+                    <th width="120">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            <foreach name="gift" item="vo">
+                <tr>
+                    <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.id}"></td>
+                    <td>{$vo.id}</td>
+                    <td>
+                        <a href="javascript:parent.image_preview_dialog('{$vo.img}');" style=" margin-right: 10px"><img  width="30" height="30" src="{$vo.img}"/></a>
+                    </td>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.cname}</td>
+                    <td>{$statusArray[$vo['status']]}</td>
+                    <td>{:date("Y-m-d H:i:s",$vo['ctime'])}</td>
+                    <td>
+                        <a href="{:U('gift/update',array('id'=>$vo['id']))}">修改</a> | 
+                        <if condition="$vo.status eq 1">
+                            <a href="javascript:void(0)" onclick="updateStatus({$vo.id},2)">禁用</a> |
+                        <else/>
+                            <a href="javascript:void(0)" onclick="updateStatus({$vo.id},1)">启用</a> |
+                        </if>
+                         <a href="javascript:void(0)" onclick="giftDelete({$vo.id})">删除</a>
+                    </td>
+                </tr>
+            </foreach>
+            </tbody>
+        </table>
+            
+        <div class="table-actions">
+            <button class="btn btn-primary btn-small js-ajax-submit"  type="submit" data-action="{:U('gift/updateStatus')}" data-subcheck="true"  data-msg="你确定停用吗？">批量禁用</button>
+            <button class="btn btn-primary btn-small js-ajax-submit"  type="submit" data-action="{:U('gift/giftDelete')}" data-subcheck="true"  data-msg="你确定删除吗？">批量删除</button>
+        </div>
+  
+        <div class="pagination">{$page}</div>
+        </form>
+    </div>
+    <script src="__PUBLIC__/js/common.js"></script>
+    
+    <script src="__PUBLIC__/js/layer/layer.js"></script>
+    <script src="__PUBLIC__/js/expand/Validform/5.3.2/Validform.min.js"></script>
+    <script src="__PUBLIC__/js/expand/strongWind.js"></script>
+
+    <script>
+        function updateStatus(id,status){
+            layer.confirm('你确定更新状态吗？', function(){
+                getRemoteData({ids:[id],status:status},"{:U('gift/updateStatus')}",1);
+            });
+        }
+        
+        function giftDelete(id){
+            layer.confirm('你确定删除吗？', function(){
+                getRemoteData({ids:[id]},"{:U('gift/giftDelete')}",1);
+            });
+        }
+    </script>
+</body>
+</html>

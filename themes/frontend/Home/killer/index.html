@@ -9,7 +9,7 @@
         <p>认证方式：身份证</p>
         <div class="apply_img clearfix" >
             <div class="img_box" id="imgdiv" style="position: relative;">
-                <img id="imgShow" width="300" height="200" />
+                <img id="imgShow" width="300" height="200" <if condition=" $tuser.card_img  neq NULL "> src="{$tuser.card_img}" </if> />
                 <div style="position: absolute; top:0; left:100px;">照片预览</div>
             </div>
             <div class="text_info">
@@ -24,40 +24,48 @@
         </div>
         
         <div class="form_info">
-            <p>真实姓名：<input name="real_name" type="text" datatype="*" nullmsg="请填写真实姓名！" errormsg="真实姓名格式不正确" placeholder="名字和身份证必须一致"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>手机号码：<input name="mobile"    type="text" datatype="*" nullmsg="请填写手机号！"   errormsg="手机号格式不正确" placeholder="能联系到您的手机号码"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>邮&nbsp;箱：<input name="email"  type="text" datatype="*" nullmsg="请填写邮箱！"   errormsg="邮箱格式不正确" placeholder="填写邮箱"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>微信号码：<input name="wechat"    type="text" placeholder="填写您常用的微信(选填)"></p>
+            <p>真实姓名：<input name="real_name" value="{$tuser.real_name}" type="text" datatype="*" nullmsg="请填写真实姓名！" errormsg="真实姓名格式不正确" placeholder="名字和身份证必须一致"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>手机号码：<input name="mobile"    value="{$tuser.mobile}" type="text" datatype="*" nullmsg="请填写手机号！"   errormsg="手机号格式不正确" placeholder="能联系到您的手机号码"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>邮&nbsp;箱：<input name="email"  value="{$tuser.email}" type="text" datatype="*" nullmsg="请填写邮箱！"   errormsg="邮箱格式不正确" placeholder="填写邮箱"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>微信号码：<input name="wechat"    value="{$tuser.wechat}" type="text" placeholder="填写您常用的微信(选填)"></p>
            
            
-            <p>擅长领域：<input name="adept_info" type="text" placeholder="请填写擅长领域">
+            <p>擅长领域：<input name="adept_info" value="{$tuser.adept_info}" type="text" placeholder="请填写擅长领域">
                 <select name="adept_type">
                     <if condition=" $adeptType  neq NULL ">
                     <foreach name="adeptType" item="val" key="key">
-                    <option value="{$key}">{$val}</option>
+                        <if condition=" $tuser.adept_type  eq $key ">
+                            <option value="{$key}" selected="selected">{$val}</option>
+                        <else/>
+                            <option value="{$key}">{$val}</option>
+                        </if>
                     </foreach>
                     </if>
                 </select>
             </p>
-            <p>资格证：<input name="cert_num" type="text" placeholder="请填写证书编号">
+            <p>资格证：<input name="cert_num" value="{$tuser.cert_num}" type="text" placeholder="请填写证书编号">
                 <select name="cert_type" style="width: auto">
                     <if condition=" $cardType  neq NULL ">
                     <foreach name="cardType" item="val" key="key">
-                    <option value="{$key}">{$val}</option>
+                        <if condition=" $tuser.cert_type  eq $key ">
+                            <option value="{$key}" selected="selected">{$val}</option>
+                        <else/>
+                            <option value="{$key}">{$val}</option>
+                        </if>
                     </foreach>
                     </if>
                 </select>
             </p>
             <p>注册类型：
                 <span style="padding-right:10px;">
-                    <input name="type" type="radio" checked="checked" style="vertical-align:middle;margin-top:-2px;" value="0" /> &nbsp;个人&nbsp;&nbsp; 
-                    <input name="type" type="radio" style="vertical-align:middle;margin-top:-2px;" value="1" /> &nbsp;机构&nbsp;&nbsp;
+                    <input name="type" type="radio" <if condition=" $tuser.type  eq 0 ">  checked="checked" </if> style="vertical-align:middle;margin-top:-2px;" value="0" /> &nbsp;个人&nbsp;&nbsp; 
+                    <input name="type" type="radio" <if condition=" $tuser.type  eq 1 ">  checked="checked" </if>  style="vertical-align:middle;margin-top:-2px;" value="1" /> &nbsp;机构&nbsp;&nbsp;
                 <span>
             </p>
-            <p>机构名称：<input name="type_name"    type="text" placeholder="填写机构名称"></p>
+            <p>机构名称：<input name="type_name" value="{$tuser.type_name}" type="text" placeholder="填写机构名称"></p>
             <p style="height:auto; background:#f6f8f8;">
                 个人介绍：（机构/商户）
-                <textarea name="intro" id="" placeholder="在此输入--- "></textarea>
+                <textarea name="intro" id="" placeholder="在此输入--- ">{$tuser.intro}</textarea>
             </p>
         </div>
         <div class="apply_btn">
@@ -67,11 +75,6 @@
     </form>
 </div>
 
-
-<script src="__TMPL__Public/home/lib/plupload/plupload.full.min.js"></script>
-<script src="__TMPL__Public/home/lib/Validform/5.3.2/Validform.min.js"></script>
-<script src="__TMPL__Public/home/lib/LG.js"></script>
-<script src="__TMPL__Public/home/js/strongWind.js"></script>
 
 <!--<script src="__TMPL__Public/home/lib/uploadPreview.js"></script>-->
 <script>

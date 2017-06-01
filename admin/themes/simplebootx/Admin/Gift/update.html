@@ -1,0 +1,66 @@
+<admintpl file="header" />
+</head>
+<body>
+<php>
+    $platformArray=C('platform');
+    $statusArray=array(1=>"正常",2=>"停用");
+</php>
+<div class="wrap">
+    <ul class="nav nav-tabs">
+        <li><a href="{:U('gift/index')}">礼物列表</a></li>
+        <li  class="active"><a href="{:U('gift/update')}">发布礼物</a></li>
+    </ul>
+    <form action="{:U('gift/update')}" method="post" class="form" id="giftUpdate" enctype="multipart/form-data">
+        <if  condition="$id neq 0">
+            <input type="hidden"  name="id" value="{$id}"/>
+        </if>
+        <div class="row-fluid">
+            <div class="span12">
+                <table class="table table-bordered">
+
+                    <tr>
+                        <th  width="150">礼物图片</th>
+                        <td>
+                            <include file="simplebootx/Admin/Public/image" type="img" /> 
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th>礼物名称</th>
+                        <td><input type="text" name="name"  value="{$name}" ></td>
+                    </tr>
+
+                    <tr>
+                        <th>标识码</th>
+                        <td><input type="text" name="cname"  value="{$cname}" ></td>
+                    </tr>
+
+                    <tr>
+                        <th>赢家宝</th>
+                        <td><input type="text" name="win_coin"  value="{$win_coin}" ></td>
+                    </tr>
+                    
+                    <tr>
+                        <th>排序</th>
+                        <td><input type="text" name="sort"  value="{$sort}" ></td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-primary " type="button" onclick="$('#giftUpdate').submit()">点击提交</button>
+            <a class="btn" href="{:U('gift/index')}">返回</a>
+        </div>
+    </form>
+</div>
+<div id="killers" style="display: none"></div>
+<script src="__PUBLIC__/js/common.js"></script>
+
+<script src="__PUBLIC__/js/layer/layer.js"></script>
+<script src="__PUBLIC__/js/expand/Validform/5.3.2/Validform.min.js"></script>
+<script src="__PUBLIC__/js/expand/strongWind.js"></script>
+
+</body>
+</html>

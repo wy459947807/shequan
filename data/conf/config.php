@@ -19,5 +19,6 @@
   'SP_MAIL_SECURE' => '',
   'SP_MAIL_SMTP_PORT' => '25',
   'SP_MAIL_LOGINNAME' => 'yl459947807@163.com',
-  'SP_MAIL_PASSWORD' => '375195711',
+  'SP_MAIL_PASSWORD' => '375195711',  
+  'CLOUD_HOST'=>'http://oqhjh5opr.bkt.clouddn.com/',//云服务器域名
 );

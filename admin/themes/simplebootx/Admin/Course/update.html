@@ -1,0 +1,183 @@
+<admintpl file="header" />
+<style>
+    .killer_name{ border: 1px #dce4ec solid; padding: 7px}
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="nav nav-tabs">
+            <li><a href="{:U('Course/index')}">课程列表</a></li>
+            <li  class="active"><a href="{:U('Course/update')}">发布课程</a></li>
+        </ul>
+        <form action="{:U('Course/update')}" method="post" class="form" id="courseUpdate" enctype="multipart/form-data">
+            <if  condition="$id neq 0">
+                <input type="hidden"  name="id" value="{$id}"/>
+            </if>
+            <div class="row-fluid">
+                <div class="span12">
+                    <table class="table table-bordered">
+                        
+                        <tr>
+                            <th>课程分类</th>
+                            <td>
+                                <select id="navcid_select" name="cate_id">
+                                    <foreach name="courseCate" item="vo" key="key"> 
+                                        <php>$selected=$vo['id']==$cate_id?"selected":"";</php>
+                                        <option value="{$vo.id}"{$selected}>{$vo.name}</option>
+                                    </foreach>
+                                </select>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th width="150">课程封面</th>
+                            <td>
+                                <include file="simplebootx/Admin/Public/images" type="cover" />
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th width="150">上传视频</th>
+                            <td>
+                                <input type="hidden" id="video" value="{$video}" name="video">
+                                <div id="a1" style=" display: none; width:400px;  height: 300px;"></div>
+                                <div style=" margin-top: 15px;">
+                                    <button id="uploader" class="btn btn-primary " type="button" >选择视频</button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th>课程名称</th>
+                            <td><input type="text" name="name"  value="{$name}" ></td>
+                        </tr>
+                        <tr>
+                            <th>授课老师</th>
+                            <td>
+                                <input type="hidden" id="killer_id" name="killer_id"  value="{$killer_id|default=0}" >
+                                <if  condition="$teacher_name neq null">
+                                    <span id="killer_name" class="killer_name">{$teacher_name}</span>
+                                <else/>
+                                    <span id="killer_name"></span>
+                                </if>
+                                <button class="btn btn-primary " type="button" onclick="chooseTeacher('killer_id')">选择老师</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>录制时间</th>
+                            <td>                          
+                                <input type="text" name="record_time" class="js-datetime" value="{$record_time|default=''}"  autocomplete="off">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>价格</th>
+                            <td><input type="text" name="price"  value="{$price}"  placeholder="每课时的价格" /></td>
+                        </tr>
+                        <tr>
+                            <th>课时</th>
+                            <td><input type="text" name="hour"  value="{$hour}" placeholder="总课时数" ></td>
+                        </tr>
+
+                        <tr>
+                            <th>课程简介</th>
+                            <td>
+                                <textarea name="intro" style="width: 50%; height: 100px;" placeholder="请填写简介">{$intro}</textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>课程详情</th>
+                            <td>
+                                <div style="width: 60%;">
+                                    <script type="text/plain" id="content"  name="detail">{$detail}</script>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary " type="button" onclick="$('#courseUpdate').submit()">点击提交</button>
+                <a class="btn" href="{:U('Course/index')}">返回</a>
+            </div>
+        </form>
+    </div>
+    <div id="killers" style="display: none"></div>
+    <script src="__PUBLIC__/js/common.js"></script>
+    
+    <script type="text/javascript">
+        //编辑器路径定义
+        var editorURL = GV.WEB_ROOT;
+    </script>
+    <script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
+    
+    <script src="__PUBLIC__/js/plupload/plupload.full.min.js"></script>
+    <script src="__PUBLIC__/js/layer/layer.js"></script>
+    <script src="__PUBLIC__/js/expand/Validform/5.3.2/Validform.min.js"></script>
+    <script src="__PUBLIC__/js/expand/strongWind.js"></script>
+    <script src="__PUBLIC__/js/expand/ckplayer/ckplayer.js"  type="text/javascript" charset="utf-8"></script>
+
+    <php>if(!empty($video)){</php>
+    <script>
+        initVideo("a1","{$video}");
+        $("#a1").show();
+    </script>
+    <php>}</php>
+    <script>
+        editorcontent = new baidu.editor.ui.Editor();
+        editorcontent.render('content');
+        //editorcontent.sync();
+        uploadCloud("uploader"); //初始视频化上传组建
+        //上传回调函数
+        function plupload_callback(uploader,res){
+            layer.closeAll('loading');
+            layer.msg(res.msg);
+            $("#a1").show();
+            $("#video").val(res.data.file.url);
+            initVideo("a1",res.data.file.url);
+        }
+
+    </script>
+
+    
+    
+    <script>
+        //初始化页面数据
+        var dataInfo={
+            method:"get",
+            page:1,
+            keyword:"",
+            select:$("#killer_id").val()
+        }
+        
+        function chooseTeacher(val){
+            getTemplate(dataInfo,"{:U('Course/killers')}","#killers");
+            getLayerTemplate("killers", "请选择授课老师");
+        }
+        
+        function goPage(val){
+            dataInfo['method']='get';
+            dataInfo['page']=val;
+            getTemplate(dataInfo,"{:U('Course/killers')}","#killers");
+        }
+        
+        function searchTeacher(){
+            $searchArray=$("#searchKiller").serializeObject();
+            dataInfo['keyword']=$searchArray['keyword'];
+            dataInfo['page']=1;
+            getTemplate(dataInfo,"{:U('Course/killers')}","#killers");
+        }
+        
+        function selectTeacher(id,name){
+            dataInfo['select']=id;
+            $("#killer_id").val(id);
+            $("#killer_name").html(name);
+            $("#killer_name").addClass("killer_name");
+        }
+        
+    </script>
+</body>
+</html>

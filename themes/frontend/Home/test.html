@@ -2,11 +2,40 @@
 <link rel="stylesheet" href="__TMPL__Public/home/css/apply.css">
 
 
- <form id="addUser" class="form"  action="{:U('killer/test')}" enctype="multipart/form-data" method="post">
-       <input type="text"  name="username"  datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确"  value="" placeholder="">
-       <input type="text"  name="mobile"  value="" placeholder="">
-      <input  onclick="$('#addUser').submit()" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
- </form>
+<form id="addUser" class="form1"  action="index.php?g=app&m=Order&a=submitOrder" enctype="multipart/form-data" method="post">
+    <input type="hidden" value="151" name="uid"/>
+    <input type="hidden" value="e93895ecf9d4cf0bd9f5982408f7a2ee" name="token"/>
+    <input type="hidden" value="1" name="course_ids[]"/>
+    <input type="hidden" value="5" name="course_ids[]"/>
+    <input type="hidden" value="3" name="course_ids[]"/>
+    
+    <input type="hidden" value="1" name="course_num[]"/>
+    <input type="hidden" value="5" name="course_num[]"/>
+    <input type="hidden" value="3" name="course_num[]"/>
+    
+    
+    
+    
+    <input type="text"  name="username"  datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确"  value="" placeholder="">
+    <input type="text"  name="username"  datatype="*" nullmsg="请填写用户名！" errormsg="用户名格式不正确"  value="" placeholder="">
+    <input type="text"  name="mobile"  value="" placeholder="">
+    <input  onclick="$('#addUser').submit()" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+    <input type="submit" value="666"/>
+</form>
+
+<div>******************************************************</div>
+
+<form id="addUser1" class="form1"  action="index.php?g=app&m=index&a=uploadLocal" enctype="multipart/form-data" method="post">
+    
+ 
+    <input type="file" name="card_img" value="身份证"/>
+    <input type="file" name="cert_img1" value="证书1"/>
+    <input type="file" name="cert_img2" value="证书2"/>
+    <input type="file" name="cert_img3" value="证书3"/>
+    <input onclick="$('#addUser1').submit()" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+    <input type="submit" value="666"/>
+</form>
+
 
 <script src="__TMPL__Public/home/lib/plupload/plupload.full.min.js"></script>
 <script src="__TMPL__Public/home/lib/Validform/5.3.2/Validform.min.js"></script>
@@ -27,14 +56,13 @@
         <img id="picImg" src="" style=" width: 260px; height: 200px"  alt=""/>
     </a>
 </div>
-                            
 
 
 
-    
-    
+
+
 <script type="text/javascript">
-    initUploadImage("uploaderA","picImg","upPic");//初始化图片上传
+          initUploadImage("uploaderA", "picImg", "upPic");//初始化图片上传
 </script>
 
 <tc_include file="Public:footer" />

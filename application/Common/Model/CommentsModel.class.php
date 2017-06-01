@@ -82,4 +82,60 @@ class CommentsModel extends CommonModel{
 		}
 		
 	}
+        
+        
+        // 前台用户提交评论
+	public function submitComment($params){
+            $model = M();
+            $users_model=M('Users');
+            $user=$users_model->field("user_login,user_email,user_nicename")->where(array("id"=>$params['uid']))->find();
+            $username=$user['user_login'];
+            $user_nicename=$user['user_nicename'];
+            $email=$user['user_email'];
+            $params['full_name']=empty($user_nicename)?$username:$user_nicename;
+            $params['email']=$email;
+ 
+            if(C("COMMENT_NEED_CHECK")){
+                    $params['status']=0;//评论审核功能开启
+            }else{
+                    $params['status']=1;
+            }
+
+            $result=$model->table(C('DB_PREFIX') . 'comments')->add($params);
+            
+            if ($result==false){
+                $this->result['status'] = 500;
+                $this->result['msg'] = "评论失败！";
+                return $this->result;
+            }
+
+            return $this->result;
+	}
+        
+        
+        public function getComments($params){
+            $this->sqlFrom = " tg_comments ";                     //数据库查询表
+            $this->sqlField = " * ";                            //数据库查询字段
+            $this->sqlWhere = " (1=1) ";                        //数据库查询条件
+            $this->bindValues = array();
+            if (!empty($params['page'])) $this->page = $params['page'];
+            if (!empty($params['pageLimit'])) $this->pageLimit = $params['pageLimit'];
+            
+            if (!empty($params['post_id'])) {
+                $this->sqlWhere .= " and  post_id = %d ";
+                $this->bindValues[] = $params['post_id'];
+            }
+ 
+            if (!empty($params['post_table'])) {
+                $this->sqlWhere .= " and  post_table = '%s' ";
+                $this->bindValues[] = $params['post_table'];
+            }
+
+            $listInfo = $this->getPageList();
+            return $listInfo;
+            
+        }
+        
+        
+        
 }

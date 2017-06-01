@@ -113,19 +113,26 @@ function callBackForm(formId, template, display, append) {
  * @param {type} height 窗口高度
  * @returns {html}
  */
-function getLayerTemplate(winId, width, height, title, zIndex) {
+function getLayerTemplate(winId, title, width, zIndex) {
     if (!zIndex) {
         zIndex = 1000;
     }
+    if(!width) {
+        width = "90%";
+    }
+
     var layerName = layer.open({
         type: 1,
         title: title,
         shadeClose: true,
         zIndex: zIndex,
         shade: 0.3,
-        area: [width + 'px', height + 'px'],
+        area: [width],
+        //area: [width + 'px'],
         content: $('#' + winId)
     });
+    //layer.iframeAuto(layerName);
+    //layer.autoArea(layerName);
 
     if (winId) {
         windowList[winId] = layerName;//注册窗口
@@ -196,10 +203,36 @@ function layer_tip(reInfo,refresh){
 	
 }
 
-function getTemplate(dataInfo, ajaxUrl, boxId, append) {
+function getRemoteData(dataInfo, ajaxUrl,refresh){
+    var retData={}
     $.ajax({
         url: ajaxUrl,
         type: 'post',
+        data: dataInfo,
+        dataType: "json",//dataType: "html",
+        async: false,
+        success: function (res) {
+            layer_tip(res,refresh);
+            retData=res;
+        },
+        error: function () {
+            return ;
+        }
+    });
+    
+    return retData;
+}
+
+function getTemplate(dataInfo, ajaxUrl, boxId, append) {
+    var method="post";
+    if(dataInfo['method']){
+        method=dataInfo['method'];
+        delete  dataInfo['method'];
+    }
+
+    $.ajax({
+        url: ajaxUrl,
+        type: method,
         data: dataInfo,
         dataType: "html",//dataType: "json",
         async: false,
@@ -221,7 +254,7 @@ function initUploadImage(uploader,imageId,inputId){
     var uploaderA = new plupload.Uploader({
         runtimes: 'html5,flash,silverlight,html4',
         browse_button: uploader, // you can pass in id...
-        url: "index.php?g=&m=common&a=plupload",
+        url: "index.php?g=api&m=plupload&a=index",
         max_file_size: '4mb',
         unique_names: true,
         filters: [{
@@ -246,4 +279,71 @@ function initUploadImage(uploader,imageId,inputId){
     });
 }
 
+    
+//上传到云端
+function uploadCloud(uploader) {
+    var uploadPath = "/data/upload/tmp/";
+    var uploaderA = new plupload.Uploader({
+        runtimes: 'html5,flash,silverlight,html4',
+        browse_button: uploader, // you can pass in id...
+        url: "index.php?g=app&m=index&a=uploadCloud",
+        max_file_size: '100mb',
+        unique_names: true,
+        filters: [{
+                title: "文件类型(*)",
+                extensions: "*"
+            }],
+        flash_swf_url: '__TMPL__Public/home/lib/plupload/Moxie.swf',
+        silverlight_xap_url: '__TMPL__Public/home/lib/plupload/Moxie.xap'
+    });
+    uploaderA.bind('Init', function (up, params) {
+    });
+    uploaderA.init();
+    uploaderA.bind('FileUploaded', function (up, file, responseObject) {
+        
+        var res = JSON.parse(responseObject.response);//获取服务器返回数据
+        plupload_callback(uploader,res);//回调函数
+        
+        /*
+         res={
+            status:"200",
+            msg:'上传成功！',
+            data:{
+               file:{
+                  hash:"FlTC8aHrbxLWgaXHB4QhpVAM7gKt",
+                  key:"592a648858f7e.jpg",
+                  url:"http://oqhjh5opr.bkt.clouddn.com/592a648858f7e.jpg",
+               }
+            }
+         }*/
+
+
+        /*
+         $('#'+imageId).attr('src', uploadPath + plupload.xmlEncode(file.target_name)).show();
+         $('#'+inputId).val(plupload.xmlEncode(file.target_name));*/
+
+    });
+    uploaderA.bind('FilesAdded', function (up, files) {
+        uploaderA.start();
+        //e.preventDefault();
+    });
+}
+
+        
+  $.fn.serializeObject = function() {
+      var o = {};
+      var a = this.serializeArray();
+      $.each(a, function() {
+          if (o[this.name] !== undefined) {
+              if (!o[this.name].push) {
+                  o[this.name] = [o[this.name]];
+              }
+              o[this.name].push(this.value || '');
+          } else {
+              o[this.name] = this.value || '';
+          }
+      });
+      return o;
+    };
+        
 

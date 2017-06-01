@@ -1,0 +1,35 @@
+<!--我的粉丝开始-->
+<div class="col-md-9 " id="usercon_4" style="display: block;  width: 100%">
+    <div class="user_header">
+        <p><span>我的粉丝</span>&nbsp;&nbsp;&nbsp;&nbsp;{$pageInfo.num}人</p>
+    </div>
+    <div class="guanzhu_list clearfix">
+
+        <php>
+            if(!empty($fansList)){
+            foreach($fansList as $key=>$val){
+        </php>
+        <div class="fans">
+            <div class="img_box">
+
+                <?php if(!empty($val['avatar'])) { ?>
+                <img width="77" height="77" src="{:sp_get_asset_upload_path($val['avatar'])}" alt="">
+                <?php } else {?>
+                <img width="77" height="77" src="__TMPL__Public/home/images/public_header/header_img.png" alt="">
+                <?php } ?>
+
+
+            </div>
+            <div class="text_info">
+                <p class="gz_title">{$val.user_nicename}</p>
+            </div>
+        </div>
+        <php>}}</php>
+
+    </div>
+</div>
+<!--我的粉丝结束-->
+<!--分页部分开始-->
+<div id="page">
+    <include file="Home/page"/>
+</div>

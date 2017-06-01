@@ -1,0 +1,57 @@
+<php>
+    $user_statuses=array("0"=>"未审核","1"=>"已审核");
+    $cert_type=C("CARD_TYPE");
+</php>
+<div class="wrap js-check-wrap">
+
+    <form class="well form-search" id="searchKiller" method="post" action="{:U('Course/index')}">     
+        关键字： 
+        <input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword|default=''}" placeholder="请输入关键字...">
+        <input type="button" class="btn btn-primary" value="搜索" onclick="searchTeacher()" />
+    </form>
+
+    <form class="js-ajax-form" method="post">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th width="15">*</th>
+                <th width="50">ID</th>
+                <th>真实姓名</th>
+                <th>手机</th>
+                <th>微信</th>
+                <th>邮箱</th>
+                <th>证书类型</th>
+                <th>证书编号</th>
+            </tr>
+        </thead>
+        <tbody>
+        <foreach name="killers" item="vo" key="key">
+            <tr>
+                <td>  
+                <if condition="$formget['select'] eq $vo['id']">
+                    <input type="radio" onclick="selectTeacher({$vo.id},'{$vo.real_name}')" checked="checked" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="id" value="{$vo.id}">
+                <else/>
+                    <input type="radio" onclick="selectTeacher({$vo.id},'{$vo.real_name}')" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="id" value="{$vo.id}">
+                </if>   
+                </td>
+                <td>{$vo.id}</td>
+                <td>{$vo.real_name}</td>
+                <td>{$vo.mobile}</td>
+                <td>{$vo.wechat}</td>
+                <td>{$vo.email}</td>
+                <td>{$cert_type[$vo['cert_type']]}</td>
+                <td>{$vo.cert_num}</td>
+            </tr>
+        </foreach>
+        </tbody>
+    </table>
+
+    <div class="pagination">{$page}</div>
+    </form>
+<div style="width: 100%; text-align: left">
+    <button class="btn btn-primary " type="button" onclick="closeWindow('killers')">确认</button>
+</div>
+</div>
+
+
+<script src="__PUBLIC__/js/common.js"></script>

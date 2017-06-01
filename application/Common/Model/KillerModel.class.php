@@ -26,6 +26,32 @@ class KillerModel extends CommonModel
 			$data['user_pass']=sp_password($data['user_pass']);
 		}
 	}
+        
+        public function getDetail($params){
+            $this->sqlFrom = " tg_killer ";                     //数据库查询表
+            $this->sqlField = " id,real_name,avatar,mobile,wechat,email,adept_type,tag,intro,type,company,views,fans,msgs,last_reply_time,subscribe ";                            //数据库查询字段
+            $this->sqlWhere = " (1=1) ";                        //数据库查询条件
+            $this->bindValues = array();
+            
+            if(!empty($params['id'])){
+                $this->sqlWhere .= " and  id=%d ";
+                $this->bindValues[] = $params['id'];
+            }
+            
+            $dataInfo = $this->getOne();
+            
+            if(!empty($dataInfo["data"])){
+                $adeptArray=C('ADEPT_TYPE');
+                $dataInfo["data"]['adept_type']=$adeptArray[$dataInfo["data"]['adept_type']];
+                $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe']);//获取订阅标准
+                $courseList=D("Common/Course")->courseList(array("killer_id"=>$dataInfo["data"]['id']));
+                $dataInfo['courseList']=$courseList['data']['list'];
+            }
+
+            
+            return $dataInfo;
+ 
+        }
 	
 }
 

@@ -2,7 +2,7 @@
 </head>
 <body>
     <php>
-        $user_statuses=array("0"=>"未审核","1"=>"已审核");
+        $user_statuses=array("0"=>"未审核","1"=>"已审核","2"=>"未通过");
         $cert_type=C("CARD_TYPE");
     </php>
     <div class="wrap js-check-wrap">
@@ -29,9 +29,10 @@
                     <th>手机</th>
                     <th>微信</th>
                     <th>邮箱</th>
-                    <th>证书类型</th>
-                    <th>证书编号</th>
                     <th>状态</th>
+                    <if condition="I('request.status/s','') eq 2"> 
+                        <th>不通过原因</th>
+                    </if>
                     <th width="120">操作</th>
                 </tr>
             </thead>
@@ -44,11 +45,14 @@
                     <td>{$vo.mobile}</td>
                     <td>{$vo.wechat}</td>
                     <td>{$vo.email}</td>
-                    <td>{$cert_type[$vo['cert_type']]}</td>
-                    <td>{$vo.cert_num}</td>
                     <td>{$user_statuses[$vo['status']]}</td>
+                    <if condition="$vo['status'] eq 2"> 
+                        <td>{$vo.refuse_cause}</td>
+                    </if>
                     <td>
-                        <a href="javascript:parent.image_preview_dialog('{$vo.card_img}');">查看证件</a> | 
+                        <if condition="$vo['status'] eq 0">
+                            <a href="javascript:void(0)" onclick="refuse({$vo.id})">拒绝通过</a> 
+                        </if>
                         <a href="{:U('killer/detail',array('id'=>$vo['id']))}">查看详情</a> 
                         
                     </td>
@@ -56,16 +60,32 @@
             </foreach>
             </tbody>
         </table>
-            
+  
         <if condition="I('request.status/s','') neq 1">   
             <div class="table-actions">
-                <button class="btn btn-primary btn-small js-ajax-submit"  type="submit" data-action="{:U('Killer/check',array('status'=>1))}" data-subcheck="true">批量审核</button>
+                <button class="btn btn-primary btn-small js-ajax-submit"  type="submit" data-action="{:U('Killer/check',array('status'=>1))}" data-subcheck="true">批量审核通过</button>
             </div>
         </if> 
             
         <div class="pagination">{$page}</div>
         </form>
     </div>
+    <div id='refuse'></div>
+
     <script src="__PUBLIC__/js/common.js"></script>
+    
+    <script src="__PUBLIC__/js/layer/layer.js"></script>
+    <script src="__PUBLIC__/js/expand/Validform/5.3.2/Validform.min.js"></script>
+    <script src="__PUBLIC__/js/expand/strongWind.js"></script>
+
+    <script>
+        function refuse(id){
+            getTemplate({method:"get",id:id},"{:U('Killer/refuse')}", "#refuse");
+            getLayerTemplate("refuse", "请填写未通过原因", "500") ;
+        }
+    </script>
+    
+    
+    
 </body>
 </html>

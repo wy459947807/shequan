@@ -46,17 +46,16 @@
                             <td>{$adept_type_array[$adept_type]}：{$adept_info}</td>
                         </tr>
                         
-                        <tr>
-                            <th>证书编号</th>
-                            <td>{$cert_type_array[$cert_type]}：{$cert_num}</td>
-                        </tr>
                         
                         <tr>
                             <th>证件照</th>
-                            <td><img with='200' height='200'  src="{$card_img}" /></td>
+                            <td>
+                                <foreach name="cert_imgs" item="vo">
+                                    <img with='200' height='200'  src="{$vo}" />
+                                </foreach>
+                            </td>
                         </tr>
-                        
-                       
+
                         <tr>
                             <th>注册类型</th>
                             <td>{$regist_type[$type]}</td>

@@ -262,7 +262,8 @@
     WEB_SOCKET_DEBUG = true;
     var ws,client_list={};
     var name = '<?php echo $live_var["name"];?>';
-    var domain = "<?php echo C('LIVE_IP');?>";
+    //var domain = "<?php echo C('LIVE_IP');?>";
+    var domain = "127.0.0.1";
     var avatar = '<?php echo sp_get_asset_upload_path($live_var["avatar"]);?>';
     var role  = 2;//1为高手,2为学员
     var room_id = "<?php echo $tuser['id']?>";
@@ -293,8 +294,7 @@
     }
 
     // 服务端发来消息时
-    function onmessage(e)
-    {
+    function onmessage(e){
         //console.log(e.data);
         var data = eval("("+e.data+")");
         show(data);
@@ -312,51 +312,23 @@
             // 登录 更新用户列表
             case 'login':
                 //{"type":"login","client_id":xxx,"client_name":"xxx",,"time":"xxx"}
-                say(data['avatar'], data['client_name'],  data['client_name']+' 加入了赢家社圈', data['time'],data['role']);
+                say(data['avatar'], data['client_name'],  data['client_name']+' 加入了赢家社圈', data['saytime'],data['role']);
                 //console.log(data['client_name']+"登录成功");
                 break;
             // 发言
             case 'say':
-                //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
-                say(data['avatar'], data['from_client_name'], data['content'], data['time'],data['role']);
+                //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","message":"xxx","time":"xxx"}
+                say(data['avatar'], data['from_client_name'], data['message'], data['saytime'],data['role']);
                 break;
             // 用户退出 更新用户列表
             case 'logout':
                 //{"type":"logout","client_id":xxx,"time":"xxx"}
-                say(data['avatar'], data['from_client_name'], data['from_client_name']+' 退出了赢家社圈', data['time'],data['role']);
+                say(data['avatar'], data['from_client_name'], data['from_client_name']+' 退出了赢家社圈', data['saytime'],data['role']);
                 delete client_list[data['from_client_id']];
             // flush_client_list();
         }
     }
-    function showlog(data){
-        if (data == ''){
-            return false;
-        }
-        switch(data['type']){
-            // 服务端ping客户端
-            case 'ping':
-                ws.send('{"type":"pong"}');
-                break;;
-            // 登录 更新用户列表
-            case 'login':
-                //{"type":"login","client_id":xxx,"client_name":"xxx",,"time":"xxx"}
-                saylog(data['avatar'], data['client_name'],  data['client_name']+' 加入了赢家社圈', data['time'],data['role']);
-                //console.log(data['client_name']+"登录成功");
-                break;
-            // 发言
-            case 'say':
-                //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
-                saylog(data['avatar'], data['from_client_name'], data['content'], data['time'],data['role']);
-                break;
-            // 用户退出 更新用户列表
-            case 'logout':
-                //{"type":"logout","client_id":xxx,"time":"xxx"}
-                saylog(data['avatar'], data['from_client_name'], data['from_client_name']+' 退出了赢家社圈', data['time'],data['role']);
-                delete client_list[data['from_client_id']];
-            // flush_client_list();
-        }
-    }
-
+    
     // 提交对话
     function onSubmit() {
         var input = document.getElementById("textarea");
@@ -365,17 +337,22 @@
         }
         var to_client_id = 'all';
         var to_client_name = '所有人';
-        ws.send('{"type":"say","to_client_id":"'+to_client_id+'","to_client_name":"'+to_client_name+'","content":"'+input.value.replace(/"/g, '\\"').replace(/\n/g,'\\n').replace(/\r/g, '\\r')+'"}');
+        var messageData={
+            type:"say",
+            user_id:"<?php echo $userId;?>",
+            to_client_id:to_client_id,
+            to_client_name:to_client_name,
+            message:input.value.replace(/"/g, '\\"').replace(/\n/g,'\\n').replace(/\r/g, '\\r'),
+        }
+        ws.send(JSON.stringify(messageData));
         input.value = "";
         input.focus();
     }
     // 发言
-    function say(avatar, from_client_name, content, time,role){
-        $("#dialog").prepend('<li data-id="'+role+'" class="media"><a class="media-left" href="#"><img style="width:60px;" src="'+avatar+'" ></a><div class="media-body"><h4 class="media-heading">'+from_client_name+' <span class="up_time">'+time+'</span></h4><p>'+content+'</p></div></li>');
+    function say(avatar, from_client_name, message, time,role){
+        $("#dialog").prepend('<li data-id="'+role+'" class="media"><a class="media-left" href="#"><img style="width:60px;" src="'+avatar+'" ></a><div class="media-body"><h4 class="media-heading">'+from_client_name+' <span class="up_time">'+time+'</span></h4><p>'+message+'</p></div></li>');
     }
-    function saylog(avatar, from_client_name, content, time,role){
-        $("#dialog").append('<li data-id="'+role+'" class="media"><a class="media-left" href="#"><img style="width:60px;" src="'+avatar+'" ></a><div class="media-body"><h4 class="media-heading">'+from_client_name+' <span class="up_time">'+time+'</span></h4><p>'+content+'</p></div></li>');
-    }
+   
     $(function(){
         loadLog();
         tobmm();
@@ -390,7 +367,7 @@
                 $.each(result.data,function(i,item){
                     //var obj = eval("("+item+")");
                     //console.log(item);
-                    showlog(item);
+                    show(item);
                 });
             }
         },'json');

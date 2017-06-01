@@ -34,6 +34,19 @@ function sp_is_tuser_login(){
 }
 
 /**
+ * 获取当前登录的前台高手用户的信息，未登录时，返回false
+ * @return array|boolean
+ */
+function sp_get_current_tuser(){
+    $session_user=session('tuser');
+	if(!empty($session_user)){
+		return $session_user;
+	}else{
+		return false;
+	}
+}
+
+/**
  * 获取当前登录的前台用户的信息，未登录时，返回false
  * @return array|boolean
  */
@@ -934,6 +947,24 @@ function sp_get_image_url($file,$style=''){
         return $filepath;
 
     }
+}
+
+//图片列表序列化处理
+function image_serialize_list($params,$type){
+    //图片集合处理
+    if(!empty($params["{$type}_url"])){
+        $imageArray=array();
+        $tmpArray=array();
+        foreach ($params["{$type}_url"] as $key=>$val){
+            $tmpArray['link']=$params["{$type}_link"][$key];
+            $tmpArray['alt']=$params["{$type}_alt"][$key];
+            //$tmpArray['url']= sp_get_image_preview_url($val); 
+            $tmpArray['url']= $val;
+            $imageArray[]=$tmpArray;
+        }
+        return serialize($imageArray);
+    }
+    return "";
 }
 
 /**

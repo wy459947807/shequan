@@ -1,0 +1,54 @@
+<tc_include file="Public:theader"/>
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<link rel="stylesheet" href="__TMPL__Public/home/css/master.css">
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" id="user_list">
+            <div class="user_info">
+                <img width="112" height="112" src="{:sp_get_asset_upload_path($tuser['avatar'])}" alt="" style="">
+                <h3><?php echo $tuser['real_name'];?></h3>
+                <div class="user_moods">
+                    <!--<div class="col-md-4 text-center"-->
+                         <!--style=" border-color: #eae9e9;height: 78px;width: 33.33333333%;border-right:1px solid #eae9e9;">-->
+                        <!--<p>10</p> <h4 style="font-weight: normal;">关注</h4></div>-->
+                    <div class="col-md-4 text-center"
+                         style=" height: 78px;width: 50%;border-right:1px solid #eae9e9;">
+                        <p><?php echo $tuser['fans'];?></p>
+                        <h4 style=" font-weight: normal;">粉丝</h4></div>
+                    <div class="col-md-4 text-center"><p><?php echo $tuser['views'];?></p>
+                        <h4 style="font-weight: normal;">人气</h4></div>
+                </div>
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item act"  onclick="getPlate('{:U("Kcenter/live")}')">直播间</li>
+                <li class="list-group-item "  onclick="getPlate('{:U("Kcenter/subscribe")}')">订阅标准</li>
+                <li class="list-group-item"  onclick="getPlate('{:U("Kcenter/gift")}')">已收到礼物</li>
+                <li class="list-group-item"  onclick="getPlate('{:U("Kcenter/fans")}')">我的粉丝</li>
+                <li class="list-group-item"  onclick="getPlate('{:U("Kcenter/info")}')">个人资料</li>
+            </ul>
+        </div>
+       
+        <div id="plates" style="float: left; width: 75%">
+            
+        </div>
+        
+
+    </div>
+    
+    
+</div>
+
+<tc_include file="Public:footer"/>
+<script>
+    var currentUrl="{:U("Kcenter/live")}";
+    getPlate(currentUrl);
+    function getPlate(url){
+        currentUrl=url;
+        getTemplate({},url,"#plates");
+    }
+    
+    function  PageCallback(index, jq) {
+        getTemplate({page:index+1},currentUrl,"#plates");
+    }
+</script>

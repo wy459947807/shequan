@@ -1,0 +1,86 @@
+<admintpl file="header" />
+</head>
+<body>
+    <php>
+        $platformArray=C('platform');
+        $statusArray=array(1=>"正常",2=>"停用");
+    </php>
+    <div class="wrap">
+        <ul class="nav nav-tabs">
+            <li><a href="{:U('Advert/index')}">广告列表</a></li>
+            <li  class="active"><a href="{:U('Advert/update')}">发布广告</a></li>
+        </ul>
+        <form action="{:U('Advert/update')}" method="post" class="form" id="advertUpdate" enctype="multipart/form-data">
+            <if  condition="$id neq 0">
+                <input type="hidden"  name="id" value="{$id}"/>
+            </if>
+            <div class="row-fluid">
+                <div class="span12">
+                    <table class="table table-bordered">
+                        
+                        <tr>
+                            <th>广告平台</th>
+                            <td>
+                                <select id="navcid_select" name="platform">
+                                    <foreach name="platformArray" item="vo" key="key"> 
+                                        <php>$selected=$key==$platform?"selected":"";</php>
+                                        <option value="{$key}"{$selected}>{$vo}</option>
+                                    </foreach>
+                                </select>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th>广告位</th>
+                            <td>
+                                <select id="navcid_select" name="advert_type_id">
+                                    <foreach name="adtypeList" item="vo" key="key"> 
+                                        <php>$selected=$vo['id']==$advert_type_id?"selected":"";</php>
+                                        <option value="{$vo.id}"{$selected}>{$vo.name}</option>
+                                    </foreach>
+                                </select>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th width="150">广告图片</th>
+                            <td>
+                                <include file="simplebootx/Admin/Public/images" type="imgs" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>广告名称</th>
+                            <td><input type="text" name="name"  value="{$name}" ></td>
+                        </tr>
+                        
+                        <tr>
+                            <th>广告标识</th>
+                            <td><input type="text" name="name"  value="{$name}" ></td>
+                        </tr>
+
+                        <tr>
+                            <th>广告简介</th>
+                            <td>
+                                <textarea name="intro" style="width: 50%; height: 100px;" placeholder="请填写简介">{$intro}</textarea>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary " type="button" onclick="$('#advertUpdate').submit()">点击提交</button>
+                <a class="btn" href="{:U('Advert/index')}">返回</a>
+            </div>
+        </form>
+    </div>
+    <div id="killers" style="display: none"></div>
+    <script src="__PUBLIC__/js/common.js"></script>
+
+    <script src="__PUBLIC__/js/layer/layer.js"></script>
+    <script src="__PUBLIC__/js/expand/Validform/5.3.2/Validform.min.js"></script>
+    <script src="__PUBLIC__/js/expand/strongWind.js"></script>
+
+</body>
+</html>
