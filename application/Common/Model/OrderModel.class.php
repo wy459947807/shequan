@@ -138,7 +138,7 @@ class OrderModel extends CommonModel {
                         . "left join tg_killer as c on b.killer_id=c.id ";    
         $this->sqlField = " a.*,"
                           . "b.name as course_name,b.intro,b.hour,b.price,b.record_time,b.cover,"
-                          . "c.real_name as teacher_name,c.type_name as organization ";                //数据库查询字段
+                          . "c.real_name as teacher_name,c.company as organization ";                //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();
         

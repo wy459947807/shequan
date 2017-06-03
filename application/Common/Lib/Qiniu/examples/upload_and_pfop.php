@@ -19,7 +19,7 @@ $wmImg = Qiniu\base64_urlSafeEncode('http://Bucket_Name.qiniudn.com/logo-s.png')
 $pfop = "avthumb/m3u8/wmImage/$wmImg";
 
 //转码完成后通知到你的业务服务器。（公网可以访问，并相应200 OK）
-$notifyUrl = 'http://notify.fake.com';
+$notifyUrl = "http://sheji.imwork.net/qiniu/examples/notify.php";
 
 //独立的转码队列：https://portal.qiniu.com/mps/pipeline
 $pipeline = 'pipeline_name';

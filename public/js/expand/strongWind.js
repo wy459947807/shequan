@@ -287,7 +287,7 @@ function uploadCloud(uploader) {
     var uploaderA = new plupload.Uploader({
         runtimes: 'html5,flash,silverlight,html4',
         browse_button: uploader, // you can pass in id...
-        url: "index.php?g=app&m=index&a=uploadCloud",
+        url: "index.php?g=api&m=Cloud&a=uploadCloud",
         max_file_size: '100mb',
         unique_names: true,
         filters: [{
@@ -334,14 +334,69 @@ function uploadCloud(uploader) {
     });
 }
 
+
+//上传到云端
+function uploadCloudVideo(uploader) {
+    var uploadPath = "/data/upload/tmp/";
+    var uploaderA = new plupload.Uploader({
+        runtimes: 'html5,flash,silverlight,html4',
+        browse_button: uploader, // you can pass in id...
+        url: "index.php?g=api&m=Cloud&a=uploadCloudVideo",
+        max_file_size: '100mb',
+        unique_names: true,
+        filters: [{
+                title: "文件类型(*)",
+                extensions: "*"
+            }],
+        flash_swf_url: '__TMPL__Public/home/lib/plupload/Moxie.swf',
+        silverlight_xap_url: '__TMPL__Public/home/lib/plupload/Moxie.xap'
+    });
+    uploaderA.bind('Init', function (up, params) {
+    });
+    uploaderA.init();
+    uploaderA.bind('FileUploaded', function (up, file, responseObject) {
+        
+        var res = JSON.parse(responseObject.response);//获取服务器返回数据
+        plupload_callback(uploader,res);//回调函数
+    
+    });
+    
+    uploaderA.bind('UploadProgress', function (up, files) {
+        var percent = files.percent; 
+        //layer.alert("正在上传中：进度："+percent+"%");
+        var loading = layer.load(1, {
+            shade: [0.1,'#000'] //0.1透明度的白色背景
+        });
+
+    });
+    
+    uploaderA.bind('FilesAdded', function (up, files) {
+        uploaderA.start();
+        //e.preventDefault();
+    });
+}
+
 //加载视频插件
 function initVideo(videoId,src){
-    var flashvars={
-        f:src,
-        c:0
-    };
-    var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-    CKobject.embedSWF('public/js/expand/ckplayer/ckplayer.swf',videoId,'ckplayer_a1','100%','100%',flashvars,params);
+    var videoType= src.substring(src.lastIndexOf('.') + 1);
+    if(videoType=="m3u8"){
+        var flashvars={
+		f:'public/js/expand/ckplayer/m3u8/m3u8.swf',
+		a:src,
+		s:4,
+		c:0,
+		//i:'http://www.ckplayer.com/static/images/cqdw.jpg'
+		};
+	var video=[src];
+	CKobject.embed('public/js/expand/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video)	
+    }else{
+        var flashvars={
+            f:src,
+            c:0
+        };
+        var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+        CKobject.embedSWF('public/js/expand/ckplayer/ckplayer.swf',videoId,'ckplayer_a1','100%','100%',flashvars,params);
+    }
 }
 
 

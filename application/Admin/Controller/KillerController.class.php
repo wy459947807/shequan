@@ -94,8 +94,7 @@ class KillerController extends AdminbaseController {
             $this->ajaxReturn($retData);
 
         }else{
-            
-            $this->display(":killer:index:checkup");
+            $this->display(":Killer:index:checkup");
         }
     }
 

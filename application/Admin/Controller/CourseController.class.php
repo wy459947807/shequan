@@ -23,9 +23,7 @@ class CourseController extends AdminbaseController {
         $params['page'] = I('get.p', 1, 'intval'); //获取页码
         $params['pageLimit'] = 20;
         $courseList = $this->course_model->courseList($params);
-        
-       
-        
+
         $page = $this->page($courseList['data']['pageInfo']['num'], $params['pageLimit']);
         $this->assign("formget", $params);
         $this->assign("page", $page->show('Admin'));
@@ -40,6 +38,7 @@ class CourseController extends AdminbaseController {
             $params = I('post.');
             $params['cover'] = image_serialize_list($params, "cover");
             $params['detail'] = htmlspecialchars_decode($params['detail']);
+            $params['video'] = substr($params['video'],0,strrpos($params['video'],'.')).".m3u8";//更改视频后缀
             $retInfo = $this->course_model->courseUpdate($params);
             $this->ajaxReturn($retInfo);
         } else {
@@ -83,7 +82,7 @@ class CourseController extends AdminbaseController {
         $this->assign("page", $page->show('Admin'));
         $this->assign("killers", $killers);
         $this->assign("formget", $data);
-        $this->display(":course:update:killers");
+        $this->display(":Course:update:killers");
     }
 
     //删除课程
