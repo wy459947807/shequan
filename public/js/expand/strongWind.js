@@ -287,7 +287,7 @@ function uploadCloud(uploader) {
     var uploaderA = new plupload.Uploader({
         runtimes: 'html5,flash,silverlight,html4',
         browse_button: uploader, // you can pass in id...
-        url: "index.php?g=api&m=Cloud&a=uploadCloud",
+        url: "index.php?g=api&m=cloud&a=uploadCloud",
         max_file_size: '100mb',
         unique_names: true,
         filters: [{
@@ -341,7 +341,7 @@ function uploadCloudVideo(uploader) {
     var uploaderA = new plupload.Uploader({
         runtimes: 'html5,flash,silverlight,html4',
         browse_button: uploader, // you can pass in id...
-        url: "index.php?g=api&m=Cloud&a=uploadCloudVideo",
+        url: "index.php?g=api&m=cloud&a=uploadCloudVideo",
         max_file_size: '100mb',
         unique_names: true,
         filters: [{

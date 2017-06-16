@@ -31,15 +31,21 @@ class KillerController extends AppbaseController {
 
     //今日推荐
     public function tadayRec(){
-        $dataInfo = $this->killer_model->getTopList(array("orderType" => 1, "dateTime" => date("Y-m-d H:i:s"))); //今日推荐
-        if(empty($dataInfo['data'])){
-            $dataInfo = $this->killer_model->getTopList(array("orderType" => 1)); //今日推荐
+        
+        $this->params['dateTime']=date("Y-m-d H:i:s");
+        $this->params['orderType']=1;
+        
+        $dataInfo = $this->killer_model->getTopList($this->params); //今日推荐
+        if(empty($dataInfo['data']['list'])){
+            unset($this->params['dateTime']);
+            $dataInfo = $this->killer_model->getTopList($this->params); //今日推荐
+        }
+
+        //列表字段处理
+        if(!empty($dataInfo['data']['list'])){
+            $dataInfo['data']['list']=$this->killer_model->listProcess($dataInfo['data']['list'],$this->params['uid']);
         }
         
-        //列表字段处理
-        if(!empty($dataInfo['data'])){
-            $dataInfo['data']=$this->killer_model->listProcess($dataInfo['data'],$this->params['uid']);
-        }
         $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'],$dataInfo['data']);
     }
     
@@ -63,20 +69,25 @@ class KillerController extends AppbaseController {
         );
         $this->checkField($rules, $this->params);//验证字段
         
+        $adept = $this->params['adeptType'];
+        
         //高手榜单
         $adeptType= C('ADEPT_TYPE');
         
         //var_dump($adeptType);
         $listInfo=array();
         foreach ($adeptType as $key=>$val){
-            $listInfo[$key]=$this->killer_model->getTopList(array("orderType" => 2, "adeptType" => $key)); //高手榜
-            if(!empty($listInfo[$key]['data'])){
-                $listInfo[$key]['data']=$this->killer_model->listProcess($listInfo[$key]['data'],$this->params['uid']);
+            
+            $this->params['adeptType']=$key;
+            $this->params['orderType']=2;
+            $listInfo[$key]=$this->killer_model->getTopList($this->params); //高手榜
+            if(!empty($listInfo[$key]['data']['list'])){
+                $listInfo[$key]['data']['list']=$this->killer_model->listProcess($listInfo[$key]['data']['list'],$this->params['uid']);
             }
         }
         
-        $dataInfo=$listInfo[$this->params['adeptType']];
-        $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'],$dataInfo['data']);
+        $dataInfo=$listInfo[$adept];
+        $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'], $dataInfo['data']);
     }
     
     //关注高手

@@ -25,6 +25,9 @@ class KillerModel extends CommonModel {
                 case 2:
                     $this->sqlOrder=" ORDER BY fans DESC ";
                     break;
+                case 3:
+                    $this->sqlOrder=" ORDER BY msgs DESC ";
+                    break;
             }
         }
   
@@ -45,11 +48,9 @@ class KillerModel extends CommonModel {
         $this->sqlFrom="tg_killer";                         //数据库查询表
         $this->sqlField="*";                                //数据库查询字段
         $this->sqlWhere=" (1=1) and  status = 1 ";          //数据库查询条件
-        $this->sqlLimit="  limit 0,5  ";                    //限制条数
         $this->bindValues=array();
-        if(!empty($params['num'])){
-            $this->sqlLimit="   limit 0,{$params['num']}    ";  
-        }
+        $this->page =!empty($params['page'])? $params['page']:1;
+        $this->pageLimit =!empty($params['pageLimit'])? $params['pageLimit']:5;
         
         if(!empty($params['orderType'])){
             switch ($params['orderType']){
@@ -74,7 +75,7 @@ class KillerModel extends CommonModel {
             $this->bindValues[] = $params['dateTime'];
         }
         
-        $listInfo= $this->getAll();
+        $listInfo= $this->getPageList();
         
         //$listInfo['data']=$this->listProcess($listInfo['data']);
         return $listInfo;
@@ -217,8 +218,8 @@ class KillerModel extends CommonModel {
                 $topArray=array();
                 $topList = $this->getTopList(array("orderType" => 2, "adeptType" => $key,"num"=>300)); //高手榜
                 
-                if(!empty($topList['data'])){
-                    foreach ($topList['data'] as $k=>$v){
+                if(!empty($topList['data']['list'])){
+                    foreach ($topList['data']['list'] as $k=>$v){
                         $topArray[$v['id']]=$k;
                     }
                 }

@@ -20,10 +20,21 @@ class IndexController extends AppbaseController {
     }
     //首页
     public function index() {
+    
+        $str= '{"{\"jrw_id\":\"6161\",\"user_email\":\"754980640@qq_com\",\"user_nicename\":\"\u6768\u73b2\",\"sex\":\"0\",\"mobile\":\"15900708645\",\"avatar\":\"http:\/\/test_10jrw_com\/data\/upload\/avatar\/000\/00\/61\/5bf73bc6c6e6775d472621264309a88b_48_jpg\"}":""}';
         
-       $testData= D("Common/Course")->courseList(array("course_ids"=>array(1,7,2,5)));
-       var_dump($testData['data']);
-       exit;
+        $arrayAA =  json_decode($str, TRUE);
+        
+        $arrayAAA= array_flip($arrayAA);
+        
+        $arrayAAAA=json_decode($arrayAAA[''], TRUE);
+       
+        var_dump($arrayAAAA);
+        
+        
+        /*$testData= D("Common/Course")->courseList(array("course_ids"=>array(1,7,2,5)));
+        var_dump($testData['data']);*/
+        exit;
         //echo $this->getToken();
     }
     
@@ -70,8 +81,6 @@ class IndexController extends AppbaseController {
         if(empty($userInfo)){ 
             $rules=array(
                 array('user_nicename','require','user_nicename不能为空！',1,'regex',3),
-                array('user_email','require','user_email不能为空！',1,'regex',3),
-                array('user_url','require','user_url不能为空！',1,'regex',3),
                 array('mobile','require','mobile不能为空！',1,'regex',3),
             );
             $this->checkField($rules, $this->params);
@@ -140,7 +149,7 @@ class IndexController extends AppbaseController {
     public function getAdverts(){
         $advertInfo = $this->advert_model->where(array("advert_type_id" => 1,"platform"=>3))->find();
         $imageArray = unserialize($advertInfo['imgs']); //图片处理  
-        $this->ajaxReturn(200,"成功！",$imageArray);        
+        $this->ajaxReturn(200,"成功！",array("list"=>$imageArray));        
     }
     
     //上传文件到云端

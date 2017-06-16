@@ -16,7 +16,6 @@ namespace Common\Lib\Qiniu;
 require_once __DIR__ . '/autoload.php';//自动加载类库
 use Qiniu\Auth;// 引入鉴权类
 use Qiniu\Storage\UploadManager;// 引入上传类
-use Common\Lib\Qiniu\Config;//引用配置文件
 use Qiniu\Storage\BucketManager;
 
 class QiniuApi {
@@ -24,8 +23,8 @@ class QiniuApi {
     private $config;
 
     //put your code here
-    public function __construct() {
-       $this->config=Config::$cfg;
+    public function __construct($config) {
+       $this->config=$config;
     }
     
     //文件上传

@@ -262,8 +262,8 @@
     WEB_SOCKET_DEBUG = true;
     var ws,client_list={};
     var name = '<?php echo $live_var["name"];?>';
-    //var domain = "<?php echo C('LIVE_IP');?>";
-    var domain = "127.0.0.1";
+    var domain = "<?php echo C('LIVE_IP');?>";
+    //var domain = "120.26.118.169";
     var avatar = '<?php echo sp_get_asset_upload_path($live_var["avatar"]);?>';
     var role  = 2;//1为高手,2为学员
     var room_id = "<?php echo $tuser['id']?>";

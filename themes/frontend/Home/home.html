@@ -111,9 +111,9 @@
                         <br>
                         <php>foreach($topList[$key]['data'] as $k=>$v){</php>
           
-                        <a href="/index.php?g=&m=live&a=index&t_id=<?php$v['id'] ?>">
+                        <a href="/index.php?g=&m=live&a=index&t_id=<?php echo $v['id'] ?>">
                             <p>
-                                <i style="width:26px; display: inline-block"><img style="width:100%;" src="__TMPL__Public/home/images/home/home_top_<?php echo $key+1?>.png" alt=""></i>
+                                <i style="width:26px; display: inline-block"><img style="width:100%;" src="__TMPL__Public/home/images/home/home_top_<?php echo $k+1?>.png" alt=""></i>
                                 <i style="width:50px;display: inline-block"> <img width="35" height="35" src="<?php echo sp_get_asset_upload_path($v['avatar']) ;?>" alt=""></i>
                                 <em style="font-style: normal;width:80px; display: inline-block"><?php echo $v['real_name'];?></em>
                                 <?php if($v['rankChange']>0){ ?>

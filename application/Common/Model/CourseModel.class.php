@@ -29,7 +29,7 @@ class CourseModel extends CommonModel {
         $this->sqlFrom = " tg_course as a "
                 . "left join tg_killer as b on a.killer_id=b.id "
                 . "left join tg_course_cate as c on a.cate_id=c.id ";    //数据库查询表
-        $this->sqlField = "a.*,b.real_name as teacher_name,c.name as cate_name";                //数据库查询字段
+        $this->sqlField = "a.*,b.real_name as teacher_name,b.avatar,c.name as cate_name";                //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();
         if (!empty($params['page']))
@@ -92,7 +92,7 @@ class CourseModel extends CommonModel {
         $this->sqlFrom = " tg_course as a "
                 . "left join tg_killer as b on a.killer_id=b.id "
                 . "left join tg_course_cate as c on a.cate_id=c.id ";    //数据库查询表
-        $this->sqlField = "a.*,b.real_name as teacher_name,c.name as cate_name";                //数据库查询字段
+        $this->sqlField = "a.*,b.real_name as teacher_name,b.avatar,c.name as cate_name";                //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();
         
@@ -104,8 +104,12 @@ class CourseModel extends CommonModel {
         $dataInfo = $this->getOne(); 
         if(!empty($dataInfo['data'])){
             $dataInfo['data']['cover']= unserialize($dataInfo['data']['cover']);
+            $model = M();
+            $model->table(C('DB_PREFIX').'course')->where(array("id"=>$dataInfo['data']['id']))->setInc("views");
         }
         
+        
+
         return $dataInfo;
         
     }

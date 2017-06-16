@@ -29,7 +29,7 @@ class KillerModel extends CommonModel
         
         public function getDetail($params){
             $this->sqlFrom = " tg_killer ";                     //数据库查询表
-            $this->sqlField = " id,real_name,avatar,mobile,wechat,email,adept_type,tag,intro,type,company,views,fans,msgs,last_reply_time,subscribe ";                            //数据库查询字段
+            $this->sqlField = " * ";                            //数据库查询字段
             $this->sqlWhere = " (1=1) ";                        //数据库查询条件
             $this->bindValues = array();
             

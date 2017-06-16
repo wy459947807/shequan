@@ -31,7 +31,7 @@ $configs= array(
         'THIRD_UDER_ACCESS'		=> false, //第三方用户是否有全部权限，没有则需绑定本地账号
         /* 标签库 */
         'TAGLIB_BUILD_IN' => THINKCMF_CORE_TAGLIBS,
-        'MODULE_ALLOW_LIST'  => array('Admin','Portal','Asset','Api','User','Wx','Comment','Demo','Tlive','App'),
+        'MODULE_ALLOW_LIST'  => array('Admin','Portal','Asset','Api','User','Wx','Comment','Demo','Tlive','App','Home'),
         'TMPL_DETECT_THEME'     => false,       // 自动侦测模板主题
         'TMPL_TEMPLATE_SUFFIX'  => '.html',     // 默认模板文件后缀
         'DEFAULT_MODULE'        =>  'Home',  // 默认模块

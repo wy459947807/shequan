@@ -21,6 +21,9 @@ class AppbaseController extends AppframeController {
         parent::_initialize();
         $this->model = M(); 
         $this->params=I('param.');//获取参数
+        if(empty($this->params)){
+            $this->params=$this->getParams();
+        }
     }
    
 
@@ -29,6 +32,12 @@ class AppbaseController extends AppframeController {
     protected function getToken(){
         return  md5(time().sp_random_string());
     }*/
+    
+    //获取APP参数
+    protected function getParams(){
+        $paramsArray = json_decode(file_get_contents('php://input'), TRUE);
+        return $paramsArray;
+    }
     
     //检测Token
     protected function checkToken($params){
@@ -87,7 +96,7 @@ class AppbaseController extends AppframeController {
     //云端上传代码处理
     protected function cloudHandle($params){
 
-        $cloudApi=new QiniuApi();  //初始化七牛云端
+        $cloudApi=new QiniuApi(C("cloud_config"));  //初始化七牛云端
         $cloudInfo= $cloudApi->uploadFile($params);//上传文件到云端
 
         $fileOpera = new FileOpera();
@@ -109,6 +118,7 @@ class AppbaseController extends AppframeController {
      * @param string $dialog
      */
     protected function ajaxReturn($status = 1, $msg = '', $data = '') {
+        $status=($status==200)?1:0;
         parent::ajaxReturn(array(
             'status' => $status,
             'msg' => $msg,

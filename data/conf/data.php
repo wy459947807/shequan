@@ -3,6 +3,13 @@
  * 数据相关的配置文件
  */
 return array(
+    "cloud_config"=> array(
+        'accessKey'=>'PaHFjIcqPOwdtn7J40KHP2xrIQGtHxuuddpAtGSk',    //accessKey
+        'secretKey'=>'PCyz-cRkSJwFah0XY5RZzrGv9VO-MVJ4W-z6ck1_',    //secretKey   
+        'bucket'=>"socialcircle-speech-bucket",                     //要上传的空间
+        'videoNotify'=>"http://sheji.imwork.net/index.php/api/Cloud/videoNotify",//视频上传回调接口
+        'pipeLine'=>'video-queue-4',  //视频上传通道
+    ),
     //高手擅长的类型
     'ADEPT_TYPE' =>array(1=>'股票',2=>'期货',3=>'外汇',4=>'外盘'),
     //资格证类型

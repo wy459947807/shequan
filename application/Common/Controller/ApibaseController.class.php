@@ -35,7 +35,7 @@ class ApibaseController extends AppframeController {
     //云端上传代码处理
     protected function cloudHandle($params){
 
-        $cloudApi=new QiniuApi();  //初始化七牛云端
+        $cloudApi=new QiniuApi(C("cloud_config"));  //初始化七牛云端
         $cloudInfo= $cloudApi->uploadFile($params);//上传文件到云端
 
         $fileOpera = new FileOpera();
@@ -52,7 +52,7 @@ class ApibaseController extends AppframeController {
     //云端视频上传代码处理
     protected function cloudVideo($params){
 
-        $cloudApi=new QiniuApi();  //初始化七牛云端
+        $cloudApi=new QiniuApi(C("cloud_config"));  //初始化七牛云端
         $cloudInfo= $cloudApi->uploadVideo($params);//上传文件到云端
 
         $fileOpera = new FileOpera();
@@ -67,7 +67,7 @@ class ApibaseController extends AppframeController {
 
     //云回调
     protected function cloudNotify($params){
-        $cloudApi=new QiniuApi();  //初始化七牛云端
+        $cloudApi=new QiniuApi(C("cloud_config"));  //初始化七牛云端
         /*if($cloudApi->verifyCallback($params)){*/
         $retArray= json_decode($params['callbackBody'], true);
         if(empty($retArray)){

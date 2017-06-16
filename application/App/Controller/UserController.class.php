@@ -65,7 +65,7 @@ class UserController extends AppbaseController {
     public function getSubscribe() {
         $this->checkKiller($this->params);//检测登录
         $dataInfo = $this->user_model->getDetail($this->params);
-        $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'],$dataInfo['data']['subscribe']);
+        $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'],array("list"=>$dataInfo['data']['subscribe']));
     }
 
     //制定订阅标准
@@ -112,6 +112,5 @@ class UserController extends AppbaseController {
         $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'],$dataInfo['data']);
     }
     
-
 
 }

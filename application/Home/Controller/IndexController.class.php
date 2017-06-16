@@ -25,7 +25,7 @@ class IndexController extends HomebaseController {
 
             //今日推荐
             $tadayTopList = D('killer')->getTopList(array("orderType" => 1, "dateTime" => date("Y-m-d H:i:s"))); //今日推荐
-            if (empty($tadayTopList['data'])) {
+            if (empty($tadayTopList['data']['list'])) {
                 $tadayTopList = D('killer')->getTopList(array("orderType" => 1)); //今日推荐
             }
             
@@ -34,8 +34,8 @@ class IndexController extends HomebaseController {
             $topList=array();
             foreach ($adeptType as $key=>$val){
                 $topList[$key]=D('killer')->getTopList(array("orderType" => 2, "adeptType" => $key)); //高手榜
-                if(!empty($topList[$key]['data'])){
-                    $topList[$key]['data']=D('killer')->listProcess($topList[$key]['data'],$userId);
+                if(!empty($topList[$key]['data']['list'])){
+                    $topList[$key]['data']=D('killer')->listProcess($topList[$key]['data']['list'],$userId);
                 }
                 
             }
@@ -45,8 +45,8 @@ class IndexController extends HomebaseController {
                 $listInfo['data']['list']=D('killer')->listProcess($listInfo['data']['list'],$userId);
             }
             
-            if(!empty($tadayTopList['data'])){
-                $tadayTopList['data']=D('killer')->listProcess($tadayTopList['data'],$userId);
+            if(!empty($tadayTopList['data']['list'])){
+                $tadayTopList['data']=D('killer')->listProcess($tadayTopList['data']['list'],$userId);
             }
             
  
@@ -100,6 +100,7 @@ class IndexController extends HomebaseController {
     }
 
     public function test() {
+        echo "sss";
         if (IS_POST) {
             $this->ajaxReturn(200, "666", "");
         } else {

@@ -54,18 +54,16 @@ class KillerFansModel extends CommonModel {
         $model->startTrans();//事务处理
         $this->result['msg']= "关注成功！";
         try { 
-            
             $focusInfo = $model->table(C('DB_PREFIX').'killer_fans')->where(array("killer_id"=>$params['killer_id'],"users_id"=>$params['users_id']))->find();
-            
             if(!empty($focusInfo)){
-                $this->result['status']=500;
-                $this->result['msg']= "请不要重复关注！"; 
-                return $this->result;
+                $model->table(C('DB_PREFIX').'killer_fans')->where(array("id"=>$focusInfo['id']))->delete();
+                $model->table(C('DB_PREFIX').'killer')->where(array("id"=>$params['killer_id']))->setDec("fans");
+                $this->result['msg']= "已取消关注！"; 
+            }else{
+                $params['ctime']=date("Y-m-d H:i:s");
+                $model->table(C('DB_PREFIX').'killer_fans')->add($params); 
+                $model->table(C('DB_PREFIX').'killer')->where(array("id"=>$params['killer_id']))->setInc("fans");
             }
-            
-            $params['ctime']=date("Y-m-d H:i:s");
-            $model->table(C('DB_PREFIX').'killer_fans')->add($params); 
-            $model->table(C('DB_PREFIX').'killer')->where(array("id"=>$params['killer_id']))->setInc("fans");
             $model->commit();//提交事物
         } catch (Exception $e) {
             $model->rollback();//事物回滚

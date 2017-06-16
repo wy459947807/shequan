@@ -11,12 +11,15 @@ use Home\Lib\FileOpera;
 class CloudController extends ApibaseController {
    
     public function index(){
+        
+        //echo phpinfo();
+        
         $fileName="http://oqhjh5opr.bkt.clouddn.com.flv/593231afa831f.flv";
         
         $ext = substr(strrchr($fileName, '.'), 1);
         $result = basename($fileName,".".$ext);
         
-        
+        var_dump(C("cloud_config"));
         echo substr($fileName,0,strrpos($fileName,'.'));
     }
 
@@ -54,7 +57,7 @@ class CloudController extends ApibaseController {
         $notifyBody = file_get_contents('php://input');
         $retInfo =  $this->cloudNotify(array("callbackBody"=>$notifyBody));
         
-        //file_put_contents('2.txt', $_SERVER['HTTP_AUTHORIZATION']);
+        file_put_contents('/data/upload/tmp/2.txt', json_encode($_SERVER));
         
         $this->ajaxReturn($retInfo['status'],$retInfo['msg'],$retInfo['data']);
     }
