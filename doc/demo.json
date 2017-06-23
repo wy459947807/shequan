@@ -1,0 +1,229 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "十年赢家项目",
+    "version": "1.0.0",
+    "title": "十年社圈数据接口文档",
+    "termsOfService": "",
+    "contact": {
+      "name": "汪勇",
+      "email": "459947807@qq.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "www.shequan.dev",
+  "basePath": "/index.php/app/",
+  "tags": [
+    {
+      "name": "首页",
+      "description": "首页模块"
+    },
+    {
+      "name": "课程",
+      "description": "课程模块"
+    },
+    {
+      "name": "高手",
+      "description": "高手模块"
+    },
+    {
+      "name": "消息",
+      "description": "消息模块"
+    },
+    {
+      "name": "订单",
+      "description": "订单模块"
+    },
+    {
+      "name": "用户",
+      "description": "用户模块"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/Index/getToken": {
+      "post": {
+        "tags": [
+          "首页"
+        ],
+        "summary": "首页接口数信息",
+        "description": "",
+        "operationId": "getToken",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "jrw_id",
+            "in": "formData",
+            "description": "主站用户id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "user_nicename",
+            "in": "formData",
+            "description": "用户昵称",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_email",
+            "in": "formData",
+            "description": "用户邮箱",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_url",
+            "in": "formData",
+            "description": "用户个人主页",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mobile",
+            "in": "formData",
+            "description": "用户手机号码",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "avatar",
+            "in": "formData",
+            "description": "用户头像",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sex",
+            "in": "formData",
+            "description": "性别",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "birthday",
+            "in": "formData",
+            "description": "生日",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "signature",
+            "in": "formData",
+            "description": "个人介绍",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/user": {
+      "post": {
+        "tags": [
+          "用户"
+        ],
+        "summary": "Create user",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createUser",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "userStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "User Status"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  }
+}

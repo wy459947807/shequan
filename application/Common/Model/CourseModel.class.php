@@ -82,7 +82,8 @@ class CourseModel extends CommonModel {
         
         if(!empty($listInfo['data']['list'])){
             foreach($listInfo['data']['list'] as $key=>$val){
-                $listInfo['data']['list'][$key]['cover']= unserialize($val['cover']);
+                $coverList=unserialize($val['cover']);
+                $listInfo['data']['list'][$key]['cover']= !empty($coverList)?$coverList:array();
             }
         }
         return $listInfo;

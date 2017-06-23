@@ -13,7 +13,7 @@ class OrderModel extends CommonModel {
         try {
             $orderArray=array(
                 "user_id"=>$params['uid'],
-                "order_sn"=>"S".date("Ymdhis").time(),//订单号
+                "order_sn"=>"S".date("Ymd").time(),//订单号
                 "ctime"=>time(),
                 "utime"=>time(),
             );

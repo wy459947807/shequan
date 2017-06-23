@@ -14,7 +14,7 @@ class CourseCateModel extends CommonModel{
     
     public function cateList($params) {
         
-        $this->sqlFrom = " tg_course_cate ";                     //数据库查询表
+        $this->sqlFrom = " tg_course_cate ";                //数据库查询表
         $this->sqlField = " * ";                            //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();

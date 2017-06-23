@@ -1,0 +1,2182 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "赢家社圈接口地址:http://shequan.10jrw.com/index.php/app/",
+    "version": "1.0.0",
+    "title": "赢家社圈接口文档",
+    "termsOfService": "",
+    "contact": {
+      "email": "459947807@qq.com",
+      "name": "汪勇"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "shequan.10jrw.com",
+  "basePath": "/index.php/app",
+  "tags": [
+    {
+      "name": "公共模块",
+      "description": "公共模块相关接口"
+    },
+    {
+      "name": "课程模块",
+      "description": "课程模块相关接口"
+    },
+    {
+      "name": "高手模块",
+      "description": "高手模块相关接口"
+    },
+    {
+      "name": "消息模块",
+      "description": "消息模块相关接口"
+    },
+    {
+      "name": "订单模块",
+      "description": "订单模块相关接口"
+    },
+    {
+      "name": "会员模块",
+      "description": "会员模块相关接口"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/Index/getToken": {
+      "post": {
+        "tags": [
+          "公共模块"
+        ],
+        "summary": "获取登录用户Token值",
+        "description": "从主站获取用户信息并提交获取Token值",
+        "operationId": "getToken",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "jrw_id",
+            "in": "formData",
+            "description": "主站用户ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "user_nicename",
+            "in": "formData",
+            "description": "用户昵称",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mobile",
+            "in": "formData",
+            "description": "手机",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_email",
+            "in": "formData",
+            "description": "邮箱",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "avatar",
+            "in": "formData",
+            "description": "头像",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sex",
+            "in": "formData",
+            "description": "性别(0：保密，1：男，2：女)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                "0",
+                "1",
+                "2"
+              ],
+              "default": "0"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "birthday",
+            "in": "formData",
+            "description": "生日（格式：Y-m-d H:i:s）",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "signature",
+            "in": "formData",
+            "description": "个人说明",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Index/getAdverts": {
+      "post": {
+        "tags": [
+          "公共模块"
+        ],
+        "summary": "获取首页广告列表",
+        "description": "获取首页广告列表",
+        "operationId": "getAdverts",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Index/uploadCloud": {
+      "post": {
+        "tags": [
+          "公共模块"
+        ],
+        "summary": "上传文件到云端",
+        "description": "上传文件到云端服务器",
+        "operationId": "uploadCloud",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "formData",
+            "description": "上传文件",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Index/uploadLocal": {
+      "post": {
+        "tags": [
+          "公共模块"
+        ],
+        "summary": "上传文件到本地",
+        "description": "上传文件到本地服务器",
+        "operationId": "uploadLocal",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "formData",
+            "description": "上传文件",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Course/getList": {
+      "post": {
+        "tags": [
+          "课程模块"
+        ],
+        "summary": "获取课程列表",
+        "description": "获取课程列表",
+        "operationId": "getCourseList",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start_time",
+            "in": "formData",
+            "description": "日期搜索开始日期(格式:Y-m-d H:i:s)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_time",
+            "in": "formData",
+            "description": "日期搜索结束日期(格式:Y-m-d H:i:s)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "killer_id",
+            "in": "formData",
+            "description": "高手ID",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "keyword",
+            "in": "formData",
+            "description": "搜索关键字",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "course_ids",
+            "in": "formData",
+            "description": "课程id数组",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                "1",
+                "5",
+                "3"
+              ],
+              "default": "0"
+            },
+            "collectionFormat": "csv"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Course/getOne": {
+      "post": {
+        "tags": [
+          "课程模块"
+        ],
+        "summary": "课程详情",
+        "description": "根据课程ID获取课程详情",
+        "operationId": "getCourseOne",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "课程id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Course/submitComment": {
+      "post": {
+        "tags": [
+          "课程模块"
+        ],
+        "summary": "提交课程评论",
+        "description": "提交课程评论",
+        "operationId": "submitCourseComment",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "course_id",
+            "in": "formData",
+            "description": "课程id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "killer_id",
+            "in": "formData",
+            "description": "高手id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "content",
+            "in": "formData",
+            "description": "评论内容",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Course/getComments": {
+      "post": {
+        "tags": [
+          "课程模块"
+        ],
+        "summary": "获取课程评论列表",
+        "description": "获取课程评论列表",
+        "operationId": "getCourseComments",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "课程id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Killer/tadayRec": {
+      "post": {
+        "tags": [
+          "高手模块"
+        ],
+        "summary": "获取今日推荐列表(高手推荐)",
+        "description": "获取今日推荐列表",
+        "operationId": "tadayRec",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Killer/getKillers": {
+      "post": {
+        "tags": [
+          "高手模块"
+        ],
+        "summary": "获取高手列表（圈主分享）",
+        "description": "获取高手列表（圈主分享）",
+        "operationId": "getKillers",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderType",
+            "in": "formData",
+            "description": "排序方式（1：按消息数量，2：按粉丝数,3:按人气指数）",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Killer/getRank": {
+      "post": {
+        "tags": [
+          "高手模块"
+        ],
+        "summary": "获取高手排行榜列表",
+        "description": "获取高手排行榜列表",
+        "operationId": "getKillerRank",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "adeptType",
+            "in": "formData",
+            "description": "排行榜类型（1：'股票',2：'期货',3：'外汇',4：'外盘'）",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Killer/focusKiller": {
+      "post": {
+        "tags": [
+          "高手模块"
+        ],
+        "summary": "关注高手操作",
+        "description": "关注高手操作",
+        "operationId": "focusKiller",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "高手ID",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Killer/killerDetail": {
+      "post": {
+        "tags": [
+          "高手模块"
+        ],
+        "summary": "高手详情",
+        "description": "高手详情",
+        "operationId": "killerDetail",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "高手id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Killer/registKiller": {
+      "post": {
+        "tags": [
+          "高手模块"
+        ],
+        "summary": "申请民间高手认证",
+        "description": "申请民间高手认证",
+        "operationId": "registKiller",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "real_name",
+            "in": "formData",
+            "description": "姓名",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mobile",
+            "in": "formData",
+            "description": "手机号",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "wechat",
+            "in": "formData",
+            "description": "微信号",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "邮箱",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "adept_type",
+            "in": "formData",
+            "description": "擅长领域（1：'股票',2：'期货',3：'外汇',4：'外盘'）",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "card_img",
+            "in": "formData",
+            "description": "身份证图片地址（通过调用/Index/uploadLocal接口获得,不带域名）",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cert_imgs",
+            "in": "formData",
+            "description": "证书图片地址数组（通过调用/Index/uploadLocal接口获得,不带域名，数组要带下标索引值从0开始）",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                "/data/upload/admin/20170528/592a87c62d070.jpg",
+                "/data/upload/admin/20170528/592a87c61da55.jpg",
+                "/data/upload/admin/20170528/592a87c60ccc9.jpg"
+              ],
+              "default": ""
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "intro",
+            "in": "formData",
+            "description": "自我介绍",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "注册类型（0为散户;1为机构）",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "company",
+            "in": "formData",
+            "description": "所属机构名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "avatar",
+            "in": "formData",
+            "description": "高手头像地址（通过调用/Index/uploadLocal接口获得,不带域名）",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "formData",
+            "description": "个人标签，多个标签请用‘|’号分割",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "高手id（不填的话是新添加高手，填上是编辑已经提交的高手信息）",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Killer/killerInfo": {
+      "post": {
+        "tags": [
+          "高手模块"
+        ],
+        "summary": "获取我提交的高手认证信息",
+        "description": "获取我提交的高手认证信息",
+        "operationId": "killerInfo",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Message/getMessages": {
+      "post": {
+        "tags": [
+          "消息模块"
+        ],
+        "summary": "获取最新消息",
+        "description": "获取最新消息",
+        "operationId": "getMessages",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "role",
+            "in": "formData",
+            "description": "角色（1：老师发言，2：粉丝留言）",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "killer_id",
+            "in": "formData",
+            "description": "高手（老师）ID",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Message/messageInfo": {
+      "post": {
+        "tags": [
+          "消息模块"
+        ],
+        "summary": "查看老师消息",
+        "description": "查看老师消息",
+        "operationId": "messageInfo",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "消息ID",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Message/giftList": {
+      "post": {
+        "tags": [
+          "消息模块"
+        ],
+        "summary": "获取礼物列表",
+        "description": "获取礼物列表",
+        "operationId": "giftList",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Message/sendGift": {
+      "post": {
+        "tags": [
+          "消息模块"
+        ],
+        "summary": "发送礼物操作",
+        "description": "发送礼物操作（在向webSocket服务器发送即时消息之前调用）",
+        "operationId": "sendGift",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "killer_id",
+            "in": "formData",
+            "description": "高手ID",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "gift_id",
+            "in": "formData",
+            "description": "礼物ID",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Order/submitOrder": {
+      "post": {
+        "tags": [
+          "订单模块"
+        ],
+        "summary": "提交订单操作",
+        "description": "提交订单操作",
+        "operationId": "submitOrder",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "course_ids",
+            "in": "formData",
+            "description": "课程id数组",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                "1",
+                "5",
+                "3"
+              ],
+              "default": "1"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "course_num",
+            "in": "formData",
+            "description": "课程数量数组（与课程ID数组的下标一一对应）",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                "1",
+                "5",
+                "3"
+              ],
+              "default": "1"
+            },
+            "collectionFormat": "csv"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Order/orderDetail": {
+      "post": {
+        "tags": [
+          "订单模块"
+        ],
+        "summary": "订单详情",
+        "description": "订单详情",
+        "operationId": "orderDetail",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order_sn",
+            "in": "formData",
+            "description": "订单号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Order/orderUpdate": {
+      "post": {
+        "tags": [
+          "订单模块"
+        ],
+        "summary": "更新支付方式",
+        "description": "更新支付方式",
+        "operationId": "orderUpdate",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order_sn",
+            "in": "formData",
+            "description": "订单号",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pay_type",
+            "in": "formData",
+            "description": "支付方式（1未支付,2支付宝,3微信,4网上银行）",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/Order/callback": {
+      "post": {
+        "tags": [
+          "订单模块"
+        ],
+        "summary": "订单支付成功后的回调接口（仅供测试环境使用）",
+        "description": "订单支付成功后的回调接口（仅供测试环境使用）",
+        "operationId": "callback",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "pay_type",
+            "in": "formData",
+            "description": "支付方式（1未支付,2支付宝,3微信,4网上银行）",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "order_sn",
+            "in": "formData",
+            "description": "订单号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/userInfo": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "获取会员基本信息",
+        "description": "获取会员基本信息",
+        "operationId": "userInfo",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/userSubscribe": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "我的订阅列表",
+        "description": "我的订阅列表",
+        "operationId": "userSubscribe",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/killerSubscribe": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "获取高手被订阅的记录",
+        "description": "获取高手被订阅的记录",
+        "operationId": "killerSubscribe",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/userOrder": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "我的订单列表",
+        "description": "我的订单列表",
+        "operationId": "userOrder",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start_time",
+            "in": "formData",
+            "description": "搜索开始日期(格式：Y-m-d H:i:s)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_time",
+            "in": "formData",
+            "description": "搜索结束日期(格式：Y-m-d H:i:s)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "keyword",
+            "in": "formData",
+            "description": "搜索关键字",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/userCourse": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "我购买的课程",
+        "description": "我购买的课程",
+        "operationId": "userCourse",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start_time",
+            "in": "formData",
+            "description": "搜索开始日期(格式：Y-m-d H:i:s)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_time",
+            "in": "formData",
+            "description": "搜索结束日期(格式：Y-m-d H:i:s)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "keyword",
+            "in": "formData",
+            "description": "搜索关键字",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/getSubscribe": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "获取我的订阅标准",
+        "description": "获取我的订阅标准",
+        "operationId": "getSubscribe",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/setSubscribe": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "制定订阅标准",
+        "description": "制定订阅标准",
+        "operationId": "setSubscribe",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "price_array",
+            "in": "formData",
+            "description": "订阅价格数组（按数组下标顺序分别对应：0:条,1:天,2:周,3:月,4:季,5:年)",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                "50.10",
+                "150.10",
+                "250.10",
+                "350.10",
+                "450.10",
+                "550.10"
+              ],
+              "default": "0"
+            },
+            "collectionFormat": "csv"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/subscribeKiller": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "会员订阅操作",
+        "description": "会员订阅操作",
+        "operationId": "subscribeKiller",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "killer_id",
+            "in": "formData",
+            "description": "高手ID",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "num",
+            "in": "formData",
+            "description": "订阅数量",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "订阅类型(0:条,1:天,2:周,3:月,4:季,5:年)",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/userFans": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "我的粉丝",
+        "description": "我的粉丝",
+        "operationId": "userFans",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/userFocus": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "我的关注",
+        "description": "我的关注",
+        "operationId": "userFocus",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/User/killerGift": {
+      "post": {
+        "tags": [
+          "会员模块"
+        ],
+        "summary": "我收到的礼物",
+        "description": "我收到的礼物",
+        "operationId": "killerGift",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "formData",
+            "description": "用户登录id(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "用户登录token(从/Index/getToken接口获取)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "页码",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageLimit",
+            "in": "formData",
+            "description": "每页显示条数",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Category"
+      }
+    },
+    "Tag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Tag"
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

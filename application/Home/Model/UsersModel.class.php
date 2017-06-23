@@ -118,17 +118,27 @@ class UsersModel extends CommonModel{
         
         
         $dataInfo = $this->getPageList();
-        /*
-        if($dataInfo['data']){
-            foreach ($dataInfo['data']['list'] as $key=>$val){
-                $dataInfo['data']['list'][$key]['cover']= unserialize($val['cover']);
-            }
-        }*/
+        $dataAll = $this-> getAll();
         
-        $totalPrice=D("Home/OrderItem")
+        
+        if(!empty($dataInfo['data'])){
+            foreach ($dataInfo['data']['list'] as $key=>$val){
+                $dataInfo['data']['list'][$key]['win_coin']= $val['item_money'];
+            }
+        }
+        
+        
+        $totalPrice=0;
+        if(!empty($dataAll['data'])){
+            foreach ($dataAll['data'] as $key=>$val){
+                $totalPrice+=$val['item_money'];
+            }
+        }
+
+        /*$totalPrice=D("Home/OrderItem")
                 ->join("tg_order ON tg_order_item.order_id = tg_order.id","LEFT")
                 ->where(array("tg_order.user_id"=>$params['uid'],"tg_order.status"=>array("eq",2)))
-                ->sum('tg_order_item.item_money');
+                ->sum('tg_order_item.item_money');*/
         
         $dataInfo['data']['totalPrice']= $totalPrice? $totalPrice:0;
         
@@ -139,9 +149,9 @@ class UsersModel extends CommonModel{
     
 
     //获取我提交的高手认证信息
-    public function killerInfo(){
+    public function killerInfo($params){
         $this->sqlFrom = " tg_users as a"
-                        ." left join tg_killer as b on a.killer_id=b.id and b.status=1 ";                     //数据库查询表
+                        ." left join tg_killer as b on a.killer_id=b.id ";                     //数据库查询表
         $this->sqlField = " b.* ";   //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();

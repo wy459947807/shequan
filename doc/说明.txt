@@ -1,0 +1,4 @@
+http://editor.swagger.io/#/
+编辑后点击“File”下拉项后选择“Download JSON”,就会下载这个文件了。将这个文件放到(Tomcat/webapps/dist目录下)，然后就可以使用地址访问，将该地址录入进去，点击Explore, 即可。
+
+参考：https://www.zhihu.com/question/33516911
