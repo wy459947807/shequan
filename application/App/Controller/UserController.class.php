@@ -9,6 +9,7 @@ use Common\Controller\AppbaseController;
  */
 class UserController extends AppbaseController {
 
+    protected $killer_model;
     protected $user_subscribe_model;
     protected $user_model;
     protected $order_model;
@@ -17,7 +18,7 @@ class UserController extends AppbaseController {
     
     public function _initialize() {
         parent::_initialize();
-
+        $this->killer_model = D("Home/Killer");//高手模块
         $this->user_subscribe_model = D("Home/UserSubscribe");
         $this->user_model = D("Home/Users");//加载用户model
         $this->order_model = D("Common/Order");//加载订单model
@@ -102,6 +103,7 @@ class UserController extends AppbaseController {
     public function userFocus(){
         $userInfo = $this->checkToken($this->params);//检测登录
         $dataInfo = $this->killer_fans_model->focusList($this->params);
+        $dataInfo['data']['list']=$this->killer_model->listProcess($dataInfo['data']['list'],$this->params['uid']);
         $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'],$dataInfo['data']);
     }
     

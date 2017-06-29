@@ -73,6 +73,7 @@ class OrderModel extends CommonModel {
             $orderArray=array(
                 "order_sn"=>$params['order_sn'],
                 "status"=>2,//更新订单状态为已支付
+                "pay_type"=> $params['pay_type'],
                 "utime"=> time(),
                 "pay_time"=> time(),
             );

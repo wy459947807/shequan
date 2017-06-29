@@ -8,7 +8,7 @@ class UsersModel extends CommonModel{
     //获取用户详细信息
     public function getDetail($params){
         $this->sqlFrom = " tg_users as a"
-                        ." left join tg_killer as b on a.killer_id=b.id and b.status=1 ";                     //数据库查询表
+                        ." left join tg_killer as b on a.killer_id=b.id ";                     //数据库查询表
         $this->sqlField = " a.*,b.status,b.fans,b.views,b.msgs,b.last_reply_time,b.subscribe ";   //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();
@@ -21,7 +21,7 @@ class UsersModel extends CommonModel{
         $dataInfo = $this->getOne();
         
         if(!empty($dataInfo["data"])){
-            $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe']);//订阅标准
+            $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe'])?unserialize($dataInfo["data"]['subscribe']):null;//订阅标准
             //$dataInfo["data"]['mySubscribe']= D("Home/UserSubscribe")->where(array("user_id"=>$params['uid']))->select();//我的订阅
         }
         
@@ -164,8 +164,8 @@ class UsersModel extends CommonModel{
         $dataInfo = $this->getOne();
         
         if(!empty($dataInfo["data"])){
-            $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe']);//订阅标准
-            $dataInfo["data"]['cert_imgs']= unserialize($dataInfo["data"]['cert_imgs']);//证件照
+            $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe'])?unserialize($dataInfo["data"]['subscribe']):null;//订阅标准
+            $dataInfo["data"]['cert_imgs']= unserialize($dataInfo["data"]['cert_imgs'])?unserialize($dataInfo["data"]['cert_imgs']):null;//证件照
         }
 
         return $dataInfo;

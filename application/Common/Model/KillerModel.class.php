@@ -43,7 +43,7 @@ class KillerModel extends CommonModel
             if(!empty($dataInfo["data"])){
                 $adeptArray=C('ADEPT_TYPE');
                 $dataInfo["data"]['adept_type']=$adeptArray[$dataInfo["data"]['adept_type']];
-                $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe']);//获取订阅标准
+                $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe'])?unserialize($dataInfo["data"]['subscribe']):null;//获取订阅标准
                 $courseList=D("Common/Course")->courseList(array("killer_id"=>$dataInfo["data"]['id']));
                 $dataInfo['courseList']=$courseList['data']['list'];
             }

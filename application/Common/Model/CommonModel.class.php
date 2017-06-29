@@ -39,7 +39,7 @@ class CommonModel extends Model {
         $count = $model->query($count_sql,$this->bindValues);      
         $list  = $model->query($list_sql,$this->bindValues);
                
-        $resultData['list']=$list;
+        $resultData['list']= !empty($list)?$list:null;
         
         //分页信息
         $resultData['pageInfo']=array();

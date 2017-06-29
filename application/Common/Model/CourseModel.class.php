@@ -25,11 +25,14 @@ class CourseModel extends CommonModel {
 
     //课程列表
     public function courseList($params) {
-
+        $uid=!empty($params['uid'])?$params['uid']:0;
+        
         $this->sqlFrom = " tg_course as a "
                 . "left join tg_killer as b on a.killer_id=b.id "
-                . "left join tg_course_cate as c on a.cate_id=c.id ";    //数据库查询表
-        $this->sqlField = "a.*,b.real_name as teacher_name,b.avatar,c.name as cate_name";                //数据库查询字段
+                . "left join tg_course_cate as c on a.cate_id=c.id "
+                . "left join tg_order_item as d on d.course_id=a.id and d.user_id={$uid} "   
+                . "left join tg_order as e on e.id=d.order_id ";   
+        $this->sqlField = "a.*,b.real_name as teacher_name,b.avatar,c.name as cate_name,e.status as buy_status";                //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();
         if (!empty($params['page']))
@@ -39,17 +42,17 @@ class CourseModel extends CommonModel {
 
         $this->sqlWhere .= " and  a.status=0 ";
         if (!empty($params['start_time'])) {
-            $this->sqlWhere .= " and  record_time > '%s' ";
+            $this->sqlWhere .= " and  a.record_time > '%s' ";
             $this->bindValues[] = $params['start_time'];
         }
 
         if (!empty($params['end_time'])) {
-            $this->sqlWhere .= " and  record_time < '%s' ";
+            $this->sqlWhere .= " and  a.record_time < '%s' ";
             $this->bindValues[] = $params['end_time'];
         }
         
         if (!empty($params['killer_id'])) {
-            $this->sqlWhere .= " and  killer_id = %d ";
+            $this->sqlWhere .= " and  a.killer_id = %d ";
             $this->bindValues[] = $params['killer_id'];
         }
 
@@ -90,10 +93,15 @@ class CourseModel extends CommonModel {
     }
     
     public function courseDetail($params){
+        
+        $uid=!empty($params['uid'])?$params['uid']:0;
+        
         $this->sqlFrom = " tg_course as a "
                 . "left join tg_killer as b on a.killer_id=b.id "
-                . "left join tg_course_cate as c on a.cate_id=c.id ";    //数据库查询表
-        $this->sqlField = "a.*,b.real_name as teacher_name,b.avatar,c.name as cate_name";                //数据库查询字段
+                . "left join tg_course_cate as c on a.cate_id=c.id "
+                . "left join tg_order_item as d on d.course_id=a.id and d.user_id={$uid} "    //数据库查询表
+                . "left join tg_order as e on e.id=d.order_id ";  
+        $this->sqlField = "a.*,b.real_name as teacher_name,b.avatar,c.name as cate_name,e.status as buy_status";                //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();
         

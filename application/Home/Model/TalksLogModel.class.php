@@ -33,7 +33,7 @@ class TalksLogModel extends CommonModel {
         
         if($listInfo['data']){
             foreach ($listInfo['data']['list'] as $key=>$val){
-                $listInfo['data']['list'][$key]['subscribe']= unserialize($val['subscribe']);
+                $listInfo['data']['list'][$key]['subscribe']= unserialize($val['subscribe'])?unserialize($val['subscribe']):null;
             }
         }
         

@@ -104,6 +104,7 @@ class KillerController extends AppbaseController {
     
     //高手详情
     public function killerDetail(){
+
         //验证规则
         $rules = array(
             array('id','require','id不得为空！',1,'regex',3),

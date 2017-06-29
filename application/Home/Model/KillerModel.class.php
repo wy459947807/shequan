@@ -110,6 +110,9 @@ class KillerModel extends CommonModel {
                     
                     $listInfo[$key]['rankChange']=$rankList[$val['adept_type']][$val['id']]-$key;
                 }
+                
+                $listInfo[$key]['subscribe']=unserialize($val['subscribe'])?unserialize($val['subscribe']):null;
+                
   
                 $ids[]=$val['id'];
             }

@@ -128,6 +128,13 @@ class OrderModel extends CommonModel {
         }
         
         $itemList =  $this->itemList(array("order_id"=>$dataInfo['data']['id']));
+        
+        $dataInfo['data']['order_type']="";
+        if(!empty($itemList['data'])){
+            $cateInfo=D("Common/CourseCate")->where(array("id"=>$itemList['data'][0]["cate_id"]))->find(); 
+            $dataInfo['data']['order_type']=$cateInfo['name'];
+        }
+        
         $dataInfo['data']['itemList']=$itemList['data'];
         return $dataInfo;
     }
@@ -137,7 +144,7 @@ class OrderModel extends CommonModel {
                         . "left join tg_course as b on a.course_id=b.id "
                         . "left join tg_killer as c on b.killer_id=c.id ";    
         $this->sqlField = " a.*,"
-                          . "b.name as course_name,b.intro,b.hour,b.price,b.record_time,b.cover,"
+                          . "b.name as course_name,b.intro,b.hour,b.price,b.record_time,b.cover,b.cate_id,"
                           . "c.real_name as teacher_name,c.company as organization ";                //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();
@@ -155,7 +162,7 @@ class OrderModel extends CommonModel {
         $dataInfo = $this->getAll();
         if(!empty($dataInfo['data'])){
             foreach($dataInfo['data'] as $key=>$val){
-                $dataInfo['data'][$key]['cover']= unserialize($val['cover']);
+                $dataInfo['data'][$key]['cover']= unserialize($val['cover'])? unserialize($val['cover']):null;
             }
         }
         
