@@ -1,0 +1,97 @@
+/* banner样式 */
+.banner{position: relative;width: 100%;border-bottom: 5px solid #ededed;}
+.banner ul.ban-list{overflow: hidden;}
+.banner ul li{ position: relative;}
+.banner ul li img{width: 100%;display: block;}
+.ban-list .slick-dots{text-align: center; position: absolute; bottom: 14px; width: 100%; }
+.ban-list .slick-dots li{display: inline-block;}
+.ban-list .slick-dots button{outline:0; border: 0; font-size: 0; width: 15px;height: 15px; background: #ffffff; margin:0 5px;border-radius:50%; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+.ban-list .slick-dots .slick-active button{background: #f44336;}
+.ban-list .slick-dots  button:active{background: #f44336;}
+.banner .search-box{position: absolute;top: 0;left: 0;z-index: 999; width: 100%;height: 50px;background: rgba(93,93,93,.5);padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing: border-box;}
+.banner .search-box .pic{float: left;width: 30%;height: 50px;line-height: 50px;}
+.banner .search-box .pic::before{display: inline-block;height: 50px;line-height: 50px; vertical-align: middle;width: 0;}
+.banner .search-box .pic img{width: 100%;vertical-align: middle;}
+.banner .search-box .search{float: right;margin-top: 9px;border-radius: 3px;width: 60%;height: 32px;line-height: 32px;background: #dc7457;}
+.banner .search-box span.btn{float: right;width: 32px;height: 32px;vertical-align: middle;background: url(../images/search_icon.png) center no-repeat;background-size: 24px 24px;}
+.banner input[name="search"]{width: 78%;font-size: 14px; color: #fff; height: 30px;padding-left: 5px;line-height: 30px;vertical-align: middle;border: 0;outline: none;background:#dc7457;}
+.banner input::-ms-input-placeholder {color: #fff;}
+.banner input::-moz-placeholder {color: #fff;}
+.banner input::-webkit-input-placeholder {color: #fff; }
+/* 主题部分开始 */
+.superior-main{padding-bottom: 52px;}
+/* 实时行情 */
+.superior-main .ul-notice{border-bottom: 8px solid #ededed;overflow: hidden;padding: 0 10px;}
+.superior-main .ul-notice li{float: left;height: 50px;line-height: 50px;color:#b3b4b7;font-size: 14px;}
+.superior-main .ul-notice li i{display: inline-block;margin-right: 3px; width: 30px;height: 30px;vertical-align: middle;}
+.superior-main .ul-notice li:first-child{margin-right: 10px;}
+.superior-main .ul-notice li:first-child i{background: url(../images/notice_icon1.png) 0 0 no-repeat;background-size: cover;}
+.superior-main .ul-notice li:last-child i{background: url(../images/notice_icon2.png) 0 0 no-repeat;background-size: cover;}
+/* 公共的标题样式 */
+.superior-main .g-tit{height: 42px;line-height: 42px;border-bottom: 1px solid #e5e5e5;padding: 0 10px;}
+.superior-main .g-tit h3{float: left; color: #fc3737;height: 42px;line-height: 42px;border-bottom: 1px solid #fc3737;position: relative;bottom: 0;}
+.superior-main .g-tit a{float: right;color: #b3b4b7;font-size: 16px;}
+/* 最新观点样式 */
+.new-view ul{padding: 0 10px;}
+.new-view ul li{padding: 8px 0;color: #000;border-bottom: 1px solid #ebebeb;}
+.new-view ul li .teacher{height: 30px;line-height: 30px;font-size: 16px;}
+.new-view ul li .teacher .pic{float: left; height: 30px;width: 30px;border-radius: 50%;margin-right: 5px;}
+.new-view ul li .teacher .pic img{display: block;width: 100%;}
+.new-view ul li .txt{font-size: 16px;line-height: 1.4em;}
+.new-view ul li .txt span{font-size: 16px;color:#fc3737;padding-right: 5px;}
+.new-view ul li .txt a{color: #000;}
+/* 审核条 */
+.superior-main .shenhe{border-top:8px solid #ececec;border-bottom:8px solid #ececec;}
+.superior-main .shenhe img{width: 100%;display: block;}
+/* 高手推荐样式 */
+.superior-main .ace-recommend{border-bottom: 8px solid #ececec;} 
+.superior-main .ace-recommend .box{width: 100%;overflow-x: scroll;}
+.superior-main .ace-recommend ul{padding: 15px 10px;overflow: hidden;}
+.superior-main .ace-recommend ul li.team{background: url(../images/recommend_icon.png) 0 0 no-repeat #f5f5f5;background-size: 45px 45px;}
+.superior-main .ace-recommend ul li.ace{background: url(../images/recommend_icon1.png) 0 0 no-repeat #f5f5f5;background-size: 45px 45px;}
+.superior-main .ace-recommend ul li{margin-right: 10px; text-align: center; float: left;width: 150px;border: 1px solid #e5e5e5;border-radius: 5px;height: 165px;background-color:#f5f5f5;padding-top: 10px;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;}
+.superior-main .ace-recommend ul li:last-child{margin-right: 0;}
+.superior-main .ace-recommend ul li img{width: 52px;border-radius: 50%;}
+.superior-main .ace-recommend ul li p{font-size: 14px;color: #a7a7a7;}
+.superior-main .ace-recommend ul li h4{font-size: 16px;color: #212121;padding: 0 10px;line-height: 1.2em;height: 40px;overflow: hidden;}
+.superior-main .ace-recommend ul li span{display: inline-block;background: #fc3737;color: #fff;text-align: center;padding: 3px 10px;font-size: 16px;border-radius: 3px;}
+/* 圈主分享样式 */
+.superior-main .circle-share{border-bottom: 8px solid #ececec;}
+.superior-main .circle-share li{font-size: 14px; overflow: hidden; padding: 12px 10px;color: #b3b4b7;border-bottom: 1px solid #ebebeb;}
+.superior-main .circle-share .pic{float: left;margin-right: 5px; width: 44px;height: 44px;border-radius: 50%;overflow: hidden;}
+.superior-main .circle-share .pic img{width: 100%;}
+.superior-main .circle-share .btn{float: right;height: 34px;line-height: 34px;width: 104px;text-align: center;color: #f44336; border: 1px solid #f44336;border-radius: 20px;margin-top: 10px;}
+.superior-main .circle-share .txt{float: left;}
+.superior-main .circle-share .txt h4{font-size: 16px;color: #000;margin-bottom: 2px;}
+.superior-main .circle-share .txt span{display: inline-block;padding-left: 15px;margin-right: 5px;padding-top: 8px;}
+.superior-main .circle-share .txt span.fire{background: url(../images/icon_fire.png) 0 3px no-repeat;background-size: 16px 20px;}
+.superior-main .circle-share .txt span.like{background: url(../images/icon_like.png) 0 3px no-repeat;background-size: 16px 20px;}
+.superior-main .circle-share .txt span.fan{background: url(../images/icon_renqi.png) 0 3px no-repeat;background-size: 16px 20px;}
+/* 高手排行样式 */
+.ace-rank{border-bottom: 8px solid #ececec;}
+.ace-rank .g-tit h3{border-bottom: 0;}
+.ace-rank .rank-tab li{float: left;width: 33.33%;height: 42px;line-height: 42px;text-align: center;font-size: 16px; border-bottom: 1px solid transparent;background-color: #eeeeee;}
+.ace-rank .rank-tab li.on{border-bottom: 1px solid #ff3433;color:#ff3433;}
+.rank-item li{overflow: hidden; padding: 10px;border-bottom: 1px solid #ebebeb;color: #b3b4b7;}
+.rank-item li span{font-size: 18px;text-align: center; float: left;margin-top: 15px; display: inline-block;width: 32px;height: 32px;line-height: 32px;}
+.rank-item li:first-child span{background: url(../images/icon_rank1.png) center no-repeat;background-size: 32px auto;}
+.rank-item li:nth-child(2) span{background: url(../images/icon_rank2.png) center no-repeat;background-size:32px auto;}
+.rank-item li:nth-child(3) span{background: url(../images/icon_rank3.png) center no-repeat;background-size: 32px auto;}
+.rank-item li .pic{float: left;margin-left: 25px;width: 60px;height: 60px;border-radius: 50%;overflow: hidden;margin-right: 10px;}
+.rank-item li .pic img{width: 100%;}
+.rank-item li .txt{padding-top: 10px;float: left;}
+.rank-item li .rise{color: #f53232; float: right;margin-top:22px; padding-left: 20px;font-size: 18px;font-weight: bold;background: url(../images/icon_rise.png) 0 center no-repeat;background-size: 18px 18px;}
+.rank-item li strong{font-size: 16px;color: #000;line-height: 1.6em;}
+.rank-item li p{color:#b3b4b7;}
+@media screen and (max-width:340px) {
+    .superior-main .ul-notice{padding: 0 5px;}
+	.superior-main .ul-notice li{float: left;height: 50px;line-height: 50px;color:#b3b4b7;font-size: 14px;}
+	.superior-main .ul-notice li i{margin-right: 2px; width: 24px;height: 24px;}
+	.superior-main .ul-notice li:first-child{margin-right: 6px;}
+	.superior-main .circle-share .pic {margin-right: 0; width: 36px; height: 36px;margin-top: 5px;}
+	.superior-main .circle-share .btn {width: 92px; text-align: center;margin-top: 10px;font-size: 12px; }
+}
+
+
+
+

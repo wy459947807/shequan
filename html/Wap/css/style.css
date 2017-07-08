@@ -1,0 +1,30 @@
+*{margin: 0; padding: 0; border: 0; outline: none; }
+body{min-width: 318px; font-size: 14px; font-family: "Microsoft YaHei", "微软雅黑",Arial, Helvetica; color:#000000;background: #fff;}
+table{border-collapse:collapse; border-spacing:0; } 
+input,textarea,select{font-size: 12px;color: #444; font-family:"微软雅黑","Microsoft Yahei",Arial;outline: 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box;}
+fieldset,img{border:0; } 
+ul li,ol li{list-style: none;}
+a{text-decoration: none; }
+.col-l,.left{float: left; }
+.col-r,.right{float: right; }
+.c{clear: both;}
+.clear{clear: both;}
+/* 顶部公共样式 */
+.yj_header{height: 50px; background: #f44336; line-height: 50px; text-align: center; color: white; position: relative; font-size: 16px; overflow: hidden; padding: 0 28px;}
+.yj_header a {position: absolute; left: 15px; top: 5px; }
+.yj_header a img {height: 24px; }
+/* 加载更多公共样式 */
+.load-more{display: inline-block;width: 100%;height: 44px;line-height: 42px;text-align: center;font-size: 16px;color:#9b9b9b;}
+/* 底部导航公共样式 */
+.footer{font-size: 14px;position: fixed;bottom: 0;left: 0;right: 0;height: 52px;background:#fff;border-top: 1px solid #ccc;}
+.footer li{float: left;width: 20%;text-align: center;-webkit-filter: grayscale(100%); -o-filter: grayscale(100%); -moz-filter: grayscale(100%); -ms-filter: grayscale(100%); filter: grayscale(100%);}
+.footer li a{display: inline-block;padding-top: 30px;color:#f44336;width: 100%;}
+.footer ul li:first-child{background: url(../images/icon_home.png) center 4px no-repeat;background-size: 24px auto;}
+.footer ul li:nth-child(2){background: url(../images/icon_doctor.png) center 6px no-repeat;background-size: 33px auto;}
+.footer ul li:nth-child(3){background: url(../images/icon_ace.png) center 5px no-repeat;background-size: 24px auto;}
+.footer ul li:nth-child(4){background: url(../images/icon_money.png) center 6px no-repeat;background-size: 22px auto;}
+.footer ul li:nth-child(5){background: url(../images/icon_mine.png) center 5px no-repeat;background-size: 20px auto;}
+.footer li.on,.footer li:active{-webkit-filter: grayscale(0); -o-filter: grayscale(0); -moz-filter: grayscale(0); -ms-filter: grayscale(0); filter: grayscale(0);}
+.footer li.on a,.footer li:active a{color:#f44336;}
+/* 为下方导航让出52像素空白 */
+.main{padding-bottom: 52px;}

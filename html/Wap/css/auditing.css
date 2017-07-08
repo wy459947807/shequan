@@ -1,0 +1,63 @@
+.audit-main{padding: 10px;}
+/* 顶部审核状态样式 */
+.audit-main .top{position: relative;width: 100%;margin-bottom: 30px;}
+.audit-main .top span{color: #fc534c;}
+.audit-main .top .left{position: absolute;left: 10%;transform: translate(-50% ,0);}
+.audit-main .top .middle{position: absolute;left: 50%;transform: translate(-50% ,0);}
+.audit-main .top .right{position: absolute;right: 13%;transform: translate(50% ,0);}
+.audit-main .schedule{padding-bottom: 10px; padding-top: 20px; width: 100%;height: 20px;}
+.audit-main .schedule img{width: 100%;display: block;}
+.audit-main .top h2{margin-bottom: 10px; text-align: center; font-size: 16px;color: #000;height: 30px;line-height: 30px;}
+.audit-main .top h2 i{display: inline-block;width: 28px;height: 28px;vertical-align: bottom;}
+.audit-main .top h2 i img{display: block;width: 100%;height: 100%;}
+/* 上传身份证样式 */
+.audit-main .g-tit{height: 42px;line-height: 42px;border-bottom: 1px solid #e5e5e5;padding: 0 10px;margin: 0 -10px;}
+.audit-main .g-tit h3{font-size: 16px; float: left; color: #fc3737;height: 42px;line-height: 42px;border-bottom: 1px solid #fc3737;position: relative;bottom: 0;}
+.identify .id-card{padding: 10px 0;overflow: hidden;}
+.identify .id-card .pic{position: relative; float: left;height: 120px; width: 35%;background: #a0a0a0;position: relative;}
+.identify .id-card .pic img{position: absolute; max-width:100%;max-height: 100%;left: 50%; top: 50%;transform: translate(-50% ,-50%); -ms-transform: translate(-50% ,-50%); -moz-transform: translate(-50% ,-50%); -webkit-transform: translate(-50% ,-50%); -o-transform: translate(-50% ,-50%);z-index: 1;}
+.g-delet{display: inline-block;width: 50px;height: 20px;line-height: 20px;border: 1px solid #fff;color: #fff;text-align: center;position: absolute;top:50%;left: 50%;margin-top: -10px;margin-left: -25px;border-radius: 3px;z-index: 2;background: rgba(22,22,22,0.6);}
+.identify .id-card .txt{position: relative; float:right;color:#a7a7a7;line-height: 1.4em;width: 62%;}
+.identify .id-card .txt input{position: absolute;left: 0;bottom: 0;height: 34px;width: 90px;opacity: 0;}
+.identify .id-card .txt p{float: left;color:#a7a7a7;margin-bottom: 10px;line-height: 1.4em;font-size: 12px;}
+.identify .id-card .txt .upload{display: inline-block;width: 86px;height: 32px;text-align: center;line-height: 32px;background:#f44336;color: #fff;border-radius: 3px;}
+/* 个人信息 */
+.identify .person-info li{padding: 0 10px; height: 36px;line-height: 36px;border: 1px solid #dcdcdc;border-radius: 5px;margin-bottom: 5px;}
+.identify .person-info li span{float: left;}
+.identify .person-info li input{text-align: right;float: right;height: 36px;line-height: 36px;font-size: 14px;}
+.identify .person-info li:focus{border-color: #f13b3b;color:#f13b3b;}
+.identify .person-info li:last-child div{float: right;}
+.identify .person-info li:last-child input{float: none;vertical-align: middle;}
+.identify .person-info li:last-child label{margin-left: 16px; height: 36px;line-height: 36px;display: inline-block;}
+/* 上传证书样式 */
+.certify>p{color: #878787;line-height: 1.6em;padding: 5px 0 3px;}
+.certify td{text-align: center;border: 1px solid #999;}
+.certify td .pic{width: 40%;margin: 0 auto;padding-top: 10px;}
+.certify td .pic img{width: 100%;height: auto;}
+.certify td .up-load{overflow: hidden;position: relative;}
+.certify td .up-load .pic-certify{overflow: hidden;position: relative;}
+.certify td .up-load .pic-certify img{max-width:100%;max-height: 64px;}
+.certify td .up-load input{position: absolute;left: 0;top: 0;width: 100%;height: 100%;opacity: 0;}
+.certify td .up-load p{height: 38px;overflow: hidden;padding: 0 5px;color: #909090;}
+.certify .introduc{background: #f6f8f8;padding: 5px;border: 1px solid #d2d2d2;}
+.certify .introduc p{font-size: 16px;color: #878787;margin-bottom: 3px;}
+.certify .introduc p span{font-size: 14px;padding-left: 10px;}
+.certify .introduc textarea{width: 100%;height: 100px;background: transparent;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;}
+.audit-main .submit-btn{display: block;margin: 30px auto 10px;width: 92px;height: 32px;line-height: 32px;text-align: center;background: #f44336;color: #fff;border-radius: 5px;}
+/* 弹出框样式 */
+.tip-box{position: fixed;top: 24vh;left: 0; width: 100%;}
+.tip{width: 80%;border: 1px solid #c8c7c7;box-shadow: 0 0 15px 5px #d0c6c6;border-radius: 5px;overflow: hidden;margin: 0 auto;background:#fff;}
+.tip .tit{height: 38px;line-height: 38px;color: #fff;font-size: 16px; text-align: center;position: relative;background: #f7503f;}
+.tip .tit .close{position: absolute;right: 3px;top: 3px;width: 22px;height: 22px;background: url(../images/close.png) center no-repeat;background-size: cover;}
+.tip .con{padding: 10px;font-size: 14px;overflow: hidden;}
+.tip .con .pic{float: left;width: 40%;background: #e5e5e5;height: 100px;}
+.tip .con .txt{float: right;width: 58%;position: relative;}
+.tip .con .txt input{position: absolute;opacity: 0;left: 0;top: 0;width:100%;height: 100%;}
+.tip .con .txt p{color: #989898;line-height: 1.4em;margin-bottom: 30px;}
+.tip .con .txt span{display: inline-block;width: 92px;height: 32px;line-height: 32px;text-align:center;background: #f44336;color: #fff;}
+
+/* 适配340以下屏幕 */
+@media screen and (max-width:340px) {
+	.identify .id-card .txt p{margin-bottom: 5px;}
+    .identify .person-info li:last-child label{margin-left: 10px;}
+}

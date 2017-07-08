@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <title>十年赢家网-手机版</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/user.css">
+</head>
+<body>
+	<!-- 社圈个人中心 -->
+	<div class="yj_header">
+		<font id="page_title">我收到的礼物</font>
+		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+	</div>
+	<div class="yj_info">
+	    <img src="images/teach_photo.png">
+	    <p class="row-1">
+	        <a  href="javascript:;">{$visitor.nickname}</a>
+	        <div class="un-log" style="display: none;">
+	            <a class="left" href="">注册</a>&nbsp;|&nbsp;
+	            <a href="">登录</a>
+	        </div>
+	    </p>
+	    <p class="row-2">
+	        <a class="score" class="" href="javascript:;">积分2230</a>
+	        <a class="member" href="javascript:;">普通会员</a>
+	        <a class="yjbao" href="javascript:;">赢家宝：1000个</a>
+	    </p>
+	</div>
+	<div class="gift-main main" data-page="1" data-load="true">
+		<ul>
+			<li>
+				<div class="box">
+					<div class="pic">
+						<img src="images/gift_icon/00.jpg" alt="">
+					</div>
+					<p>玫瑰骑士</p>
+					<p class="time">2017-3-4&nbsp;<span>14:31</span></p>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="pic">
+						<img src="images/gift_icon/00.jpg" alt="">
+					</div>
+					<p>玫瑰骑士</p>
+					<p class="time">2017-3-4&nbsp;<span>14:31</span></p>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="pic">
+						<img src="images/gift_icon/00.jpg" alt="">
+					</div>
+					<p>玫瑰骑士</p>
+					<p class="time">2017-3-4&nbsp;<span>14:31</span></p>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="pic">
+						<img src="images/gift_icon/00.jpg" alt="">
+					</div>
+					<p>玫瑰骑士</p>
+					<p class="time">2017-3-4&nbsp;<span>14:31</span></p>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="pic">
+						<img src="images/gift_icon/00.jpg" alt="">
+					</div>
+					<p>玫瑰骑士</p>
+					<p class="time">2017-3-4&nbsp;<span>14:31</span></p>
+				</div>
+			</li>
+		</ul>
+		<span class="load-more"></span>
+		<p class="sum-bao">总计已获得赢家宝：500个</p>
+	</div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/circle.js"></script>
+    <script src="js/user.js"></script>
+    <script>
+    	$.circle.user.gift_load();
+    </script>
+</body>
+</html>

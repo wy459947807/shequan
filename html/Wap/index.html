@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body>
+        <!-- 首页banner -->
+        <div class="banner">
+            <div class="search-box">
+                <div class="pic">
+                    <img src="images/circle.png" alt="">
+                </div>
+                <div class="search">
+                    <span class="btn"></span>
+                    <input type="text" name="search" placeholder="搜索民间高手">
+                </div>
+            </div>
+            <ul class="ban-list" id="adverts">
+                <script type="text/html" id="adverts_tpl">
+                {{each adverts.list as value key}}    
+                <li><a href=""><img src="{{config.serviceUrl}}{{value.url}}" alt=""></a></li> 
+                {{/each}} 
+                </script>    
+            </ul>
+        </div>
+        <!-- 首页主体部分 -->
+        <div class="superior-main">
+            <!-- 实时行情 -->
+            <ul class="ul-notice clear">
+                <li><i></i>实时行情解析策略分享</li>
+                <li><i></i>24小时在线互动</li>
+            </ul>
+            <!-- 最新观点 -->
+            <div class="new-view">
+                <div class="g-tit">
+                    <h3>最新观点</h3>
+                    <a href="view.html">更多&gt;</a>
+                </div>
+                <ul id="newMessages">
+                    <script type="text/html" id="newMessages_tpl">
+                    {{each newMessages.list as value key}}        
+                    <li>
+                        <div class="teacher">
+                            <div class="pic"><img src="{{value.avatar}}" alt=""></div>{{value.from_client_name}}
+                        </div>
+                        <p class="txt">
+                            <span>{{value.saytime | dateFormat: 'hh:mm'}}</span>
+                            <a href="">
+                            {{value.message}} 
+                            </a>
+                        </p>
+                    </li>
+                    {{/each}} 
+                    </script>    
+
+                </ul>
+            </div>
+            <!-- 审核 -->
+            <div class="shenhe">
+                <a href="auditing.html"><img src="images/shenhe.jpg" alt=""></a>
+            </div>
+            <!-- 高手推荐 -->
+            <div class="ace-recommend">
+                <div class="g-tit">
+                    <h3>高手推荐</h3>
+                </div>
+                <div class="box">
+                    <ul id='killerRec'>
+                        <script type="text/html" id="killerRec_tpl">
+                        {{each killerRec.list as value key}}  
+                        {{if value.type==1}} 
+                        <li class="team"> 
+                        {{else}}
+                         <li class="ace">
+                        {{/if}} 
+                            <a href="teacher.html"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></a>
+                            <p>{{value.real_name}}</p>
+                            <h4>赢家特训营主讲师</h4>
+                            {{if value.is_focused}} 
+                            <span id="followed">已关注</span>
+                            {{else}}
+                            <span id="follow">+关注</span>
+                            {{/if}} 
+                        </li>
+                        {{/each}} 
+      
+                        </script>    
+                        
+                    </ul>
+                </div>
+            </div>
+            <!-- 圈主分享 -->
+            <div class="circle-share">
+                <div class="g-tit">
+                    <h3>圈主分享</h3>
+                    <a href="host_share.html">更多&gt;</a>
+                </div>
+                <ul id="killerShare">
+
+                    <script type="text/html" id="killerShare_tpl">
+                    {{each killerShare.list as value key}}  
+                    <li>
+                        <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                        <div class="txt">
+                            <h4>{{value.real_name}}</h4>
+                            <span class="fire">{{value.views}}</span>
+                            <span class="like">{{value.notice}}</span>
+                            <span class="fan">{{value.fans}}</span>
+                        </div>
+                        <a class="btn" href="individual_share.html">24小时在线互动</a>
+                    </li>
+                    {{/each}} 
+                    </script>     
+                </ul>
+            </div>
+            <!-- 高手排行 -->
+            <div class="ace-rank" id="killerRank">
+                <script type="text/html" id="killerRank_tpl">
+                <div class="g-tit">
+                    <h3>高手排行</h3>
+                    <a href="rank.html">更多&gt;</a>
+                </div>
+                <ul class="rank-tab">
+                    <li class="on">股票</li>
+                    <li>期货</li>
+                    <li>外汇</li>
+                </ul>
+ 
+                <ul class="rank-item">
+                    {{each killerRank.gupiao.list as value key}}
+                    <li>
+                        {{if key>2}}
+                        <span>{{key+1}}</span>
+                        {{else}}
+                        <span></span>
+                        {{/if}}
+                        <a href="">
+                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="txt">
+                                <strong>{{value.real_name}}</strong>
+                                <p>{{value.tag}}</p>
+                            </div>
+                        </a>
+                        {{if value.rankChange>0}}
+                        <div class="rise">{{value.rankChange}}</div>
+                        {{/if}}  
+                        
+                        {{if value.rankChange<0}}
+                                
+                        {{/if}}     
+                    </li>
+                    {{/each}} 
+                </ul>
+ 
+                <ul class="rank-item" style="display: none;">
+                    {{each killerRank.qihuo.list as value key}}
+                    <li>
+                        {{if key>2}}
+                        <span>{{key+1}}</span>
+                        {{else}}
+                        <span></span>
+                        {{/if}}
+                        <a href="">
+                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="txt">
+                                <strong>{{value.real_name}}</strong>
+                                <p>{{value.tag}}</p>
+                            </div>
+                        </a>
+                        {{if value.rankChange>0}}
+                        <div class="rise">{{value.rankChange}}</div>
+                        {{/if}}  
+                        
+                        {{if value.rankChange<0}}
+                                
+                        {{/if}}     
+                    </li>
+                    {{/each}}
+                </ul>
+                <ul class="rank-item" style="display: none;">
+                     {{each killerRank.waihui.list as value key}}
+                    <li>
+                        {{if key>2}}
+                        <span>{{key+1}}</span>
+                        {{else}}
+                        <span></span>
+                        {{/if}}
+                        <a href="">
+                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="txt">
+                                <strong>{{value.real_name}}</strong>
+                                <p>{{value.tag}}</p>
+                            </div>
+                        </a>
+                        {{if value.rankChange>0}}
+                        <div class="rise">{{value.rankChange}}</div>
+                        {{/if}}  
+                        
+                        {{if value.rankChange<0}}
+                                
+                        {{/if}}     
+                    </li>
+                    {{/each}}
+                </ul>
+                
+                </script>     
+                
+                
+            </div>
+        </div>
+        <div class="footer">
+            <ul>
+                <li class="on"><a href="index.html">首页</a></li>
+                <li><a href="course_list.html">课程</a></li>
+                <li><a href="rank.html">高手</a></li>
+                <li><a href="course_list.html">费用</a></li>
+                <li><a href="user_center.html">我的</a></li>
+            </ul>
+        </div>
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/slick.js"></script>
+        <script src="js/circle.js"></script>
+       
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/index.js"></script>
+        
+        
+        <script src="js/index.js"></script>
+        
+    </body>
+</html>
+

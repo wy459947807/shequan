@@ -1,0 +1,37 @@
+/* 订阅标准样式 */
+body{background: #fff;}
+.standerd-main .top{font-size: 14px; padding: 10px;background-color: #f5f8fa;border-bottom: 1px solid #dadada;overflow: hidden;}
+.standerd-main .top .pic{float: left;width: 48px;height: 48px;margin-right: 10px;}
+.standerd-main .top .pic img{display: block;width: 100%;}
+.standerd-main .top .txt h4{color: #000;line-height: 1.2em;font-weight: normal;height: 32px;display: box; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; text-overflow: ellipsis; overflow: hidden;}
+.standerd-main .top .txt p{color: #979797;line-height: 1.4em;}
+.standerd-main .top .txt p span{color: #fc534c;}
+.standerd-main .con{padding: 0 10px;}
+.standerd-main .con .tit h2{font-size: 14px;text-align: center;line-height: 1.2em;padding: 20px 0;}
+.standerd-main .con .tit i{margin-right: 3px; display: inline-block;width: 20px;height: 20px;background: url(../images/alert.png) center no-repeat;background-size: cover;vertical-align: middle;}
+.standerd-main .con .tit p{color: #979797;margin-bottom: 5px;}
+.standerd-main .info{overflow: hidden;padding-bottom: 10px;}
+.standerd-main .info table{width: 100%;text-align: center;}
+.standerd-main .info tr:first-child{background: #f5f8fa;}
+.standerd-main .info tr{border: 1px solid #eae9e9;margin-top: 1px;}
+.standerd-main .info tr.on{border-left: 1px solid #fc3737;border-right: 1px solid #fc3737;color: #fc3737;}
+.standerd-main .info tr.on td{border-top: 1px solid #fc3737;border-bottom: 1px solid #fc3737;}
+.standerd-main .info tr.on input[type="text"]{color: #fc3737;}
+.standerd-main .info td{height: 40px;}
+.standerd-main .info td input[type="text"]{width: 100%;text-align: center;text-decoration: underline;}
+.standerd-main .last-pay{text-align: right; padding-top: 20px;color: #000;margin-bottom: 5px;}
+.standerd-main .last-pay span{color: #fc534c;}
+.standerd-main .pay-btn{float: right;width: 92px;height: 32px;line-height: 32px;color: #fff;text-align: center;background: #fc534c;border-radius: 3px;}
+/* 弹出框样式 */
+#baotip-box{position:fixed;left: 0;top: 0;width: 100%;height: 100%;background:rgba(1,1,4,.4);}
+.tip{position: relative; width: 80%; margin: 30vh auto 0;overflow: hidden;background: #f1f1f1;padding: 30px 10px 20px;border-radius: 5px;}
+.tip .close{position: absolute;right: 3px;top: 3px; width: 20px;height: 20px;background: url(../images/close2.png) center no-repeat;background-size: cover;}
+.tip .con{font-size: 14px;overflow: hidden;text-align: center;}
+.tip .con h3{font-size: 16px;color: #000;margin-bottom: 10px;}
+.tip .con p{font-size: 14px;color: #818181;margin-bottom: 20px;}
+.tip .con a.btn{display: inline-block;width: 92px;height: 32px;line-height: 32px;border-radius: 3px; text-align:center;background: #fc534c;color: #fff;}
+
+
+
+
+

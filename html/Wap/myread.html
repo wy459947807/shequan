@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <title>十年赢家网-手机版</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/user.css">
+</head>
+<body>
+	<!-- 社圈个人中心 -->
+	<div class="yj_header">
+		<font id="page_title">我的订阅</font>
+		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+	</div>
+	<div class="yj_info">
+	    <img src="images/teach_photo.png">
+	    <p class="row-1">
+	        <a  href="javascript:;">{$visitor.nickname}</a>
+	        <div class="un-log" style="display: none;">
+	            <a class="left" href="">注册</a>&nbsp;|&nbsp;
+	            <a href="">登录</a>
+	        </div>
+	    </p>
+	    <p class="row-2">
+	        <a class="score" class="" href="javascript:;">积分2230</a>
+	        <a class="member" href="javascript:;">普通会员</a>
+	        <a class="yjbao" href="javascript:;">赢家宝：1000个</a>
+	    </p>
+	</div>
+	<div class="read-main">
+		<ul class="read-nav">
+			<li class="on">订阅标准</li>
+			<li>我已订阅</li>
+		</ul>
+		<div class="item">
+			<table class="standard">
+				<tr>
+					<td width="50%">兑换方式</td>
+					<td width="50%">消耗个数（赢家宝）</td>
+				</tr>
+				<tr>
+					<td><i></i>条</td>
+					<td><input type="text" data-id="one" placeholder="5.00" value=""></td>
+				</tr>
+				<tr>
+					<td><i></i>天</td>
+					<td><input type="text" data-id="day" placeholder="10.00" value=""></td>
+				</tr>
+				<tr>
+					<td><i></i>周</td>
+					<td><input type="text" data-id="week" placeholder="500.00" value=""></td>
+				</tr>
+				<tr>
+					<td><i></i>月</td>
+					<td><input type="text" data-id="month" placeholder="1500.00" value=""></td>
+				</tr>
+				<tr>
+					<td><i></i>季</td>
+					<td><input type="text" data-id="quarter" placeholder="4500.00" value=""></td>
+				</tr>
+				<tr>
+					<td><i></i>年</td>
+					<td><input type="text" data-id="year" placeholder="10000.00" value=""></td>
+				</tr>
+			</table>
+			<button class="btn" id="standard_data">提交</button>
+		</div>
+		<div class="item" style="display: none;">
+			<ul class="tit">
+				<li>订阅内容</li>
+				<li>兑换方式</li>
+				<li>有限期至</li>
+				<li>消耗赢家宝</li>
+			</ul>
+			<table class="read">
+				<tr>
+					<td width="40%">邵老师社圈私密分享</td>
+					<td width="20%"><span>50条</span></td>
+					<td width="20%">不限</td>
+					<td>100个</td>
+				</tr>
+				<tr>
+					<td>邵老师社圈私密分享</td>
+					<td><span>50条</span></td>
+					<td>不限</td>
+					<td>100个</td>
+				</tr>
+				<tr>
+					<td>邵老师社圈私密分享</td>
+					<td><span>50条</span></td>
+					<td>不限</td>
+					<td>100个</td>
+				</tr>
+				<tr>
+					<td>邵老师社圈私密分享</td>
+					<td><span>50条</span></td>
+					<td>不限</td>
+					<td>100个</td>
+				</tr>
+				<tr>
+					<td>邵老师社圈私密分享</td>
+					<td><span>50条</span></td>
+					<td>不限</td>
+					<td>100个</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/circle.js"></script>
+    <script src="js/layer/layer.js"></script>
+    <script src="js/user.js"></script>
+    <script>
+    	$.circle.user.read_tab();
+    	$.circle.user.send_data();
+    </script>
+</body>
+</html>

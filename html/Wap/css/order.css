@@ -1,0 +1,45 @@
+/* 提交订单页面样式 */
+.order-main{background:#fff;padding: 15px 10px;}
+.order-main h2{font-size: 16px;color: #000;margin-bottom: 5px;line-height: 1.4em;}
+.course-info table{width: 100%;margin-bottom: 20px;}
+.course-info table td{text-align: center;padding: 5px 0;}
+.course-info table tr:first-child{background: #f2f2f2;border:1px solid #e5e5e5; }
+.course-info table tr:nth-child(2) td{border: 1px solid #e5e5e5;}
+.order-main .sum-money{font-size: 14px;color: #000;margin-bottom: 15px;}
+.order-main .sum-money span{color: #fc3737;}
+.order-main .sum-money span b{font-size: 18px;}
+.order-main .sum-money span:first-child{padding-right: 20px;}
+.order-main .attention{color:#fc534c;line-height: 20px; height: 20px;padding-left: 24px;background: url(../images/attention.png) 0 center no-repeat;background-size: 22px 20px;margin-bottom:48px;}
+.order-main .agree{text-align: center;color: #969696;height: 20px;line-height: 20px;}
+.order-main .agree input{vertical-align: middle;}
+.order-main .agree a{color: #969696;}
+.btn{display: block;width: 92px;height:32px;background:#f44336;color: #fff;font-size: 16px;line-height: 32px;text-align: center;border-radius: 3px;margin: 10px auto;}
+/* 支付页面样式 */
+.pay-main{background: #fff;padding: 15px 10px;}
+.order-result h2{margin-bottom: 10px; text-align: center;font-size: 16px;color: #000;height: 30px;line-height: 30px;}
+.order-result h2 i{display: inline-block;width: 28px;height: 28px;vertical-align: bottom; background: url(../images/order-success.png) 0 0 no-repeat;background-size: cover;}
+.order-result p{color: #a7a7a7;font-size: 14px;line-height: 1.2em;}
+.order-result{border-bottom: 1px solid #e5e5e5;padding:0 10px 10px;margin: 0 -10px;}
+.pay-main h2{font-size:16px;color: #000;margin-bottom:5px;line-height:1.4em;padding-top: 10px;}
+.order-info{margin-bottom: 20px;}
+.order-info p{font-size: 14px;color: #a7a7a7;}
+.order-info p.pay-money{margin-top: 20px; font-size: 15px;color: #000;}
+.order-info p.pay-money span{color:#fc3737;}
+.order-info p.pay-money span b{font-size: 16px;}
+.pay-style ul{overflow: hidden;margin-bottom: 10px;}
+.pay-style ul li{float: left;height: 40px;line-height: 40px;}
+.pay-style ul li:first-child{margin-right: 20px;}
+.pay-style ul li img{vertical-align: middle;width: 36px;height: 36px;margin: 0 5px;}
+.pay-style .attention{color:#fc534c;text-align: center;margin-top: 40px;height: 20px;line-height: 20px;}
+.pay-style .attention i{padding-right: 5px; display: inline-block;width: 22px;height: 20px;background: url(../images/attention.png) 0 center no-repeat;background-size:22px 20px;vertical-align: middle;}
+/* 支付成功样式 */
+.sucess-main {padding: 15px;}
+.sucess-main h2{margin-bottom: 10px; text-align: center; font-size:font-size: 16px;color: #000;height: 30px;line-height: 30px;}
+.sucess-main h2 i{display: inline-block;width: 28px;height: 28px;background: url(../images/sucess.png) 0 0 no-repeat;background-size: cover;}
+.sucess-main p{color:#a7a7a7;line-height: 1.4em;}
+.sucess-main ul{margin-top: 20px;text-align: center;}
+.sucess-main ul li{display: inline-block;}
+.sucess-main ul li:first-child{margin-right: 20px;}
+.sucess-main ul li:first-child a{display: inline-block;width: 92px;height: 32px;background: #f44336;color: #fff;line-height: 32px;text-align: center;font-size: 16px;border-radius: 5px;}
+.sucess-main ul li:last-child a{display: inline-block;width: 92px;height: 32px;background: #fff;color: #000;line-height: 32px;text-align: center;font-size: 16px;border-radius: 5px;border:1px solid #434343;}
+
