@@ -62,5 +62,12 @@ class MessageController extends AppbaseController {
         $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'],$dataInfo['data']);  
     }
     
+    
+    //设为已读
+    public function toRead(){
+        $dataInfo = $this->message_model->toRead($this->params);
+        $this->ajaxReturn($dataInfo['status'],$dataInfo['msg'],$dataInfo['data']);
+    }
+    
 
 }

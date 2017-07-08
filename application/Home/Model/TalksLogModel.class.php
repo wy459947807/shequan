@@ -10,14 +10,16 @@ class TalksLogModel extends CommonModel {
     public function getList($params){
 
         $this->sqlFrom=" tg_talks_log as a "
-                . " left join tg_killer as b on a.room_id=b.id and b.status=1 ";      //数据库查询表
-        $this->sqlField="a.*,b.subscribe";                //数据库查询字段
+                . " left join tg_killer as b on a.room_id=b.id and b.status=1 "
+                . " left join tg_users  as c on a.user_id=c.id "
+                . " left join tg_killer as d on d.id=c.killer_id and d.status=1 ";      //数据库查询表
+        $this->sqlField="a.*,b.subscribe,d.id as killer_id";                //数据库查询字段
         $this->sqlWhere=" (1=1) ";          //数据库查询条件
         $this->bindValues=array();
         if(!empty($params['page'])) $this->page = $params['page'];
         if(!empty($params['pageLimit'])) $this->pageLimit = $params['pageLimit'];
 
-        $this->sqlOrder=" order by id desc "; 
+        $this->sqlOrder=" order by a.id desc "; 
         
         if(!empty($params['role'])){
             $this->sqlWhere.=" and  a.role = %d "; 
@@ -29,17 +31,106 @@ class TalksLogModel extends CommonModel {
             $this->bindValues[] = $params['killer_id'];
         }
         
+        if(isset($params['is_charge'])){
+            $this->sqlWhere.=" and  a.is_charge = %d "; 
+            $this->bindValues[] = $params['is_charge'];
+        }
+        
+        //消息类型
+        if(isset($params['msg_type'])){
+            $this->sqlWhere.=" and  a.msg_type = %d "; 
+            $this->bindValues[] = $params['msg_type'];
+        }
+        
+        
         $listInfo=$this->getPageList();
         
         if($listInfo['data']){
             foreach ($listInfo['data']['list'] as $key=>$val){
                 $listInfo['data']['list'][$key]['subscribe']= unserialize($val['subscribe'])?unserialize($val['subscribe']):null;
             }
+            
+            $params['is_read']=1;
+            $isRead=$this->getReadNum($params);
+            $params['is_read']=0;
+            $noRead=$this->getReadNum($params);
+            
+            $listInfo['data']['readInfo']['isRead']=$isRead['data']['num'];
+            $listInfo['data']['readInfo']['noRead']=$noRead['data']['num'];
         }
         
         return $listInfo;
     }
     
+    //获取已读未读数量
+    public function getReadNum($params){
+        
+         $this->sqlFrom=" tg_talks_log as a "
+                . " left join tg_killer as b on a.room_id=b.id and b.status=1 ";      //数据库查询表
+        $this->sqlField=" COUNT(*) as num";                //数据库查询字段
+        $this->sqlWhere=" (1=1) ";          //数据库查询条件
+        $this->bindValues=array();
+       
+     
+       
+        $this->sqlWhere.=" and  a.is_read = %d "; 
+        $this->bindValues[] = $params['is_read'];
+        
+        if(!empty($params['role'])){
+            $this->sqlWhere.=" and  a.role = %d "; 
+            $this->bindValues[] = $params['role'];
+        }
+        
+        if(!empty($params['killer_id'])){
+            $this->sqlWhere.=" and  a.room_id = %d "; 
+            $this->bindValues[] = $params['killer_id'];
+        }
+
+        $listInfo=$this->getOne();
+        
+        return $listInfo;
+    }
+    
+    //设为已读
+    public function toRead($params){
+
+        $this->sqlFrom=" tg_talks_log as a "
+                . " left join tg_killer as b on a.room_id=b.id and b.status=1 ";      //数据库查询表
+        $this->sqlField="a.*,b.subscribe";                //数据库查询字段
+        $this->sqlWhere=" (1=1) ";          //数据库查询条件
+        $this->bindValues=array();
+
+        $this->sqlOrder=" order by a.id desc "; 
+        
+        if(!empty($params['role'])){
+            $this->sqlWhere.=" and  a.role = %d "; 
+            $this->bindValues[] = $params['role'];
+        }
+        
+        if(!empty($params['killer_id'])){
+            $this->sqlWhere.=" and  a.room_id = %d "; 
+            $this->bindValues[] = $params['killer_id'];
+        }
+        
+        $listInfo=$this->getAll();
+        
+        $ids=array();
+        if($listInfo['data']){
+            foreach ($listInfo['data'] as $key=>$val){
+                if(!$val['is_read']){
+                    $ids[]=$val['id'];
+                }
+            }
+        }
+        
+        D("Home/TalksLog")->where(array('id' => array('in', $ids)))->save(array('is_read' => 1));
+        
+        $listInfo['data']=null;
+        return $listInfo;
+        
+    }
+
+
     //获取一条消息
     public function getMsgInfo($params){
         $this->sqlFrom="tg_talks_log as a "

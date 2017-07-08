@@ -71,6 +71,16 @@ class IndexController extends AppbaseController {
     //获取登录token
     public function getToken() {
 
+        if(!empty($_SESSION['uc_user'])){
+            $ucUser=$_SESSION['uc_user'];
+            //$this->params['jrw_id']=$ucUser['jrw_id'];
+            $this->params['jrw_id']=666;
+            $this->params['user_nicename']=$ucUser['username'];
+            $this->params['avatar']=$ucUser['headimgurl_small'];
+            $this->params['sex']=$ucUser['gender'];
+            $this->params['mobile']="1333615518";
+        }
+        
         $rules=array(
             array('jrw_id','require','jrw_id不得为空！',1,'regex',3),
         );   

@@ -11,6 +11,9 @@ class IndexController extends HomebaseController {
 
     //首页
     public function index() {
+
+        echo var_dump($_SESSION['uc_user']);
+
         $userInfo=sp_get_current_user();
         $userId=$userInfo?$userInfo['id']:0;
         
