@@ -79,7 +79,7 @@
                         {{else}}
                          <li class="ace">
                         {{/if}} 
-                            <a href="teacher.html"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></a>
+                            <a href="teacher.html?id={{value.id}}"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></a>
                             <p>{{value.real_name}}</p>
                             <h4>赢家特训营主讲师</h4>
                             {{if value.is_focused}} 
@@ -140,7 +140,7 @@
                         {{else}}
                         <span></span>
                         {{/if}}
-                        <a href="">
+                        <a href="teacher.html?id={{value.id}}">
                             <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>
@@ -166,7 +166,7 @@
                         {{else}}
                         <span></span>
                         {{/if}}
-                        <a href="">
+                        <a href="teacher.html?id={{value.id}}">
                             <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>
@@ -191,7 +191,7 @@
                         {{else}}
                         <span></span>
                         {{/if}}
-                        <a href="">
+                        <a href="teacher.html?id={{value.id}}">
                             <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>

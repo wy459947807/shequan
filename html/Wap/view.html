@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
-</head>
-<body>
-    <div class="yj_header">
-		<font id="page_title">最新观点</font>
-		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-	</div>
-    <!-- 最新观点 -->
-    <div class="view-main">
-        <div class="new-view" data-page="1" data-load="true">
-			<ul>
-				<li>
-					<div class="teacher">
-						<div class="pic"><img src="images/teach_photo.png" alt=""></div>叶军老师
-					</div>
-					<p class="txt">
-						<span>14:14</span>
-							国海谈判第二天：监管缺席四家机构都谈崩国国海谈判第二天：监管缺席四家机构都谈崩国谈崩国谈崩国
-					</p>
-				</li>
-				<li>
-					<div class="teacher">
-						<div class="pic"><img src="images/teach_photo.png" alt=""></div>叶军老师
-					</div>
-					<p class="txt">
-						<span>14:14</span>
-							国海谈判第二天：监管缺席四家机构都谈崩国国海谈判第二天：监管缺席四家机构都谈崩国谈崩国谈崩国
-					</p>
-				</li>
-			</ul> 
-			<span class="load-more"></span>
-		</div>
-    </div>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/circle.js"></script>
-    <script src="js/rank.js"></script>
-    <script>
-    	$.circle.rank.view_loadmore();
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body>
+        <div class="yj_header">
+            <font id="page_title">最新观点</font>
+            <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+        </div>
+        <!-- 最新观点 -->
+        <div class="view-main">
+            <div class="new-view" data-page="1" data-load="true">
+                <ul id="messages">
+                </ul> 
+                
+                <script type="text/html" id="messages_tpl">
+                {{each messages.list as value key}}
+                <li>
+                    <div class="teacher">
+                        <div class="pic"><img src="{{value.avatar}}" alt=""></div>{{value.from_client_name}}
+                    </div>
+                    <p class="txt">
+                        <span>{{value.saytime | dateFormat: 'hh:mm'}}</span>
+                       {{value.message}}
+                    </p>
+                </li>
+                {{/each}} 
+                </script> 
+                <span class="load-more"></span>
+            </div>
+        </div>
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/view.js"></script>
+        
+        <script src="js/circle.js"></script>
+        <script src="js/rank.js"></script>
+        <script>
+            $.circle.rank.view_loadmore();
+        </script>
+    </body>
 </html>

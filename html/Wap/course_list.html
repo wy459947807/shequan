@@ -1,92 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-       <link rel="stylesheet" href="css/teacher_course.css">
-</head>
-<body style="background: #efefef;">
-    <div class="yj_header">
-		<font id="page_title">叶军老师课程</font>
-		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-	</div>
-    <!-- 培训课程 -->
-    <div class="course-main">
-        <ul class="course-list">
-        	<li>
-                <div class="box">
-        			<div class="pic">
-        				<a href="video.html"><img src="images/course_pic.jpg" alt="">
-        				<p>叶军风险投资第2节</p></a>
-        			</div>
-        			<div class="txt">
-        				￥100<a href="train_course.html" style="display: none;">购买</a><span>已购买</span>
-        			</div>
-                </div>
-    		</li>
-    		<li>
-                <div class="box">
-                    <div class="pic">
-                        <a href=""><img src="images/course_pic.jpg" alt="">
-                        <p>叶军风险投资第2节</p></a>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/teacher_course.css">
+    </head>
+    <body style="background: #efefef;">
+        <div class="yj_header">
+            <font id="page_title">叶军老师课程</font>
+            <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+        </div>
+        <!-- 培训课程 -->
+        <div class="course-main">
+            <ul class="course-list" id="courseList"> 
+                
+                <script type="text/html" id="courseList_tpl">
+                {{each courseList.list as value key}}
+                <li>
+                    <div class="box">
+                        <div class="pic">
+                            <a href="video.html"><img src="{{config.serviceUrl}}{{value.video_img}}" alt="">
+                                <p>{{value.name}}</p></a>
+                        </div>
+                        <div class="txt">
+                            ￥{{value.price}}
+                            {{if value.buy_status==2}}   
+                                <span>已购买</span>
+                            {{else}}
+                                <a href="train_course.html?id={{value.id}}">购买</a>
+                            {{/if}}
+        
+                        </div>
                     </div>
-                    <div class="txt">
-                        ￥100<a href="train_course.html">购买</a><span style="display: none;">已购买</span>
-                    </div>
-                </div>
-            </li>
-    		<li>
-                <div class="box">
-                    <div class="pic">
-                        <a href=""><img src="images/course_pic.jpg" alt="">
-                        <p>叶军风险投资第2节</p></a>
-                    </div>
-                    <div class="txt">
-                        ￥100<a href="train_course.html">购买</a><span style="display: none;">已购买</span>
-                    </div>
-                </div>
-            </li>
-    		<li>
-                <div class="box">
-                    <div class="pic">
-                        <a href=""><img src="images/course_pic.jpg" alt="">
-                        <p>叶军风险投资第2节</p></a>
-                    </div>
-                    <div class="txt">
-                        ￥100<a href="train_course.html">购买</a><span style="display: none;">已购买</span>
-                    </div>
-                </div>
-            </li>
-    		<li>
-                <div class="box">
-                    <div class="pic">
-                        <a href=""><img src="images/course_pic.jpg" alt="">
-                        <p>叶军风险投资第2节</p></a>
-                    </div>
-                    <div class="txt">
-                        ￥100<a href="train_course.html">购买</a><span style="display: none;">已购买</span>
-                    </div>
-                </div>
-            </li>
-    		<li>
-                <div class="box">
-                    <div class="pic">
-                        <a href=""><img src="images/course_pic.jpg" alt="">
-                        <p>叶军风险投资第2节</p></a>
-                    </div>
-                    <div class="txt">
-                        ￥100<a href="train_course.html">购买</a><span style="display: none;">已购买</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-		<div class="attention">
-			<h3>提示：</h3>
-			<p>购买叶军老师投资风险和基础教育课程可以获得赢家宝，赢家宝可用于解锁高手私密内容和向高手赠送礼物！</p>
-		</div>
-    </div>
-</body>
+                </li>
+                {{/each}} 
+                </script>    
+
+            </ul>
+            <div class="attention">
+                <h3>提示：</h3>
+                <p>购买叶军老师投资风险和基础教育课程可以获得赢家宝，赢家宝可用于解锁高手私密内容和向高手赠送礼物！</p>
+            </div>
+        </div>
+        
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/course_list.js"></script>
+    </body>
 </html>

@@ -1,6 +1,7 @@
 
 //站点配置信息
 var configInfo={
+    loacalUrl : new LG.URL(window.location.href),
     apiUrl:"http://shequan.10jrw.com/index.php/app/",
     serviceUrl:"http://shequan.10jrw.com/", 
     testUser:{

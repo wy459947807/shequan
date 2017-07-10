@@ -35,6 +35,7 @@ class CourseModel extends CommonModel {
         $this->sqlField = "a.*,b.real_name as teacher_name,b.avatar,c.name as cate_name,e.status as buy_status";                //数据库查询字段
         $this->sqlWhere = " (1=1) ";                        //数据库查询条件
         $this->bindValues = array();
+        $this->sqlGroupby=" group by a.id " ;     //数据库查询分组
         if (!empty($params['page']))
             $this->page = $params['page'];
         if (!empty($params['pageLimit']))

@@ -1,53 +1,66 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/layer/need/layer.css">
-    <link rel="stylesheet" href="css/order.css">
-</head>
-<body style="background:#f1f1f1;">
-	<div class="yj_header">
-        <font id="page_title">课程支付</font>
-        <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-    </div>
-    <!-- 提交订单页面主体 -->
-    <div class="order-main">
-    	<div class="course-info">
-    		<h2>课程信息：</h2>
-	    	<table>
-	    		<tr>
-	    			<td width="36%">课程名称</td>
-	    			<td width="20%">导师</td>
-	    			<td width="20%">课时</td>
-	    			<td width="24%">价格（元）</td>
-	    		</tr>
-	    		<tr>
-	    			<td>投资风险教育</td>
-	    			<td>叶军</td>
-	    			<td>1</td>
-	    			<td>100.00</td>
-	    		</tr>
-	    	</table>
-    	</div>
-		<p class="sum-money">实付金额:<span><b>100.00</b>元</span>优惠金额:<span><b>0.00</b>元</span></p>
-    	<p class="attention">支付成功即可获赠100赢家宝</p>
-    	<p class="agree">
-    		<label>
-    			<input type="checkbox" checked="cheched">我同意<a href="">《十年赢家网服务条款》</a>
-    		</label>
-    	</p>
-    	<a class="btn" id="go_pay" href="pay.html">立即支付</a>
-    </div>
-    <script src='js/jquery-1.9.1.min.js'></script>
-    <script src='js/layer/layer.js'></script>
-    <script src='js/circle.js'></script>
-    <script src='js/pay.js'></script>
-    <script>
-    	$.circle.pay.go_pay();
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="js/layer/need/layer.css">
+        <link rel="stylesheet" href="css/order.css">
+    </head>
+    <body style="background:#f1f1f1;">
+        <div class="yj_header">
+            <font id="page_title">课程支付</font>
+            <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+        </div>
+        <!-- 提交订单页面主体 -->
+        <div class="order-main" id="">
+            
+            
+            <div class="course-info">
+                <h2>课程信息：</h2>
+                <table>
+                    <tr>
+                        <td width="36%">课程名称</td>
+                        <td width="20%">导师</td>
+                        <td width="20%">课时</td>
+                        <td width="24%">价格（元）</td>
+                    </tr>
+                    <tr>
+                        <td>投资风险教育</td>
+                        <td>叶军</td>
+                        <td>1</td>
+                        <td>100.00</td>
+                    </tr>
+                </table>
+            </div>
+            <p class="sum-money">实付金额:<span><b>100.00</b>元</span>优惠金额:<span><b>0.00</b>元</span></p>
+            <p class="attention">支付成功即可获赠100赢家宝</p>
+            <p class="agree">
+                <label>
+                    <input type="checkbox" checked="cheched">我同意<a href="">《十年赢家网服务条款》</a>
+                </label>
+            </p>
+            <a class="btn" id="go_pay" href="pay.html">立即支付</a>
+            
+            
+        </div>
+        <script src='js/jquery-1.9.1.min.js'></script>
+        <script src='js/layer/layer.js'></script>
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/order.js"></script>
+
+        <script src='js/circle.js'></script>
+        <script src='js/pay.js'></script>
+        <script>
+            $.circle.pay.go_pay();
+        </script>
+    </body>
 </html>
