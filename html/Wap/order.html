@@ -15,9 +15,8 @@
             <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
         </div>
         <!-- 提交订单页面主体 -->
-        <div class="order-main" id="">
-            
-            
+        <div class="order-main" id="course">
+            <script type="text/html" id="course_tpl">
             <div class="course-info">
                 <h2>课程信息：</h2>
                 <table>
@@ -28,26 +27,25 @@
                         <td width="24%">价格（元）</td>
                     </tr>
                     <tr>
-                        <td>投资风险教育</td>
-                        <td>叶军</td>
+                        <td>{{course.name}}</td>
+                        <td>{{course.teacher_name}}</td>
                         <td>1</td>
-                        <td>100.00</td>
+                        <td>{{course.price}}</td>
                     </tr>
                 </table>
             </div>
-            <p class="sum-money">实付金额:<span><b>100.00</b>元</span>优惠金额:<span><b>0.00</b>元</span></p>
-            <p class="attention">支付成功即可获赠100赢家宝</p>
+            <p class="sum-money">实付金额:<span><b>{{course.price}}</b>元</span>优惠金额:<span><b>0.00</b>元</span></p>
+            <p class="attention">支付成功即可获赠{{course.price}}赢家宝</p>
             <p class="agree">
                 <label>
                     <input type="checkbox" checked="cheched">我同意<a href="">《十年赢家网服务条款》</a>
                 </label>
             </p>
-            <a class="btn" id="go_pay" href="pay.html">立即支付</a>
-            
-            
+            <a class="btn" id="go_pay" href="javascript:void(0)">立即支付</a>
+            </script>
         </div>
         <script src='js/jquery-1.9.1.min.js'></script>
-        <script src='js/layer/layer.js'></script>
+        <script src='../Public/js/layer/layer.js'></script>
         <!--数据处理-->
         <script src="../Public/js/moment.min.js"></script>
         <script src="../Public/js/cookie.js"></script>

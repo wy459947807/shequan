@@ -55,6 +55,7 @@
 		// },
 		//立即支付，支付人民币获得赢家宝
 		go_pay:function(){
+                    /*
 			$(document).on('click','a#go_pay',function(e){
 				event.preventDefault();
 				var self=$(this);
@@ -63,7 +64,7 @@
 				}else{
 					$.circle.util.tips('请先同意网络服务条款！');
 				}
-			});
+			});*/
 		},
 		//用赢家宝购买文字直播权限
 		pay_yjbao:function(){

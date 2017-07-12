@@ -7,6 +7,7 @@
 
 //获取远程数据
 function getRemoteData(dataInfo, ajaxUrl, isInfo) {
+    
     var method = "post";//默认post提交方式
     if (dataInfo['method']) {
         method = dataInfo['method'];
@@ -37,8 +38,18 @@ function getRemoteData(dataInfo, ajaxUrl, isInfo) {
 
 //格式话日期
 template.helper('dateFormat', function(dateTime, formatTime) {
+    
+    var reg = /^\+?[1-9][0-9]*$/;
+    if(reg.test(dateTime)){
+        return moment(parseInt(dateTime)*1000).format(formatTime);
+    }
+    
     return moment(dateTime).format(formatTime);
+    
 });
+
+
+
 
 
 function bindTemplate(data, boxId, tempId, append) {
@@ -66,3 +77,35 @@ function count(obj) {
     }
     return false;
 }
+
+//合并数组
+function mergeArray(arrayA,arrayB){
+    var tempArray={};
+    for(index in arrayA){
+        tempArray[index]=arrayA[index]
+    }
+    
+    for(index in arrayB){
+        tempArray[index]=arrayB[index]
+    }
+    return tempArray;
+}
+
+
+//获取表单数据
+$.fn.serializeObject = function () {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function () {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+

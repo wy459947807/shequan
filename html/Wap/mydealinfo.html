@@ -1,44 +1,62 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/user.css">
-</head>
-<body>
-	<!-- 社圈个人中心 -->
-	<div class="yj_header">
-		<font id="page_title">我的交易</font>
-		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-	</div>
-	<div class="yj_info">
-	    <img src="images/teach_photo.png">
-	    <p class="row-1">
-	        <a  href="javascript:;">京津冀</a>
-	        <div class="un-log" style="display: none;">
-	            <a class="left" href="">注册</a>&nbsp;|&nbsp;
-	            <a href="">登录</a>
-	        </div>
-	    </p>
-	    <p class="row-2">
-	        <a class="score" class="" href="javascript:;">积分2230</a>
-	        <a class="member" href="javascript:;">普通会员</a>
-	        <a class="yjbao" href="javascript:;">赢家宝：1000个</a>
-	    </p>
-	</div>
-	<div class="dealinfo-main">
-		<ul>
-			<li>交易名称：邵立胜社圈私密分享</li>
-			<li>订单编号：S201612010000103341</li>
-			<li>商品类型：高级体系课程</li>
-			<li>购买时间：2016-12-01&nbsp;&nbsp;10:35:41</li>
-			<li>购买价格：1000.0元</li>
-			<li>支付方式：支付宝</li>
-			<li>支付时间：2016-12-01&nbsp;&nbsp;10:35:41</li>
-		</ul>
-	</div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/user.css">
+    </head>
+    <body>
+    <!-- 社圈个人中心 -->
+    <div class="yj_header">
+        <font id="page_title">我的交易</font>
+        <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+    </div>
+    <div class="yj_info" id="userInfo">
+    <script type="text/html" id="userInfo_tpl">    
+        <img src="{{config.userInfo.avatar}}">
+        <p class="row-1">
+                <a href="javascript:;">{{config.userInfo.user_nicename}}</a>
+            <div class="un-log" style="display: none;">
+                <a class="left" href="">注册</a>&nbsp;|&nbsp;
+                <a href="">登录</a>
+            </div>
+        </p>
+        <p class="row-2">
+            <a class="score" class="" href="javascript:;">积分{{config.userInfo.score}}</a>
+            <a class="member" href="javascript:;">普通会员</a>
+            <a class="yjbao" href="javascript:;">赢家宝：{{config.userInfo.win_coin}}个</a>
+        </p>
+    </script>  
+    </div>
+    <div class="dealinfo-main" id="order">
+        <script type="text/html" id="order_tpl">
+        <ul>
+            <li>交易名称：{{order.order_name}}</li>
+            <li>订单编号：{{order.order_sn}}</li>
+            <li>商品类型：{{order.order_type}}</li>
+            <li>购买时间：{{order.ctime | dateFormat: 'YYYY-MM-DD HH:mm:ss'}}</li>
+            <li>购买价格：{{order.total_money}}元</li>
+            <li>支付方式：{{payType[order.pay_type]}}</li>
+            {{if order.pay_time}}
+            <li>支付时间：{{order.pay_time | dateFormat: 'YYYY-MM-DD HH:mm:ss'}}</li>
+            {{/if}}
+        </ul>
+        </script>
+    </div>
+        
+    <script src='js/jquery-1.9.1.min.js'></script>
+    <script src='../Public/js/layer/layer.js'></script>
+    <!--数据处理-->
+    <script src="../Public/js/moment.min.js"></script>
+    <script src="../Public/js/cookie.js"></script>
+    <script src="../Public/js/LG.js"></script>
+    <script src="../Public/js/artTemplate.js"></script>
+    <script src="../Public/js/common.js"></script>
+    <script src="js/ajax/config.js"></script>
+    <script src="js/ajax/mydealinfo.js"></script>
+        
 </body>
 </html>

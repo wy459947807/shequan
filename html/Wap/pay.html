@@ -1,51 +1,65 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/layer/need/layer.css">
-    <link rel="stylesheet" href="css/order.css">
-</head>
-<body style="background:#f1f1f1;">
-    <div class="yj_header">
-        <font id="page_title">课程支付</font>
-        <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-    </div>
-    <!-- 支付页面主体 -->
-    <div class="pay-main">
-    	<div class="order-result">
-    		<h2><i></i>订单提交成功</h2>
-    		<p>请您在提交订单45分钟内完成支付，否则订单将自动关闭 </p>
-    	</div>
-    	<div class="order-info">
-    		<h2>订单详情：</h2>
-    		<p>交易单号 : S201612010000103341</p>
-    		<p>课程 : 邵立胜高级培训课程季课</p>
-    		<p>购买时间 : 2016-12-01 10:33:41</p>
-    		<p class="pay-money">支付金额：<span><b>100.00</b>元</span></p>
-		</div>
-		<div class="pay-style">
-			<h2>支付方式：</h2>
-			<ul>
-				<li>
-					<label><input type="radio" name="pay" data-val="alipay" checked="checked"><img src="images/alipay.png" alt="">支付宝支付</label>
-				</li>
-				<li>
-					<label><input type="radio" name="pay" data-val="weixin"><img src="images/wxpay.png" alt="">微信支付</label>
-				</li>
-			</ul>
-	    	<p class="attention"><i></i>支付成功即可获赠100赢家宝</p>
-	    	<a class="btn" id="go_pay" href="">立即支付</a>
-		</div>
-    </div>
-    <script src='js/jquery-1.9.1.min.js'></script>
-    <script src='js/layer/layer.js'></script>
-    <script src='js/circle.js'></script>
-    <script src='js/pay.js'></script>
-    <script>
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="js/layer/need/layer.css">
+        <link rel="stylesheet" href="css/order.css">
+    </head>
+    <body style="background:#f1f1f1;">
+        <div class="yj_header">
+            <font id="page_title">课程支付</font>
+            <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+        </div>
+        <!-- 支付页面主体 -->
+        <div class="pay-main">
+            <div class="order-result">
+                <h2><i></i>订单提交成功</h2>
+                <p>请您在提交订单45分钟内完成支付，否则订单将自动关闭 </p>
+            </div>
+            <div class="order-info" id="order">
+                <script type="text/html" id="order_tpl">
+                <h2>订单详情：</h2>
+                <p>交易单号 : {{order.order_sn}}</p>
+                <p>课程 : {{order.order_name}}</p>
+                <p>购买时间 :{{order.ctime | dateFormat: 'YYYY-MM-DD'}}</p>
+                <p class="pay-money">支付金额：<span><b>{{order.total_money}}</b>元</span></p>
+                </script>
+                
+            </div>
+            <div class="pay-style">
+                <h2>支付方式：</h2>
+                <ul>
+                    <li>
+                        <label><input type="radio" name="pay" data-val="alipay" checked="checked"><img src="images/alipay.png" alt="">支付宝支付</label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="pay" data-val="weixin"><img src="images/wxpay.png" alt="">微信支付</label>
+                    </li>
+                </ul>
+                <p class="attention"><i></i>支付成功即可获赠100赢家宝</p>
+                <a class="btn" id="go_pay" href="">立即支付</a>
+            </div>
+        </div>
+        <script src='js/jquery-1.9.1.min.js'></script>
+        <script src='../Public/js/layer/layer.js'></script>
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/pay.js"></script>
+        
+        <script src='js/circle.js'></script>
+        <script src='js/pay.js'></script>
+        
+        
+        <script>
+        </script>
+    </body>
 </html>

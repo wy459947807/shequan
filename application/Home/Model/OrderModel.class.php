@@ -7,6 +7,14 @@ class OrderModel extends CommonModel {
 
 
     public function submitOrder($params){
+        
+        $courseOrder=D("Home/OrderItem")->where(array('course_id' => array('in', $params['course_ids']),'user_id'=>$params['uid']))->find();
+        if(!empty($courseOrder)){
+            $this->result['status'] = 500;
+            $this->result['msg'] = "请不要重复购买！";
+            return $this->result;
+        }
+
         $model = M();
         $model->startTrans(); //事务处理
         $this->result['msg'] = "操作成功！";
