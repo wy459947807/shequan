@@ -3,7 +3,7 @@
 var configInfo={
     loacalUrl : new LG.URL(window.location.href),
     apiUrl:"http://shequan.10jrw.com/index.php/app/",
-    serviceUrl:"http://shequan.10jrw.com/", 
+    serviceUrl:serviceUrl, 
     testUser:{
         jrw_id:"8074",
         user_nicename:"汪勇",
@@ -13,6 +13,10 @@ var configInfo={
     },
     tokenInfo:{},
     userInfo:{}, 
+    webSocket:{
+        host:"120.26.118.169",
+    },
+    
 }
 
 initConfig();//初始化配置信息

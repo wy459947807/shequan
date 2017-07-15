@@ -27,6 +27,12 @@ class PluploadController extends Controller {
         header("Cache-Control: no-store, no-cache, must-revalidate");
         header("Cache-Control: post-check=0, pre-check=0", false);
         header("Pragma: no-cache");
+        
+        //跨域处理
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+        header('Access-Control-Allow-Methods: GET, POST, PUT');
+
 
         // Settings
         //$targetDir = str_replace('\\', '/', dirname(dirname(__FILE__))) . '/../../data/upload/tmp';

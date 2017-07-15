@@ -1,86 +1,83 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/user.css">
-</head>
-<body>
-	<!-- 社圈个人中心 -->
-	<div class="yj_header">
-		<font id="page_title">我的粉丝</font>
-		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-	</div>
-	<div class="yj_info">
-	    <img src="images/teach_photo.png">
-	    <p class="row-1">
-	        <a  href="javascript:;">{$visitor.nickname}</a>
-	        <div class="un-log" style="display: none;">
-	            <a class="left" href="">注册</a>&nbsp;|&nbsp;
-	            <a href="">登录</a>
-	        </div>
-	    </p>
-	    <p class="row-2">
-	        <a class="score" class="" href="javascript:;">积分2230</a>
-	        <a class="member" href="javascript:;">普通会员</a>
-	        <a class="yjbao" href="javascript:;">赢家宝：1000个</a>
-	    </p>
-	</div>
-	<div class="fans-main" data-page="1" data-load="true">
-		<ul>
-			<li>
-				<div class="box">
-					<img src="images/fan_pic.jpg" alt="">
-					<p>玫瑰骑士</p>
-				</div>
-			</li>
-			<li>
-				<div class="box">
-					<img src="images/fan_pic.jpg" alt="">
-					<p>玫瑰骑士</p>
-				</div>
-			</li>
-			<li>
-				<div class="box">
-					<img src="images/fan_pic.jpg" alt="">
-					<p>玫瑰骑士</p>
-				</div>
-			</li>
-			<li>
-				<div class="box">
-					<img src="images/fan_pic.jpg" alt="">
-					<p>玫瑰骑士</p>
-				</div>
-			</li>
-			<li>
-				<div class="box">
-					<img src="images/fan_pic.jpg" alt="">
-					<p>玫瑰骑士</p>
-				</div>
-			</li>
-			<li>
-				<div class="box">
-					<img src="images/fan_pic.jpg" alt="">
-					<p>玫瑰骑士</p>
-				</div>
-			</li>
-			<li>
-				<div class="box">
-					<img src="images/fan_pic.jpg" alt="">
-					<p>玫瑰骑士</p>
-				</div>
-			</li>
-		</ul>
-		<span class="load-more"></span>
-	</div>
-    <script src="js/jquery-1.9.1.min.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/user.css">
+    </head>
+    <body>
+        <div id="body">
+        <script type="text/html" id="body_tpl">    
+        <!-- 社圈个人中心 -->
+        <div class="yj_header">
+            <font id="page_title">我的粉丝</font>
+            <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+        </div>
+        <div class="yj_info" id="userInfo">
+            <img src="{{config.userInfo.avatar}}">
+            <p class="row-1">
+                    <a href="javascript:;">{{config.userInfo.user_nicename}}</a>
+                <div class="un-log" style="display: none;">
+                    <a class="left" href="">注册</a>&nbsp;|&nbsp;
+                    <a href="">登录</a>
+                </div>
+            </p>
+            <p class="row-2">
+                <a class="score" class="" href="javascript:;">积分{{config.userInfo.score}}</a>
+                <a class="member" href="javascript:;">普通会员</a>
+                <a class="yjbao" href="javascript:;">赢家宝：{{config.userInfo.win_coin}}个</a>
+            </p>
+        </div>
+        <div class="fans-main" data-page="1" data-load="true">
+            <ul id="fansItem">
+                
+                {{each fansItem.list as value key}}
+                <li>
+                    <div class="box">
+                        <img src="{{value.avatar}}" alt="">
+                        <p>{{value.user_nicename}}</p>
+                    </div>
+                </li>
+                {{/each}}     
+
+            </ul>
+            <span class="load-more"></span>
+        </div>
+        </script>
+    </div>
+    <script type="text/html" id="fansItem_tpl">    
+        {{each fansItem.list as value key}}
+        <li>
+            <div class="box">
+                <img src="{{value.avatar}}" alt="">
+                <p>{{value.user_nicename}}</p>
+            </div>
+        </li>
+        {{/each}}     
+    </script>      
+    <script src='js/jquery-1.9.1.min.js'></script>
+    <script src='../Public/js/layer/layer.js'></script>
+    <!--数据处理-->
+    <script src="../Public/js/moment.min.js"></script>
+    <script src="../Public/js/plupload/plupload.full.min.js"></script>
+    <script src="../Public/js/Validform/5.3.2/Validform.min.js"></script>
+    <script src="../Public/js/cookie.js"></script>
+    <script src="../Public/js/LG.js"></script>
+    <script src="../Public/js/artTemplate.js"></script>
+    <script src="../Public/js/common.js"></script>
+    <script src="js/ajax/config.js"></script>
+    <script src="js/ajax/myfans.js"></script>
+    
+    
+    
+    
     <script src="js/circle.js"></script>
     <script src="js/user.js"></script>
     <script>
-    	$.circle.user.fan_loadmore();
+        $.circle.user.fan_loadmore();
     </script>
 </body>
 </html>

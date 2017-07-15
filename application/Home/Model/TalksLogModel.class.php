@@ -46,6 +46,11 @@ class TalksLogModel extends CommonModel {
         $listInfo=$this->getPageList();
         
         if($listInfo['data']){
+            
+            if(!empty($params['reverse'])){
+               $listInfo['data']['list'] = array_reverse($listInfo['data']['list']);
+            }
+            
             foreach ($listInfo['data']['list'] as $key=>$val){
                 $listInfo['data']['list'][$key]['subscribe']= unserialize($val['subscribe'])?unserialize($val['subscribe']):null;
             }

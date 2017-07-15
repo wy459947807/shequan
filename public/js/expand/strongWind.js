@@ -335,7 +335,7 @@ function uploadCloud(uploader) {
 }
 
 
-//上传到云端
+//上传视频到云端
 function uploadCloudVideo(uploader) {
     var uploadPath = "/data/upload/tmp/";
     var uploaderA = new plupload.Uploader({

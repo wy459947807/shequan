@@ -28,10 +28,10 @@
 .talk-main .tit i{font-style: normal;color:#f53232;}
 .talk-main .tit span{display: inline-block;padding-left: 10px;color: #b3b4b7;}
 .talk-main ul{padding: 5px 0;}
-.talk-main .tea-info{margin-left: 34px;margin-top: -4px;padding-right: 5px; padding-left: 5px;position: relative;}
-.talk-main .tea-info i{position: absolute;z-index: 2; width: 5px;left: 1px;top: 8px; height: 10px;background: url(../images/talk_point1.jpg) 0 0 no-repeat;background-size: 5px auto;}
-.talk-main .tea-info span{display: inline-block; color:#f53232;line-height: 1.4em; border: 1px solid #f64949;border-radius: 5px;padding:3px 5px;}
-.talk-main .tea-info p{margin: 5px 0;padding:2px 4px;color: #111111;border:1px solid #e5e5e5;background:#f3f3f3;border-radius: 5px;}
+.talk-main .teawz .info,.talk-main .teawz-unfree .info{margin-left: 34px;margin-top: -4px;padding-right: 5px; padding-left: 5px;position: relative;}
+.talk-main .teawz .info i,.talk-main .teawz-unfree .info i{position: absolute;z-index: 2; width: 5px;left: 1px;top: 8px; height: 10px;background: url(../images/talk_point1.jpg) 0 0 no-repeat;background-size: 5px auto;}
+.talk-main .teawz .info span,.talk-main .teawz-unfree .info span{display: inline-block; color:#f53232;line-height: 1.4em; border: 1px solid #f64949;border-radius: 5px;padding:3px 5px;}
+.talk-main .teawz .info p{margin: 5px 0;padding:2px 4px;color: #111111;border:1px solid #e5e5e5;background:#f3f3f3;border-radius: 5px;}
 .talk-main .userwz{padding:0 10px 5px 34px ;}
 .talk-main .userwz .tit{text-align: right;}
 .talk-main .userwz .tit .reply{font-style:normal;color:#f53232;display: inline-block;padding-left: 5px;}
@@ -40,15 +40,36 @@
 .talk-main .userwz .info{margin-right: 34px;margin-top: -4px;padding-left: 5px; padding-right: 5px;position: relative; overflow: hidden;}
 .talk-main .userwz .info i{position: absolute;z-index: 2; width: 5px;right: 1px;top: 8px; height: 10px;background: url(../images/talk_point2.jpg) 0 0 no-repeat;background-size: 5px auto;}
 .talk-main .userwz .info span{display: inline-block;float: right; right: 5px; color:#111;line-height: 1.4em; border: 1px solid #dcdcdc;border-radius: 5px;padding:3px 5px;background: #f3f3f3;}
-.talk-main .info span img{max-width:100px;max-height: 100px;}
+.talk-main .uservoice{padding:0 10px 5px 34px ;}
+.talk-main .uservoice .tit{text-align: right;}
+.talk-main .uservoice .tit .reply{font-style:normal;color:#f53232;display: inline-block;padding-left: 5px;}
+.talk-main .uservoice .tit span{padding-right: 10px;padding-left: 0;}
+.talk-main .uservoice .tit img{margin-right: 0;margin-left: 5px;}
+.talk-main .uservoice .info{position: relative; padding-right: 5px;text-align:right; margin-right: 34px;margin-top: -4px;color: #b3b4b7;height: 42px;line-height: 42px;}
+.talk-main .uservoice .info .pointer{position: absolute;right: 0;top: 0;width: 5px;height:42px;background: url(../images/voice_point.jpg) 0 center no-repeat;background-size: 5px auto;transform: rotateZ(180deg);}
+.talk-main .uservoice .info p{vertical-align: middle; height: 42px;width: 80%;border-radius: 5px; float: right; background: url(../images/voice_bg.jpg) 0 0 no-repeat;background-size: 100% 42px;}
+.talk-main .uservoice .info i{float: right; margin-right:12px; width: 20px; height: 42px; line-height: 40px; background: url(../images/icon_voice.png) 0 center no-repeat;background-size: 13px 18px;transform: rotateZ(180deg);}
+.talk-main .uservoice .info  i.playing{background: url(../images/icon_voice.gif) 0 center no-repeat;background-size: 13px 18px;transform: rotateZ(180deg);}
+.talk-main .info span img{max-width:120px;max-height: 120px;}
 .talk-main .teawz-unfree .info-lock{height: 42px;margin-left: 34px;margin-top: -4px;width: 82%;background: url(../images/wz_lock.png) 0 0 no-repeat;background-size:100% 42px;}
 .talk-main .teavoice .info{position: relative; padding-left: 5px; margin-left: 34px;margin-top: -4px;color: #b3b4b7;height: 42px;line-height: 42px;}
 .talk-main .teavoice .info .pointer{position: absolute;left: 0;top: 0;width: 5px;height:42px;background: url(../images/voice_point.jpg) 0 center no-repeat;background-size: 5px auto;}
-.talk-main .teavoice .info p{vertical-align: middle; height: 42px;width: 80%; display: inline-block;margin-right: 5px; background: url(../images/voice_bg.jpg) 0 0 no-repeat;background-size: 100% 42px;}
-.talk-main .teavoice .info i{display: inline-block;margin-left: 12px; width: 20px; height: 42px; line-height: 40px; background: url(../images/icon_voice.png) 0 center no-repeat;background-size: 12px 18px;}
-.talk-main .teavoice .info .playing i{background: url(../images/icon_voice.gif) 0 center no-repeat;background-size: 12px 18px;}
+.talk-main .teavoice .info p{vertical-align: middle; height: 42px;width: 80%;border-radius: 5px; display: inline-block;margin-right: 5px; background: url(../images/voice_bg.jpg) 0 0 no-repeat;background-size: 100% 42px;}
+.talk-main .teavoice .info i{display: inline-block;margin-left: 12px; width: 20px; height: 42px; line-height: 40px; background: url(../images/icon_voice.png) 0 center no-repeat;background-size: 13px 18px;}
+.talk-main .teavoice .info  i.playing{background: url(../images/icon_voice.gif) 0 center no-repeat;background-size: 13px 18px;}
+.talk-main .teavoice-unfree .info{position: relative; padding-left: 5px; margin-left: 34px;margin-top: -4px;color: #b3b4b7;height: 42px;line-height: 42px;}
+.talk-main .teavoice-unfree .info .pointer{position: absolute;left: 0;top: 0;width: 5px;height:42px;background: url(../images/voice_point.jpg) 0 center no-repeat;background-size: 5px auto;}
+.talk-main .teavoice-unfree .info p{vertical-align: middle; border-radius: 5px; height: 42px;width: 80%; display: inline-block;margin-right: 5px; background: url(../images/voice_bg.jpg) 0 0 no-repeat;background-size: 100% 42px;}
+.talk-main .teavoice-unfree .info i{display: inline-block;margin-left: 12px; width: 20px; height: 42px; line-height: 40px; background: url(../images/icon_voice.png) 0 center no-repeat;background-size: 13px 18px;}
+.talk-main .teavoice-unfree .info  i.playing{background: url(../images/icon_voice.gif) 0 center no-repeat;background-size: 13px 18px;}
 .talk-main .teavoice-unfree .info-lock{height: 42px;margin-left: 34px;margin-top: -4px;width: 82%;background: url(../images/voice_lock.png) 0 0 no-repeat;background-size:100% 42px;}
 .talk-main .unread{position: fixed;right: 0;top: 50%;padding: 0 5px 0 20px;height: 28px;line-height: 28px;border-radius: 14px 0 0 14px;border: 1px solid #e5e5e5;border-right: 0; color:#ff8a00;background: url(../images/xiala.png) 5px center no-repeat #fff;background-size: 14px auto;box-shadow: 0 0 5px 1px #e5e5e5;}
+.talk-main video{width: 120px;height: 120px;}
+/* 视频弹出框 */
+.video_bg {position: absolute;left:0;top: 0;width: 100%;height: 100%;background: #797979;z-index: 999;}
+.video_bg .top{background: transparent;height: 50px;position: absolute;left: 0;top: 0;width: 100%;z-index: 1999;}
+.video_bg .top span{float: left;margin-top: 18px;margin-left: 18px;height: 20px;width: 20px;background: url(../images/vid_close.png) center no-repeat;background-size: 20px 20px;}
+#video_player{position: absolute; width: 100%;height: auto;top: 50%; left: 50%; transform: translate(-50% ,-50%); -ms-transform: translate(-50% ,-50%); -moz-transform: translate(-50% ,-50%); -webkit-transform: translate(-50% ,-50%); -o-transform: translate(-50% ,-50%);}
 /* 发送消息 */
 .share-main .send-msg{z-index: 10; height: auto;line-height: 42px; background:#f4f4f6;border-top:1px solid #e6e6e6;position: fixed;bottom: 0;left: 0;width: 100%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
 .share-main .send-msg .row1{line-height: 32px;overflow: hidden;background:-moz-linear-gradient(top, #feffff, #efefef); background:-webkit-gradient(linear, 0 0, 0 bottom, from(#feffff), to(#efefef)); background:-o-linear-gradient(top, #feffff, #efefef);}

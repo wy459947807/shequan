@@ -1,187 +1,322 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/individual_share.css">
-</head>
-<body style="background: #fff;height: 100vh;">
-    <div class="yj_header">
-		<font id="page_title">邵立胜分享</font>
-		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-	</div>
-    <!-- 个人分享主题开始 -->
-    <div class="share-top">
-		<div class="pic"><img src="images/share_pic1.png" alt=""></div>
-		<div class="txt">
-			<h4>邵老师分享</h4>
-			<span class="fire">7154</span>
-			<span class="like">7154</span>
-			<span class="fan">7154</span>
-		</div>
-		<div class="introduc">
-			<span>简介</span>
-			<div class="info" style="display: none;">
-				<b class="point"></b>
-				<p>简介：《赢家股票期货特训营》主讲老师,CCTV证券资讯频道特邀嘉宾和讯财经特邀嘉宾,上海赢家企业发展有限公司（赢家教育）董事长,赢顺资产管理有限公司风控总监</p>
-			</div>
-		</div>
-    </div>
-    <div class="share-main">
-    	<div class="share-tit">
-    		<h2>聊天室</h2>
-    		<div class="follow" id="follow">
-                <p>关注</p>
-    			<span>111</span>
-    		</div>
-            <div class="follow" id="followed" style="display: none;">
-                <p>已关注</p>
-                <span>111</span>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="js/layer/need/layer.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/individual_share.css">
+    </head>
+    <body style="background: #fff;height: 100vh;">
+        <div id="body">
+        <script type="text/html" id="body_tpl">  
+        <div class="yj_header">
+            <font id="page_title">{{killerInfo.real_name}}分享</font>
+            <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+        </div>
+        <!-- 个人分享主题开始 -->
+        <div class="share-top">
+            <div class="pic"><img src="{{config.serviceUrl}}{{killerInfo.avatar}}" alt=""></div>
+            <div class="txt">
+                <h4>{{killerInfo.real_name}}老师分享</h4>
+                <span class="fire">{{killerInfo.views}}</span>
+                <span class="like">{{killerInfo.notice}}</span>
+                <span class="fan">{{killerInfo.fans}}</span>
             </div>
-    	</div>
-        <div class="talk-main">
-            <ul id="talk_list">
-                <li class="time-tab"><span>4-16</span></li>
-                <li class="teawz">
-                    <div class="tit">
-                        <img src="images/share_pic1.png" alt="">
-                        少李胜<span class="time">4-16&nbsp;10:00</span>
+            <div class="introduc">
+                <span>简介</span>
+                <div class="info" style="display: none;">
+                    <b class="point"></b>
+                    <p>{{killerInfo.intro}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="share-main">
+            <div class="share-tit">
+                <h2>聊天室</h2>
+                <div class="follow" id="follow">
+                    <p>关注</p>
+                    <span>{{killerInfo.notice}}</span>
+                </div>
+                <div class="follow" id="followed" style="display: none;">
+                    <p>已关注</p>
+                    <span>{{killerInfo.notice}}</span>
+                </div>
+            </div>
+            <div class="talk-main"   data-page="1" data-load="true">
+                <span class="load-more"></span>
+                <ul id="talk_list">
+                    <li class="time-tab"><span>4-16</span></li>
+
+                </ul>
+                <div class="unread">121条新消息</div>
+            </div>
+            <div class="send-msg">
+                <div class="select_look look-teacher">看老师</div>
+                <div class="select_look look-all" style="display: none;">看全部</div>
+                <div id="gift-box" style="display: none;">
+                    <ul>
+                        {{each giftList.list as value key}}
+                            <li><img src="{{config.serviceUrl}}{{value.img}}" alt=""><p>{{value.win_coin}}</p></li>
+                        {{/each}}  
+                    </ul>
+                </div>
+                <div class="row1" style="display: none;">
+                    <ul id="msg_rights">
+                        <li data-val="1">付费分享</li>
+                        <li  class="selected" data-val="0">免费分享</li>
+                    </ul>
+                </div>
+                <div class="row2">
+                    <span class="editor speech"></span>
+                    <span class="editor keyboard" style="display: none;"></span>
+                    <input class="emotion_area text-area" id="msg_area" type="text" placeholder="在此可以和老师、股民聊天">
+                    <div class="voice-box" style="display: none;">
+                        <form id="audioFile"   action="{{config.apiUrl}}Index/uploadCloud" enctype="multipart/form-data" method="post">
+                        <input class="voice-area fileUpload"  data-form='audioFile' data-type='5' name="filename" type="file" accept="audio/*" capture="microphone">点击 说话
+                        </form> 
                     </div>
-                    <div class="tea-info"><i></i><span>jfsaiod jsdoigjjsdoifj oasidjfoisad soadifjoij jfsiodajf soaidfj ajsdoif sdoiafyfrsioa joisdfj aosdjfooiasdf</span></div>
-                </li>
+                   
+                    <div class="btn-right">
+                        <span class="emotion"></span>
+                        <span class="plus btn-area"></span>
+                        <span class="gift btn-area"></span>
+                        <input class="btn" style="display: none;" type="button" id="send_msg" value="发送">
+                    </div>
+                </div>
+                <div id="qq-emotion"></div>
+                <div id="photo-box" style="display: none;">
+                    <ul>
+                        <li>
+                            <form id="imgFile"   action="{{config.apiUrl}}Index/uploadLocal" enctype="multipart/form-data" method="post">
+                            <input class="fileUpload"  data-form='imgFile' data-type='3'  name="filename" type="file" accept="image/*">照片
+                            </form> 
+                        </li>
+                        <li>
+                            <form id="videoFile"   action="{{config.apiUrl}}Index/uploadCloud" enctype="multipart/form-data" method="post">
+                            <input class="fileUpload" data-form='videoFile'  data-type='6' name="filename" type="file" accept="video/*" capture="camcorder">拍摄
+                            </form> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="masking" style="display: none;"></div>
+        <!-- 解锁提示框 -->
+        <div class="tip tip-1" style="display: none;">
+            <div class="tit">使用赢家宝解锁 <span class="cancel"></span></div>
+            <div class="con">解锁需要扣除100赢家宝</br>当前数量：3000赢家宝</div>
+            <div class="btn-box">
+                <span class="cancel">取消</span>
+                <span class="confirm">确认扣除</span>
+            </div>
+        </div>
+        <!-- 购买赢家宝提示框 -->
+        <div class="tip tip-2" style="display: none;">
+            <div class="tit">赢家宝数量不足，请兑换 <span class="cancel"></span></div>
+            <div class="con">解锁需要扣除100赢家币</br>当前数量：90赢家币</div>
+            <div class="btn-box">
+                <span class="cancel">取消</span>
+                <span class="confirm">去获得</span>
+            </div>
+        </div>
+        <audio style="display: none;" id="voi_player"  src="" controls="controls"></audio>
+        <div class="video_bg" style="display: none;">
+            <div class="top" style="display: none;">
+                <span class="vid_close"></span>
+            </div>
+            <video src="" id="video_player" controls="controls"></video>
+        </div>
+        </script>
+        </div>
+        
+        
+         <script type="text/html" id="messageList_tpl">  
+           {{each messageList.list as value key}}
+                {{if value.msg_type==1}}
+                    {{if value.killer_id==killerInfo.id}}
+                        {{if value.is_charge==1}}
+                        <li class="teawz-unfree">
+                            <div class="tit">
+                                <img src="{{value.avatar}}" alt="">
+                                {{value.from_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                            </div>
+                            <div class="info-lock"></div>
+                            <div class="info" style="display: none;"><i></i><span>{{value.message}}</span></div>
+                        </li>
+                        {{else}}
+                            {{if value.reply_id==1}}
+                            <li class="teawz">
+                                <div class="tit">
+                                    <img src="{{value.avatar}}" alt="">
+                                    {{value.from_client_name}}<i>回复</i>{{value.to_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                                </div>
+                                <div class="info"><i></i>
+                                    <span>{{value.message}}
+                                        <p class="user-info">{{value.to_client_name}}：{{value.reply_message}}</p>
+                                    </span>
+                                </div>
+                            </li>
+                            {{else}}
+                            <li class="teawz">
+                                <div class="tit">
+                                    <img src="{{value.avatar}}" alt="">
+                                    {{value.from_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                                </div>
+                                <div class="info"><i></i>
+                                    <span>{{value.message}}</span>
+                                </div>
+                            </li>
+
+                            {{/if}}
+                        {{/if}}
+                    {{else}}
+                    <li class="userwz">
+                        <div class="tit">
+                            <span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                            {{value.from_client_name}}<i class="reply">回复信息</i>
+                            <img src="{{value.avatar}}" alt="">
+                        </div>
+                        <div class="info"><i></i><span>{{value.message}}</span></div>
+                    </li>
+                    {{/if}}
+                {{else if value.msg_type==2}}
+                {{else if value.msg_type==3}}
+                    {{if value.killer_id==killerInfo.id}}
+                        {{if value.is_charge==1}}
+                        <li class="teawz-unfree">
+                            <div class="tit">
+                                <img src="{{value.avatar}}" alt="">
+                                {{value.from_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                            </div>
+                            <div class="info-lock"></div>
+                            <div class="info" style="display: none;"><i></i><span><img width="50%" src="{{config.serviceUrl}}{{value.attach_url}}"/></span></div>
+                        </li>
+                        
+                        {{else}}
+                        <li class="teawz">
+                             <div class="tit">
+                                 <img src="{{value.avatar}}" alt="">
+                                 {{value.from_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                             </div>
+                             <div class="info"><i></i>
+                                 <span><img  width="100%"  src="{{config.serviceUrl}}{{value.attach_url}}"/></span>
+                             </div>
+                        </li> 
+                        {{/if}}
+                    {{else}}
+                    <li class="userwz">
+                        <div class="tit">
+                            <span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                            {{value.from_client_name}}<i class="reply">回复信息</i>
+                            <img src="{{value.avatar}}" alt="">
+                        </div>
+                        <div class="info"><i></i><span><img  width="50%" src="{{config.serviceUrl}}{{value.attach_url}}"/></span></div>
+                    </li>
+                    {{/if}}
+                {{else if value.msg_type==4}}
                 <li class="userwz">
                     <div class="tit">
-                        <span class="time">4-16&nbsp;10:00</span>少李胜<i class="reply">回复信息</i><img src="images/share_pic1.png" alt="">
+                        <span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                        {{value.from_client_name}}<i class="reply">回复信息</i>
+                        <img src="{{value.avatar}}" alt="">
                     </div>
-                    <div class="info"><i></i><span>jfsaiod jsdoigjjsdoifj</span></div>
+                    <div class="info"><i></i><span><img  width="50%" src="{{config.serviceUrl}}{{value.attach_url}}"/></span></div>
                 </li>
-                <li class="teawz-unfree">
-                    <div class="tit">
-                        <img src="images/share_pic1.png" alt="">
-                        少李胜<span class="time">4-16&nbsp;10:00</span>
-                    </div>
-                    <div class="info-lock"></div>
-                    <div class="tea-info" style="display: none;"><i></i><span>jfsaiod jsdoigjjsdoifj oasidjfoisad soadifjoij jfsiodajf soaidfj ajsdoif sdoiafyfrsioa joisdfj aosdjfooiasdf</span></div>
-                </li>
-                <li class="teavoice">
-                    <div class="tit">
-                        <img src="images/share_pic1.png" alt="">
-                        少李胜<span class="time">4-16&nbsp;10:00</span>
-                    </div>
-                    <div class="info"><span class="pointer"></span><p class="play"><i></i></p>60”
-                        <audio style="display: none;" controls="controls">
-                            <source src="https://res.wx.qq.com/voice/getvoice?mediaid=MzI5ODQ5Mjc3M18yMjQ3NDg1Nzg1" />
-                        </audio>
-                    </div>
-                </li>
-                <li class="teavoice-unfree">
-                     <div class="tit">
-                        <img src="images/share_pic1.png" alt="">
-                        少李胜<span class="time">4-16&nbsp;10:00</span>
-                    </div>
-                    <div class="info-lock"></div>
-                    <div class="teavoi-info" style="display: none;">
-                        <span class="pointer"></span><p class="play"><i></i></p>60”
-                        <audio style="display: none;" controls="controls">
-                            <source src="https://res.wx.qq.com/voice/getvoice?mediaid=MzI5ODQ5Mjc3M18yMjQ3NDg1Nzg1" />
-                        </audio>
-                    </div>
-                </li>
-                <li class="teawz">
-                    <div class="tit">
-                        <img src="images/share_pic1.png" alt="">
-                        少李胜<i>回复</i>小明<span class="time">4-16&nbsp;10:00</span>
-                    </div>
-                    <div class="tea-info"><i></i><span>州扑克是很多的炒股或者投资者喜欢玩的一种游戏，因为德州扑克的博弈很像自己在股市以及市场中的一些动作及行为，有的人可以<p class="user-info">用户  C：大大，昨天根据你的建议买入了000001</p>
-                    </span></div>
-                </li>
-            </ul>
-            <div class="unread">121条新消息</div>
-        </div>
-        <div class="send-msg">
-            <div class="select_look look-all">看全部</div>
-            <div id="gift-box" style="display: none;">
-                <ul>
-                    <li><img src="images/gift_icon/00.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/01.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/02.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/03.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/04.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/05.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/06.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/07.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/08.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/09.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/10.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/11.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/12.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/13.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/14.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/15.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/16.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/17.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/18.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/19.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/20.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/21.jpg" alt=""><p>100</p></li>
-                    <li><img src="images/gift_icon/22.jpg" alt=""><p>100</p></li>
-                </ul>
-            </div>
-            <div class="select_look look-teacher" style="display: none;">看老师</div>
-            <div class="row1" style="display: none;">
-                <ul id="msg_rights">
-                    <li class="selected" data-val="1">付费分享</li>
-                    <li data-val="0">免费分享</li>
-                </ul>
-            </div>
-            <div class="row2">
-                <span class="editor speech"></span>
-                <span class="editor keyboard" style="display: none;"></span>
-                <input class="emotion_area text-area" id="msg_area" type="text" placeholder="在此可以和老师、股民聊天">
-                <div class="voice-box" style="display: none;">
-                    <input class="voice-area" type="file" accept="audio/*" capture="microphone">点击 说话
-                </div>
-                <div class="btn-right">
-                    <span class="emotion"></span>
-                    <span class="plus btn-area"></span>
-                    <span class="gift btn-area"></span>
-                    <input class="btn" style="display: none;" type="button" id="send_msg" value="发送">
-                </div>
-            </div>
-            <div id="qq-emotion"></div>
-            <div id="photo-box" style="display: none;">
-                <ul>
-                    <li><input id="load_pic" type="file" accept="image/*">照片</li>
-                    <li><input id="load_video" type="file" accept="video/*" capture="camcorder">拍摄</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="masking" style="display: none;"></div>
-    <!-- 解锁提示框 -->
-    <div class="tip tip-1" style="display: none;">
-        <div class="tit">使用赢家宝解锁 <span class="cancel"></span></div>
-        <div class="con">解锁需要扣除100赢家宝</br>当前数量：3000赢家宝</div>
-        <div class="btn-box">
-            <span class="cancel">取消</span>
-            <span class="confirm">确认扣除</span>
-        </div>
-    </div>
-    <!-- 购买赢家宝提示框 -->
-    <div class="tip tip-2" style="display: none;">
-        <div class="tit">赢家宝数量不足，请兑换 <span class="cancel"></span></div>
-        <div class="con">解锁需要扣除100赢家币</br>当前数量：90赢家币</div>
-        <div class="btn-box">
-            <span class="cancel">取消</span>
-            <span class="confirm">去获得</span>
-        </div>
-    </div>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/circle.js"></script>
-    <script src="js/emotion.js"></script>
-	<script src="js/talk.js"></script>
-</body>
+                {{else if value.msg_type==5}}
+                    {{if value.killer_id==killerInfo.id}}
+                        {{if value.is_charge==1}}
+                        <li class="teavoice-unfree">
+                            <div class="tit">
+                                <img src="{{value.avatar}}" alt="">
+                                {{value.from_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                            </div>
+                            <div class="info-lock"></div>
+                            <div class="info" style="display: none;"><span class="pointer"></span><p class="play voi_play" data-val="{{value.attach_url}}"><i></i></p>
+                            </div>
+                        </li>
+                        {{else}}
+                        <li class="teavoice">
+                            <div class="tit">
+                                <img src="{{value.avatar}}" alt="">
+                                {{value.from_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                            </div>
+                            <div class="info"><span class="pointer"></span><p class="play voi_play" data-val="{{value.attach_url}}"><i></i></p>
+                            </div>
+                        </li>
+                        {{/if}}
+                    {{else}}
+                    <li class="uservoice">
+                        <div class="tit">
+                            <span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>{{value.from_client_name}}<img src="{{value.avatar}}" alt="">
+                        </div>
+                        <div class="info"><span class="pointer"></span><p class="play voi_play" data-val="{{value.attach_url}}"><i></i></p>
+                        </div>
+                    </li>
+                    {{/if}} 
+                {{else if value.msg_type==6}}
+                    {{if value.killer_id==killerInfo.id}}
+                        {{if value.is_charge==1}}
+                        <li class="teawz-unfree">
+                            <div class="tit">
+                                <img src="{{value.avatar}}" alt="">
+                                {{value.from_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                            </div>
+                            <div class="info-lock"></div>
+                            <div class="info" style="display: none;"><i></i><span>{{value.attach_url}}</span></div>
+                        </li>     
+                        {{else}}
+                            <li class="teawz">
+                                <div class="tit">
+                                    <img src="{{value.avatar}}" alt="">
+                                    {{value.from_client_name}}<span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>
+                                </div>
+                                <div class="info"><i></i><span><video src="{{value.attach_url}}"></span></div>
+                            </li>
+                        {{/if}} 
+                    {{else}}
+                        <li class="userwz">
+                            <div class="tit">
+                                <span class="time">{{value.saytime | dateFormat: 'MM-DD hh:mm'}}</span>{{value.from_client_name}}<img src="{{value.avatar}}" alt="">
+                            </div>
+                            <div class="info"><i></i><span><video src="{{value.attach_url}}"></video></span></div>
+                        </li>
+                    {{/if}} 
+                
+                {{/if}}
+            {{/each}}  
+        </script>
+        
+        
+        
+
+        <script src='js/jquery-1.9.1.min.js'></script>
+        <script src='../Public/js/jquery.form.js'></script>
+        <script src='../Public/js/layer/layer.js'></script>
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/plupload/plupload.full.min.js"></script>
+        <script src="../Public/js/Validform/5.3.2/Validform.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+     
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/individual_share.js"></script>
+        <script src="js/individual_share.js"></script>
+        
+        <!--即时通讯-->
+        <script src="../public/js/live/swfobject.js"></script>
+        <script src="../public/js/live/web_socket.js"></script>
+        
+ 
+        <script src="js/circle.js"></script>
+        <script src="js/emotion.js"></script>
+        <script src="js/talk.js"></script>
+
+    </body>
 </html>
+

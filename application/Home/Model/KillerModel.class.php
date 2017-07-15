@@ -20,13 +20,13 @@ class KillerModel extends CommonModel {
         if(!empty($params['orderType'])){
             switch ($params['orderType']){
                 case 1:
-                    $this->sqlOrder=" ORDER BY last_login_time DESC ";
+                    $this->sqlOrder=" ORDER BY views DESC ";
                     break;
                 case 2:
                     $this->sqlOrder=" ORDER BY fans DESC ";
                     break;
                 case 3:
-                    $this->sqlOrder=" ORDER BY msgs DESC ";
+                    $this->sqlOrder=" ORDER BY notice DESC ";
                     break;
             }
         }
@@ -115,6 +115,10 @@ class KillerModel extends CommonModel {
                 
   
                 $ids[]=$val['id'];
+                
+                if(!empty($val['cert_imgs'])){
+                    $listInfo[$key]['cert_imgs']= unserialize($val['cert_imgs']);
+                }
             }
             
             
@@ -133,9 +137,8 @@ class KillerModel extends CommonModel {
                 }
             }
             
-            
-  
- 
+           
+
         }
 
         return $listInfo;

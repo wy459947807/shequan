@@ -46,18 +46,19 @@
                     container.find('.load-more').css('background', '#f1f1f1').text('正在努力加载数据...');
                     page++;
                     container.attr("data-load", "false");
-                    $.post('url', {padg: page}, function (result) {
+                    $.post( configInfo.apiUrl+"User/userFans",  mergeArray(configInfo.tokenInfo,{pageLimit:dataInfo.pageLimit,page:page}), function (result) {
                         if (result.status == 1) {
                             container.attr("data-load", "true");
                             container.attr("data-page", page);
                             container.find('.load-more').css('background', '#fff').text('');
                             var tmpData, str = "";
-                            for (var i = 0; i < result.data.length; i++) {
-                                tmpData = result.data[i];
-                                str += '<li><span>' + tmpData.no + '</span>';
-                                str += '<div class="pic"><img src="images/' + tmpData.img + '" alt=""></div>';
-                                str += '<div class="txt"><strong>' + tmpData.name + '</strong><p>' + tmpData.info + '</p></div></li>';
+ 
+                            if (result.data.list) {
+                                //模版数据处理
+                                dataInfo.fansItem = result.data;
+                                bindTemplate(dataInfo, "fansItem", "fansItem_tpl", 1);//绑定模版
                             }
+                            
                             if (str != '') {
                                 container.find('ul').append(str);
                             } else {

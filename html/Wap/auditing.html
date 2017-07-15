@@ -1,168 +1,191 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/layer/need/layer.css">
-    <link rel="stylesheet" href="css/auditing.css">
-</head>
-<body>
-	<div class="yj_header">
-		<font id="page_title">申请民间高手认证</font>
-		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-	</div>
-    <!-- 申请高手 -->
-    <div class="audit-main">
-    	<!-- 顶部审核状态 -->
-    	<div class="top">
-    		<span class="left">已提交申请</span>
-    		<span class="middle">审核中</span>
-    		<span class="right">审核结果</span>
-    		<div class="schedule"><img src="images/schedule1.png" alt="">
-    		</div>
-    		<h2><i><img src="images/order-success.png" alt=""></i>提交成功，请等待管理员审核</h2>
-    	</div>
-    	<div style="height: 8px;margin: 0 -10px;background:#efefef;"></div>
-    	<!-- 上传身份证 -->
-    	<div class="identify">
-    		<div class="g-tit">
-				<h3>认证方式：身份证</h3>
-			</div>
-			<div class="id-card">
-				<div class="pic">
-					<span class="g-delet" style="display: none;">删除</span>
-				</div>
-				<div class="txt">
-					<p>必须本人手持身份证，保持头像清晰可辨认，保持身份证信息清晰可见。</p>
-					<p>格式要求：支持.jpg .png格式，大小不超过2M</p>
-					<input type="file" id="id_card" accept="image/jpeg,image/png,image/jpg">
-					<span class="upload">上传照片</span>
-				</div>
-			</div>
-			<ul class="person-info">
-				<li>
-					<label><span>真实姓名</span><input type="text" name='real_name' placeholder="名字和身份证必须一致"></label>
-				</li>
-				<li>
-					<label><span>手机号码</span><input type="text" name='mobile' placeholder="能联系到您的手机号码"></label>
-				</li>
-				<li>
-					<label><span>微信号</span><input type="text" name='wechat' placeholder="填写您常用的微信(选填）"></label>
-				</li>
-				<li>
-					<label><span>邮箱</span><input type="text" name='email' placeholder="填写您常用的邮箱(选填）"></label>
-				</li>
-				<li>
-					<span>擅长领域</span>
-					<div>
-						<label><input type="radio" name="deal" data-value='1' checked="checked">股票</label>
-						<label><input type="radio" name="deal" data-value='2'>期货</label>
-						<label><input type="radio" name="deal" data-value='3'>外汇</label>
-						<label><input type="radio" name="deal" data-value='4'>外盘</label>
-					</div>
-				</li>
-			</ul>
-    	</div>
-    	<!-- 上传证书 -->
-    	<div class="certify">
-    		<div class="g-tit">
-				<h3>上传证书</h3>
-			</div>
-			<p>可上传的证书，包含以下类型等：</p>
-			<table width="100%">
-				<tr>
-					<td width="33.33%">
-						<div class="up-load">
-							<div class="pic-certify" data-id="0">
-								<span class="g-delet" style="display: none;">删除</span>
-							</div>
-							<input class="certify-upload" type="file" accept="image/jpeg,image/png,image/jpg">
-							<div class="pic"><img src="images/up-load.png" alt=""></div>
-							<p><span>证券交易</span></p>
-						</div>
-					</td>
-					<td width="33.33%">
-						<div class="up-load">
-							<div class="pic-certify" data-id="1">
-								<span class="g-delet" style="display: none;">删除</span>
-							</div>
-							<input class="certify-upload" type="file" accept="image/jpeg,image/png,image/jpg">
-							<div class="pic"><img src="images/up-load.png" alt=""></div>
-							<p><span>证券市场基本法律法规</span></p>
-						</div>
-					</td>
-					<td width="33.33%">
-						<div class="up-load">
-							<div class="pic-certify"  data-id="2">
-								<span class="g-delet" style="display: none;">删除</span>
-							</div>
-							<input class="certify-upload" type="file" accept="image/jpeg,image/png,image/jpg">
-							<div class="pic"><img src="images/up-load.png" alt=""></div>
-							<p><span>证券市场基础知识</span></p>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="up-load">
-							<div class="pic-certify"  data-id="3">
-								<span class="g-delet" style="display: none;">删除</span>
-							</div>
-							<input class="certify-upload" type="file" accept="image/jpeg,image/png,image/jpg">
-							<div class="pic"><img src="images/up-load.png" alt=""></div>
-							<p><span>证券投资顾问业务</span></p>
-						</div>
-					</td>
-					<td>
-						<div class="up-load">
-							<div class="pic-certify"  data-id="4">
-								<span class="g-delet" style="display: none;">删除</span>
-							</div>
-							<input class="certify-upload" type="file" accept="image/jpeg,image/png,image/jpg">
-							<div class="pic"><img src="images/up-load.png" alt=""></div>
-							<p><span>证券投资咨询业务</span></p>
-						</div>
-					</td>
-					<td>
-						<div class="up-load">
-							<div class="pic-certify" data-id="5">
-								<span class="g-delet" style="display: none;">删除</span>
-							</div>
-							<input class="certify-upload" type="file" accept="image/jpeg,image/png,image/jpg">
-							<div class="pic"><img src="images/up-load.png" alt=""></div>
-							<p><span>其它</span></p>
-						</div>
-					</td>
-				</tr>
-			</table>
-			<p>提示：每张图片大小不超过2M</p>
-			<div class="introduc">
-				<p>个人介绍<span>机构/散户</span></p>
-				<textarea resize="none" placeholder="在此输入..."></textarea>
-			</div>
-    	</div>
-    	<button class="submit-btn" id="submit_info">提交</button>
-    	<!-- 弹出框 -->
-    	<!-- <div class="tip-box" style="display: none;">
-    		<div class="tip">
-	    		<div class="tit">上传图片<span class="close"></span></div>
-	    		<div class="con">
-	    			<div class="pic"></div>
-	    			<div class="txt">
-	    				<input type="file" accept="image/jpeg,image/jpg,image/png">
-	    				<p>格式要求：支持.jpg .png格式，大小不超过2M</p>
-						<span>立即上传</span>
-	    			</div>
-	    		</div>
-	    	</div>
-    	</div> -->
-    </div>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/layer/layer.js"></script>
-    <script src="js/circle.js"></script>
-    <script src="js/auditing.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="js/layer/need/layer.css">
+        <link rel="stylesheet" href="css/auditing.css">
+    </head>
+    <body>
+        <div id="body">
+        <script type="text/html" id="body_tpl">    
+        <div class="yj_header">
+            <font id="page_title">申请民间高手认证</font>
+            <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+        </div>
+        <!-- 申请高手 -->
+        <div class="audit-main">
+            {{if killerInfo.id}}
+            <!-- 顶部审核状态 -->
+            <div class="top">
+                <span class="left">已提交申请</span>
+                <span class="middle">审核中</span>
+                <span class="right">审核结果</span>
+                <div class="schedule">
+                    {{if killerInfo.status==0}}
+                        <img src="images/schedule1.png" alt="">
+                    {{else}}
+                        <img src="images/schedule2.png" alt="">
+                    {{/if}}
+                </div>
+                <h2>
+                    {{if killerInfo.status==0}}
+                        <i><img src="images/order-success.png" alt=""></i>提交成功，请等待管理员审核
+                    {{else if killerInfo.status==1}}
+                        <i><img src="images/order-success.png" alt=""></i>恭喜您已通过审核！
+                    {{else if killerInfo.status==2}}  
+                        <i><img src="images/order-success.png" alt=""></i>{{killerInfo.refuse_cause}}
+                    {{/if}}
+                </h2>
+            </div>
+            {{/if}}
+            
+            <div style="height: 8px;margin: 0 -10px;background:#efefef;"></div>
+            <form id="killerRegist" class="form"  action="{{config.apiUrl}}Killer/registKiller" enctype="multipart/form-data" method="post">
+            <input type="hidden" name="uid" value="{{config.tokenInfo.uid}}"/>
+            <input type="hidden" name="token" value="{{config.tokenInfo.token}}"/>
+            <input type="hidden" name="id" value="{{killerInfo.id}}"/>
+            <!-- 上传身份证 -->
+            <div class="identify">
+                <div class="g-tit">
+                    <h3>认证方式：身份证</h3>
+                </div>
+                <div class="id-card">
+                    <div class="pic">
+                        {{if killerInfo.card_img}}
+                        <img id="uploadCard_show" width="300" height="200" src="{{config.serviceUrl}}{{killerInfo.card_img}}" />
+                        {{else}}
+                        <img id="uploadCard_show" style="display: none"  width="300" height="200" src="" />
+                        {{/if}}
+                        <input  id="uploadCard_val"  type="hidden" name="card_img" value="{{killerInfo.card_img}}"/>
+                        <span class="g-delet" style="display: none;">删除</span>
+                    </div>
+                    <div class="txt">
+                        <p>必须本人手持身份证，保持头像清晰可辨认，保持身份证信息清晰可见。</p>
+                        <p>格式要求：支持.jpg .png格式，大小不超过2M</p>
+                        <!--<input type="file" id="id_card" accept="image/jpeg,image/png,image/jpg">-->
+                        <span class="upload" id="uploadCard">上传照片</span>
+                    </div>
+                </div>
+                <ul class="person-info">
+                    <li>
+                        <label><span>真实姓名</span><input type="text" name='real_name' value="{{killerInfo.real_name}}" datatype="*" nullmsg="请填写真实姓名！" errormsg="真实姓名格式不正确"  placeholder="名字和身份证必须一致"></label>
+                    </li>
+                    <li>
+                        <label><span>手机号码</span><input type="text" name='mobile' value="{{killerInfo.mobile}}"  datatype="*" nullmsg="请填写手机号码！" errormsg="手机号码格式不正确"  placeholder="能联系到您的手机号码"></label>
+                    </li>
+                    <li>
+                        <label><span>微信号</span><input type="text" name='wechat' value="{{killerInfo.wechat}}"  placeholder="填写您常用的微信(选填）"></label>
+                    </li>
+                    <li>
+                        <label><span>邮箱</span><input type="text" name='email' value="{{killerInfo.email}}"  placeholder="填写您常用的邮箱(选填）"></label>
+                    </li>
+                    <li>
+                        <span>擅长领域</span>
+                        <div>
+                            {{each adeptArray as value key}} 
+                                {{if killerInfo.adept_type==key||(key==1&&!killerInfo.id)}}
+                                    <label><input type="radio" name="adept_type" value="{{key}}" checked="checked">{{value}}</label>
+                                {{else}}
+                                    <label><input type="radio" name="adept_type" value="{{key}}" >{{value}}</label>
+                                {{/if}} 
+                            {{/each}}      
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- 上传证书 -->
+            <div class="certify">
+                <div class="g-tit">
+                    <h3>上传证书</h3>
+                </div>
+                <p>可上传的证书，包含以下类型等：</p>
+                <table width="100%">
+                    {{each certifyArray as value key}} 
+                    {{if (key-1)%3==0}}
+                    <tr>
+                    {{/if}} 
+                        <td width="33.33%">
+                            <div class="up-load">
+                                <div class="pic-certify">
+                                    <input id="uploadCertify{{key}}_val"  type="hidden" name="cert_imgs[{{key-1}}]" value="{{killerInfo.cert_imgs[key-1]}}"/>
+                                    <span class="g-delet" style="display: none;">删除</span>
+                                </div>
+                                <div class="pic" id="uploadCertify{{key}}">
+                                    {{if killerInfo.cert_imgs[key-1]}}
+                                    <img id="uploadCertify{{key}}_show"  src="{{config.serviceUrl}}{{killerInfo.cert_imgs[key-1]}}" alt="">
+                                    {{else}}
+                                    <img id="uploadCertify{{key}}_show"  src="images/up-load.png" alt="">
+                                    {{/if}}
+                                </div>
+                                <p><span>{{value}}</span></p>
+                            </div>
+                        </td>
+                    {{if (key)%3==0}}
+                    </tr>
+                    {{/if}}       
+                    {{/each}}   
+ 
+                </table>
+                <p>提示：每张图片大小不超过2M</p>
+                <div class="introduc">
+                    <p>个人介绍<span>机构/散户</span></p>
+                    <textarea resize="none" name="intro" placeholder="在此输入...">{{killerInfo.intro}}</textarea>
+                </div>
+            </div>
+            <button class="submit-btn" id="submit_info" onclick="$('#killerRegist').submit()">提交</button> 
+            </form>
+            <!-- 弹出框 -->
+            <!-- <div class="tip-box" style="display: none;">
+                    <div class="tip">
+                            <div class="tit">上传图片<span class="close"></span></div>
+                            <div class="con">
+                                    <div class="pic"></div>
+                                    <div class="txt">
+                                            <input type="file" accept="image/jpeg,image/jpg,image/png">
+                                            <p>格式要求：支持.jpg .png格式，大小不超过2M</p>
+                                                    <span>立即上传</span>
+                                    </div>
+                            </div>
+                    </div>
+            </div> -->
+        </div>
+        </script>
+        </div>
+        <script src='js/jquery-1.9.1.min.js'></script>
+        <script src='../Public/js/layer/layer.js'></script>
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/plupload/plupload.full.min.js"></script>
+        <script src="../Public/js/Validform/5.3.2/Validform.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/auditing.js"></script>
+
+        <script src="js/circle.js"></script>
+       
+        <script>
+            
+            uploadLocal("uploadCard"); //初始视频化上传组建
+            
+            for(var i=1;i<7;i++){
+                uploadLocal("uploadCertify"+i); //初始视频化上传组建
+            }
+            
+            //上传回调函数
+            function plupload_callback(uploader,res){
+                layer.closeAll('loading');
+                layer.msg(res.msg);
+                $("#"+uploader+"_show").attr('src',res.data.list[0].remote_url).show();//显示图片
+                $("#"+uploader+"_val").val(res.data.list[0].local_url);
+            }       
+        </script>
+
+    </body>
 </html>

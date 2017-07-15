@@ -9,6 +9,17 @@ use Home\Lib\FileOpera;
  * 云服务器操作
  */
 class CloudController extends ApibaseController {
+    
+     
+    public function _initialize() {
+        parent::_initialize();
+        
+        //跨域处理
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+        header('Access-Control-Allow-Methods: GET, POST, PUT');
+    
+    }
    
     public function index(){
         
