@@ -3,6 +3,7 @@
 var dataInfo={
     config:configInfo,
     courseList:{},
+    videoInfo:{},
 }
 
 initData();//初始化数据
@@ -15,4 +16,11 @@ function initData(){
     tempData['pageLimit']=12;
     dataInfo.courseList = getRemoteData(tempData, configInfo.apiUrl+"Course/getList");  //课程列表
 }
+
+function openVideo(id){
+    dataInfo.videoInfo = getRemoteData(mergeArray(configInfo.tokenInfo,{id:id}), configInfo.apiUrl+"Course/getOne");//课程详情
+    initVideo("a1",dataInfo.videoInfo.video);
+    getLayerTemplate("a1","视频播放","100%");
+}
+
 

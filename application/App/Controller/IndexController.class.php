@@ -12,11 +12,13 @@ class IndexController extends AppbaseController {
 
     protected $user_model;
     protected $advert_model;
+    protected $killer_model;
     
     public function _initialize() {
         parent::_initialize();
         $this->user_model = D("Common/Users");//加载用户model
         $this->advert_model = D("Common/Advert");
+        $this->killer_model = D("Home/Killer");//高手模块
     }
     //首页
     public function index() {
@@ -74,11 +76,11 @@ class IndexController extends AppbaseController {
         if(!empty($_SESSION['uc_user'])){
             $ucUser=$_SESSION['uc_user'];
             //$this->params['jrw_id']=$ucUser['jrw_id'];
-            $this->params['jrw_id']=666;
+            $this->params['jrw_id']=$ucUser['uid'];
             $this->params['user_nicename']=$ucUser['username'];
             $this->params['avatar']=$ucUser['headimgurl_small'];
             $this->params['sex']=$ucUser['gender'];
-            $this->params['mobile']="1333615518";
+            $this->params['mobile']=$ucUser['mobile'];
         }
         
         $rules=array(
@@ -120,11 +122,16 @@ class IndexController extends AppbaseController {
 
         //登录信息
         $loginInfo=array(
+            'avatar'=>$this->params['avatar'],
+            'user_nicename'=>$this->params['user_nicename'],
+            'sex'=>$this->params['sex'],
+            'mobile'=>$this->params['mobile'],
             'token'=>md5(time().sp_random_string()),
             "last_login_ip"=>get_client_ip(0, true),
             "last_login_time" => date("Y-m-d H:i:s"),
         );
 
+        $this->killer_model->where(array("id"=>$userInfo['killer_id']))->save(array('avatar'=>$this->params['avatar']));//更新高手头像
         $retInfo = $this->user_model->where(array("id"=>$uid))->save($loginInfo);//更新登录信息
         if(!$retInfo){
             $this->ajaxReturn(500,"失败！","");

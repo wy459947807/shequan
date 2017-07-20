@@ -57,6 +57,22 @@ class UserSubscribeModel extends CommonModel{
             $subscribeInfo=$model->table(C('DB_PREFIX') . 'user_subscribe')->where($subscribeArray)->find();
             $retInfo=array();
             if(!empty($subscribeInfo)){
+                //判断是否重复订阅
+                if($subscribeInfo["type"]==0){
+                    if($subscribeInfo["use_num"]<$subscribeInfo["num"]){
+                        $this->result['status'] = 200;
+                        $this->result['msg'] = "请不要重复订阅！";
+                        return $this->result;
+                    }
+                }else{
+                    if(strtotime($subscribeInfo["expire_time"])> time()){
+                        $this->result['status'] = 200;
+                        $this->result['msg'] = "请不要重复订阅！";
+                        return $this->result;
+                    }
+                }
+                
+                $addArray['use_num']=0;
                 $retInfo = $model->table(C('DB_PREFIX') . 'user_subscribe')->where($subscribeArray)->save($addArray);//添加订阅记录
             }else{
                 $retInfo = $model->table(C('DB_PREFIX') . 'user_subscribe')->add($addArray);//添加订阅记录

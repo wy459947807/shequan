@@ -1,106 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <title>十年赢家网-手机版</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/layer/need/layer.css">
-    <link rel="stylesheet" href="css/standerd.css">
-</head>
-<body>
-	<!-- 顶部标题 -->
-    <div class="yj_header">
-		<font id="page_title">订阅页面</font>
-		<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-	</div>
-    <!-- 订阅标准主体开始 -->
-    <div class="standerd-main">
-	<!-- 主体头部信息 -->
-        <div class="top">
-        	<div class="pic">
-        		<img src="images/icon-teach.png" alt="">
-        	</div>
-        	<div class="txt">
-        		<h4>早晨好，股海浪子一天之计在于晨，鼓足马力奋斗</h4>
-        		<p>赢家宝余额：<span>1500.00个</span></p>
-        	</div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="js/layer/need/layer.css">
+        <link rel="stylesheet" href="css/standerd.css">
+    </head>
+    <body>
+        <div id="body">
+        <script type="text/html" id="body_tpl">  
+        <!-- 顶部标题 -->
+        <div class="yj_header">
+            <font id="page_title">订阅页面</font>
+            <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
         </div>
-        <div style="height: 8px;background:#eeeeee;"></div>
-        <!-- 选择支付 -->
-        <div class="con">
-        	<div class="tit">
-        		<h2><i></i>您选定邵立胜老师的直播分享课程，请选择以下支付方式：</h2>
-        		<p>请选择定购方式</p>
-        	</div>
-        	<div class="info">
-        		<table class="course-time">
-        			<tr>
-        				<td width="20%">订购方式</td>
-        				<td width="30%">单价（赢家宝）</td>
-        				<td width="20%">数量</td>
-        				<td>小计（赢家宝）</td>
-        			</tr>
-        			<tr class="on">
-    					<td><label><input type="radio" name="time" checked="checked">条</label></td>
-    					<td>5</td>
-    					<td><input type="text" name="number" placeholder="0" value="1"></td>
-    					<td><span>5</span></td>
-        			</tr>
-        			<tr>
-    					<td><label><input type="radio" name="time">天</label></td>
-    					<td>10</td>
-    					<td><input type="text" name="number" placeholder="0" value="1"></td>
-    					<td><span>10</span></td>
-        			</tr>
-        			<tr>
-    					<label><td><input type="radio" name="time">周</label></td>
-    					<td>500</td>
-    					<td><input type="text" name="number" placeholder="0" value="1"></td>
-    					<td><span>500</span></td>
-        			</tr>
-        			<tr>
-    					<td><label><input type="radio" name="time">月</label></td>
-    					<td>1500</td>
-    					<td><input type="text" name="number" placeholder="0" value="1"></td>
-    					<td><span>1500</span></td>
-        			</tr>
-        			<tr>
-    					<td><label><input type="radio" name="time">季</label></td>
-    					<td>4500</td>
-    					<td><input type="text" name="number" placeholder="0" value="1"></td>
-    					<td><span>4500</span></td>
-        			</tr>
-        			<tr>
-    					<td><label><input type="radio" name="time">年</label></td>
-    					<td>10000</td>
-    					<td><input type="text" name="number" placeholder="0" value="1"></td>
-    					<td><span>10000</span></td>
-        			</tr>
-        		</table>
-        		<p class="last-pay">实付赢家宝：<span id="sum_yjbao">5个</span></p>
-        		<button class="pay-btn" id="pay_yjbao">立即支付</button>
-        	</div>
+        <!-- 订阅标准主体开始 -->
+        <div class="standerd-main">
+            <!-- 主体头部信息 -->
+            <div class="top">
+                <div class="pic">
+                    <img src="images/icon-teach.png" alt="">
+                </div>
+                <div class="txt">
+                    <h4>早晨好，股海浪子一天之计在于晨，鼓足马力奋斗</h4>
+                    <p>赢家宝余额：<span id="user_win_coin">{{config.userInfo.win_coin}}个</span></p>
+                </div>
+            </div>
+            <div style="height: 8px;background:#eeeeee;"></div>
+            <!-- 选择支付 -->
+            <div class="con">
+                <div class="tit">
+                    <h2><i></i>您选定邵立胜老师的直播分享课程，请选择以下支付方式：</h2>
+                    <p>请选择定购方式</p>
+                </div>
+                <div class="info">
+                    <table class="course-time">
+                        <tr>
+                            <td width="20%">订购方式</td>
+                            <td width="30%">单价（赢家宝）</td>
+                            <td width="20%">数量</td>
+                            <td>小计（赢家宝）</td>
+                        </tr>
+                        
+                        {{each killerInfo.subscribe as value key}}  
+                        <tr class="check_item {{if key==0}} on {{/if}}" data-type="{{key}}" >
+                            <td>
+                                <label>
+                                    <input type="radio"  name="time"  {{if key==0}}  checked="checked" {{/if}}>{{unitList[key]}}
+                                </label>
+                            </td>
+                            <td class="coin_item">{{value}}</td>
+                            <td><input class="num" type="text" name="number" placeholder="0" value="1"></td>
+                            <td><span class="sum_item">{{value}}</span></td>
+                        </tr>
+                        {{/each}}         
+                    </table>
+                    <p class="last-pay">实付赢家宝：<span id="sum_yjbao">{{killerInfo.subscribe[0]}}个</span></p>
+                    <button class="pay-btn" id="pay_yjbao">立即支付</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- 弹出框 -->
-    <div id="baotip-box" style="display: none;">
-    	<div class="tip">
-    		<div class="con">
-    			<span class="close" onclick="document.getElementById('baotip-box').style.display='none';"></span>
-    			<h3>您的赢家宝不足，购买叶军老师课程即可获赠赢家宝。</h3>
-    			<p>可用于站内送礼物，订阅相关私密内容</p>
-    			<a class="btn" href="">去购买课程</a>
-    		</div>
-    	</div>
-	</div>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/layer/layer.js"></script>
-    <script src="js/circle.js"></script>
-    <script src="js/pay.js"></script>
-    <script>
-    	$.circle.pay.pay_yjbao();
-    </script>
-</body>
+        <!-- 弹出框 -->
+        <div id="baotip-box" style="display: none;">
+            <div class="tip" style="margin: 0px">
+                <div class="con">
+                    <span class="close" onclick="layer.closeAll()"></span>
+                    <h3>您的赢家宝不足，购买叶军老师课程即可获赠赢家宝。</h3>
+                    <p>可用于站内送礼物，订阅相关私密内容</p>
+                    <a class="btn" href="course_list.html">去购买课程</a>
+                </div>
+            </div>
+        </div>
+        </script>
+        </div>
+
+        <script src='js/jquery-1.9.1.min.js'></script>
+        <script src='../Public/js/layer/layer.js'></script>
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/plupload/plupload.full.min.js"></script>
+        <script src="../Public/js/Validform/5.3.2/Validform.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/standerd.js"></script>
+        
+        
+        <script src="js/circle.js"></script>
+        <script src="js/pay.js"></script>
+        <script>
+            $.circle.pay.pay_yjbao();
+        </script>
+    </body>
 </html>

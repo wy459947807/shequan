@@ -72,6 +72,48 @@
                 }
             })
         },
+        
+         //上拉加载更多我的粉丝
+        focus_loadmore: function () {
+            $(window).scroll(function () {
+                var container = $('.fans-main'),
+                        page = container.attr('data-page');
+                if (page == '' || page == null)
+                    return !1;
+                var pageH = $(document.body).height();
+                var scrollT = $(window).scrollTop();
+                var winH = $(window).height();
+                var stopstatus = container.attr("data-load");
+                if (scrollT / (pageH - winH) > 0.95 && stopstatus != 'false') {
+                    container.find('.load-more').css('background', '#f1f1f1').text('正在努力加载数据...');
+                    page++;
+                    container.attr("data-load", "false");
+                    $.post( configInfo.apiUrl+"User/userFocus",  mergeArray(configInfo.tokenInfo,{pageLimit:dataInfo.pageLimit,page:page}), function (result) {
+                        if (result.status == 1) {
+                            container.attr("data-load", "true");
+                            container.attr("data-page", page);
+                            container.find('.load-more').css('background', '#fff').text('');
+                            var tmpData, str = "";
+ 
+                            if (result.data.list) {
+                                //模版数据处理
+                                dataInfo.fansItem = result.data;
+                                bindTemplate(dataInfo, "fansItem", "fansItem_tpl", 1);//绑定模版
+                            }
+                            
+                            if (str != '') {
+                                container.find('ul').append(str);
+                            } else {
+                                container.find('.load-more').css('background', '#f1f1f1').text('没有更多数据').show();
+                            }
+                        } else {
+                            container.attr("data-load", "true");
+                            $.circle.util.tips(tesult.msg);
+                        }
+                    }, 'json');
+                }
+            })
+        },
         //赢家宝页面切换
         bao_tab: function () {
             $(document).on('click', '.bao-nav li', function () {

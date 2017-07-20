@@ -165,7 +165,7 @@ class KillerModel extends CommonModel {
       
         $updateArray=array(
             "real_name"=>$params['real_name'],
-            "avatar"=>$params['avatar'],
+            "avatar"=>!empty($params['avatar'])?$params['avatar']:$userInfo['avatar'],
             "mobile"=>$params['mobile'],
             "wechat"=>$params['wechat'],
             "email"=>$params['email'],

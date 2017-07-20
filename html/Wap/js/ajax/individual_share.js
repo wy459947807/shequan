@@ -26,6 +26,15 @@ var dataInfo = {
         reply_id: 0,
         reply_message: ""
     },
+    emotion:$.circle.util.emotion_bag(),
+    alertInfo:{
+        type:"",
+        gift_id:0,
+        gift_img:"",
+        expend:0,
+        win_coin:configInfo.userInfo.win_coin,
+    }
+    
 
 }
 
@@ -101,6 +110,7 @@ function onmessage(e) {
         case 'say':
             dataInfo.messageList = {list: {0: data}};
             bindTemplate(dataInfo, "talk_list", "messageList_tpl", 1);//绑定模版
+            $('.talk-main').animate({scrollTop: $('.talk-main')[0].scrollHeight}, 1);  //滚动到底部
             break;
             // 用户退出 更新用户列表
         case 'logout':
@@ -126,8 +136,8 @@ var options = {
             dataInfo.sendInfo.attach_url=o.data.filename.url;
         }
         layer.closeAll('loading');
-        layer.msg(o.msg);
-        ws.send(JSON.stringify(dataInfo.sendInfo));//发送消息  
+        //layer.msg(o.msg);
+        sendMsg();//发送消息  
     },
     error: function (data) {
     }
@@ -138,9 +148,10 @@ var options = {
 $(document).ready(function () {
     
     //搜索
-    $("#send_msg").click(function () {
-        ws.send(JSON.stringify(dataInfo.sendInfo));
-        $('.talk-main').animate({scrollTop: $('.talk-main')[0].scrollHeight}, 1);  //滚动到底部
+    $("#send_msg").click(function () { 
+        dataInfo.sendInfo.msg_type=1;
+        dataInfo.sendInfo.message=$("#msg_area").val();
+        sendMsg();
     });
 
     $("#msg_area").bind('input propertychange', function () {
@@ -155,7 +166,87 @@ $(document).ready(function () {
         var formId = $(this).attr("data-form");
         $("#"+formId).ajaxSubmit(options);
     });
+    
+    
+    //发送礼物
+    $("#gift-box li").click(function () {
+        dataInfo.alertInfo.gift_id=$(this).attr("data-id");
+        dataInfo.alertInfo.type="gift";
+        dataInfo.alertInfo.gift_img=$(this).attr("data-img");
+        dataInfo.alertInfo.expend=$(this).attr("data-expend");
+        bindTemplate(dataInfo, "alertBox", "alertBox_tpl");//绑定模版
+        getLayerTemplate("alertA");
+    });
+    
+    $(".unread").click(function () {
+        $('.talk-main').animate({scrollTop: 0}, 1);  //滚动到顶部
+    });
+
 });
+
+function expendCoin(){
+    if(dataInfo.alertInfo.type=="gift"){
+        var retInfo = getRemoteData(mergeArray(configInfo.tokenInfo, {killer_id: dataInfo.killerInfo.id,gift_id:dataInfo.alertInfo.gift_id}), configInfo.apiUrl + "Message/sendGift",1);
+        if(retInfo.status==1){
+            dataInfo.sendInfo.msg_type=4;
+            dataInfo.sendInfo.attach_url=dataInfo.alertInfo.gift_img;
+            sendMsg(1,0);
+            layer.closeAll();
+        }else{
+            layer.closeAll();
+            getLayerTemplate("alertB");
+        }
+    }
+}
+
+function checkMsg(val,id){
+    var retInfo = getRemoteData(mergeArray(configInfo.tokenInfo, {id: id}), configInfo.apiUrl + "Message/messageInfo",1);
+    if(retInfo.status==1){
+        $(val).hide();
+        $(val).siblings('.info').show();
+        var newNum = parseInt($('#new_num').html()); 
+        $('#new_num').html(newNum-1);
+    }else{
+        bindTemplate(dataInfo, "alertBox", "alertBox_tpl");//绑定模版
+        getLayerTemplate("alertC");
+    }
+}
+
+//发送消息
+function sendMsg(step,is_charge){
+    if(!step){
+        if(dataInfo.config.userInfo.killer_id==dataInfo.killerInfo.id){
+            getLayerTemplate("alertD");
+            return;
+        }
+    }
+    layer.closeAll();
+    dataInfo.sendInfo.is_charge=0;
+    dataInfo.sendInfo.reply_id=0;
+    dataInfo.sendInfo.to_client_name="";
+    if(is_charge){
+        dataInfo.sendInfo.is_charge=is_charge
+    }
+    ws.send(JSON.stringify(dataInfo.sendInfo)); 
+ 
+}
+
+function replyMsg(){
+    var replyCon=$("#replyCon").val();
+    if(replyCon==""){
+        layer.msg("回复内容不能为空！");
+        return;
+    }
+    dataInfo.sendInfo.message=replyCon;
+    ws.send(JSON.stringify(dataInfo.sendInfo)); 
+    layer.closeAll();
+}
+
+function openReply(id,name){
+    dataInfo.sendInfo.reply_id=id;
+    dataInfo.sendInfo.to_client_name=name;
+    getLayerTemplate("alertE");
+}
 
 
 

@@ -20,11 +20,12 @@
         
         
         <form class="js-ajax-form" method="post">
-        <table class="table table-hover table-bordered">
+            <table class="table table-hover table-bordered">
             <thead>
                 <tr>
                     <th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
                     <th width="50">ID</th>
+                    <th>头像</th>
                     <th>真实姓名</th>
                     <th>手机</th>
                     <th>微信</th>
@@ -41,6 +42,11 @@
                 <tr>
                     <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.id}"></td>
                     <td>{$vo.id}</td>
+                    <td>
+                        <a href="javascript:parent.image_preview_dialog('{$vo.avatar}');" style=" margin-right: 10px">
+                            <img width='30' height='30' src="{$vo.avatar}" />
+                        </a>
+                    </td>
                     <td>{$vo.real_name}</td>
                     <td>{$vo.mobile}</td>
                     <td>{$vo.wechat}</td>
@@ -62,9 +68,9 @@
         </table>
   
         <if condition="I('request.status/s','') neq 1">   
-            <div class="table-actions">
+            <!--<div class="table-actions">
                 <button class="btn btn-primary btn-small js-ajax-submit"  type="submit" data-action="{:U('Killer/check',array('status'=>1))}" data-subcheck="true">批量审核通过</button>
-            </div>
+            </div>-->
         </if> 
             
         <div class="pagination">{$page}</div>

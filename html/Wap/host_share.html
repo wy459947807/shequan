@@ -28,14 +28,14 @@
                         
                         {{each shareList.renqi.list as value key}}
                         <li>
-                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <h4>{{value.real_name}}</h4>
                                 <span class="fire">{{value.views}}</span>
                                 <span class="like">{{value.notice}}</span>
                                 <span class="fan">{{value.fans}}</span>
                             </div>
-                            <a class="btn" href="individual_share.html">24小时在线互动</a>
+                            <a class="btn" href="individual_share.html?id={{value.id}}">24小时在线互动</a>
                         </li>
                         {{/each}}   
   
@@ -46,14 +46,14 @@
                     <ul  id="shareItem1">
                         {{each shareList.redu.list as value key}}
                         <li>
-                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <h4>{{value.real_name}}</h4>
                                 <span class="fire">{{value.views}}</span>
                                 <span class="like">{{value.notice}}</span>
                                 <span class="fan">{{value.fans}}</span>
                             </div>
-                            <a class="btn" href="individual_share.html">24小时在线互动</a>
+                            <a class="btn" href="individual_share.html?id={{value.id}}">24小时在线互动</a>
                         </li>
                         {{/each}}   
                     </ul>
@@ -63,14 +63,14 @@
                     <ul id="shareItem2">
                         {{each shareList.fensi.list as value key}}
                         <li>
-                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <h4>{{value.real_name}}</h4>
                                 <span class="fire">{{value.views}}</span>
                                 <span class="like">{{value.notice}}</span>
                                 <span class="fan">{{value.fans}}</span>
                             </div>
-                            <a class="btn" href="individual_share.html">24小时在线互动</a>
+                            <a class="btn" href="individual_share.html?id={{value.id}}">24小时在线互动</a>
                         </li>
                         {{/each}}   
                     </ul>
@@ -84,14 +84,14 @@
         <script type="text/html" id="shareItem_tpl">    
         {{each shareItem.list as value key}}
         <li>
-            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+            <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
             <div class="txt">
                 <h4>{{value.real_name}}</h4>
                 <span class="fire">{{value.views}}</span>
                 <span class="like">{{value.notice}}</span>
                 <span class="fan">{{value.fans}}</span>
             </div>
-            <a class="btn" href="individual_share.html">24小时在线互动</a>
+            <a class="btn" href="individual_share.html?id={{value.id}}">24小时在线互动</a>
         </li>
         {{/each}} 
         </script>     

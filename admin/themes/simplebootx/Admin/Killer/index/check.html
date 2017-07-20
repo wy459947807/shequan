@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div style="width: 500px; height: 300px;  padding: 10px">
+    <form id="checkForm" action="{:U('Killer/check')}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="ids[]" value="{:I('request.id/d',0)}"/>
+        <table class="table table-bordered">
+            <tr>
+                <th width="80"> 职位：</th>
+                <td>
+                    <div class="row-fluid">
+                        <input type="text" name="job_type"  value=""  datatype="*" nullmsg="请填写职位！" errormsg="职位格式不正确"  />
+                    </div>
+                </td>
+               
+            </tr>
+           
+            <tr>
+                <th> 标签：</th>
+                <td>
+                    <div id="tags" style=" overflow: hidden; float: left" ></div>
+                </td>
+            </tr>
+            <tr>
+                <th> 添加标签：</th>
+                <td>
+                    <div class="row-fluid">
+                        <input type="text" name="tagInput"  id="tagInput"  value=""/>
+                        <button class="btn btn-primary " type="button" onclick="addTag()" style="margin-top: -10px">添加</button>
+                        <button class="btn btn-primary " type="button" onclick="delTag()" style="margin-top: -10px">清空</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        
+        
+        <div>
+            <div style="text-align: center; padding-top:20px ">
+                <button class="btn btn-primary " type="button" onclick="submitCheck()">提交</button>
+                <a class="btn" href="javascript:void(0)" onclick="closeWindow('check')">取消</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/html" id="tag_tpl">
+    <div class="tag_box">
+        <input type="hidden" name=tag[]  value="{{tagName}}"/>
+        <span class="tag_name">{{tagName}}</span>
+    </div>
+</script>
+
+
+<style>
+    .tag_name {
+        border: 1px solid #dce4ec;
+        padding: 5px;
+    }
+    .tag_box{
+        float: left; padding: 3px;
+        margin: 5px;
+    }
+</style>
+<script>
+    formInit("#checkForm","{:U('Killer/index')}"); 
+    function addTag(){
+        var data ={
+            tagName:$("#tagInput").val()
+        } 
+        var tagHtml = template("tag_tpl", data);
+        $("#tags").append(tagHtml);
+    }
+    
+    function delTag(){
+        $("#tags").html("");
+    }
+    
+    function submitCheck(){
+     
+        if($("#tags").html()==""){
+            layer.alert("请至少添加一个标签！");
+            exit;
+        }
+        $('#checkForm').submit();
+    
+    }
+</script>

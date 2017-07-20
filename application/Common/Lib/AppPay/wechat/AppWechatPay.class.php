@@ -27,7 +27,7 @@ class AppWechatPay {
     public function getWxPrepayid($params) {
         
         file_put_contents("postData2.txt", json_encode($params));
-        
+  
         $noceStr = md5(rand(100, 1000) . time()); //获取随机字符串  
         $time = time();
         $paramarr = array(
@@ -39,8 +39,12 @@ class AppWechatPay {
             "out_trade_no" => $params['orderNo'],
             "spbill_create_ip" => get_client_ip(0, true),
             "total_fee" =>intval($params['total_fee'] * 100),
-            "trade_type" => "APP"
+            "trade_type" =>!empty($params['trade_type'])?$params['trade_type']:"APP",
         );
+        
+        if(!empty($params['scene_info'])){
+            $paramarr['scene_info']=htmlspecialchars_decode($params['scene_info']);
+        }
 
         $sign = $this->sign($paramarr); //生成签名  
         $paramarr['sign'] = $sign;
@@ -49,8 +53,8 @@ class AppWechatPay {
             $paramXml .= "<" . $k . ">" . $v . "</" . $k . ">";
         }
         $paramXml .= "</xml>";
-        //file_put_contents("test.txt", "");
-        //file_put_contents("test.txt", $paramXml);
+        file_put_contents("test.txt", "");
+        file_put_contents("test.txt", $paramXml);
         $ch = curl_init();
         @curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查    
         @curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, true);  // 从证书中检查SSL加密算法是否存在    
@@ -63,8 +67,8 @@ class AppWechatPay {
             print curl_error($ch);
         }
         curl_close($ch);
-        //file_put_contents("test2.txt", "");
-        //file_put_contents("test2.txt", $resultXmlStr);
+        file_put_contents("test2.txt", "");
+        file_put_contents("test2.txt", $resultXmlStr);
         $result = $this->xmlToArray($resultXmlStr);
         $prepayid = $result['prepay_id'];
         $noceStr = md5(rand(100, 1000) . time()); //获取随机字符串  

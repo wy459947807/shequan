@@ -7,6 +7,7 @@ var dataInfo={
     killerRec:{},
     killerShare:{},
     killerRank:{},
+    emotion:$.circle.util.emotion_bag(),
 }
 
 initData();//初始化数据

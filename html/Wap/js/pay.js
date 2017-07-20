@@ -75,7 +75,7 @@
 					$(this).find("input[name='number']").focus();
 				}
 			});
-			$(document).on('click','#pay_yjbao',function(){//提交购买
+			/*$(document).on('click','#pay_yjbao',function(){//提交购买
 				var container=$(".course-time").find("tr.on");
 				var price=$.trim(container.find('span').text());
 				var num=$.trim(container.find("input[name='number']").val());
@@ -108,7 +108,7 @@
 						$.circle.util.tips(result.msg);
 					}
 				},'json');
-			})
+			})*/
 		}
 	};
 })(jQuery);

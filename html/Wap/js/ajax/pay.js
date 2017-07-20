@@ -7,7 +7,7 @@ var dataInfo={
 
 initData();//初始化数据
 
-bindTemplate(dataInfo, "order", "order_tpl");//绑定模版
+bindTemplate(dataInfo, "body", "body_tpl");//绑定模版
 
 //初始化数据
 function initData(){
@@ -27,10 +27,25 @@ function initData(){
 $(document).ready(function(){
     //报名提交
     $("#go_pay").click(function(){
-        if (!$('.agree input').is(':checked')) {
-            layer.msg('请先同意网络服务条款！');
-            return;
+        var payType=$("input[name=pay]:checked").val();
+     
+        if(payType=="alipay"){
+           
+        }else if(payType=="weixin"){
+            var payInfo={
+                body:dataInfo.order.order_name,
+                orderNo:dataInfo.order.order_sn,
+                total_fee:dataInfo.order.total_money,
+                trade_type:"MWEB",
+                scene_info:'{"h5_info":{"type":"Android","app_name":"十年赢家网","package_name":"com.bm.shinianjinrong"}}',
+            }
+            
+            var retData= getRemoteData(mergeArray(configInfo.tokenInfo,payInfo), configInfo.apiUrl+"Payment/wechatInfo",1);//提交订单
+            
+            //window.location.href="https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id="+retData.data.prepayid+"&package="+retData.data.package;
         }
+        
+        /*
         var orderData=configInfo.tokenInfo;
         orderData['course_ids']={0:dataInfo.course.id};
         orderData['course_num']={0:1};
@@ -40,7 +55,7 @@ $(document).ready(function(){
             window.location.href="pay.html?order_sn="+retData.data.order_sn;
         }else{
             layer.msg(retData.msg);
-        }
+        }*/
 
     });
 });

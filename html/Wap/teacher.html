@@ -17,7 +17,7 @@
                     <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
                 </div>
                 <div class="pic">
-                    <img src="{{config.serviceUrl}}{{teacher.avatar}}" alt="">
+                    <img src="{{teacher.avatar | urlFormat}}" alt="">
                 </div>
                 <h4>{{teacher.real_name}}</h4>
                 <p>
@@ -50,7 +50,7 @@
         {{if course.list}} 
         <div class="video">
             <div class="pic">
-                <a href="video.html"><img src="{{config.serviceUrl}}{{course['list'][0]['cover'][0]['url']}}" alt="">
+                <a href="train_course.html?id={{course['list'][0]['id']}}"><img src="{{config.serviceUrl}}{{course['list'][0]['cover'][0]['url']}}" alt="">
                 <p><i></i>{{course['list'][0]['views']}}万</p></a>
             </div>
         </div>

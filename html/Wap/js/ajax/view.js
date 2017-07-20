@@ -3,6 +3,7 @@
 var dataInfo={
     config:configInfo,
     messages:{},
+    emotion:$.circle.util.emotion_bag(),
 }
 
 initData();//初始化数据

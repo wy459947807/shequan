@@ -74,7 +74,7 @@ class Ucenter{
         /**
         * $_SESSION['uid']=$uid;
         */
-
+        //file_put_contents("uc.txt", json_encode($get)); 
         $_SESSION['uc_user']=$get;
         return API_RETURN_SUCCEED;
     }

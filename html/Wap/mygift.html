@@ -17,7 +17,7 @@
             <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
         </div>
         <div class="yj_info" id="userInfo">
-            <img src="{{config.userInfo.avatar}}">
+            <img src="{{config.userInfo.avatar | urlFormat}}">
             <p class="row-1">
                     <a href="javascript:;">{{config.userInfo.user_nicename}}</a>
                 <div class="un-log" style="display: none;">
@@ -33,6 +33,7 @@
         </div>
         <div class="gift-main main" data-page="1" data-load="true">
             <ul id="giftItem">
+                {{if giftItem.list}}  
                 {{each giftItem.list as value key}}
                 <li>
                     <div class="box">
@@ -43,7 +44,12 @@
                         <p class="time">{{value.ctime | dateFormat: 'YYYY-MM-DD hh:mm'}}</span></p>
                     </div>
                 </li>
-                {{/each}}      
+                {{/each}} 
+                {{else}}
+                <div class="lsj_info" style="height:100px;line-height:100px;text-align:center;">
+                    <p>暂无数据</p>
+                </div>
+                {{/if}}
             </ul>
             <span class="load-more"></span>
             <p class="sum-bao">总计已获得赢家宝：{{giftItem.totalPrice}}个</p>

@@ -34,7 +34,7 @@
                             <span></span>
                             {{/if}}
                             <a href="teacher.html?id={{value.id}}">
-                                <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                                <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                                 <div class="txt">
                                     <strong>{{value.real_name}}</strong>
                                     <p>{{value.tag}}</p>
@@ -62,7 +62,7 @@
                             <span></span>
                             {{/if}}
                             <a href="teacher.html?id={{value.id}}">
-                                <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                                <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                                 <div class="txt">
                                     <strong>{{value.real_name}}</strong>
                                     <p>{{value.tag}}</p>
@@ -92,7 +92,7 @@
                             <span></span>
                             {{/if}}
                             <a href="teacher.html?id={{value.id}}">
-                                <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                                <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                                 <div class="txt">
                                     <strong>{{value.real_name}}</strong>
                                     <p>{{value.tag}}</p>
@@ -119,7 +119,7 @@
         <li>
             <span>{{(page-1)*pageLimit+key+1}}</span>
             <a href="teacher.html?id={{value.id}}">
-                <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                 <div class="txt">
                     <strong>{{value.real_name}}</strong>
                     <p>{{value.tag}}</p>

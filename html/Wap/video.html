@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-	<head>
-	    <meta charset="UTF-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-	    <title>十年赢家网-手机版</title>
-	    <link rel="stylesheet" href="css/style.css">
-	    <link rel="stylesheet" href="css/teacher_course.css">
-	</head>
-	<body style="height: 100vh">
-		<!-- 赢家宝页面头部标题 -->
-		<div class="yj_header" style="position: absolute;left: 0;top: 0;width: 100%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">
-			<font id="page_title">视频播放</font>
-			<a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
-		</div>
-		<div class="video-main">
-			<div class="video-box">
-				<video src="http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4" controls="controls" poster="images/video_default.jpg"></video>
-			</div>
-		</div>
-		<script src="js/jquery-1.9.1.min.js"></script>
-		<script>
-			$(function(){
-				var v_width=$('.video-box video').width(),
-				v_height=0.56*v_width;
-				$('.video-box video').height(v_height);
-			})
-		</script>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <title>十年赢家网-手机版</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/teacher_course.css">
+    </head>
+    <body style="height: 100vh; background-color: #5a5a5a">
+        <div id="body">
+            <script type="text/html" id="body_tpl">   
+            <!-- 赢家宝页面头部标题 -->
+            <div class="yj_header" style="position: absolute;left: 0;top: 0;width: 100%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">
+                <font id="page_title">视频播放</font>
+                <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
+            </div>
+            <div class="video-main">
+                <div class="video-box">
+                    <!--<video src="" controls="controls" poster="images/video_default.jpg"></video>-->
+                    <div id="a1" style="width:100%; "></div>
+                </div>
+            </div>
+            </script>
+        </div>
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <!--数据处理-->
+        <script src="../Public/js/moment.min.js"></script>
+        <script src="../Public/js/plupload/plupload.full.min.js"></script>
+        <script src="../Public/js/Validform/5.3.2/Validform.min.js"></script>
+        <script src="../Public/js/cookie.js"></script>
+        <script src="../Public/js/LG.js"></script>
+        <script src="../Public/js/ckplayer/ckplayer.js"  type="text/javascript" charset="utf-8"></script>
+        <script src="../Public/js/artTemplate.js"></script>
+        <script src="../Public/js/common.js"></script>
+        <script src="js/ajax/config.js"></script>
+        <script src="js/ajax/video.js"></script>
+        <script>
+
+            $(function () {
+                var v_width = $('.video-box video').width(),
+                        v_height = 0.56 * v_width;
+                $('.video-box video').height(v_height);
+            })
+        </script>
+    </body>
 </html>

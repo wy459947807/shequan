@@ -47,12 +47,12 @@
                     {{each newMessages.list as value key}}        
                     <li>
                         <div class="teacher">
-                            <div class="pic"><img src="{{value.avatar}}" alt=""></div>{{value.from_client_name}}
+                            <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>{{value.from_client_name}}
                         </div>
                         <p class="txt">
                             <span>{{value.saytime | dateFormat: 'hh:mm'}}</span>
-                            <a href="">
-                            {{value.message}} 
+                            <a href="individual_share.html?id={{value.room_id}}">
+                            {{#value.message | emotionFormat}}
                             </a>
                         </p>
                     </li>
@@ -79,9 +79,13 @@
                         {{else}}
                          <li class="ace">
                         {{/if}} 
-                            <a href="teacher.html?id={{value.id}}"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></a>
+                            <a href="teacher.html?id={{value.id}}"><img src="{{value.avatar | urlFormat}}" alt=""></a>
                             <p>{{value.real_name}}</p>
-                            <h4>赢家特训营主讲师</h4>
+                            {{if value.job_type}}
+                                <h4>{{value.job_type}}</h4>
+                            {{else}}
+                                <h4>赢家特训营主讲师</h4>
+                            {{/if}}
                             {{if value.is_focused}} 
                             <span id="followed">已关注</span>
                             {{else}}
@@ -106,14 +110,14 @@
                     <script type="text/html" id="killerShare_tpl">
                     {{each killerShare.list as value key}}  
                     <li>
-                        <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                        <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                         <div class="txt">
                             <h4>{{value.real_name}}</h4>
                             <span class="fire">{{value.views}}</span>
                             <span class="like">{{value.notice}}</span>
                             <span class="fan">{{value.fans}}</span>
                         </div>
-                        <a class="btn" href="individual_share.html">24小时在线互动</a>
+                        <a class="btn" href="individual_share.html?id={{value.id}}">24小时在线互动</a>
                     </li>
                     {{/each}} 
                     </script>     
@@ -141,7 +145,7 @@
                         <span></span>
                         {{/if}}
                         <a href="teacher.html?id={{value.id}}">
-                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>
                                 <p>{{value.tag}}</p>
@@ -167,7 +171,7 @@
                         <span></span>
                         {{/if}}
                         <a href="teacher.html?id={{value.id}}">
-                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>
                                 <p>{{value.tag}}</p>
@@ -192,7 +196,7 @@
                         <span></span>
                         {{/if}}
                         <a href="teacher.html?id={{value.id}}">
-                            <div class="pic"><img src="{{config.serviceUrl}}{{value.avatar}}" alt=""></div>
+                            <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>
                                 <p>{{value.tag}}</p>
@@ -234,7 +238,10 @@
         <script src="../Public/js/cookie.js"></script>
         <script src="../Public/js/LG.js"></script>
         <script src="../Public/js/artTemplate.js"></script>
+        
         <script src="../Public/js/common.js"></script>
+        <script src="js/plug/tempField.js"></script>
+        
         <script src="js/ajax/config.js"></script>
         <script src="js/ajax/index.js"></script>
         

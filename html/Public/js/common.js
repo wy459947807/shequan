@@ -19,7 +19,6 @@ $(document).ready(function () {
 
 });
 
-
 //获取远程数据
 function getRemoteData(dataInfo, ajaxUrl, isInfo) {
     
@@ -63,6 +62,15 @@ template.helper('dateFormat', function(dateTime, formatTime) {
     
 });
 
+
+//格式化网址
+template.helper('urlFormat', function(url) {
+    var reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
+    if(reg.test(url)){
+        return url;
+    }
+    return serviceUrl+url;
+});
 
 
 
@@ -182,10 +190,18 @@ function getLayerTemplate(winId, title, width, zIndex) {
     if (!width) {
         width = "90%";
     }
+    
+    var closeBtn=1;
+    if(!title){
+        title=false;
+        closeBtn=0;
+    }
+    
 
     var layerName = layer.open({
         type: 1,
         title: title,
+        closeBtn: closeBtn,
         shadeClose: true,
         zIndex: zIndex,
         shade: 0.3,
@@ -228,21 +244,21 @@ function initVideo(videoId,src){
     var videoType= src.substring(src.lastIndexOf('.') + 1);
     if(videoType=="m3u8"){
         var flashvars={
-		f:'public/js/expand/ckplayer/m3u8/m3u8.swf',
+		f:'../Public/js/ckplayer/m3u8/m3u8.swf',
 		a:src,
 		s:4,
 		c:0,
 		//i:'http://www.ckplayer.com/static/images/cqdw.jpg'
 		};
 	var video=[src];
-	CKobject.embed('public/js/expand/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video)	
+	CKobject.embed('../Public/js/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video)	
     }else{
         var flashvars={
             f:src,
             c:0
         };
         var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-        CKobject.embedSWF('public/js/expand/ckplayer/ckplayer.swf',videoId,'ckplayer_a1','100%','100%',flashvars,params);
+        CKobject.embedSWF('../Public/js/ckplayer/ckplayer.swf',videoId,'ckplayer_a1','100%','100%',flashvars,params);
     }
 }
 

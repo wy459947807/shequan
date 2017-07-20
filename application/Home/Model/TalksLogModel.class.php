@@ -12,12 +12,21 @@ class TalksLogModel extends CommonModel {
         $this->sqlFrom=" tg_talks_log as a "
                 . " left join tg_killer as b on a.room_id=b.id and b.status=1 "
                 . " left join tg_users  as c on a.user_id=c.id "
-                . " left join tg_killer as d on d.id=c.killer_id and d.status=1 ";      //数据库查询表
-        $this->sqlField="a.*,b.subscribe,d.id as killer_id";                //数据库查询字段
+                . " left join tg_killer as d on d.id=c.killer_id and d.status=1 ";
+        
+        $this->sqlField="a.*,b.subscribe,d.id as killer_id,e.is_read";                //数据库查询字段
         $this->sqlWhere=" (1=1) ";          //数据库查询条件
         $this->bindValues=array();
         if(!empty($params['page'])) $this->page = $params['page'];
         if(!empty($params['pageLimit'])) $this->pageLimit = $params['pageLimit'];
+
+        $userInfo=array();
+        if(!empty($params['uid'])){
+            $this->sqlFrom.=" left join tg_user_talks_read as e on e.talk_id=a.id and e.user_id={$params['uid']} ";      //数据库查询表
+            $userInfo= D("Home/Users")->where(array("id"=>$params['uid']))->find();//查询用户信息
+        }else{
+            $this->sqlFrom.=" left join tg_user_talks_read as e on e.talk_id=a.id and e.user_id=0 ";      //数据库查询表
+        }
 
         $this->sqlOrder=" order by a.id desc "; 
         
@@ -43,6 +52,7 @@ class TalksLogModel extends CommonModel {
         }
         
         
+
         $listInfo=$this->getPageList();
         
         if($listInfo['data']){
@@ -53,15 +63,36 @@ class TalksLogModel extends CommonModel {
             
             foreach ($listInfo['data']['list'] as $key=>$val){
                 $listInfo['data']['list'][$key]['subscribe']= unserialize($val['subscribe'])?unserialize($val['subscribe']):null;
+                
+                //设为已读
+                if(!empty($params['uid'])){
+                    $readArray=array(
+                        "talk_id"=>$val['id'],
+                        "user_id"=>$params['uid'],
+                        "room_id"=>$val['room_id'],
+                    );
+                    $readInfo=D("Home/UserTalksRead")->where($readArray)->find();
+                    if(empty($readInfo)){
+                        if(!($val['is_charge']&&($userInfo['killer_id']!=$val['room_id']))){
+                            $readArray['read_time']= date("Y-m-d H:i:s");
+                            D("Home/UserTalksRead")->add($readArray);  
+                        } 
+                    } 
+                }
+                
             }
             
-            $params['is_read']=1;
-            $isRead=$this->getReadNum($params);
-            $params['is_read']=0;
-            $noRead=$this->getReadNum($params);
             
-            $listInfo['data']['readInfo']['isRead']=$isRead['data']['num'];
-            $listInfo['data']['readInfo']['noRead']=$noRead['data']['num'];
+            //获取已读数量和未读数量
+            $listInfo['data']['readInfo']['isRead']=0;
+            $listInfo['data']['readInfo']['noRead']=$listInfo['data']['pageInfo']['num'];
+            if(!empty($params['uid'])){
+                $params['is_read']=1;
+                $isRead=$this->getReadNum($params);
+                $listInfo['data']['readInfo']['isRead']=$isRead['data']['num'];
+                $listInfo['data']['readInfo']['noRead']=$listInfo['data']['pageInfo']['num']-$isRead['data']['num'];
+            }
+ 
         }
         
         return $listInfo;
@@ -71,15 +102,21 @@ class TalksLogModel extends CommonModel {
     public function getReadNum($params){
         
          $this->sqlFrom=" tg_talks_log as a "
-                . " left join tg_killer as b on a.room_id=b.id and b.status=1 ";      //数据库查询表
+                . " left join tg_killer as b on a.room_id=b.id and b.status=1"
+                . " left join tg_user_talks_read as c on c.talk_id=a.id";      //数据库查询表
         $this->sqlField=" COUNT(*) as num";                //数据库查询字段
         $this->sqlWhere=" (1=1) ";          //数据库查询条件
         $this->bindValues=array();
        
      
        
-        $this->sqlWhere.=" and  a.is_read = %d "; 
+        $this->sqlWhere.=" and  c.is_read = %d "; 
         $this->bindValues[] = $params['is_read'];
+        
+        if(!empty($params['uid'])){
+            $this->sqlWhere.=" and  c.user_id = %d "; 
+            $this->bindValues[] = $params['uid'];
+        }
         
         if(!empty($params['role'])){
             $this->sqlWhere.=" and  a.role = %d "; 
@@ -162,8 +199,7 @@ class TalksLogModel extends CommonModel {
         }
         
         //如果是按条为单位订阅
-        
-        if($subscribeInfo['type']===0){
+        if($subscribeInfo['type']==0){
             if($subscribeInfo['num']<=$subscribeInfo['use_num']){
                 $this->result['status'] = 202;
                 $this->result['msg'] = "您订阅的条数已经用完！";
@@ -176,6 +212,23 @@ class TalksLogModel extends CommonModel {
                 $this->result['msg'] = "您的订阅已经过期请重新订阅！";
                 return $this->result;
             }
+        }
+        
+        
+        //设为已读
+        if(!empty($params['uid'])){
+            $userInfo= D("Home/Users")->where(array("id"=>$params['uid']))->find();//查询用户信息
+            $readArray=array(
+                "talk_id"=>$messageInfo['data']['id'],
+                "user_id"=>$params['uid'],
+                "room_id"=>$messageInfo['data']['room_id'],
+            );
+
+            $readInfo=D("Home/UserTalksRead")->where($readArray)->find();
+            if(empty($readInfo)){
+                $readArray['read_time']= date("Y-m-d H:i:s");
+                D("Home/UserTalksRead")->add($readArray);  
+            } 
         }
 
         return $messageInfo;

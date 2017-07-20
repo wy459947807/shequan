@@ -36,32 +36,43 @@ class KillerController extends AdminbaseController {
 
     // 高手审核
     public function check() {
-        if (isset($_POST['ids'])) {
-            $data["status"] = 1;
-            
-            foreach ($_POST['ids'] as $key=>$val){
-                $data['user_pass']= sp_random_string(10);
-                $killerInfo=$this->killer_model->where(array("id"=>$val))->find();
-                if(empty($killerInfo)){
-                    $this->error("审核失败！");
-                }
-                
-                $emailData=array(
-                    "to"=>$killerInfo['email'],
-                    "subject"=>"十年赢家网-赢家社圈",
-                    "content"=>"您好".$killerInfo['real_name']
-                                ."（先生/女士），恭喜您通过审核成为十年赢家网高手中的一员，<br/>",
-                               
-                );
-                        
-                $this->sendEmail($emailData);
+        
+        if(IS_POST){
+            if (isset($_POST['ids'])) {
+                $data["status"] = 1;
 
-                if ($this->killer_model->where(array("id"=>$val))->save($data) == false) {   
-                    $this->error("审核失败！");
+                foreach ($_POST['ids'] as $key=>$val){
+                    $data['user_pass']= sp_random_string(10);
+                    $killerInfo=$this->killer_model->where(array("id"=>$val))->find();
+                    if(empty($killerInfo)){
+                        $this->ajaxReturn("500","审核失败！",array());
+                    }
+                    
+                    $emailData=array(
+                        "to"=>$killerInfo['email'],
+                        "subject"=>"十年赢家网-赢家社圈",
+                        "content"=>"您好".$killerInfo['real_name']
+                                    ."（先生/女士），恭喜您通过审核成为十年赢家网高手中的一员，<br/>",
+
+                    );
+
+                    $this->sendEmail($emailData);
+
+                    $data['job_type']=  I('post.job_type');
+                    $data['tag']=  implode("|", I('post.tag'));
+                    
+                    if ($this->killer_model->where(array("id"=>$val))->save($data) == false) {   
+                        $this->ajaxReturn("500","审核失败！",array());
+                    } 
                 } 
-            } 
-            $this->success("审核成功！");
+                $this->ajaxReturn("200","审核成功！",array());
+                
+            }
+        }else{
+            $this->display(":Killer:index:check");
         }
+        
+        
         
     }
     
@@ -103,6 +114,8 @@ class KillerController extends AdminbaseController {
     public function detail(){
         $id = I('get.id',0,'intval');
         $killerInfo=$this->killer_model->where(array("id"=>$id))->find();
+        
+        $killerInfo['cert_imgs']= unserialize($killerInfo['cert_imgs']);
         $this->assign($killerInfo);
         $this->display();
     }

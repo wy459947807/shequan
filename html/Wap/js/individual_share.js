@@ -27,6 +27,7 @@ $('.talk-main').scroll(function () {
                     dataInfo.messageList = result.data;
                     bindTemplate(dataInfo, "talk_list", "messageList_tpl", 2);//绑定模版
                     $('.talk-main').animate({ scrollTop: 5 }, 1);  
+                    $('#new_num').html(dataInfo.messageList.readInfo.noRead);  
                 }
 
                 if (str != '') {

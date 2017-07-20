@@ -5,7 +5,15 @@
         $user_statuses=array("0"=>"未审核","1"=>"已审核");
         $cert_type_array=C("CARD_TYPE");
         $adept_type_array=C("ADEPT_TYPE");
-        $regist_type=array("0"=>"个人","1"=>"机构")
+        $regist_type=array("0"=>"个人","1"=>"机构");
+        $certArray=array(
+            0=>"证券交易",
+            1=>"证券市场基本法律法规",
+            2=>"证券市场基础知识",
+            3=>"证券投资顾问业务",
+            4=>"证券投资咨询业务",
+            5=>"其它",
+        );
     </php>
     <div class="wrap">
         <ul class="nav nav-tabs">
@@ -19,7 +27,11 @@
                     <table class="table table-bordered">
                         <tr>
                             <th width="100">头像</th>
-                            <td><img with='200' height='200' src="{$avatar}" /></td>
+                            <td> 
+                                <a href="javascript:parent.image_preview_dialog('{$avatar}');" style=" margin-right: 10px">
+                                    <img width='100' height='100' src="{$avatar}" />
+                                </a>
+                            </td>
                         </tr>
                         <tr>
                             <th>真实姓名</th>
@@ -50,8 +62,15 @@
                         <tr>
                             <th>证件照</th>
                             <td>
-                                <foreach name="cert_imgs" item="vo">
-                                    <img with='200' height='200'  src="{$vo}" />
+                                <foreach name="cert_imgs" item="vo" key="key"> 
+                                <if condition="$vo!=''">
+                                <a href="javascript:parent.image_preview_dialog('{$vo}');" style=" margin-right: 10px">
+                                    <div  style="float: left;overflow: hidden">
+                                        <div  style="text-align: center; padding: 5px"><img width='50' height='50'  src="{$vo}" /></div>
+                                        <div  style="text-align: center; padding: 5px">{$certArray[$key]}</div>
+                                    </div>
+                                </a>   
+                                </if>      
                                 </foreach>
                             </td>
                         </tr>
@@ -63,7 +82,7 @@
                         
                         <tr>
                             <th>所属机构</th>
-                            <td>{$type_name}</td>
+                            <td>{$company}</td>
                         </tr>
                         
                         <tr>
@@ -115,7 +134,8 @@
             </div>
             <div class="form-actions">
                 <if condition="$status neq 1">
-                    <button class="btn btn-primary " type="submit">点击审核</button>
+                    <button class="btn btn-primary " type="button"  onclick="check({$id})">点击审核</button>
+                    <button class="btn btn-primary " type="button"  onclick="refuse({$id})">点击拒绝</button>
                 <else/>
                     <a class="btn" >已审核</a>
                 </if>
@@ -123,7 +143,32 @@
             </div>
         </form>
     </div>
+
+    <div id='refuse'></div>
+    <div id='check'></div>
+    
     <script src="__PUBLIC__/js/common.js"></script>
+    
+    <script src="__PUBLIC__/js/layer/layer.js"></script>
+    <script src="__PUBLIC__/js/expand/Validform/5.3.2/Validform.min.js"></script>
+    <script src="__PUBLIC__/js/expand/artTemplate.js"></script>
+    <script src="__PUBLIC__/js/expand/strongWind.js"></script>
+    
+    <script>
+        function refuse(id){
+            getTemplate({method:"get",id:id},"{:U('Killer/refuse')}", "#refuse");
+            getLayerTemplate("refuse", "请填写未通过原因", "500") ;
+        }
+        
+        function check(id){
+            getTemplate({method:"get",id:id},"{:U('Killer/check')}", "#check");
+            getLayerTemplate("check", "请完善高手信息", "500") ;
+        }
+        
+    </script>
+    
+    
+
 
 </body>
 </html>

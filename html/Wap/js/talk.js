@@ -19,7 +19,7 @@
             $.circle.talk.send_voice();
             $.circle.talk.play_video();
             $.circle.talk.play_voice();
-            $.circle.talk.unlock_msg();
+            //$.circle.talk.unlock_msg();
         },
         commen: function () {
             //介绍详情
@@ -140,6 +140,7 @@
             $(document).click(function () {
                 $('#gift-box').fadeOut(300);
             });
+            /*
             $('#gift-box img').click(function () {
                 var url = $(this).attr('src');
                 console.log(url);
@@ -164,7 +165,9 @@
                         return !1;
                     }
                 }, 'json');
-            });
+            });*/
+            
+            
         },
         //发送图片和视频
         camera_show: function () {
@@ -396,7 +399,7 @@
             })
             
             
-            
+            /*
             $('.voice-area').change(function (event) {
                 
                 var self = $(this), is_charge = $('#msg_rights').find('li.selected').attr('data-val');
@@ -483,7 +486,7 @@
                 
              
    
-            })
+            })*/
         },
         //有消息时页面滑到底部
         scrollBottom: function (id, speed) {

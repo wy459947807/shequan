@@ -9,7 +9,8 @@
         <link rel="stylesheet" href="js/layer/need/layer.css">
         <link rel="stylesheet" href="css/order.css">
     </head>
-    <body style="background:#f1f1f1;">
+    <body style="background:#f1f1f1;" id="body">
+        <script type="text/html" id="body_tpl">
         <div class="yj_header">
             <font id="page_title">课程支付</font>
             <a href="javascript:history.go(-1);"><img src="images/fanhui.png" alt=""></a>
@@ -21,29 +22,32 @@
                 <p>请您在提交订单45分钟内完成支付，否则订单将自动关闭 </p>
             </div>
             <div class="order-info" id="order">
-                <script type="text/html" id="order_tpl">
+               
                 <h2>订单详情：</h2>
                 <p>交易单号 : {{order.order_sn}}</p>
                 <p>课程 : {{order.order_name}}</p>
                 <p>购买时间 :{{order.ctime | dateFormat: 'YYYY-MM-DD'}}</p>
                 <p class="pay-money">支付金额：<span><b>{{order.total_money}}</b>元</span></p>
-                </script>
+                
                 
             </div>
             <div class="pay-style">
                 <h2>支付方式：</h2>
                 <ul>
                     <li>
-                        <label><input type="radio" name="pay" data-val="alipay" checked="checked"><img src="images/alipay.png" alt="">支付宝支付</label>
+                        <label><input type="radio" name="pay" data-val="alipay"  value="alipay" checked="checked"><img src="images/alipay.png" alt="">支付宝支付</label>
                     </li>
                     <li>
-                        <label><input type="radio" name="pay" data-val="weixin"><img src="images/wxpay.png" alt="">微信支付</label>
+                        <label><input type="radio" name="pay" data-val="weixin"  value="weixin"><img src="images/wxpay.png" alt="">微信支付</label>
                     </li>
                 </ul>
-                <p class="attention"><i></i>支付成功即可获赠100赢家宝</p>
-                <a class="btn" id="go_pay" href="">立即支付</a>
+                <p class="attention"><i></i>支付成功即可获赠{{order.total_money}}赢家宝</p>
+                <a class="btn" id="go_pay" href="javascript:void(0)">立即支付</a>
             </div>
         </div>
+        </script>
+      
+        
         <script src='js/jquery-1.9.1.min.js'></script>
         <script src='../Public/js/layer/layer.js'></script>
         <!--数据处理-->
