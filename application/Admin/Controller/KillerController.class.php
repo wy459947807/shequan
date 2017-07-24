@@ -39,13 +39,21 @@ class KillerController extends AdminbaseController {
         
         if(IS_POST){
             if (isset($_POST['ids'])) {
+                $retData=array(
+                    "status" => 200, 
+                    "msg" => "审核成功！",
+                    "data" => ""
+                );
+                
                 $data["status"] = 1;
 
                 foreach ($_POST['ids'] as $key=>$val){
                     $data['user_pass']= sp_random_string(10);
                     $killerInfo=$this->killer_model->where(array("id"=>$val))->find();
                     if(empty($killerInfo)){
-                        $this->ajaxReturn("500","审核失败！",array());
+                        $retData['status']=500;
+                        $retData['msg']="审核失败!";
+                        $this->ajaxReturn($retData);
                     }
                     
                     $emailData=array(
@@ -61,18 +69,20 @@ class KillerController extends AdminbaseController {
                     $data['job_type']=  I('post.job_type');
                     $data['tag']=  implode("|", I('post.tag'));
                     
-                    if ($this->killer_model->where(array("id"=>$val))->save($data) == false) {   
-                        $this->ajaxReturn("500","审核失败！",array());
+                    if ($this->killer_model->where(array("id"=>$val))->save($data) == false) {  
+                        $retData['status']=500;
+                        $retData['msg']="审核失败!";
+                        $this->ajaxReturn($retData);
                     } 
                 } 
-                $this->ajaxReturn("200","审核成功！",array());
+                
+                $this->ajaxReturn($retData);
                 
             }
         }else{
             $this->display(":Killer:index:check");
         }
-        
-        
+
         
     }
     

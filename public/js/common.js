@@ -633,6 +633,15 @@ function upload_one(dialog_title, input_selector, filetype, extra_params, app) {
     }, extra_params, 0, filetype, app);
 }
 
+function  upload_one_audio(dialog_title, input_selector, filetype, extra_params, app) {
+    open_upload_dialog(dialog_title, function (dialog, files) {
+        $(input_selector).val(files[0].preview_url);
+        $(input_selector + '-source').attr('src', files[0].preview_url);
+        $(input_selector + '-box').show();
+        
+    }, extra_params, 0, 'audio', app);
+}
+
 /**
  * 单个图片上传
  * @param dialog_title 上传对话框标题

@@ -57,12 +57,12 @@ class KillerFansModel extends CommonModel {
             $focusInfo = $model->table(C('DB_PREFIX').'killer_fans')->where(array("killer_id"=>$params['killer_id'],"users_id"=>$params['users_id']))->find();
             if(!empty($focusInfo)){
                 $model->table(C('DB_PREFIX').'killer_fans')->where(array("id"=>$focusInfo['id']))->delete();
-                $model->table(C('DB_PREFIX').'killer')->where(array("id"=>$params['killer_id']))->setDec("fans");
+                $model->table(C('DB_PREFIX').'killer')->where(array("id"=>$params['killer_id']))->setDec("notice");
                 $this->result['msg']= "已取消关注！"; 
             }else{
                 $params['ctime']=date("Y-m-d H:i:s");
                 $model->table(C('DB_PREFIX').'killer_fans')->add($params); 
-                $model->table(C('DB_PREFIX').'killer')->where(array("id"=>$params['killer_id']))->setInc("fans");
+                $model->table(C('DB_PREFIX').'killer')->where(array("id"=>$params['killer_id']))->setInc("notice");
             }
             $model->commit();//提交事物
         } catch (Exception $e) {

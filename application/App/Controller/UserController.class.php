@@ -86,6 +86,7 @@ class UserController extends AppbaseController {
             array('killer_id','require','killer_id不得为空！',1,'regex',3),
             array('num','require','num不得为空！',1,'regex',3),
             array('type','require','type不得为空！',1,'regex',3),
+            array('type','/^\\d+$/','类型格式不正确！',1,'regex',3),
         );
         $this->checkField($rules, $this->params);//验证字段
         $dataInfo = $this->user_subscribe_model->add($this->params); 

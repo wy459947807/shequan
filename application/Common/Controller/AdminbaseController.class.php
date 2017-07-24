@@ -255,7 +255,7 @@ class AdminbaseController extends AppframeController {
                 return $retInfo;
             }
     }
-    
+    /*
     protected function ajaxReturn($status = 1, $msg = '', $data = '') {
         //$status=($status==200)?1:0;
         parent::ajaxReturn(array(
@@ -263,6 +263,6 @@ class AdminbaseController extends AppframeController {
             'msg' => $msg,
             'data' => $data,
         ));
-    }
+    }*/
     
 }

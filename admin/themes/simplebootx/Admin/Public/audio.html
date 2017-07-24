@@ -1,0 +1,29 @@
+<input type="hidden" name="[type]" id="[type]" value="{$[type]}"/>
+
+
+<if condition="!empty($[type])">
+    <div id="[type]-box">
+        <audio controls="controls">
+            <source id='[type]-source' src="{:sp_get_image_preview_url($[type])}" />
+        </audio>
+    </div>
+<else/>
+    <div id="[type]-box">
+        <audio controls="controls">
+            <source id='[type]-source' src="" />
+        </audio>
+    </div>
+</if>
+
+
+<div>
+    <button class="btn btn-primary " type="button" onclick="upload_one_audio('文件上传','#[type]')">点击上传</button>
+    <button class="btn btn-primary " type="button" onclick="upload_cancel()">点击取消</button>
+<div>
+<script>
+    function upload_cancel(){
+        $("#[type]").val('');
+        $("#[type]-box").hide();
+    }
+</script>
+

@@ -244,21 +244,21 @@ function initVideo(videoId,src){
     var videoType= src.substring(src.lastIndexOf('.') + 1);
     if(videoType=="m3u8"){
         var flashvars={
-		f:'../Public/js/ckplayer/m3u8/m3u8.swf',
+		f:'Public/js/ckplayer/m3u8/m3u8.swf',
 		a:src,
 		s:4,
 		c:0,
 		//i:'http://www.ckplayer.com/static/images/cqdw.jpg'
 		};
 	var video=[src];
-	CKobject.embed('../Public/js/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video)	
+	CKobject.embed('Public/js/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video)	
     }else{
         var flashvars={
             f:src,
             c:0
         };
         var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-        CKobject.embedSWF('../Public/js/ckplayer/ckplayer.swf',videoId,'ckplayer_a1','100%','100%',flashvars,params);
+        CKobject.embedSWF('Public/js/ckplayer/ckplayer.swf',videoId,'ckplayer_a1','100%','100%',flashvars,params);
     }
 }
 

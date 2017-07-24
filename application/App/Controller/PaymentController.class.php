@@ -164,6 +164,12 @@ class PaymentController extends AppbaseController {
 
     }
     
+    //
+    public function swiftNotify(){
+        
+    }
+    
+    
     
 
     

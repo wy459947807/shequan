@@ -29,3 +29,12 @@ function initData(){
     
 }
 
+
+function focusKiller(id){
+    var retInfo = getRemoteData(mergeArray(configInfo.tokenInfo, {id: id}), configInfo.apiUrl + "Killer/focusKiller",1);
+    layer.msg(retInfo.msg);
+    setTimeout("window.location.reload()",2000);//延时两秒刷新页面
+}
+
+
+

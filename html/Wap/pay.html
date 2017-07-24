@@ -9,7 +9,8 @@
         <link rel="stylesheet" href="js/layer/need/layer.css">
         <link rel="stylesheet" href="css/order.css">
     </head>
-    <body style="background:#f1f1f1;" id="body">
+    <body style="background:#f1f1f1;" >
+        <div id="body">
         <script type="text/html" id="body_tpl">
         <div class="yj_header">
             <font id="page_title">课程支付</font>
@@ -46,7 +47,13 @@
             </div>
         </div>
         </script>
-      
+        </div>
+        
+        <div id="payBox" style="display: none">
+            <div style=" overflow: hidden; height: 320px;text-align: center">
+                <img id="pay_code_img" src="images/erweima.jpg" alt="">
+            </div>
+        </div>
         
         <script src='js/jquery-1.9.1.min.js'></script>
         <script src='../Public/js/layer/layer.js'></script>

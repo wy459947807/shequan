@@ -3,6 +3,10 @@
 var dataInfo={
     config:configInfo,
     order:{},
+    payInfo:{},
+    parameter:{},
+    lock:0,
+    
 }
 
 initData();//初始化数据
@@ -20,42 +24,74 @@ function initData(){
     var orderData=configInfo.tokenInfo;
     orderData['order_sn']=order_sn;
     dataInfo.order = getRemoteData(orderData, configInfo.apiUrl+"Order/orderDetail");//订单详情
+    dataInfo.parameter=getRemoteData({}, configInfo.apiUrl+"Index/index");//公共参数
+    dataInfo.payInfo={ 
+        body:dataInfo.order.order_name,//订单名称
+        out_trade_no:dataInfo.order.order_sn,//订单编号
+        total_fee:dataInfo.order.total_money*100,//总金额(不能超过5000000)
+        attach:dataInfo.order.order_sn,//附加信息
+        mch_create_ip:dataInfo.parameter.ip,//获取ip
+        method:"submitOrderInfo",//操作类型
+        time_expire:"",	
+        time_start:"",	
+    }
+
 }
+
+
+
+//检测支付状态
+window.setInterval(chackOrder,3000);//支付状态检测
+function chackOrder(){
+    var retInfo = getRemoteData(mergeArray(configInfo.tokenInfo,{order_sn:dataInfo.order.order_sn}), configInfo.apiUrl+"Order/orderDetail");//订单详情
+    if(retInfo.status==2&&dataInfo.lock==0){
+        dataInfo.lock=1;
+        layer.alert("支付成功！", {
+           closeBtn: 0
+        }, function(){
+            window.location.href="/";
+        });
+
+    }
+} 
 
 
 //事件绑定
 $(document).ready(function(){
     //报名提交
     $("#go_pay").click(function(){
+    
         var payType=$("input[name=pay]:checked").val();
-     
         if(payType=="alipay"){
-           
+            $.post('pay/aliPay/request.php',dataInfo.payInfo, function (res) {
+                if (typeof (res) === 'string') {
+                    retData = JSON.parse(res);
+                }
+                
+                if (retData.status === 500) {
+                    layer.alert(retData.msg);
+                    return;
+                }
+                
+                $("#pay_code_img").attr('src',retData.code_img_url);
+                getLayerTemplate("payBox","请打开支付宝客户端扫描二维码支付");
+                
+            });
         }else if(payType=="weixin"){
-            var payInfo={
-                body:dataInfo.order.order_name,
-                orderNo:dataInfo.order.order_sn,
-                total_fee:dataInfo.order.total_money,
-                trade_type:"MWEB",
-                scene_info:'{"h5_info":{"type":"Android","app_name":"十年赢家网","package_name":"com.bm.shinianjinrong"}}',
-            }
-            
-            var retData= getRemoteData(mergeArray(configInfo.tokenInfo,payInfo), configInfo.apiUrl+"Payment/wechatInfo",1);//提交订单
-            
-            //window.location.href="https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id="+retData.data.prepayid+"&package="+retData.data.package;
+            $.post('pay/wechatPay/request.php',dataInfo.payInfo, function (res) {
+                if (typeof (res) === 'string') {
+                    retData = JSON.parse(res);
+                }
+                if (retData.status === 500) {
+                    layer.alert(retData.msg);
+                    return;
+                }
+              
+                $("#pay_code_img").attr('src',retData.code_img_url);
+                getLayerTemplate("payBox","请打开微信客户端扫描二维码支付");
+                
+            });
         }
-        
-        /*
-        var orderData=configInfo.tokenInfo;
-        orderData['course_ids']={0:dataInfo.course.id};
-        orderData['course_num']={0:1};
-
-        var retData= getRemoteData(orderData, configInfo.apiUrl+"Order/submitOrder",1);//提交订单
-        if(retData.status==1){
-            window.location.href="pay.html?order_sn="+retData.data.order_sn;
-        }else{
-            layer.msg(retData.msg);
-        }*/
 
     });
 });

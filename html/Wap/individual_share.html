@@ -36,14 +36,17 @@
         <div class="share-main">
             <div class="share-tit">
                 <h2>聊天室</h2>
-                <div class="follow" id="follow">
-                    <p>关注</p>
-                    <span>{{killerInfo.notice}}</span>
-                </div>
-                <div class="follow" id="followed" style="display: none;">
+                {{if killerInfo.is_focused}}
+                <div class="follow" id="followed">
                     <p>已关注</p>
                     <span>{{killerInfo.notice}}</span>
                 </div>
+                {{else}}
+                <div class="follow"   onclick="focusKiller({{killerInfo.id}})">
+                    <p>关注</p>
+                    <span>{{killerInfo.notice}}</span>
+                </div>
+                {{/if}}
             </div>
             <div class="talk-main"   data-page="1" data-load="true">
                 <span class="load-more"></span>

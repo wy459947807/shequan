@@ -87,9 +87,9 @@
                                 <h4>赢家特训营主讲师</h4>
                             {{/if}}
                             {{if value.is_focused}} 
-                            <span id="followed">已关注</span>
+                            <span class="followed">已关注</span>
                             {{else}}
-                            <span id="follow">+关注</span>
+                            <span class="follow" onclick="focusKiller({{value.id}})">+关注</span>
                             {{/if}} 
                         </li>
                         {{/each}} 
@@ -230,6 +230,7 @@
         <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/slick.js"></script>
         <script src="js/circle.js"></script>
+        <script src='../Public/js/layer/layer.js'></script>
        
         <!--数据处理-->
         <script src="../Public/js/moment.min.js"></script>

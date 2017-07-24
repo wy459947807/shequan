@@ -113,6 +113,7 @@ class KillerController extends AppbaseController {
 
         $this->common_killer->where(array("id" => $this->params['id']))->setInc("views",1); //浏览数量+1 
         $dataInfo= $this->common_killer->getDetail($this->params);
+
         $this->ajaxReturn($dataInfo['status'], $dataInfo['msg'], $dataInfo['data']);
     }
     

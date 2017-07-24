@@ -22,22 +22,10 @@ class IndexController extends AppbaseController {
     }
     //首页
     public function index() {
-    
-        $str= '{"{\"jrw_id\":\"6161\",\"user_email\":\"754980640@qq_com\",\"user_nicename\":\"\u6768\u73b2\",\"sex\":\"0\",\"mobile\":\"15900708645\",\"avatar\":\"http:\/\/test_10jrw_com\/data\/upload\/avatar\/000\/00\/61\/5bf73bc6c6e6775d472621264309a88b_48_jpg\"}":""}';
-        
-        $arrayAA =  json_decode($str, TRUE);
-        
-        $arrayAAA= array_flip($arrayAA);
-        
-        $arrayAAAA=json_decode($arrayAAA[''], TRUE);
-       
-        var_dump($arrayAAAA);
-        
-        
-        /*$testData= D("Common/Course")->courseList(array("course_ids"=>array(1,7,2,5)));
-        var_dump($testData['data']);*/
-        exit;
-        //echo $this->getToken();
+        $configInfo=array(
+            "ip"=>get_client_ip(0, true),
+        );
+        $this->ajaxReturn(200,"成功！",$configInfo);
     }
     
     //用户登录

@@ -45,7 +45,16 @@ class KillerModel extends CommonModel
                 $dataInfo["data"]['adept_type']=$adeptArray[$dataInfo["data"]['adept_type']];
                 $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe'])?unserialize($dataInfo["data"]['subscribe']):null;//获取订阅标准
                 $courseList=D("Common/Course")->courseList(array("killer_id"=>$dataInfo["data"]['id']));
-                $dataInfo['courseList']=$courseList['data']['list'];
+                $dataInfo["data"]['courseList']=$courseList['data']['list'];
+                
+                $dataInfo["data"]['is_focused']=false;
+                if(!empty($params['uid'])){
+                    $focusInfo= M("KillerFans")->where(array("killer_id"=>$params['id'],"users_id"=>$params['uid']))->find();
+                    if(!empty($focusInfo)){
+                        $dataInfo["data"]['is_focused']=true;
+                    }
+                }
+                
             }
 
             
