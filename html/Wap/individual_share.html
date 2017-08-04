@@ -79,11 +79,13 @@
                     <div class="btn-right">
                         <span class="emotion"></span>
                         <span class="plus btn-area"></span>
-                        <span class="gift btn-area"></span>
-                        {{if }}
+                        {{if killerInfo.id==loginInfo.room_id}}
                         <span class="forbid-gift btn-area"></span> 
-                        
+                        {{else}}
+                        <span class="gift btn-area"></span>
+                        {{/if}}
                         <input class="btn" style="display: none;" type="button" id="send_msg" value="发送">
+                        
                     </div>
                 </div>
                 <div id="qq-emotion"></div>
