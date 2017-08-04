@@ -109,8 +109,10 @@ class PaymentController extends AppbaseController {
         );
         
         $this->checkField($rules, $this->params);//验证字段
-  
-        $isSandbox = true;
+        
+        $isSandbox=!empty($this->params['isLine'])?false:true;
+        
+        //$isSandbox = true;
         //如果是沙盒模式，请求苹果测试服务器,反之，请求苹果正式的服务器
         if ($isSandbox) {
             $endpoint = 'https://sandbox.itunes.apple.com/verifyReceipt';

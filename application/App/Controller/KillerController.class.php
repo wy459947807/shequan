@@ -127,6 +127,8 @@ class KillerController extends AppbaseController {
             array('real_name','require','real_name不得为空！',1,'regex',3),
             array('mobile','require','mobile不得为空！',1,'regex',3),
         );
+        
+        
         $this->checkField($rules, $this->params);//验证字段
         $dataInfo= $this->killer_model->killerRegist($this->params);
         $this->ajaxReturn($dataInfo['status'], $dataInfo['msg'], $dataInfo['data']);

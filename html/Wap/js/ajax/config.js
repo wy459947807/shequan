@@ -23,8 +23,15 @@ initConfig();//初始化配置信息
 
 function initConfig(){
     //configInfo.tokenInfo = getRemoteData(configInfo.testUser,configInfo.apiUrl+"Index/getToken");
-    
     configInfo.loginUser= getRemoteData({},"api/userInfo.php");
+    if(configInfo.loginUser!=""){
+        $.cookie('user', JSON.stringify(configInfo.loginUser));
+    }
+    
+    if ($.cookie('user')) {
+        configInfo.loginUser = JSON.parse($.cookie('user'));
+    }  
+ 
     configInfo.tokenInfo = getRemoteData(configInfo.loginUser,configInfo.apiUrl+"Index/getToken");
     if(!configInfo.tokenInfo){
         alert("您还没有登录,请先登录！");

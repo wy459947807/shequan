@@ -166,6 +166,7 @@ class UsersModel extends CommonModel{
         if(!empty($dataInfo["data"])){
             $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe'])?unserialize($dataInfo["data"]['subscribe']):null;//订阅标准
             $dataInfo["data"]['cert_imgs']= unserialize($dataInfo["data"]['cert_imgs'])?unserialize($dataInfo["data"]['cert_imgs']):null;//证件照
+            $dataInfo["data"]['adept_names']= unserialize($dataInfo["data"]['adept_names'])?unserialize($dataInfo["data"]['adept_names']):null;//擅长领域 
         }
 
         return $dataInfo;

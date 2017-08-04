@@ -89,13 +89,16 @@
                     <li>
                         <span>擅长领域</span>
                         <div>
+                           
                             {{each adeptArray as value key}} 
-                                {{if killerInfo.adept_type==key||(key==1&&!killerInfo.id)}}
-                                    <label><input type="radio" name="adept_type" value="{{key}}" checked="checked">{{value}}</label>
+                                {{if inArray(killerInfo.adept_names,value)||(key==1&&!killerInfo.id)}}
+                                    <label><input type="checkbox" name="adept_names[]" value="{{value}}" checked="checked">{{value}}</label>
                                 {{else}}
-                                    <label><input type="radio" name="adept_type" value="{{key}}" >{{value}}</label>
+                                    <label><input type="checkbox" name="adept_names[]" value="{{value}}" >{{value}}</label>
                                 {{/if}} 
-                            {{/each}}      
+                
+                            {{/each}}  
+                            
                         </div>
                     </li>
                 </ul>
@@ -114,11 +117,11 @@
                         <td width="33.33%">
                             <div class="up-load">
                                 <div class="pic-certify">
-                                    <input id="uploadCertify{{key}}_val"  type="hidden" name="cert_imgs[{{key-1}}]" value="{{killerInfo.cert_imgs[key-1]}}"/>
+                                    <input id="uploadCertify{{key}}_val"  type="hidden" name="cert_imgs[{{key-1}}]" value="{{if killerInfo.id&&killerInfo.cert_imgs}}{{killerInfo.cert_imgs[key-1]}}{{/if}}"/>
                                     <span class="g-delet" style="display: none;">删除</span>
                                 </div>
                                 <div class="pic" id="uploadCertify{{key}}">
-                                    {{if killerInfo.cert_imgs[key-1]}}
+                                    {{if killerInfo.id&&killerInfo.cert_imgs}}
                                     <img id="uploadCertify{{key}}_show"  src="{{config.serviceUrl}}{{killerInfo.cert_imgs[key-1]}}" alt="">
                                     {{else}}
                                     <img id="uploadCertify{{key}}_show"  src="images/up-load.png" alt="">

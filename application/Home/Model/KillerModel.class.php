@@ -62,12 +62,15 @@ class KillerModel extends CommonModel {
                     break;
             }
         }
-        
+       
         //擅长领域
-        if(!empty($params['adeptType'])){
-            $this->sqlWhere.=" and  adept_type = %d "; 
-            $this->bindValues[] = $params['adeptType'];
+        if(!empty($params['adeptType'])){ 
+            $adeptArray=C("ADEPT_TYPE");
+            $this->sqlWhere.=" and adept_names like '%s' "; 
+            $this->bindValues[] = "%".$adeptArray[$params['adeptType']]."%";
         }
+      
+        
         
      
         if(!empty($params['dateTime'])){
@@ -117,8 +120,13 @@ class KillerModel extends CommonModel {
                 $ids[]=$val['id'];
                 
                 if(!empty($val['cert_imgs'])){
-                    $listInfo[$key]['cert_imgs']= unserialize($val['cert_imgs']);
+                    $listInfo[$key]['cert_imgs']= !empty($val['cert_imgs'])?unserialize($val['cert_imgs']):array();
                 }
+                
+                if(!empty($val['adept_names'])){
+                    $listInfo[$key]['adept_names']= !empty($val['adept_names'])?unserialize($val['adept_names']):array();
+                }
+                
             }
             
             
@@ -170,6 +178,7 @@ class KillerModel extends CommonModel {
             "wechat"=>$params['wechat'],
             "email"=>$params['email'],
             "adept_type"=>$params['adept_type'],
+            "adept_names"=>!empty($params['adept_names'])?serialize($params['adept_names']):'',
             "tag"=>$params['tag'],
             "card_img"=>$params['card_img'],
             "cert_imgs"=>serialize($params['cert_imgs']),

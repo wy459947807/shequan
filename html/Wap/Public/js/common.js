@@ -72,6 +72,16 @@ template.helper('urlFormat', function(url) {
     return serviceUrl+url;
 });
 
+//判断数组是否存在某个元素
+template.helper('inArray', function(arrayData,val) {
+    for(index in arrayData){
+        if(arrayData[index]==val){
+            return true;
+        }
+    }
+    return false;
+});
+
 
 
 

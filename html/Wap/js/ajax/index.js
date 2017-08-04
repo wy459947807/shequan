@@ -16,6 +16,7 @@ bindTemplate(dataInfo, "newMessages", "newMessages_tpl");//绑定模版
 bindTemplate(dataInfo, "killerRec", "killerRec_tpl");//绑定模版
 bindTemplate(dataInfo, "killerShare", "killerShare_tpl");//绑定模版
 bindTemplate(dataInfo, "killerRank", "killerRank_tpl");//绑定模版
+bindTemplate(dataInfo, "ad", "ad_tpl");//绑定模版
 
 //初始化数据
 function initData(){
@@ -30,10 +31,17 @@ function initData(){
 }
 
 
-function focusKiller(id){
+function focusKiller(obj,id){
     var retInfo = getRemoteData(mergeArray(configInfo.tokenInfo, {id: id}), configInfo.apiUrl + "Killer/focusKiller",1);
     layer.msg(retInfo.msg);
-    setTimeout("window.location.reload()",2000);//延时两秒刷新页面
+    //setTimeout("window.location.reload()",2000);//延时两秒刷新页面
+    if(retInfo.status==1){
+        if(retInfo.msg.indexOf("取消") > -1){
+            $(obj).html("+关注");
+        }else{
+            $(obj).html("已关注");
+        }
+    }
 }
 
 

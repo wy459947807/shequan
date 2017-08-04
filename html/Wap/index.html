@@ -62,9 +62,17 @@
                 </ul>
             </div>
             <!-- 审核 -->
-            <div class="shenhe">
-                <a href="auditing.html"><img src="images/shenhe.jpg" alt=""></a>
+            <div class="shenhe" id="ad">
+                <script type="text/html" id="ad_tpl">
+                    {{if config.userInfo.killer_id&&config.userInfo.killer_id!=0}}
+                        <a href="auditing.html"><img src="images/shenhe.jpg" alt="{{config.userInfo.killer_id}}"></a> 
+                    {{else}}
+                        <a href="auditing.html"><img src="images/shenqing.jpg" alt="{{config.userInfo.killer_id}}"></a> 
+                    {{/if}}
+                </script>    
             </div>
+            
+            
             <!-- 高手推荐 -->
             <div class="ace-recommend">
                 <div class="g-tit">
@@ -89,7 +97,7 @@
                             {{if value.is_focused}} 
                             <span class="followed">已关注</span>
                             {{else}}
-                            <span class="follow" onclick="focusKiller({{value.id}})">+关注</span>
+                            <span class="follow" onclick="focusKiller(this,{{value.id}})">+关注</span>
                             {{/if}} 
                         </li>
                         {{/each}} 

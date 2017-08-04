@@ -184,7 +184,7 @@ class TalksLogModel extends CommonModel {
         //$userInfo=D("Common/Users")->where(array("id"=>$params['uid']))->find();
         
         $messageInfo=$this->getDetail($params);//获取消息详情
-        
+
         $subscribeArray=array(
             "user_id"=>$params['uid'],
             "killer_id"=>$messageInfo['data']['room_id'],
@@ -195,6 +195,7 @@ class TalksLogModel extends CommonModel {
         if(empty($subscribeInfo)){
             $this->result['status'] = 201;
             $this->result['msg'] = "您还没有订阅该老师课程！";
+            $this->result['data'] =array();
             return $this->result;
         }
         
@@ -203,6 +204,7 @@ class TalksLogModel extends CommonModel {
             if($subscribeInfo['num']<=$subscribeInfo['use_num']){
                 $this->result['status'] = 202;
                 $this->result['msg'] = "您订阅的条数已经用完！";
+                $this->result['data'] =array();
                 return $this->result;
             }
             D("Home/UserSubscribe")->where($subscribeArray)->setInc("use_num",1);//增加一条订阅记录
@@ -210,10 +212,11 @@ class TalksLogModel extends CommonModel {
             if(time()> strtotime($subscribeInfo['expire_time'])){
                 $this->result['status'] = 203;
                 $this->result['msg'] = "您的订阅已经过期请重新订阅！";
+                $this->result['data'] =array();
                 return $this->result;
             }
         }
-        
+
         
         //设为已读
         if(!empty($params['uid'])){
@@ -249,6 +252,8 @@ class TalksLogModel extends CommonModel {
         }
 
         $dataInfo=$this->getOne();
+        $dataInfo['data']['subscribe']=!empty($dataInfo['data']['subscribe'])?unserialize($dataInfo['data']['subscribe']):array();
+       
         return $dataInfo;
     }
     

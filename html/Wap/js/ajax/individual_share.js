@@ -227,6 +227,13 @@ function sendMsg(step,is_charge){
     if(is_charge){
         dataInfo.sendInfo.is_charge=is_charge
     }
+    
+    var msgCon=$("#msg_area").val();
+    if(msgCon==""){
+        layer.msg("消息内容不能为空！");
+        return;
+    }
+    
     ws.send(JSON.stringify(dataInfo.sendInfo)); 
  
 }
@@ -249,10 +256,17 @@ function openReply(id,name){
 }
 
 //关注高手
-function focusKiller(id){
+function focusKiller(obj,id){
     var retInfo = getRemoteData(mergeArray(configInfo.tokenInfo, {id: id}), configInfo.apiUrl + "Killer/focusKiller",1);
     layer.msg(retInfo.msg);
-    setTimeout("window.location.reload()",2000);//延时两秒刷新页面
+    //setTimeout("window.location.reload()",2000);//延时两秒刷新页面
+    if(retInfo.status==1){
+        if(retInfo.msg.indexOf("取消") > -1){
+            $(obj).html("关注");
+        }else{
+            $(obj).html("已关注");
+        }
+    }
 }
 
 

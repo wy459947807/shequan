@@ -81,7 +81,7 @@ class IndexController extends AppbaseController {
         if(empty($userInfo)){ 
             $rules=array(
                 array('user_nicename','require','user_nicename不能为空！',1,'regex',3),
-                array('mobile','require','mobile不能为空！',1,'regex',3),
+                //array('mobile','require','mobile不能为空！',1,'regex',3),
             );
             $this->checkField($rules, $this->params);
             
@@ -217,6 +217,19 @@ class IndexController extends AppbaseController {
         );
         return $rules[$index];
     }
+    
+    
+    /*
+    public function test(){
+        $killerList= $this->killer_model->select();
+        $adeptArray=C("ADEPT_TYPE");
+        foreach ($killerList as $key=>$val){
+            $tempArray=array();
+            $tempArray[]=$adeptArray[$val['adept_type']];
+            $this->killer_model->where(array("id"=>$val['id']))->save(array("adept_names"=> serialize($tempArray)));
+        }
+    }*/
+    
     
     
 }

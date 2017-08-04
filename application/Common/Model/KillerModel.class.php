@@ -44,6 +44,9 @@ class KillerModel extends CommonModel
                 $adeptArray=C('ADEPT_TYPE');
                 $dataInfo["data"]['adept_type']=$adeptArray[$dataInfo["data"]['adept_type']];
                 $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe'])?unserialize($dataInfo["data"]['subscribe']):null;//获取订阅标准
+                $dataInfo["data"]['cert_imgs']= unserialize($dataInfo["data"]['cert_imgs'])?unserialize($dataInfo["data"]['cert_imgs']):null;//获取订阅标准
+                $dataInfo["data"]['adept_names']= unserialize($dataInfo["data"]['adept_names'])?unserialize($dataInfo["data"]['adept_names']):null;//获取擅长领域
+ 
                 $courseList=D("Common/Course")->courseList(array("killer_id"=>$dataInfo["data"]['id']));
                 $dataInfo["data"]['courseList']=$courseList['data']['list'];
                 

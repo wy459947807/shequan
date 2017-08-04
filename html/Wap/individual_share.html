@@ -42,7 +42,7 @@
                     <span>{{killerInfo.notice}}</span>
                 </div>
                 {{else}}
-                <div class="follow"   onclick="focusKiller({{killerInfo.id}})">
+                <div class="follow"   onclick="focusKiller(this,{{killerInfo.id}})">
                     <p>关注</p>
                     <span>{{killerInfo.notice}}</span>
                 </div>
@@ -59,13 +59,7 @@
             <div class="send-msg">
                 <div class="select_look look-teacher">看老师</div>
                 <div class="select_look look-all" style="display: none;">看全部</div>
-                <div id="gift-box" style="display: none;">
-                    <ul>
-                        {{each giftList.list as value key}}
-                            <li data-id="{{value.id}}" data-expend="{{value.win_coin}}" data-img="{{value.img}}" ><img src="{{config.serviceUrl}}{{value.img}}" alt=""><p>{{value.win_coin}}</p></li>
-                        {{/each}}  
-                    </ul>
-                </div>
+                
                 <div class="row1" style="display: none;">
                     <ul id="msg_rights">
                         <li data-val="1">付费分享</li>
@@ -86,6 +80,9 @@
                         <span class="emotion"></span>
                         <span class="plus btn-area"></span>
                         <span class="gift btn-area"></span>
+                        {{if }}
+                        <span class="forbid-gift btn-area"></span> 
+                        
                         <input class="btn" style="display: none;" type="button" id="send_msg" value="发送">
                     </div>
                 </div>
@@ -102,6 +99,13 @@
                             <input class="fileUpload" data-form='videoFile'  data-type='6' name="filename" type="file" accept="video/*" capture="camcorder">拍摄
                             </form> 
                         </li>
+                    </ul>
+                </div>
+                <div id="gift-box" style="display: none;">
+                    <ul>
+                        {{each giftList.list as value key}}
+                            <li data-id="{{value.id}}" data-expend="{{value.win_coin}}" data-img="{{value.img}}" ><img src="{{config.serviceUrl}}{{value.img}}" alt=""><p>{{value.win_coin}}</p></li>
+                        {{/each}}  
                     </ul>
                 </div>
             </div>
