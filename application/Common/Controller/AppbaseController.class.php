@@ -123,6 +123,7 @@ class AppbaseController extends AppframeController {
      */
     protected function ajaxReturn($status = 1, $msg = '', $data = '') {
         $status=($status==200)?1:0;
+        $data=!empty($data)?$data:null;
         parent::ajaxReturn(array(
             'status' => $status,
             'msg' => $msg,
