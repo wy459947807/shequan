@@ -8,11 +8,15 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/slick.css">
         <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/plus.css">
     </head>
     <body>
         <!-- 首页banner -->
         <div class="banner">
             <div class="search-box">
+                <a class="turn-back" href="http://m.10jrw.com/index/index.html">
+                    <img src="images/fanhui.png" alt="">
+	    	</a>
                 <div class="pic">
                     <img src="images/circle.png" alt="">
                 </div>
@@ -87,7 +91,8 @@
                         {{else}}
                          <li class="ace">
                         {{/if}} 
-                            <a href="teacher.html?id={{value.id}}"><img src="{{value.avatar | urlFormat}}" alt=""></a>
+                            <!--<a href="teacher.html?id={{value.id}}"><img src="{{value.avatar | urlFormat}}" alt=""></a>-->
+                            <a href="individual_share.html?id={{value.id}}"><img src="{{value.avatar | urlFormat}}" alt=""></a>
                             <p>{{value.real_name}}</p>
                             {{if value.job_type}}
                                 <h4>{{value.job_type}}</h4>
@@ -107,10 +112,10 @@
                     </ul>
                 </div>
             </div>
-            <!-- 圈主分享 -->
+            <!-- 高手分享 -->
             <div class="circle-share">
                 <div class="g-tit">
-                    <h3>圈主分享</h3>
+                    <h3>高手分享</h3>
                     <a href="host_share.html">更多&gt;</a>
                 </div>
                 <ul id="killerShare">
@@ -152,7 +157,8 @@
                         {{else}}
                         <span></span>
                         {{/if}}
-                        <a href="teacher.html?id={{value.id}}">
+                        <!--<a href="teacher.html?id={{value.id}}">-->
+                        <a href="individual_share.html?id={{value.id}}">
                             <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>
@@ -178,7 +184,8 @@
                         {{else}}
                         <span></span>
                         {{/if}}
-                        <a href="teacher.html?id={{value.id}}">
+                        <!--<a href="teacher.html?id={{value.id}}">-->
+                        <a href="individual_share.html?id={{value.id}}">
                             <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>
@@ -203,7 +210,8 @@
                         {{else}}
                         <span></span>
                         {{/if}}
-                        <a href="teacher.html?id={{value.id}}">
+                        <!--<a href="teacher.html?id={{value.id}}">-->
+                        <a href="individual_share.html?id={{value.id}}">
                             <div class="pic"><img src="{{value.avatar | urlFormat}}" alt=""></div>
                             <div class="txt">
                                 <strong>{{value.real_name}}</strong>
@@ -231,7 +239,6 @@
                 <li class="on"><a href="index.html">首页</a></li>
                 <li><a href="course_list.html">课程</a></li>
                 <li><a href="rank.html">高手</a></li>
-                <li><a href="course_list.html">费用</a></li>
                 <li><a href="user_center.html">我的</a></li>
             </ul>
         </div>

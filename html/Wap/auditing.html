@@ -121,7 +121,7 @@
                                     <span class="g-delet" style="display: none;">删除</span>
                                 </div>
                                 <div class="pic" id="uploadCertify{{key}}">
-                                    {{if killerInfo.id&&killerInfo.cert_imgs}}
+                                    {{if killerInfo.id&&killerInfo.cert_imgs&&killerInfo.cert_imgs[key-1]}}
                                     <img id="uploadCertify{{key}}_show"  src="{{config.serviceUrl}}{{killerInfo.cert_imgs[key-1]}}" alt="">
                                     {{else}}
                                     <img id="uploadCertify{{key}}_show"  src="images/up-load.png" alt="">

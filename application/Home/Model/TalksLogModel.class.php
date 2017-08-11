@@ -51,7 +51,16 @@ class TalksLogModel extends CommonModel {
             $this->bindValues[] = $params['msg_type'];
         }
         
-        
+        //显示左右两边消息
+        if(!empty($params['display_type'])&&!empty($params['killer_id'])){
+            if($params['display_type']=="1"){
+                $this->sqlWhere.=" and  c.killer_id = %d "; 
+                $this->bindValues[] = $params['killer_id'];
+            }else if($params['display_type']=="2"){
+                $this->sqlWhere.=" and  c.killer_id != %d "; 
+                $this->bindValues[] = $params['killer_id'];
+            }
+        }
 
         $listInfo=$this->getPageList();
         

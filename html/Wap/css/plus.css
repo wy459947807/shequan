@@ -1,0 +1,12 @@
+/* 首页增加返回按钮，点击返回十年赢家首页 */
+.banner .turn-back{float: left;height: 50px;line-height: 50px;margin-right: 10px;}
+.banner .turn-back img{height: 24px;vertical-align: middle;}
+/* 我的关注增加tab，切换关注导师和关注高手 */
+.fans-main .bao-nav {overflow: hidden; border-bottom: 8px solid #ebebeb;}
+.fans-main .bao-nav a{color: #000;}
+.fans-main .bao-nav ul{padding: 0;}
+.fans-main .bao-nav li.on {color: #f44336; border-bottom: 1px solid #f44336; }
+.fans-main .bao-nav li.on a{color: #f44336;}
+.fans-main .bao-nav li {float: left; width: 50%; height: 48px; line-height: 48px; text-align: center; color: #000; font-size: 16px; border-bottom: 1px solid transparent; }
+
+

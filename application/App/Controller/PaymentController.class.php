@@ -155,12 +155,12 @@ class PaymentController extends AppbaseController {
         $k = count($order) -1;
         $need = $order[$k];//需要的那个订单
         
-        if($need->product_id==$this->params['course_id']){
+        //if($need->product_id==$this->params['course_id']){
             $orderInfo = $this->common_order->where(array("order_sn"=>$this->params['order_sn']))->find();
             $orderInfo['pay_type']=5;//支付类型
             $this->order_model ->callBack($orderInfo);
 
-        }
+        //}
         
         $this->ajaxReturn(200,"支付成功！",array());
 

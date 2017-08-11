@@ -7,6 +7,7 @@
         <title>十年赢家网-手机版</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/user.css">
+        <link rel="stylesheet" href="css/plus.css">
     </head>
     <body>
         <div id="body">
@@ -32,6 +33,12 @@
             </p>
         </div>
         <div class="fans-main" data-page="1" data-load="true">
+            <div class="bao-nav">
+                <ul>
+                    <li class="on"><a href="myfocus.html">我关注的高手</a></li>
+                    <li><a href="http://m.10jrw.com/space/attention_lector.html">我关注的导师</a></li>
+                </ul>
+            </div>
             {{if fansItem.list}}
             <ul id="fansItem">
                 {{each fansItem.list as value key}}
