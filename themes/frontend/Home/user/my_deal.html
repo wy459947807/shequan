@@ -1,0 +1,114 @@
+<tc_include file="Public:head" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<link rel="stylesheet" href="__TMPL__Public/home/js/date/css/asDatepicker.css">
+<style>
+    .my-deal .search li{margin: 0;}
+    .pages .searchPage{padding: 10px; margin: 0}
+</style>
+<div class="l_warp">
+    <div class="user_box clearfix">
+        <tc_include file="Public:usernav" />
+        <div class="fr_context">
+            <div class="my-deal">
+                <div class="user_public_title">
+                    <span>我的交易</span>
+                </div>
+                <div class="con">
+                    <form action="" enctype="multipart/form-data" method="get">
+                    <div class="search">
+                        <ul>
+                            <li>开始日期：<input id="begin_time" name="start_time" readonly="readonly" placeholder="选择日期" /></li>
+                            <li>结束日期：<input id="end_time" name="end_time" readonly="readonly" placeholder="选择日期" /></li>
+                            <li><button class="serch-btn">搜索</button></li>
+                        </ul>
+                    </div>
+                    </form>
+                    <div class="deal-result">
+                        <ul class="tit">
+                            <li>课程名称</li>
+                            <li>课程价格</li>
+                            <li>交易状态</li>
+                            <li>操作</li>
+                        </ul>
+                        <div class="deal-info">
+                            
+                            <notempty name="orderList">
+                                <foreach name="orderList" item="value">
+                                    <table>
+                                        <tr>
+                                            <td colspan="2">交易单号:{$value.order_sn}</td>
+                                            <td colspan="2">交易时间:{:date("Y-m-d H:i:s",$value['ctime'])}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="35%">{$value.order_name}</td>
+                                            <td width="15%"><span>{$value.total_money}元</span></td>
+                                            <td width="25%">
+                                                <if condition="$value['status'] eq 2"> 
+                                                    <a class="un-pay" href="">已支付</a>
+                                                </if>
+                                                <if condition="$value['status'] eq 1">
+                                                    <a class="un-pay" href="">未支付</a>
+                                                </if>
+                                                <if condition="$value['status'] eq 3">
+                                                    <a class="un-pay" href="">已取消</a>
+                                                </if>
+                                            </td>
+                                            <td><a class="info" href="{:U('User/myDealInfo',array('order_sn'=>$value['order_sn']))}">交易详情</a></td>
+                                        </tr>
+                                    </table>
+                                </foreach>
+                            </notempty>
+     
+                        </div>
+                        <div id="page"></div>
+            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<tc_include file="Public:foot" />
+<script src="__TMPL__Public/home/js/date/js/jquery-asDatepicker.js"></script>
+<script src="__TMPL__Public/home/js/date/js/language.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#begin_time").asDatepicker({
+            namespace: 'calendar',
+            lang: 'zh',
+            position: 'bottom'
+        });
+        $("#end_time").asDatepicker({
+            namespace: 'calendar',
+            lang: 'zh',
+            position: 'bottom'
+        });
+    }); 
+    
+    initPage();//初始化分页
+    
+    //翻页调用
+    function PageCallback(index, jq) {
+        var dataInfo={
+            "page":index+1
+        }
+        jumpPage(dataInfo);
+    }
+    
+    function initPage(){
+        var pageInfo={
+            'page':"{$pageInfo.page}",
+            'pageLimit':"{$pageInfo.pageLimit}",
+            'num':"{$pageInfo.num}",
+            'pageNum':"{$pageInfo.pageNum}"
+        };
+        getTemplate(pageInfo, "{:U('index/ajaxPage')}", "#page");
+    }
+    
+   
+
+</script>
+

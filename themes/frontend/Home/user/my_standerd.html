@@ -1,0 +1,76 @@
+<tc_include file="Public:head" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+
+<style>
+    .my-deal .search li{margin: 0;}
+    .pages .searchPage{padding: 10px; margin: 0}
+    
+
+</style>
+<div class="l_warp">
+    <div class="user_box clearfix">
+        <tc_include file="Public:usernav" />
+        <div class="fr_context">
+            <div class="my-standerd my-read">
+                <div class="user_public_title">
+                    <span>订阅标准</span>
+                </div>
+                <div class="con">
+                    <h2>私密内容订阅标准：</h2>
+                    
+                    <form  id="formSubscribe"  action="" enctype="multipart/form-data" method="post">
+                    <table>
+                        <tr>
+                            <td width="50%">兑换方式</td>
+                            <td width="50%">消耗个数（赢家宝）</td>
+                        </tr>
+                        
+                        
+                        <foreach name="unitList" item="value">
+                        <tr>
+                            <td>{$value}</td>
+                           
+                            <td>
+                                <if condition="!empty($subscribeInfo['list'])">
+                                    <input type="text" name="price_array[]" value="{$subscribeInfo['list'][$key]}"><div class="xg-tip standard_data">修改</div>
+                                <else/>
+                                    <input type="text" name="price_array[]" value="0.00"><div class="xg-tip standard_data">修改</div>
+                                </if>
+                            </td>
+                            
+                        </tr>
+                        </foreach>
+                       
+                    </table>
+                    <a class="sure standard_data" href="javascript:void(0)">提交</a>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<tc_include file="Public:foot" />
+
+
+<script>
+
+ 
+var userInfo={
+    uid:"{$user.id}",
+    token:"{$user.token}"
+}
+
+//事件绑定
+$(document).ready(function(){
+    //搜索
+    $(".standard_data").click(function(){   
+        var formData=$("#formSubscribe").serializeObject();
+        var retData= getRemoteData(mergeArray(userInfo,formData), "{:C('APP_HOST')}User/setSubscribe",1);//搜索订单
+        layer.msg(retData.msg);
+    });
+});
+
+
+</script>
+

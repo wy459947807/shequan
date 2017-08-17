@@ -2217,3 +2217,17 @@ function http_Post($data,$url){
 	curl_close($ch);
 	return $res;
 }
+
+//获取接口数据
+function get_remote_data($data,$url){
+    return json_decode(http_Post($data,C('APP_HOST').$url),true);
+}
+
+//表情替换
+function get_emoji_content($content){
+    $emojiArray=C('emoji');
+    foreach ($emojiArray as $key=>$val){
+        $content= str_replace("[".$val."]", '<img src="/public/images/emotion/'.$key.'.gif" title="'.$val.'"/>',$content);
+    }
+    return $content;
+}

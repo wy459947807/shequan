@@ -1,0 +1,133 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<link rel="stylesheet" href="__TMPL__Public/home/css/order.css">
+<style>
+    p{ margin: 0px;}
+    label{font-weight:normal;display: block}
+    input[type="checkbox"], input[type="radio"]{ margin: 0px}
+    .btn,.btn:link ,.btn:visited ,.btn:hover ,.btn:active {padding: 0px;color: #fff;}
+
+
+</style>
+<div class="pay-main wp">
+    <div class="order-schedule">
+        <div class="row1">
+            <span class="red">确认订单</span>
+            <span class="red">在线支付</span>
+            <span>购买成功</span>
+        </div>
+        <div class="row2"><img src="__TMPL__Public/home/images/home/pay_state2.png" alt=""></div>
+    </div>
+    <div class="order-result">
+        <h2><i></i>订单提交成功</h2>
+        请您在提交订单45分钟内完成支付，否则订单将自动关闭
+    </div>
+    <div class="order-info">
+        <h2>订单详情：</h2>
+        <p>交易单号 : {$order.order_sn}</p>
+        <p>课程 : {$order.order_name}</p>
+        <p>购买时间 : {:date("Y-m-d H:i:s",$order['ctime'])}</p>
+        <p class="pay-money">支付金额：<span><b>{$order.total_money}</b>元</span></p>
+    </div>
+    <div class="pay-style">
+        <h2>支付方式：</h2>
+        <ul>
+            <li>
+                <label><input type="radio" name="pay" data-val="alipay"  value="alipay" checked="checked"><img src="__TMPL__Public/home/images/home/alipay.png" alt="">支付宝支付</label>
+            </li>
+            <li>
+                <label><input type="radio" name="pay" data-val="weixin"  value="weixin"><img src="__TMPL__Public/home/images/home/wxpay.png" alt="">微信支付</label>
+            </li>
+        </ul>
+        <p class="attention"><i></i>支付成功即可获赠{$order.total_money}赢家宝</p>
+        <a class="btn" id="go_pay" href="javascript:void(0)">立即支付</a>
+    </div>
+</div>
+
+<div id="payBox" style="display: none;">
+    <div style=" overflow: hidden; height: 320px;text-align: center">
+        <img id="pay_code_img" src="images/erweima.jpg" alt="">
+    </div>
+</div>
+<tc_include file="Public:footer" />
+<script>
+
+var dataInfo={
+    payInfo:{
+        body:"{$order.order_name}",//订单名称
+        out_trade_no:"{$order.order_sn}",//订单编号
+        total_fee:{$order['total_money']*100},//总金额(不能超过5000000)
+        attach:"{$order.order_sn}",//附加信息
+        mch_create_ip:"{$parameter.ip}",//获取ip
+        method:"submitOrderInfo",//操作类型
+        time_expire:"",	
+        time_start:"",	
+    },
+    lock:0,
+}
+
+//检测支付状态
+window.setInterval(chackOrder,3000);//支付状态检测
+function chackOrder(){
+    var dataArray={
+        "uid":"{$user.id}",
+        "token":"{$user.token}",
+        "order_sn":"{$order.order_sn}"
+    }
+    var retInfo = getRemoteData(dataArray, "{:C('APP_HOST')}Order/orderDetail");//订单详情
+    if(retInfo.status==2&&dataInfo.lock==0){
+        dataInfo.lock=1;
+        layer.alert("支付成功！", {
+           closeBtn: 0
+        }, function(){
+            window.location.href="{:U('course/buySuccess')}&order_sn="+retInfo.order_sn;
+        });
+
+    }
+} 
+
+//事件绑定
+$(document).ready(function(){
+    //报名提交
+    $("#go_pay").click(function(){
+    
+        var payType=$("input[name=pay]:checked").val();
+        if(payType=="alipay"){
+            $.post('html/Wap/pay/aliPay/request.php',dataInfo.payInfo, function (res) {
+                if (typeof (res) === 'string') {
+                    retData = JSON.parse(res);
+                }
+                
+                if (retData.status === 500) {
+                    layer.alert(retData.msg);
+                    return;
+                }
+                
+                $("#pay_code_img").attr('src',retData.code_img_url);
+                getLayerTemplate("payBox","请打开支付宝客户端扫描二维码支付","380px");
+                
+            });
+        }else if(payType=="weixin"){
+            $.post('html/Wap/pay/wechatPay/request.php',dataInfo.payInfo, function (res) {
+                if (typeof (res) === 'string') {
+                    retData = JSON.parse(res);
+                }
+                if (retData.status === 500) {
+                    layer.alert(retData.msg);
+                    return;
+                }
+              
+                $("#pay_code_img").attr('src',retData.code_img_url);
+                getLayerTemplate("payBox","请打开微信客户端扫描二维码支付","380px");
+                
+            });
+        }
+
+    });
+});
+
+
+    
+
+</script>
+

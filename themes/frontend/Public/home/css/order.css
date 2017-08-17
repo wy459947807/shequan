@@ -1,0 +1,64 @@
+/* 提交订单页面样式 */
+body{background: #f1f2f2;}
+.order-main{border:1px solid #dadada; background:#fff;margin: 32px auto; padding: 30px 65px 120px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.order-schedule{margin-bottom: 36px;}
+.order-schedule .row1{position: relative;width: 100%;}
+.order-schedule .row1{font-size: 16px;line-height: 32px;height: 32px;}
+.order-schedule .row1 span.red{color: #fc534c;}
+.order-schedule .row1 span:first-child{position: absolute;left: 5px;}
+.order-schedule .row1 span:nth-child(2){position: absolute;left: 284px;}
+.order-schedule .row1 span:nth-child(3){position: absolute;left: 580px;}
+.order-main h2{font-size: 18px;color: #000;margin-bottom: 10px;line-height: 1.4em;font-weight: normal;}
+.course-info table{width: 100%;margin-bottom: 20px;font-size: 14px;color:#828282;}
+.course-info table td{text-align: center;padding: 15px 0;}
+.course-info table tr:first-child{background: #f2f2f2;border:1px solid #e5e5e5;}
+.course-info table tr:nth-child(2) td{border: 1px solid #e5e5e5;}
+.order-main .sum-money{font-size: 16px;color: #202020;margin-bottom: 15px;}
+.order-main .sum-money span{color: #fc3737;}
+.order-main .sum-money span b{font-size: 30px;}
+.order-main .sum-money span:first-child{padding-right: 20px;}
+.order-main .attention{font-size: 16px; color:#fc534c;line-height: 25px; height: 25px;padding-left: 30px;background: url(../images/home/icon_laba.png) 0 center no-repeat;background-size: 28px 24px;margin-bottom:48px;}
+.order-main .agree{color: #969696;height: 20px;line-height: 20px;}
+.order-main .agree input{vertical-align: middle;}
+.order-main .agree a{color: #969696;}
+.btn{display: inline-block;width: 216px;height:52px;background:#fc534c;color: #fff;font-size: 20px;line-height: 52px;text-align: center;border-radius: 5px;margin-top: 20px;}
+.btn:hover{color:#fff;background: red; }
+/* 支付页面样式 */
+.pay-main{border:1px solid #dadada; background:#fff;margin: 32px auto; padding: 30px 65px 120px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.order-result{font-size: 14px;color: #828282;}
+.order-result h2{margin-bottom: 10px;display: inline-block; font-size: 18px;color: #202020;height: 30px;line-height: 30px;font-weight: normal;}
+.order-result h2 i{display: inline-block;width: 28px;height: 28px;vertical-align: bottom; background: url(../images/home/pay_ok.png) 0 0 no-repeat;background-size: cover;}
+.order-result p{color: #a7a7a7;font-size: 14px;line-height: 1.2em;}
+.order-result{padding:0 10px 10px;margin: 0 -10px;}
+.pay-main h2{font-size:16px;color: #202020;font-weight: normal; margin-bottom:5px;line-height:1.4em;padding-top: 10px;}
+.order-info{margin-bottom: 20px;}
+.order-info p{font-size: 14px;color: #a7a7a7;}
+.order-info p.pay-money{margin-top: 25px; font-size: 16px;color: #202020;padding-left: 15px;background: url(../images/home/icon_selected.png) 0 center no-repeat;}
+.order-info p.pay-money span{color:#fc3737;}
+.order-info p.pay-money span b{font-size: 16px;}
+.order-info,.pay-style{padding-left: 30px;} 
+.pay-style ul{overflow: hidden;margin-bottom: 10px;}
+.pay-style ul li{float: left;height: 40px;line-height: 40px;}
+.pay-style ul li label{cursor: pointer;}
+.pay-style ul li:first-child{margin-right: 20px;}
+.pay-style ul li img{vertical-align: middle;width: 36px;height: 36px;margin: 0 5px;}
+.pay-style .attention{color:#fc534c;margin-top: 40px;height: 20px;line-height: 20px;}
+.pay-style .attention i{padding-right: 5px; display: inline-block;width: 22px;height: 20px;background: url(../images/home/icon_laba.png) 0 center no-repeat;background-size:22px 20px;vertical-align: middle;}
+/* 支付成功样式 */
+.sucess-main {border:1px solid #dadada; background:#fff;margin: 32px auto; padding: 30px 65px 220px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.sucess-main h2{margin-bottom: 10px;font-size:font-size: 18px;color: #000;height: 30px;line-height: 30px;font-weight: normal;display: inline-block;}
+.sucess-main h2 i{display: inline-block;width: 28px;height: 28px;background: url(../images/home/pay_success.png) 0 0 no-repeat;background-size: cover;}
+.result-tip{margin-bottom: 10px;}
+.result-tip .attention{display: inline-block; color:#fc534c;margin-left: 10px; transform: translateY(-3px);-webkit-transform:translateY(-3px);}
+.result-tip .attention i{padding-right: 5px; display:inline-block;width: 22px;height: 20px;background: url(../images/home/icon_laba.png) 0 center no-repeat;background-size:22px 20px;vertical-align: middle;}
+.result-info{padding-left: 30px;}
+.sucess-main p{color:#a7a7a7;line-height: 1.4em;margin-bottom: 5px;}
+.sucess-main ul{margin-top: 20px;text-align: center;}
+.sucess-main ul li{display: inline-block;}
+.sucess-main ul li:first-child{margin-right: 20px;}
+.sucess-main ul li:first-child a{display: inline-block;width: 92px;height: 32px;background: #f44336;color: #fff;line-height: 32px;text-align: center;font-size: 16px;border-radius: 5px;}
+.sucess-main ul li:last-child a{display: inline-block;width: 92px;height: 32px;background: #fff;color: #000;line-height: 32px;text-align: center;font-size: 16px;border-radius: 5px;border:1px solid #434343;}
+.sucess-main .btn{margin-top: 50px; background: #fff;border: 1px solid #fc534c;border-radius: 5px;color: #fc534c;}
+.sucess-main .btn:hover{background:#fc534c;color:#fff;}
+
+

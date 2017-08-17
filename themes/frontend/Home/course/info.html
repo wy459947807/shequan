@@ -1,0 +1,43 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<link rel="stylesheet" href="__TMPL__Public/home/css/course_list.css">
+<style>
+    p{ margin: 0px;}
+</style>
+<div class="train-course">
+    <div class="course-header">
+        <div class="wp">
+            <p><strong>提示：</strong>购买叶军老师投资风险和基础教育课程可以获得赢家宝，赢家宝可用于解锁高手私密内容和向高手赠送礼物！</p>
+        </div>
+    </div>
+    <div class="wp course-con">
+        <div class="video">
+            <div class="pic">
+                <a href=""><img src="{$course.video_img}" alt="">
+                    <p><i></i>{$course.views}</p></a>
+                <div class="tit">
+                    <h4>{$course.name}</h4>
+                    <p>{$course.intro}</p>
+                </div>
+            </div>
+        </div>
+        <div class="teach-info">
+            <div class="pic"><img src="{$course.avatar}" alt=""></div>
+            <div class="txt">
+                <h2>{$course.teacher_name}———<span>{$course.name}</span></h2>
+                <p>录制时间：{:date("Y-m-d",strtotime($course['record_time']))}<span>播放：{$course.views}次</span></p>
+            </div>
+        </div>
+        <div class="course-info">
+            <p>课时：{$course.hour}课时</p>
+            <p>价格：<span id="univalent">{$course.price}</span>元/课时</p>
+            <p>{$course.detail}</p>
+        </div>
+        <div class="price-info">
+            <p>支付金额：<strong>{$course.price}<i>元</i></strong></p>
+            <a id="go_buy" href="{:U('course/order',array('id'=>$course['id']))}">立即购买</a>
+        </div>
+    </div>
+</div>
+<tc_include file="Public:footer" />
+

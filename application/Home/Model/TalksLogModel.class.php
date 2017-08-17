@@ -15,7 +15,7 @@ class TalksLogModel extends CommonModel {
                 . " left join tg_killer as d on d.id=c.killer_id and d.status=1 ";
         
         $this->sqlField="a.*,b.subscribe,d.id as killer_id,e.is_read";                //数据库查询字段
-        $this->sqlWhere=" (1=1) ";          //数据库查询条件
+        $this->sqlWhere=" (1=1) and b.status = 1 ";          //数据库查询条件
         $this->bindValues=array();
         if(!empty($params['page'])) $this->page = $params['page'];
         if(!empty($params['pageLimit'])) $this->pageLimit = $params['pageLimit'];

@@ -1,0 +1,33 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<link rel="stylesheet" href="__TMPL__Public/home/css/order.css">
+<style>
+    p{ margin: 0px;}
+    label{font-weight:normal;display: block}
+    input[type="checkbox"], input[type="radio"]{ margin: 0px}
+    .btn,.btn:link ,.btn:visited ,.btn:hover ,.btn:active {padding: 0px;color: #fff; background-color: #fc534c}
+
+
+</style>
+<div class="sucess-main wp">
+    <div class="order-schedule">
+        <div class="row1">
+            <span class="red">确认订单</span>
+            <span class="red">在线支付</span>
+            <span class="red">购买成功</span>
+        </div>
+        <div class="row2"><img src="__TMPL__Public/home/images/home/pay_state3.png" alt=""></div>
+    </div>
+    <div class="result-tip"><h2><i></i>您已付款成功！</h2><p class="attention"><i></i>获赠{$order.total_money}赢家宝</p></div>
+    <div class="result-info">
+        <p>请在我的订单中关注申购状态</p>
+        <p>如遇问题请拨打本站客服电话：400-611-5718</p>
+        <p>服务时间：周一至周日  9:00-17:00</p>
+        <a class="btn" href="{:U('course/index')}">继续购买</a>
+    </div>
+</div>
+<tc_include file="Public:footer" />
+<script>
+
+</script>
+

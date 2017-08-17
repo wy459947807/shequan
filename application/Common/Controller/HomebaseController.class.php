@@ -7,6 +7,10 @@ use Home\Lib\FileOpera;
 
 class HomebaseController extends AppframeController {
 
+    protected $model;//公用model
+    protected $loginTime=6;//登录有效期(单位：小时)
+    protected $params; //页面参数
+    
     public function __construct() {
         $this->set_action_success_error_tpl();
         parent::__construct();
@@ -37,9 +41,17 @@ class HomebaseController extends AppframeController {
                 
             }
         }
+        
+        
+        $this->model = M(); 
+        $this->params=I('param.');//获取参数
+        if(empty($this->params)){
+            $this->params=$this->getParams();
+        }
 
-        $this->check_jrw();
-
+        //$this->check_jrw();
+        $this->check_user_login();
+        
         if (sp_is_user_login()) {
             $this->assign("user", sp_get_current_user());
         }
@@ -48,9 +60,66 @@ class HomebaseController extends AppframeController {
             $this->assign("jrw_url", C("JRW_URL"));
         }
     }
+    
+    //获取put参数
+    protected function getParams(){
+        $paramsArray = json_decode(file_get_contents('php://input'), TRUE);
+        return $paramsArray;
+    }
+    
+    //检测用户登录状态
+    protected function check_user_login(){
+        
+        /*测试帐号登录*/
+        /*$_SESSION['uc_user']=array(
+            "uid"=>"1252",
+            'username'=>"测试帐号",
+            'headimgurl_small'=>"http://www.10jrw.com/data/upload/avatar/000/00/80/fbb5d2cf4558b47551ad4a26ce3f11a0_48.jpg",
+            'gender'=>"1",
+            'mobile'=>"18739178217"
+        );*/
+        
+         /*测试高手帐号登录*/
+        $_SESSION['uc_user']=array(
+            "uid"=>"8074",
+            'username'=>"汪勇",
+            'headimgurl_small'=>"http://www.10jrw.com/data/upload/avatar/000/00/80/fbb5d2cf4558b47551ad4a26ce3f11a0_48.jpg",
+            'gender'=>"1",
+            'mobile'=>"18739178207"
+        );
+        
+        if(!empty($_SESSION['uc_user'])){
+            $ucUser=$_SESSION['uc_user'];
+            //$this->params['jrw_id']=$ucUser['jrw_id'];
+            $tempData['jrw_id']=$ucUser['uid'];
+            $tempData['user_nicename']=$ucUser['username'];
+            $tempData['avatar']=$ucUser['headimgurl_small'];
+            $tempData['sex']=$ucUser['gender'];
+            $tempData['mobile']=$ucUser['mobile'];
+            
+            $tokenInfo = json_decode(http_Post($tempData,C('APP_HOST').'index/getToken'),true);  
+            if(!empty($tokenInfo['data'])){
+               $userInfo= json_decode(http_Post($tokenInfo['data'],C('APP_HOST').'User/userInfo'),true);
+               $userInfo['data']['token']=$tokenInfo['data']['token'];
+               if(!empty($userInfo['data'])){ 
+                   session('user', $userInfo['data']);
+                   $this->params['uid']=$userInfo['data']['id'];
+                   $this->params['token']=$userInfo['data']['token'];
+               }
+            }
+        }
+    }
+    
+    //字段验证
+    protected function checkField($rules,$params) {
+        if ($this->model->validate($rules)->create($params)===false){
+            $this->error($this->model->getError());
+        }
+    }
 
-
+    
     //高手登录
+    /*
     protected function killer_login($user){
         if(empty($user['killer_id']))return;
         $killerInfo = M('killer')->where(array('id' => $user['killer_id']))->find();
@@ -60,12 +129,13 @@ class HomebaseController extends AppframeController {
         $killerInfo['last_login_time']=date("Y-m-d H:i:s");
         M('killer')->save($killerInfo);
         cookie("tlive_username",$user['user_login'],3600*24*30);  
-    }
+    }*/
 
 
     /**
      * 检查jrw的用户状态
      */
+    /*
     protected function check_jrw() {
         if (isset($_GET['k']) && !empty($_GET['k'])) {
             //检查用户登录状态
@@ -122,7 +192,7 @@ class HomebaseController extends AppframeController {
                 } 
             }
         }
-    }
+    }*/
 
     /**
      * 检查用户登录

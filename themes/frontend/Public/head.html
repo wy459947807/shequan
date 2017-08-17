@@ -1,34 +1,74 @@
-	<tc_include file=":function"/>
-	<tc_include file=":config"/>
-	<meta name="author" content="ThinkCMF">
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    
-    <!-- Set render engine for 360 browser -->
-    <meta name="renderer" content="webkit">
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>炒股培训课程_期货培训课程_股票期货高手-十年金融网</title>
+        <meta name="keywords" content="炒股培训课程、期货培训课程、期货培训高手、股票培训高手"/>
+        <meta name="description" content="深圳十年网络科技有限公司（十年金融网）是一家专注于金融领域教育与培训的线上平台型公司。以传播正确的金融投资理念为己任，关注于投资者风险教育与知识传播。"/>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="__TMPL__Public/home/css/global.css">
+        <link rel="stylesheet" href="http://www.10jrw.com/static/css/default/style/glabal.css">
+        <link rel="stylesheet" href="__TMPL__Public/home/css/user.css">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <script src="__TMPL__Public/home/js/jquery-1.9.1.min.js"></script>
+        
+        <script src="__TMPL__Public/home/bower_components/swiper/dist/js/swiper.jquery.min.js"></script>
+        <script src="__TMPL__Public/home/lib/date/WdatePicker.js"></script>
+        <script src="__TMPL__Public/home/lib/layer/layer.js"></script>
+        <script src="__TMPL__Public/home/js/common.js"></script>
 
-   	<!-- No Baidu Siteapp-->
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+        <style>
+            .l_warp{width: 1380px}
+            .l_slogan{width: 390px !important;}
+            .l_btn_login{ width: 205px}
+            td{vertical-align: middle}
+        </style>
+        
+        <script>
+            <if condition="!empty($user)">
+                $(document).ready(function () {
+                    $(".l_btn_login").html($("#loginHtml").html());
+                });
+            </if>
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <div id="loginHtml" style=" display: none">
+                <ul class="hearderright">
+                    <li class="nickname nickname_bottom">
+                        <div class="nickname_top" id="front_d_logout" style="top: 42px;">
+                            <div class="pic">
+                                <img src="{$user['avatar']}" rel="noffow">
+                            </div>
+                            <p>
+                                <a href="javascript:;">{$user['user_nicename']}</a><br>
+                                <a class="personial" href="http://www.10jrw.com/user/">个人中心</a>
+                            </p>
+                        </div>
+                        <div class="quit">
+                            <a id="logout" href="http://www.10jrw.com/?m=user&a=logout"><i></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-    <!-- HTML5 shim for IE8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <![endif]-->
-	<link rel="icon" href="__TMPL__Public/assets/images/favicon.ico" type="image/x-icon">
-	<link rel="shortcut icon" href="__TMPL__Public/assets/images/favicon.ico" type="image/x-icon">
-    <link href="__TMPL__Public/assets/simpleboot/themes/simplebootx/theme.min.css" rel="stylesheet">
-    <link href="__TMPL__Public/assets/simpleboot/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="__TMPL__Public/assets/simpleboot/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
-	<!--[if IE 7]>
-	<link rel="stylesheet" href="__TMPL__Public/assets/simpleboot/font-awesome/4.4.0/css/font-awesome-ie7.min.css">
-	<![endif]-->
-	<link href="__TMPL__Public/assets/css/style.css" rel="stylesheet">
-	<link rel="stylesheet" href="__TMPL__Public/home/css/global.css">
-	<style>
-		/*html{filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter: grayscale(1);}*/
-		#backtotop{position: fixed;bottom: 50px;right:20px;display: none;cursor: pointer;font-size: 50px;z-index: 9999;}
-		#backtotop:hover{color:#333}
-		#main-menu-user li.user{display: none}
-	</style>
-	
+            <div class="s_header " style="position: relative; z-index: 10;">
+                {$header.top}
+            </div>
+            <div class="l_home_nav" style="position: relative; z-index: 10;">
+                {$header.head}
+            </div>
+            <a href="http://www.10jrw.com/home/heyi/zsg.html" target="_blank" rel="nofollow">
+                <div class="l_banner" style="text-align: center; position: relative; z-index: 10;"></div>
+            </a>
+
+        </div>

@@ -1,47 +1,67 @@
 <tc_include file="Public:header" />
-<link rel="stylesheet" href="__TMPL__Public/home/css/penxunkecheng.css">
-<div class="container">
-   <div id="penxunkecheng">
-       <div class="item clearfix">
-           <div class="img_box">
-               <img src="__TMPL__Public/home/images/penxunkecheng/penxun.png" alt="">
-           </div>
-           <div class="kecheng_info ">
-               <h4 class="text-center ">邵立胜</h4>
-               <p class="text-center">十年金融网董事   赢顺资产风控总监 </p>
-               <p>组建团队一直保持较高收益的稳定盈利。精于多周期灵活运用和形态过滤，自创顺势三大战法和四重过滤，尤其擅长以期货的眼光 洞察股市，在不同市场环境下均能持续盈利。</p>
-               <div class="tearch_img">
-                   <img src="__TMPL__Public/home/images/penxunkecheng/penxun_2.png" alt="">
-               </div>
-           </div>
-       </div>
-       <div class="item clearfix">
-           <div class="kecheng_info " style="background:#ad4d42;">
-               <h4 class="text-center ">邵立胜</h4>
-               <p class="text-center">十年金融网董事   赢顺资产风控总监 </p>
-               <p>组建团队一直保持较高收益的稳定盈利。精于多周期灵活运用和形态过滤，自创顺势三大战法和四重过滤，尤其擅长以期货的眼光 洞察股市，在不同市场环境下均能持续盈利。</p>
-               <div class="tearch_img">
-                   <img src="__TMPL__Public/home/images/penxunkecheng/penxun_2.png" alt="">
-               </div>
-           </div>
-           <div class="img_box">
-               <img src="__TMPL__Public/home/images/penxunkecheng/penxun_3.png" alt="">
-           </div>
-       </div>
-       <div class="item clearfix">
-           <div class="img_box">
-               <img src="__TMPL__Public/home/images/penxunkecheng/penxun_4.png" alt="">
-           </div>
-           <div class="kecheng_info " style="background:#ca423d;">
-               <h4 class="text-center ">邵立胜</h4>
-               <p class="text-center">十年金融网董事   赢顺资产风控总监 </p>
-               <p>组建团队一直保持较高收益的稳定盈利。精于多周期灵活运用和形态过滤，自创顺势三大战法和四重过滤，尤其擅长以期货的眼光 洞察股市，在不同市场环境下均能持续盈利。</p>
-               <div class="tearch_img">
-                   <img src="__TMPL__Public/home/images/penxunkecheng/penxun_2.png" alt="">
-               </div>
-           </div>
-       </div>
-
-   </div>
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<link rel="stylesheet" href="__TMPL__Public/home/css/course_list.css">
+<div class="course-header">
+    <div class="wp">
+        <p><strong>提示：</strong>购买叶军老师投资风险和基础教育课程可以获得赢家宝，赢家宝可用于解锁高手私密内容和向高手赠送礼物！</p>
+    </div>
 </div>
+<div class="course-main">
+    <ul class="course-list">
+        
+        <notempty name="courseList">
+        <foreach name="courseList" item="val" index="index">
+        <li>
+            <div class="box">
+                <div class="pic">
+                    <if condition="$val['buy_status'] eq 2">
+                        <a href="video.html">
+                    <else/>
+                        <a href="{:U('course/info',array('id'=>$val['id']))}">
+                    </if>  
+                        <img src="{$val.video_img}" alt="">
+                        <p>{$val.name}</p>
+                    </a>
+                </div>
+                <div class="txt">
+                    ￥{$val.price}
+                    <if condition="$val['buy_status'] eq 2">
+                        <span>已购买</span>
+                    <else/>
+                        <a href="{:U('course/info',array('id'=>$val['id']))}" >立即购买</a>
+                    </if>
+                </div>
+            </div>
+        </li>
+        </foreach>
+        </notempty>
+ 
+    </ul>
+</div>
+<!--<div id="pages"><span class="current">1</span> <a href="">2</a> <a href="">3</a> <a href="">4</a> <a href="">5</a> <a href="">6</a> <a href="">下一页&gt;</a> <a href="">最后一页</a></div>-->
+ <!--分页部分开始-->
+<div id="page"></div>
 <tc_include file="Public:footer" />
+
+<script>
+    initPage();//初始化分页
+    
+    //翻页调用
+    function PageCallback(index, jq) {
+        var dataInfo={
+            "page":index+1
+        }
+        jumpPage(dataInfo);
+    }
+    
+    function initPage(){
+        var pageInfo={
+            'page':"{$pageInfo.page}",
+            'pageLimit':"{$pageInfo.pageLimit}",
+            'num':"{$pageInfo.num}",
+            'pageNum':"{$pageInfo.pageNum}"
+        };
+        getTemplate(pageInfo, "{:U('index/ajaxPage')}", "#page");
+    }
+
+</script>

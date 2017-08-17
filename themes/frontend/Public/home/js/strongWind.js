@@ -279,6 +279,49 @@ function initUploadImage(uploader,imageId,inputId){
     });
 }
 
+
+
+//上传到本地
+function uploadLocal(uploader) {
+    var uploaderA = new plupload.Uploader({
+        runtimes: 'html5,flash,silverlight,html4',
+        browse_button: uploader, // you can pass in id...
+        url: "index.php/app/Index/uploadLocal",
+        max_file_size: '100mb',
+        unique_names: true,
+        filters: [{
+                title: "文件类型(*)",
+                extensions: "*"
+            }],
+        flash_swf_url: '__TMPL__Public/home/lib/plupload/Moxie.swf',
+        silverlight_xap_url: '__TMPL__Public/home/lib/plupload/Moxie.xap'
+    });
+    uploaderA.bind('Init', function (up, params) {
+    });
+    uploaderA.init();
+    uploaderA.bind('FileUploaded', function (up, file, responseObject) { 
+        var res = JSON.parse(responseObject.response);//获取服务器返回数据
+        plupload_callback(uploader,res);//回调函数
+    });
+    
+    uploaderA.bind('UploadProgress', function (up, files) {
+        var percent = files.percent; 
+        //layer.alert("正在上传中：进度："+percent+"%");
+    });
+    
+    uploaderA.bind('UploadFile', function (up, files) {
+        var loading = layer.load(1, {
+            shade: [0.1,'#000'] //0.1透明度的白色背景
+        });
+    });
+    
+    uploaderA.bind('FilesAdded', function (up, files) {
+        uploaderA.start();
+        //e.preventDefault();
+    });
+}
+
+
     
 //上传到云端
 function uploadCloud(uploader) {

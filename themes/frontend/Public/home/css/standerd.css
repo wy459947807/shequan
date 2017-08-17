@@ -1,0 +1,44 @@
+/* 订阅标准样式 */
+body{background: #f1f2f2;}
+.standerd-main{padding-top: 30px;} 
+.standerd-main .top{font-size: 14px;height: 90px;margin-bottom: 20px; border: 1px solid #dadada; padding: 10px 35px;background-color: #f5f8fa;border-bottom: 1px solid #dadada;overflow: hidden;}
+.standerd-main .top .pic{float: left;width: 94px;height: 94px;margin-right: 10px;}
+.standerd-main .top .pic img{display: block;width: 100%;height: 100%;}
+.standerd-main .top .txt{padding-top: 12px;}
+.standerd-main .top .txt h4{color: #202020;line-height: 1.2em;font-size: 18px; font-weight: normal;height: 42px;display: box; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; text-overflow: ellipsis; overflow: hidden;}
+.standerd-main .top .txt p{color: #979797;line-height: 1.4em;font-size: 16px;}
+.standerd-main .top .txt p span{color: #fc534c;}
+.standerd-main .con{background: #fff;overflow: hidden;padding:20px 72px 40px;font-size: 16px;}
+.standerd-main .con .tit h2{font-size: 16px;line-height: 1.6em;height: 1.6em; padding: 20px 0 30px;color: #202020;}
+.standerd-main .con .tit i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/icon_tip1.png) center no-repeat;background-size: cover;vertical-align: middle;}
+.standerd-main .con .tit p{color: #202020;margin-bottom: 15px;font-size: 18px;}
+.standerd-main .info{overflow: hidden;padding-bottom: 10px;}
+.standerd-main .info table{width: 100%;text-align: center;}
+.standerd-main .info tr:first-child{background: #f5f8fa;}
+.standerd-main .info tr{border: 1px solid #eae9e9;margin-top: 1px;}
+.standerd-main .info tr.on{border-left: 1px solid #fc3737;border-right: 1px solid #fc3737;color: #fc3737;}
+.standerd-main .info tr.on td{border-top: 1px solid #fc3737;border-bottom: 1px solid #fc3737;}
+.standerd-main .info tr.on input[type="text"]{color: #fc3737;}
+.standerd-main .info td{height: 56px;}
+.standerd-main .info td input[type="text"]{width: 100%;text-align: center;text-decoration: underline;}
+.standerd-main .last-pay{text-align: right; color: #000;margin:30px 0 15px;}
+.standerd-main .last-pay span{color: #fc534c;}
+.standerd-main .pay-btn{float: right;width: 180px;height: 52px;line-height: 52px;color: #fff;text-align: center;background: #fc534c;border-radius: 5px;font-size: 20px;}
+/* 弹出框样式 */
+.yjbao-tip{position: relative; width: 492px; margin:0 auto;overflow: hidden;background: #ffffff;padding: 42px 10px 64px;border-radius: 5px;}
+.yjbao-tip .close{position: absolute;right: 10px;top: 6px; width: 25px;height: 25px;background: url(../images/close2.png) center no-repeat;background-size: cover;}
+.yjbao-tip .con{font-size: 14px;overflow: hidden;text-align: center;}
+.yjbao-tip .con h3{font-size: 16px;color: #000;margin-bottom: 10px;}
+.yjbao-tip .con h3 i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/icon_tip1.png) center no-repeat;background-size: cover;vertical-align: middle;}
+.yjbao-tip .con p{font-size: 14px;color: #757575;margin-bottom: 20px;}
+.yjbao-tip .con a{font-size: 14px;color: #ff4b4b; line-height: 32px;}
+.yjbao-tip .confirm-btn{border-top:1px solid #e3e3e3; display: inline-block;float: left; width: 300px; height: 100px;line-height: 100px;text-align:center;font-size: 16px;color: #202020;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.yjbao-tip .confirm-btn:hover{color:#ff3e3e;}
+#confirm_pay .con span:nth-child(3){border-right:1px solid #e3e3e3;}
+#confirm_pay{width: 600px;padding: 0;padding-top: 35px;}
+#confirm_pay .con h3{margin-bottom: 35px;}
+#pay_result h3{color:#ff5454;}
+#pay_result h3 i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/pay_ok.png) center no-repeat;background-size: cover;vertical-align: middle;}
+
+
+

@@ -63,7 +63,7 @@ function formInit(formId, url, noAjax) {
         ajaxPost: ajaxPost,
         callback: function (data) {
             if (ajaxPost) {
-                if (data.status == 200) {
+                if (data.status == 1) {
                     layer.alert(data.msg, {title: '温馨提示', icon: 1});
 
                     if (url) {
@@ -76,7 +76,7 @@ function formInit(formId, url, noAjax) {
                 }
             }
 
-            //window.location.reload();
+            window.location.reload();
         },
     });
 
@@ -204,17 +204,27 @@ function layer_tip(reInfo, refresh) {
 
 }
 
-function getRemoteData(dataInfo, ajaxUrl, refresh) {
+function getRemoteData(dataInfo, ajaxUrl, isInfo) {
+     
+    var method = "post";//默认post提交方式
+    if (dataInfo['method']) {
+        method = dataInfo['method'];
+        delete  dataInfo['method'];
+    }
+
     var retData = {}
     $.ajax({
         url: ajaxUrl,
-        type: 'post',
+        type: method,
         data: dataInfo,
         dataType: "json", //dataType: "html",
         async: false,
         success: function (res) {
-            layer_tip(res, refresh);
-            retData = res;
+            if (isInfo) {
+                retData = res;
+            } else {
+                retData = res.data;
+            }
         },
         error: function () {
             return;
@@ -277,6 +287,48 @@ function initUploadImage(uploader, imageId, inputId) {
     uploaderA.bind('FilesAdded', function (up, files) {
         uploaderA.start();
         e.preventDefault();
+    });
+}
+
+
+
+//上传到本地
+function uploadLocal(uploader) {
+    var uploaderA = new plupload.Uploader({
+        runtimes: 'html5,flash,silverlight,html4',
+        browse_button: uploader, // you can pass in id...
+        url: "index.php/app/Index/uploadLocal",
+        max_file_size: '100mb',
+        unique_names: true,
+        filters: [{
+                title: "文件类型(*)",
+                extensions: "*"
+            }],
+        flash_swf_url: '__TMPL__Public/home/lib/plupload/Moxie.swf',
+        silverlight_xap_url: '__TMPL__Public/home/lib/plupload/Moxie.xap'
+    });
+    uploaderA.bind('Init', function (up, params) {
+    });
+    uploaderA.init();
+    uploaderA.bind('FileUploaded', function (up, file, responseObject) { 
+        var res = JSON.parse(responseObject.response);//获取服务器返回数据
+        plupload_callback(uploader,res);//回调函数
+    });
+    
+    uploaderA.bind('UploadProgress', function (up, files) {
+        var percent = files.percent; 
+        //layer.alert("正在上传中：进度："+percent+"%");
+    });
+    
+    uploaderA.bind('UploadFile', function (up, files) {
+        var loading = layer.load(1, {
+            shade: [0.1,'#000'] //0.1透明度的白色背景
+        });
+    });
+    
+    uploaderA.bind('FilesAdded', function (up, files) {
+        uploaderA.start();
+        //e.preventDefault();
     });
 }
 
@@ -397,6 +449,20 @@ function initVideo(videoId,src){
         var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
         CKobject.embedSWF('public/js/expand/ckplayer/ckplayer.swf',videoId,'ckplayer_a1','100%','100%',flashvars,params);
     }
+}
+
+
+//合并数组
+function mergeArray(arrayA,arrayB){
+    var tempArray={};
+    for(index in arrayA){
+        tempArray[index]=arrayA[index]
+    }
+    
+    for(index in arrayB){
+        tempArray[index]=arrayB[index]
+    }
+    return tempArray;
 }
 
 

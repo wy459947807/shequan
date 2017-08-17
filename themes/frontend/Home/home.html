@@ -17,6 +17,32 @@
     <!--<img src="images/home/banner_1.png" alt="">-->
 </div>
 <div class="container">
+
+    <!-- 新增最近观点 -->
+    <div class="new-viewpoint">
+        <div class="col-left">
+            <h3>最新观点<a href="">更多></a></h3>
+            <ul>
+                <notempty name="msgList">
+                <foreach name="msgList" item="value">
+                <li>
+                    <a href="">
+                        <div class="pic"><img src="{$value.avatar}" alt=""></div>
+                        <div class="txt">
+                            <p class="tit">{$value.from_client_name}<span>{:date("H:i",strtotime($value['saytime']))}</span></p>
+                            <p style="height: 28px">{:get_emoji_content($value['message'])}</p>
+                        </div>
+                    </a>
+                </li>
+                </foreach>
+                </notempty>
+            </ul>
+        </div>
+        <div class="col-right">
+            <a href=""><img src="__TMPL__Public/home/images/home/Auditing.jpg" alt=""></a>
+        </div>
+    </div>
+
     <div id="today_recommend" style="position: relative;">
         <h3>今日推荐</h3>
         <div  class="swiper-container">
@@ -43,9 +69,9 @@
                             <p class="l_text"><?php echo mb_substr($l['intro'],0,30);?>...</p>
                             <p class="l_reply"><i><img src="__TMPL__Public/home/images/home/home_icon_1.png" alt=""></i><?php echo date('H:i',strtotime($l['last_reply_time']));?> 回复文本</p>
                             <?php if($l['is_focused']){?>
-                                <button type="button" class="btn btn-danger">已关注</button>
+                            <button type="button" class="btn btn-danger">已关注</button>
                             <?php }else{?>
-                                <button type="button" class="btn btn-danger">+关注</button>
+                            <button type="button" class="btn btn-danger">+关注</button>
                             <?php }?>
                         </div>
                     </div>
@@ -103,14 +129,15 @@
                 </div>
                 <div class="col-md-3 shares_top5">
                     <div class="text-center">
+                        <!--
                         <a target="_blank" href="/index.php?g=&m=test&a=index"><h5>申请开通我的社圈</h5></a>
                         <img style="width:37px;display: inline-block;margin-top:-52px; margin-left:176px;"" src="__TMPL__Public/home/images/home/hand.gif" alt="">
-                        
+                        -->
                         <php>foreach($adeptType as $key=>$val){</php>
                         <h4>{$val}高手 TOP5</h4>
                         <br>
                         <php>foreach($topList[$key]['data'] as $k=>$v){</php>
-          
+
                         <a href="/index.php?g=&m=live&a=index&t_id=<?php echo $v['id'] ?>">
                             <p>
                                 <i style="width:26px; display: inline-block"><img style="width:100%;" src="__TMPL__Public/home/images/home/home_top_<?php echo $k+1?>.png" alt=""></i>
@@ -119,18 +146,18 @@
                                 <?php if($v['rankChange']>0){ ?>
                                 <span style="width:60px; display: inline-block; color:#fc3737;" class="text-danger">↑<?php echo $v['rankChange']?></span>
                                 <?php } ?>
-                                
+
                                 <?php if($v['rankChange']<0){ ?>
                                 <span style="width:60px; display: inline-block; color:#fc3737;" class="text-danger">↓<?php echo abs($v['rankChange'])?></span>
                                 <?php } ?>
-                                
+
                                 <?php if($v['rankChange']==0){ ?>
                                 <span style="width:60px; display: inline-block; color:#fc3737;" class="text-danger">--</span>
                                 <?php } ?>
-                                
+
                             </p>
                         </a>
-       
+
                         <php>}}</php>
 
                     </div>
@@ -144,7 +171,7 @@
 <tc_include file="Public:footer" />
 <script src="__TMPL__Public/home/js/home.js"></script>
 <script>
-  
+
 
     var killerInfo = {
         page: 1,
@@ -152,9 +179,9 @@
         status: 1,
         orderType: 0
     };
-    
+
     getKillerList(0, 1);//加载高手列表
-    
+
     //获取高手列表
     function getKillerList(orderType, page) {
         killerInfo['orderType'] = orderType ? orderType : 0;
@@ -166,19 +193,19 @@
     function PageCallback(index, jq) {
         getKillerList(killerInfo['orderType'], index + 1);
     }
-    
+
     //关注
-    function focusKiller(id,val){
-        if($(val).html()!="已关注"){
-            var dataInfo={};
-            dataInfo['id']=id;
-            var retData = getRemoteData(dataInfo,"{:U('index/focusKiller')}");
+    function focusKiller(id, val) {
+        if ($(val).html() != "已关注") {
+            var dataInfo = {};
+            dataInfo['id'] = id;
+            var retData = getRemoteData(dataInfo, "{:U('index/focusKiller')}");
             //alert(retData.status);
-            
-            if(retData.status==200){
+
+            if (retData.status == 200) {
                 getKillerList(killerInfo['orderType'], killerInfo['page']);//刷新高手列表板块
             }
-  
+
         }
     }
 

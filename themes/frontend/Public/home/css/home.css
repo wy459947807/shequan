@@ -28,11 +28,25 @@
 #home_tab_content .home_item  .home_tab_bottom .tab_bottom_info span{color:#fc3d3d; font-weight: bold;}
 #home_tab_content .home_item .tab_biaoqian{position: absolute; top:0; left:0;}
 #home_tab_content>.tab-pane>.row>div{margin-top: 10px;}
-#home_main_context .shares_top5{padding:0; background:white; border:1px solid #ccc;}
-#home_main_context .shares_top5 h4{background:#E7E7E7; height:47px; line-height: 47px; color:#F02C2C; margin:0; }
+#home_main_context .shares_top5{padding:0;padding-top:20px;background:#f6f8f7; border:1px solid #ccc;}
+#home_main_context .shares_top5 h4{background:#ff6561; height:47px; line-height: 47px; color:#ffffff; margin:0; }
 #home_main_context .shares_top5 h5{background-color:#ff6561; height:55px; line-height: 47px; color:white; margin:0;font-size: 18px; }
 #home_main_context .shares_top5 p{height:50px; line-height: 50px;}
+/* 新增最新观点样式 */
 
+.new-viewpoint {overflow: hidden;padding: 10px 0;width: ;margin: 0 auto;width: 100%;padding: 0 10px;}
+.new-viewpoint .col-left{float: left;width: 780px;}
+.new-viewpoint .col-left h3 a{float: right;font-size: 16px;color:#fd3736;transform: translateY(14px);}
+.new-viewpoint .col-left ul{border: 1px solid #dadada;padding: 4px 14px;background: #fff;}
+.new-viewpoint .col-left ul li{margin: 18px 0;overflow: hidden;}
+.new-viewpoint .col-left .pic{float: left;width: 52px;height: 52px;margin-right: 5px;}
+.new-viewpoint .col-left .pic img{width: 100%;}
+.new-viewpoint .col-left .txt{float: left;padding-top: 4px;width: 684px;}
+.new-viewpoint .col-left .txt p{margin:0;font-size: 16px;color: #000;overflow: hidden; -ms-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap;height: 20px;line-height: 20px}
+.new-viewpoint .col-left .txt p.tit{font-size: 15px;color:#919191;}
+.new-viewpoint .col-left .txt p.tit span{color: #fe3636;font-size: 16px;padding-left: 10px;}
+.new-viewpoint .col-right{float: right;width: 320px;height: 238px;margin-top: 56px;}
+.new-viewpoint .col-right img{width: 100%;height: 100%;}
 /*分页标签部分*/
 button {cursor: pointer}
 i,em,cite {font-style: normal}
@@ -59,6 +73,16 @@ a:focus { outline: none}
 .pages .searchPage .page-go {padding: 8px 0;color: #999999;font-family: \u5b8b\u4f53,Arial;font-size: 14px;padding: 10px 0\9;*padding: 6px 0;}
 .pages .searchPage .page-go input {width: 21px;height: 20px; margin: 0 5px;padding-left: 5px;border: 1px solid #e4e4e4;}
 .pages .searchPage .page-btn { margin: 9px 0 5px 5px;padding: 2px 5px; background: #ff6561;border-radius: 2px;color: #ffffff;font-family: Arial, 'Microsoft YaHei';font-size: 14px;text-decoration: none;}
+/* 观点详情页 */
+.view-main{width: 1000px;margin: 25px auto;}
+.view-main ul{border: 1px solid #dadada;padding: 4px 38px;background: #fff;}
+.view-main ul li{margin: 28px 0;overflow: hidden;}
+.view-main .pic{float: left;width: 52px;height: 52px;margin-right: 10px;}
+.view-main .pic img{width: 100%;border-radius: 50%;overflow: hidden;}
+.view-main .txt{float: left;padding-top: 4px;width: 860px;}
+.view-main .txt p{margin:0;font-size: 16px;color: #000;overflow: hidden; -ms-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap;height: 20px;line-height: 20px}
+.view-main .txt p.tit{font-size: 15px;color:#919191;}
+.view-main .txt p.tit span{color: #fe3636;font-size: 16px;padding-left: 10px;}
 
 /*已关注按钮样式*/
 .focused{background-color: #999999; border-color: #999999;color: #fff; border: 1px solid transparent;border-radius: 4px;cursor: pointer;display: inline-block;font-size: 14px;font-weight: 400;line-height: 1.42857;padding: 6px 12px;text-align: center;touch-action: manipulation;vertical-align: middle;white-space: nowrap;}

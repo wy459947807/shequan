@@ -1,0 +1,46 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<div class="view-main">
+    <ul>
+        <notempty name="messages">
+            <foreach name="messages" item="value">
+            <li>
+                <a href="">
+                    <div class="pic"><img src="{$value.avatar}" alt=""></div>
+                    <div class="txt">
+                        <p class="tit">{$value.from_client_name}老师<span>{:date("H:i",strtotime($value['saytime']))}</span></p>
+                        <p>{:get_emoji_content($value['message'])}</p>
+                    </div>
+                </a>
+            </li>   
+            </foreach>
+        </notempty>
+    </ul>
+</div>
+<!--<div id="pages">2921 条记录 1/293 页    <span class="current">1</span> <a href="">2</a> <a href="">3</a> <a href="">4</a> <a href="">5</a> <a href="">6</a> <a href="">下一页&gt;</a> <a href="">最后一页</a></div>-->
+<!--分页部分开始-->
+<div id="page"></div>
+<tc_include file="Public:footer" />
+
+<script>
+    initPage();//初始化分页
+
+    //翻页调用
+    function PageCallback(index, jq) {
+        var dataInfo = {
+            "page": index + 1
+        }
+        jumpPage(dataInfo);
+    }
+
+    function initPage() {
+        var pageInfo = {
+            'page': "{$pageInfo.page}",
+            'pageLimit': "{$pageInfo.pageLimit}",
+            'num': "{$pageInfo.num}",
+            'pageNum': "{$pageInfo.pageNum}"
+        };
+        getTemplate(pageInfo, "{:U('index/ajaxPage')}", "#page");
+    }
+
+</script>

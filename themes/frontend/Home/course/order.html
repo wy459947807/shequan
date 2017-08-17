@@ -1,0 +1,75 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<link rel="stylesheet" href="__TMPL__Public/home/css/order.css">
+<style>
+    p{ margin: 0px;}
+    label{font-weight:normal;display: block}
+    input[type="checkbox"], input[type="radio"]{ margin: 0px}
+    .btn,.btn:link ,.btn:visited ,.btn:hover ,.btn:active {padding: 0px;color: #fff;}
+  
+   
+</style>
+<div class="order-main wp">
+    <div class="order-schedule">
+        <div class="row1">
+            <span class="red">确认订单</span>
+            <span>在线支付</span>
+            <span>购买成功</span>
+        </div>
+        <div class="row2"><img src="__TMPL__Public/home/images/home/pay_state1.png" alt=""></div>
+    </div>
+    <div class="course-info">
+        <h2>课程信息：</h2>
+        <table>
+            <tr>
+                <td width="36%">课程名称</td>
+                <td width="20%">导师</td>
+                <td width="20%">课时</td>
+                <td width="24%">价格（元）</td>
+            </tr>
+            <tr>
+                <td>{$course.name}</td>
+                <td>{$course.teacher_name}</td>
+                <td>1</td>
+                <td>{$course.price}</td>
+            </tr>
+        </table>
+    </div>
+    <p class="sum-money">实付金额:<span><b>{$course.price}</b>元</span>优惠金额:<span><b>0.00</b>元</span></p>
+    <p class="attention">支付成功即可获赠{$course.price}赢家宝</p>
+    <p class="agree">
+        <label>
+            <input type="checkbox" checked="cheched">我同意<a href="">《十年赢家网服务条款》</a>
+        </label>
+    </p>
+    <a class="btn" id="go_pay" href="javascript:void(0)">立即支付</a>
+</div>
+<tc_include file="Public:footer" />
+<script>
+
+    $(document).ready(function(){
+        //报名提交
+        $("#go_pay").click(function(){
+            if (!$('.agree input').is(':checked')) {
+                layer.msg('请先同意网络服务条款！');
+                return;
+            }
+            var orderData={
+                "uid":"{$user.id}",
+                "token":"{$user.token}",
+            };
+            orderData['course_ids']={0:"{$course.id}"};
+            orderData['course_num']={0:1};
+
+            var retData= getRemoteData(orderData, "{:C('APP_HOST')}Order/submitOrder",1);//提交订单
+            if(retData.status==1){
+                window.location.href= "{:U('course/pay')}&order_sn="+retData.data.order_sn;
+            }else{
+                layer.msg(retData.msg);
+            }
+
+        });
+    });
+
+</script>
+

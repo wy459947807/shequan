@@ -1,0 +1,81 @@
+<tc_include file="Public:head" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<div class="l_warp">
+    <div class="user_box clearfix">
+        <tc_include file="Public:usernav" />
+        <div class="fr_context">
+            <div class="my-course">
+                <div class="user_public_title">
+                    <span>已购买课程</span>
+                </div>
+                <div class="con">
+                    <table>
+                        <tr>
+                            <td width="23%">课程名称</td>
+                            <td width="18%">课程价格</td>
+                            <td width="18%">交易状态</td>
+                            <td width="23%">交易时间</td>
+                            <td width="18%">兑换赢家宝</td>
+                        </tr>
+                        
+                        <notempty name="courseList">
+                        <foreach name="courseList" item="value">
+                        <tr>
+                            <td>{$value.course_name}</td>
+                            <td>{$value.item_money}元</td>
+                            <td>
+                                <if condition="$value['status'] eq 2">
+                                    已支付
+                                </if>
+                                <if condition="$value['status'] eq 1">
+                                    未支付
+                                </if>
+                                <if condition="$value['status'] eq 3">
+                                    已取消
+                                </if>
+                            </td>
+                            <td>{:date("Y-m-d H:i:s",$value['ctime'])}</td>
+                            <td>{$value.win_coin}</td>
+                        </tr>
+                        </foreach>
+                        </notempty>
+
+                        <tr>
+                            <td colspan="5">总计：{$totalPrice}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="page"></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<tc_include file="Public:foot" />
+
+<script>
+    initPage();//初始化分页
+    
+    //翻页调用
+    function PageCallback(index, jq) {
+        var dataInfo={
+            "page":index+1
+        }
+        jumpPage(dataInfo);
+    }
+    
+    function initPage(){
+        var pageInfo={
+            'page':"{$pageInfo.page}",
+            'pageLimit':"{$pageInfo.pageLimit}",
+            'num':"{$pageInfo.num}",
+            'pageNum':"{$pageInfo.pageNum}"
+        };
+        getTemplate(pageInfo, "{:U('index/ajaxPage')}", "#page");
+    }
+
+</script>
+

@@ -1,0 +1,145 @@
+/* 个人分享样式顶部老师简介 */
+.share-top{height: 312px;background: #f1f2f2;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding-top: 40px;}
+.share-top .wp{overflow: hidden;}
+.share-top .pic{float: left;width: 204px;height: 204px;border-radius: 50%;overflow: hidden;}
+.share-top .pic img{display: block;width: 100%;height: 100%;}
+.share-top .txt{float: left;margin-left: 24px;color: #202020;width: 442px;}
+.share-top .txt h4{font-size: 24px;line-height: 27px;font-weight: normal;margin-bottom: 5px;}
+.share-top .txt h4 span{font-size: 16px;color: #202020;padding-left: 10px;}
+.share-top .txt .person-tab{font-size: 16px;line-height: 27px;padding-left: 27px;background: url(../images/home/icon_person.png) 0 center no-repeat;margin-bottom: 5px;}
+.share-top .txt .person-info{font-size: 14px;line-height: 24px;margin-bottom: 10px;}
+.share-top .txt .person-goodat span{display: inline-block;padding: 0 8px;height: 25px;line-height: 25px;text-align: center;color: #fff;margin: 0 3px;background: #fc3838;}
+.share-top .introduc{float: right;width: 300px;height: 206px; border-left: 1px solid #dcdcdc;}
+.share-top .introduc ul{overflow: hidden;}
+.share-top .introduc ul li{float: left; width:100px;text-align: center;font-size: 16px;line-height: 27px;}
+.share-top .introduc strong{color: #e62e2e;font-size: 18px;}
+.share-top .introduc .gift{padding-left: 30px;margin-top: 20px;margin-bottom: 62px;}
+.share-top .introduc .follow{float: right; width: 126px;height: 38px;line-height: 38px; text-align: center;border: 1px solid #fc3c3c;border-radius: 19px;font-size: 18px;color: #e62e2e;cursor: pointer;}
+.share-top .introduc .follow:hover{background:#e62e2e;color: #fff;}
+.share-main{padding-top: 25px;}
+.share-main .share-tit{height: 70px;background: #f45350;line-height: 70px;font-size: 16px;color: #ffffff;padding: 0 0 0 10px;overflow: hidden;}
+.share-main .share-tit h2{float: left;}
+.share-main .share-tit span{display: inline-block;vertical-align: middle;padding-left: 10px;}
+.share-main .share-tit .see-teacher{float: right;height: 52px;line-height: 52px;border: 1px solid #fff;border-right: 0; margin-top: 8px;padding-left: 15px;border-radius: 26px 0 0 26px;padding-right: 5px;}
+.share-main .share-tit .see-teacher label{vertical-align: middle;cursor: pointer;height: 52px;display: inline-block;}
+/* 主题聊天内容开始 */
+.talk-main{margin: 25px 0;padding-bottom:32px;overflow: hidden; border: 1px solid #dadada;position: relative;}
+.talk-list li{padding:0 64px 0 40px;margin-bottom: 24px;}
+.talk-main .tit{font-size: 16px;color: #333333;height: 52px;line-height: 52px;}
+.talk-main .tit img{width: 52px;height: 52px;border-radius: 50%;vertical-align:middle;margin-right: 5px;}
+.talk-main .tit i{font-style: normal;color:#f53232;}
+.talk-main .tit span{display: inline-block;padding-left: 10px;color: #807f7f;}
+.talk-main ul.talk-list{padding: 5px 0;height: 480px;overflow-y: auto;}
+.talk-main .teawz .info,.talk-main .teawz-unfree .info{margin-left: 54px;margin-top: -4px;padding-right: 5px; padding-left: 11px;position: relative;}
+.talk-main .teawz .info i,.talk-main .teawz-unfree .info i{position: absolute;z-index: 2; width: 11px;left: 1px;top: 10px; height: 22px;background: url(../images/home/talk_point1.jpg) 0 0 no-repeat;background-size: 11px auto;}
+.talk-main .teawz .info span,.talk-main .teawz-unfree .info span{display:inline-block; color:#f53232;line-height: 1.4em; border: 1px solid #f64949;border-radius: 5px;padding:10px 8px;}
+.talk-main .teawz .info p{margin: 5px 0;padding:10px 5px;color: #111111;border:1px solid #e5e5e5;background:#f3f3f3;border-radius: 5px;display: inline-block;}
+.talk-main .userwz .info p{margin: 5px 0;padding:10px 5px;color: #111111;border:1px solid #e5e5e5;background:#f3f3f3;border-radius: 5px;display: inline-block;}
+.talk-main .userwz{padding:0 40px 0 64px;}
+.talk-main .userwz .tit{text-align: right;}
+.talk-main .userwz .tit .reply{font-style:normal;color:#f53232;display: inline-block;padding-left: 5px;cursor: pointer;}
+.talk-main .userwz .tit span{padding-right: 10px;padding-left: 0;}
+.talk-main .userwz .tit img{margin-right: 0;margin-left: 5px;}
+.talk-main .userwz .info{margin-right: 52px;margin-top: -4px;padding-left: 5px; padding-right: 11px;position: relative; overflow: hidden;}
+.talk-main .userwz .info i{position: absolute;z-index: 2; width: 11px;right: 1px;top: 8px; height: 22px;background: url(../images/home/talk_point2.jpg) 0 0 no-repeat;background-size: 11px 20px;}
+.talk-main .userwz .info span{float: right; color:#111;line-height: 1.4em; border: 1px solid #dcdcdc;border-radius: 5px;padding:10px 8px;background: #f2f3f3;width: auto;}
+.talk-main .uservoice{padding:0 40px 0 64px;}
+.talk-main .uservoice .tit{text-align: right;}
+.talk-main .uservoice .tit .reply{font-style:normal;color:#f53232;display: inline-block;padding-left: 5px;}
+.talk-main .uservoice .tit span{padding-right: 10px;padding-left: 0;}
+.talk-main .uservoice .tit img{margin-right: 0;margin-left: 5px;}
+.talk-main .uservoice .info{position: relative; padding-right: 5px;text-align:right; margin-right: 52px;margin-top: -4px;color: #b3b4b7;height: 55px;line-height: 55px;}
+.talk-main .uservoice .info p{vertical-align: middle; height: 55px;width: 680px;float: right; background: url(../images/home/uservoice_bg.png) 0 0 no-repeat;background-size: 100% 55px;}
+.talk-main .uservoice .info i{float: right; margin-right:32px; width: 20px; height: 54px; line-height: 55px; background: url(../images/home/icon_voice.png) 0 center no-repeat;background-size: 16px 22px;transform: rotateZ(180deg);}
+.talk-main .uservoice .info  i.playing{background: url(../images/home/icon_voice.gif) 0 center no-repeat;background-size: 13px 18px;transform: rotateZ(180deg);}
+.talk-main .info span img{max-width: 240px;max-height: 240px;}
+.talk-main .replay-info span p img{max-width:120px;max-height: 120px;}
+.talk-main .teawz-unfree .info-lock{height: 120px;margin-left: 52px;margin-top: -4px;width: 770px;background: url(../images/home/wz_lock.png) 0 0 no-repeat;}
+.talk-main .teavoice .info{position: relative; padding-left: 5px; margin-left: 52px;margin-top: -4px;color: #b3b4b7;height: 55px;line-height: 55px;}
+.talk-main .teavoice .info p{vertical-align: middle; height: 55px;width: 680px;display: inline-block;margin-right: 5px; background: url(../images/home/teavoice_bg.png) 0 0 no-repeat;background-size: 100% 55px;}
+.talk-main .teavoice .info i{display: inline-block; margin-left: 32px; width: 20px; height: 54px; line-height: 55px; background: url(../images/home/icon_voice.png) 0 center no-repeat; background-size: 16px 22px;}
+.talk-main .teavoice .info  i.playing{background: url(../images/home/icon_voice.gif) 0 center no-repeat;background-size: 13px 18px;}
+.talk-main .teavoice-unfree .info{position: relative; padding-left: 5px; margin-left: 34px;margin-top: -4px;color: #b3b4b7;height: 42px;line-height: 42px;}
+.talk-main .teavoice-unfree .info .pointer{position: absolute;left: 0;top: 0;width: 5px;height:42px;background: url(../images/home/voice_point.jpg) 0 center no-repeat;background-size: 5px auto;}
+.talk-main .teavoice-unfree .info p{vertical-align: middle; border-radius: 5px; height: 42px;width: 80%; display: inline-block;margin-right: 5px; background: url(../images/home/voice_bg.jpg) 0 0 no-repeat;background-size: 100% 42px;}
+.talk-main .teavoice-unfree .info i{display: inline-block;margin-left: 12px; width: 20px; height: 42px; line-height: 40px; background: url(../images/home/icon_voice.png) 0 center no-repeat;background-size: 13px 18px;}
+.talk-main .teavoice-unfree .info  i.playing{background: url(../images/home/icon_voice.gif) 0 center no-repeat;background-size: 13px 18px;}
+.talk-main .teavoice-unfree .info-lock{height: 60px;margin-left: 52px;margin-top: -4px;width: 718px;background: url(../images/home/voice_lock.png) 0 0 no-repeat;}
+.talk-main .unread{position: absolute;right: 0;top: 25%;text-align: center; padding: 0 5px 0 20px;height: 46px;line-height: 46px;width: 96px; border-radius: 23px 0 0 23px;color:#fff;background: url(../images/home/xiala.png) 10px center no-repeat #ffba00;cursor: pointer;z-index: 10;}
+.talk-main video {width: 120px; height: 120px;}
+.info-lock{cursor: pointer;}
+/* 礼物效果样式 */
+.talk-list>img{width: 400px;height:400px;position:fixed;left: 50%;top: 50%;transform: translate(-50% ,-50%); -ms-transform: translate(-50% ,-50%); -moz-transform: translate(-50% ,-50%); -webkit-transform: translate(-50% ,-50%); -o-transform: translate(-50% ,-50%);}
+/* 回复消息 */
+.talk-main li .replay-info{min-width: 80%;}
+.talk-main li .replay-info span{overflow: hidden;}
+.talk-main li .replay-info p.play{border: 0;padding: 0; vertical-align: middle; height: 42px;width: 480px;border-radius: 5px;background: url(../images/home/voice_bg.jpg) 0 0 no-repeat;background-size: 100% 42px;}
+.talk-main li .replay-info p.play i{position: static!important; display: inline-block;margin-left: 12px; width: 20px; height: 42px; line-height: 40px; background: url(../images/home/icon_voice.png) 0 center no-repeat;background-size: 13px 18px;}
+.talk-main li .replay-info  p.play i.playing{background: url(../images/home/icon_voice.gif) 0 center no-repeat;background-size: 13px 18px;}
+.talk-main li .replay-info img{max-width: 120px;max-height:120px;}
+.userwz .replay-info p{float: right;}
+/* 录音状态样式 */
+.record-voice{width: 870px;height: 26px;line-height: 26px;padding-left: 28px;background: url(../images/home/icon_record.png) 10px center no-repeat #e8eff5; font-size: 14px;color: #000000; margin: 0 auto 6px;border: 1px solid #e6e6e6;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.record-voice div{display: inline-block;margin-right: 10px;}
+.record-voice .btn-box{float: right;}
+.record-voice button{width: 46px;height: 20px;line-height: 20px;text-align: center;border: 1px solid #919699;border-radius: 3px;}
+/* 发送消息 */
+.msg-rights{width: 868px;height: 38px;line-height: 38px;margin: 0 auto;border: 1px solid #e6e6e6;background: linear-gradient(to bottom, #ffffff, #e8e7e7);}
+.msg-rights li{float: left;width: 90px;padding-left: 60px;font-size: 14px;color: #a8a9a9;cursor: pointer;}
+.msg-rights li:first-child{background: url(../images/home/icon_unfree.png) 15px center no-repeat; background-size: auto 24px; border-right: 1px solid #e6e6e6;}
+.msg-rights li:last-child{background: url(../images/home/icon_free2.png) 15px center no-repeat; background-size: auto 24px;}
+.msg-rights li.selected{color: #f33330;}
+.send-msg{width: 870px;height: 140px;border: 1px solid #e5e5e5;margin: 0 auto; background: #f9fafa;padding: 8px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.send-msg .tab-list li{cursor: pointer; float: left;margin-right:20px;padding-left: 22px;font-size: 14px;line-height: 20px;height: 20px;}
+.send-msg .tab-list .face{background: url(../images/home/icon_face.png) 0 center no-repeat;background-size: 20px auto;}
+.send-msg .tab-list .picture{background: url(../images/home/icon_pic.png) 0 center no-repeat;background-size: 20px auto;}
+.send-msg .tab-list .speach{background: url(../images/home/icon_speach.png) 3px center no-repeat;}
+.send-msg textarea{resize: none;border: 0;outline: none; width: 100%;height: 100px;margin-top: 5px;background: transparent;font-size: 14px;line-height: 1.4em;}
+.sendmsg-tip{text-align:right;margin-right: 64px;margin-top: 5px; font-size: 14px;color: #979898;line-height: 34px;height: 34px;}
+.sendmsg-tip .send-btn{border-radius: 5px;margin-left: 10px; vertical-align: middle; width: 76px;height: 34px;line-height: 34px;text-align: center;color: #fff;background:#fc5454;}
+.sendmsg-tip span{color: #fc5454;}
+#qqfacebox{background: #fff;border: 1px solid #d2d2d2;}
+/* 赠送礼物样式 */
+.gift-box{width: 870px;margin: 0 auto;}
+.gift-box .row1{padding: 0 64px;position: relative;height: 120px;}
+.gift-box .row1 span{position: absolute;width: 60px;height: 120px;cursor: pointer;}
+.gift-box .row1 span.left{left: 0;top: 50%;margin-top: -60px;background: url(../images/home/icon_left.png) 10px center no-repeat;}
+.gift-box .row1 span.left:hover{background: url(../images/home/icon_left1.png) 10px center no-repeat;}
+.gift-box .row1 span.right{right: 0;top: 50%;margin-top: -60px;background: url(../images/home/icon_right.png) right 10px center no-repeat;}
+.gift-box .row1 span.right:hover{background: url(../images/home/icon_right1.png) right 10px center no-repeat;}
+.gift-box .row1{height: 120px;overflow: hidden;}
+.gift-box .row1 .ul-box{width: 100%;position: relative;overflow: hidden;height: 120px;}
+.gift-box .row1 .ul-box ul{position: absolute;left: 0;}
+.gift-box .row1 li{float: left;width: 185.5px;cursor: pointer; text-align: center;color: #fc3838;}
+.gift-box .row1 li .box{display: inline-block;position: relative; padding: 10px;margin: 0 auto;width: 90px;height: 90px;}
+.gift-box .row1 li .box p{position: absolute;left: 0;bottom: 15px;width: 100%;}
+.gift-box .row1 li .selected{border: 1px solid #e6e6e6;background: linear-gradient(to bottom, #ffffff, #e8e7e7);}
+.gift-box .row1 li img{max-width: 75px;max-height:75px;}
+.gift-box .row2{height:64px;line-height: 64px;background: #f4f4f4;border: 1px solid #e9e9e9;-moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; user-select: none;}
+.gift-box .row2 li{float: left;font-size: 14px;color: #141516;text-align: center;}
+.gift-box .row2 li:first-child{width: 25%;}
+.gift-box .row2 li:nth-child(2){width: 50%;}
+.gift-box .row2 li:nth-child(3){width: 25%;}
+.gift-box .row2 li div.gift-number{display: inline-block;width: 80px;height: 30px;line-height: 30px; background: #fff;vertical-align: middle;}
+.gift-box .row2 li div.gift-number input{width: 40px;text-align: center;}
+.gift-box .row2 li div.gift-number em{display: inline-block; cursor: pointer; width: 20px;text-align: center;}
+.gift-box .row2 li span{display: inline-block;min-width: 100px;padding: 0 5px; height: 30px;line-height: 30px;background: #fc3737;color: #fff;text-align: center;vertical-align: middle;margin-left: 6px;}
+.gift-box .row2 li i{font-style: normal;}
+.gift-box .row2 li button{width: 96px;height: 30px;line-height: 30px;text-align: center;background: #fc3737;color: #fff;vertical-align: middle;}
+/* 弹窗播放视频 */
+.video_bg {position: fixed; width: 600px;height: 500px; background: #000; top: 50%; left: 50%; transform: translate(-50% ,-50%); -ms-transform: translate(-50% ,-50%); -moz-transform: translate(-50% ,-50%); -webkit-transform: translate(-50% ,-50%); -o-transform: translate(-50% ,-50%);}
+.video_bg .top{background: transparent;height: 50px;position: absolute;left: 0;top: 0;width: 100%;z-index: 1999;}
+.video_bg .top span{cursor: pointer; float: left;margin-top: 18px;margin-left: 18px;height: 20px;width: 20px;background: url(../images/home/vid_close.png) center no-repeat;background-size: 20px 20px;}
+.video_bg #video_player{max-width: 90%;max-height: 90%; }
+/* 弹框样式 */
+div.masking{position: fixed;left: 0;top:0;z-index: 111; width: 100%;height: 100%;background: rgba(0,0,0,.5);}
+div.tip{z-index: 120;background: #fff; width: 520px;border-radius: 5px;overflow: hidden;}
+div.tip .tit{height: 48px;position: relative;line-height: 48px;text-align:center;color: #ff3b3b;font-size: 16px;border-bottom: 1px solid #dcdcdc;}
+div.tip .tit span{position: absolute;right: 5px;top: 5px;width: 16px;height: 16px;background: url(../images/home/cancel.png) center no-repeat;background-size: 100%;}
+div.tip .con{text-align: center;font-size: 14px;line-height: 1.6em;color:#807e7e;padding: 12px 0;}
+div.tip .btn-box{height: 38px;line-height: 38px;}
+div.tip .btn-box span{float: left; width: 50%;text-align: center;font-size: 16px;color: #fff;}
+div.tip .btn-box span:first-child{background: #474747;}
+div.tip .btn-box span:last-child{background: #ff3b3b;}
+#flashrecarea{position: fixed!important; left: 48%!important;top: 50%!important;}
+#video_player{position: fixed;left: 50%;top: 50%;transform: translate(-50% ,-50%); -ms-transform: translate(-50% ,-50%); -moz-transform: translate(-50% ,-50%); -webkit-transform: translate(-50% ,-50%); -o-transform: translate(-50% ,-50%);}

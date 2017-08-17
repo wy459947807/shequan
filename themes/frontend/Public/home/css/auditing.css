@@ -1,0 +1,57 @@
+/* 顶部审核状态样式 */
+body{background: #F1F1F1;}
+.audit-main .banner img{width: 100%;display: block;}
+.audit-main .top{position: relative;margin-bottom: 22px;font-size: 16px;background: #fff;margin-top: 20px;padding: 30px 65px 30px;}
+.audit-main .top span{color: #fc534c;}
+.audit-main .top .left{position: absolute;left: 10%;transform: translate(-50% ,0);}
+.audit-main .top .middle{position: absolute;left: 354px;}
+.audit-main .top .right{position: absolute;right: 288px;color: #9e9e9e;}
+.audit-main .schedule{padding: 25px 0; width: 100%;}
+.audit-main .schedule img{width: 100%;display: block;}
+.audit-main .top h2{margin-bottom: 10px; text-align: center; font-size: 16px;color: #000;height: 30px;line-height: 30px;}
+.audit-main .top h2 i{display: inline-block;width: 28px;height: 28px;vertical-align: bottom;}
+.audit-main .top h2 i img{display: block;width: 100%;height: 100%;}
+/* 上传身份证样式 */
+.audit-main .audit-con{background: #fff;padding: 28px 102px 28px 96px;overflow: hidden;}
+.audit-main .g-tit{height: 42px;line-height: 42px;border-bottom: 1px solid #e5e5e5;padding: 0 10px;margin: 0 -10px;}
+.audit-main .g-tit h3{font-size: 16px; float: left;height: 42px;line-height: 42px;border-bottom: 1px solid #fc3737;position: relative;bottom: 0;}
+.identify .id-card{padding: 16px 0;overflow: hidden;margin-bottom: 24px;}
+.identify .id-card .pic{position: relative; float: left;height: 198px; width: 300px;background: #f5f5f5;border: 1px solid #d0d0d0;}
+.identify .id-card .pic img{position: absolute; max-width:100%;max-height: 100%;left: 50%; top: 50%;transform: translate(-50% ,-50%); -ms-transform: translate(-50% ,-50%); -moz-transform: translate(-50% ,-50%); -webkit-transform: translate(-50% ,-50%); -o-transform: translate(-50% ,-50%);z-index: 1;}
+.identify .id-card .txt{position: relative; float:right;color:#a7a7a7;line-height: 1.4em;width: 464px;padding-left: 20px;}
+.identify .id-card .txt input{position: absolute;left:20px;bottom: 0; height: 50px;width: 154px;opacity: 0;}
+.identify .id-card .txt p{color:#a7a7a7;margin-top: 25px; margin-bottom: 10px;line-height: 2.2em;font-size: 14px;}
+.identify .id-card .txt .upload{float: left;margin-top: 54px;font-size: 16px;cursor: pointer; display: inline-block;width: 154px;height: 50px;text-align: center;line-height: 50px;background:#ff594d;color: #fff;border-radius: 5px;}
+/* 个人信息 */
+.identify .person-info li{position: relative;padding: 0 10px; height: 55px;line-height: 55px;border: 1px solid #dcdcdc;border-radius: 5px;margin-bottom: 25px;font-size: 16px;}
+.identify .person-info li em{position: absolute;right: -15px;top: 0;color:#ff0000;font-style: normal;font-size: 18px;height: 55px;line-height: 62px;}
+.identify .person-info li span{float: left;}
+.identify .person-info li input{text-align: right;float: right;height: 55px;line-height: 55px;font-size: 16px;color: #999;}
+.identify .person-info li input::-ms-input-placeholder {color: #555; }
+.identify .person-info li input::-moz-placeholder {color: #555; }
+.identify .person-info li input::-webkit-input-placeholder {color: #555; }
+.identify .person-info li:focus{border-color: #f13b3b;color:#f13b3b;}
+.identify .person-info li:last-child div{float: right;}
+.identify .person-info li:last-child input{float: none;vertical-align: middle;}
+.identify .person-info li:last-child label{cursor: pointer; margin-left: 16px; height: 36px;line-height: 36px;display: inline-block;}
+/* 上传证书样式 */
+.certify{overflow: hidden;}
+.certify .g-tit em{font-size: 18px;color: #ff0000;display: inline-block; height: 42px;line-height: 42px;padding:0 3px;vertical-align: middle;}
+.certify>p{padding-top: 3px;color: #999;}
+.certify ul{overflow: hidden;margin: 0 -32px;padding-top: 30px;}
+.certify ul li{float: left;margin: 0 32px 30px;}
+.certify ul li .up-load{position: relative; width: 222px;height: 198px;background: #f5f5f5;border: 1px solid #dcdcdc;}
+.certify ul li p{font-size: 16px;line-height: 1.6em;text-align: center;color: #999;padding-top: 5px;}
+.certify ul li .up-load span{color: #ff0000;font-size: 16px;}
+.certify ul li .up-load .pic-certify{position: absolute;left: 0;top: 0;width: 100%;height: 100%; z-index: 2;cursor: pointer;}
+.certify ul li .up-load .pic{text-align: center; position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 1;line-height: 100%;}
+.certify ul li .up-load .pic img{display: inline-block; vertical-align: middle;max-width: 100%;max-height: 100%;}
+.certify ul li .up-load .pic::after{content: ""; display: inline-block; width: 0; height: 100%; vertical-align: middle;}
+.certify .introduc{background: #f5f5f5;border: 1px solid #dcdcdc;padding: 20px;}
+.certify .introduc p{font-size: 16px;color: #000;margin-bottom: 5px;}
+.certify .introduc p span{font-size: 16px;padding-left: 10px;color: #878787;}
+.certify .introduc textarea{resize:none;color: #878787;font-size: 16px; width: 100%;height: 160px;background: transparent;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;border: 0;outline: none;}
+.audit-main .submit-btn{display: block;margin-top: 18px;float: right; width: 154px;height: 50px;line-height: 50px;text-align: center;background: #f44336;color: #fff;border-radius: 5px;font-size: 16px;}
+
+
+

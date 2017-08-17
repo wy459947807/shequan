@@ -1,0 +1,77 @@
+<tc_include file="Public:head" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+<style>
+    .my-deal .search li{margin: 0;}
+    .pages .searchPage{padding: 10px; margin: 0}
+    
+
+</style>
+<div class="l_warp">
+    <div class="user_box clearfix">
+        <tc_include file="Public:usernav" />
+        <div class="fr_context">
+            <div class="my-read">
+                <div class="user_public_title">
+                    <span>我的订阅</span>
+                </div>
+                <div class="con">
+                    <h2>您已订阅以下老师的私密内容</h2>
+                    <table>
+                       
+                        <notempty name="subscribeItem">
+                        <foreach name="subscribeItem" item="value">
+                            <tr>
+                                <td>{$value.teacher_name}社圈私密分享</td>
+                                <td>{$value.num}{$unitList[$value['type']]}</td>
+                                <if condition="$value['expire_time'] neq ''">
+                                    <td>有效时间：{$value['expire_time']}</td>
+                                <else/>
+                                    <td>有效时间：不限</td>
+                                </if>
+                            </tr>
+                        </foreach>
+                        </notempty>
+                        
+                        <empty name="subscribeItem">
+                            <div class="lsj_info" style="height:100px;line-height:100px;text-align:center;">
+                                <p>暂无数据</p>
+                            </div>
+                        </empty>
+
+                    </table>
+                </div>
+                
+                <div id="page"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<tc_include file="Public:foot" />
+
+
+<script>
+
+    initPage();//初始化分页
+    
+    //翻页调用
+    function PageCallback(index, jq) {
+        var dataInfo={
+            "page":index+1
+        }
+        jumpPage(dataInfo);
+    }
+    
+    function initPage(){
+        var pageInfo={
+            'page':"{$pageInfo.page}",
+            'pageLimit':"{$pageInfo.pageLimit}",
+            'num':"{$pageInfo.num}",
+            'pageNum':"{$pageInfo.pageNum}"
+        };
+        getTemplate(pageInfo, "{:U('index/ajaxPage')}", "#page");
+    }
+    
+   
+
+</script>
+

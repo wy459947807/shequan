@@ -1,0 +1,59 @@
+<tc_include file="Public:head" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+
+<style>
+    .my-deal .search li{margin: 0;}
+    .pages .searchPage{padding: 10px; margin: 0}
+    
+    .btn{
+        background: #f44336 none repeat scroll 0 0;
+        border-radius: 5px;
+        color: #fff;
+        float: left;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        vertical-align: middle;
+        width: 106px;
+        margin: 3px;
+    }
+</style>
+<div class="l_warp">
+    <div class="user_box clearfix">
+        <tc_include file="Public:usernav" />
+        <div class="fr_context">
+            <div class="my-dealinfo">
+                <div class="user_public_title">
+                    <span>我的交易</span>
+                </div>
+                <div class="con">
+                    <ul>
+                        <li>交易名称：{$order.order_name}</li>
+                        <li>订单编号：{$order.order_sn}</li>
+                        <li>商品类型：{$order.order_type}</li>
+                        <li>购买时间：{:date("Y-m-d H:i:s",$order['ctime'])}</li>
+                        <li>购买价格：{$order.total_money}元</li>
+                        <li>支付方式：{$payType[$order['pay_type']]}</li>
+                        <if condition="$order['pay_time'] neq 0">
+                            <li>支付时间：{:date("Y-m-d H:i:s",$order['pay_time'])}</li>
+                        </if>
+                        
+                        <if condition="$order['status'] eq 1">
+                            <li><a class="btn" id="go_pay" href="{:U('Course/pay',array('order_sn'=>$order['order_sn']))}">立即支付</a></li>  
+                        </if>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<tc_include file="Public:foot" />
+
+
+
+<script>
+    
+
+</script>
+

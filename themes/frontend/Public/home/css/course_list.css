@@ -1,0 +1,50 @@
+/* 课程列表样式 */
+.course-header{height: 88px;background: #fc534c;color: #fff;line-height: 88px;margin-bottom: 36px;}
+.course-header p{padding-left: 36px;font-size: 16px; background: url(../images/home/icon_tip.png) 0 center no-repeat;background-size: 34px 34px;}
+.course-header strong{font-size: 26px;font-weight: normal;}
+.course-main{width: 1000px;margin: 0 auto;overflow: hidden;}
+.course-main ul{overflow: hidden;margin: 0 -12px;}
+.course-main li{float: left;width: 232px;margin: 0 12px 42px;background: #fff;}
+.course-main li .box{display: block;background: #fff;}
+.course-main li .pic{position: relative;width: 100%;}
+.course-main li .pic img{width: 100%;display: block;}
+.course-main li .pic p{font-size: 14px; color:#fff;width: 100%; padding: 0 3px 0 30px;position: absolute;left: 0;bottom: 0;height: 34px;line-height: 34px;overflow: hidden;background: url(../images/home/icon_player.png) 3px center no-repeat rgba(0,0,0,.4);background-size: 24px auto; -ms-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.course-main li .txt{height: 60px;line-height: 60px;color:#fc534c;font-size: 24px;padding: 0 5px;}
+.course-main li .txt a{vertical-align: middle; float: right;font-size: 16px;width: 90px;height: 30px;line-height: 30px; background: #fc534c;border-radius: 5px;text-align: center;color: #fff;transform: translateY(15px);}
+.course-main li .txt span{vertical-align: middle; float: right;padding: 0 3px;width:90px;height: 30px;line-height: 30px; font-size: 12px;background: #777777;border-radius: 5px;text-align: center;color: #fff;transform: translateY(15px);}
+.course-main .attention{padding: 15px 10px;}
+.course-main .attention h3{padding-left: 30px; font-size: 18px;line-height: 1.6em;font-weight:normal;color:#fc3737;background: url(../images/home/notice.png)0 center no-repeat;background-size: 24px 24px;}
+.course-main .attention p{font-size: 14px;color: #a7a7a7;line-height: 1.6em;}
+/* 课程详情样式 */
+.train-course .course-header p{ background: url(../images/home/icon_tip1.png) 0 center no-repeat;}
+.course-con {background: #fff;border: 1px solid #dcdcdc;}
+.course-con .video{padding: 40px 105px 0 54px}
+.course-con .teach-info{padding: 0 105px 10px 54px;margin-top: 42px;}
+.course-con .video .pic{box-shadow: 5px 10px 12px 2px #cdcccc;}
+.teach-info{overflow: hidden;}
+.teach-info .pic{float: left;width:60px;height: 60px;border-radius: 50%;overflow: hidden;}
+.teach-info .pic img{width: 100%;}
+.teach-info .txt{float: left;margin-left: 5px;}
+.teach-info .txt h2{margin-bottom: 5px; font-size: 18px; color: #000;font-weight: 600;}
+.teach-info .txt h2 span{color: #f44336;}
+.teach-info .txt p{color: #a7a7a7;font-size: 14px;}
+.teach-info .txt p span{padding-left: 15px;}
+.course-info{padding: 10px 105px 15px 95px;color:#a7a7a7;font-size: 14px;border-bottom: 1px solid #e5e5e5; }
+.course-info p{margin-bottom: 10px;color: #000;font-size: 16px;}
+.course-info p:nth-child(3){color: #828282;font-size: 14px;}
+.price-info{overflow: hidden;text-align: center;padding: 40px 0;}
+.price-info p{font-size: 16px;color: #202020;}
+.price-info strong{font-size: 30px;color: #fc534c;}
+.price-info i{font-size: 16px;font-style: normal;}
+.price-info a{display: inline-block; width: 216px;height: 54px;line-height: 54px;text-align: center;background: #f44336;color: #fff;border-radius: 5px;margin-top: 15px;font-size: 20px;}
+.price-info a:hover{color: #fff;background: red;}
+.course-con .video {position: relative;}
+.course-con .video img{width: 100%;}
+.course-con .video .tit{overflow: hidden;line-height: 1.4em; position: absolute; top: 50%; left: 50%; transform: translate(-50% ,-50%); -ms-transform: translate(-50% ,-50%); -moz-transform: translate(-50% ,-50%); -webkit-transform: translate(-50% ,-50%); -o-transform: translate(-50% ,-50%); color: #fff; text-align: center; width: 80%;height: 52px;pointer-events: none;}
+.course-con .video .tit h4{font-size: 18px;}
+.course-con .video .tit p{font-size: 14px;background: none;}
+.video img{width: 100%;height: auto;display: block;}
+.video .pic{position: relative;}
+.video .pic p {color: #fff; position: absolute; left: 0; bottom: 0; vertical-align: top; width: 100%; height: 28px; line-height: 28px; background: url(../images/home/num_bg.png) 0 0 repeat-x;}
+.video .pic p i{display: inline-block; margin-left: 6px; width: 22px; height: 28px; background: url(../images/home/play_bg.png) center no-repeat;background-size:20px 20px; vertical-align: middle;}
+

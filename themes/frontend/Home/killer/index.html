@@ -1,88 +1,171 @@
 <tc_include file="Public:header" />
-<link rel="stylesheet" href="__TMPL__Public/home/css/apply.css">
-<div class="apply_banner">
-    <img style="width:100%;" src="__TMPL__Public/home/images/farmerkiller/apply_banner.png" alt="">
-</div>
-<div class="container" >
-    <form id="killerRegist" class="form"  action="{:U('killer/index')}" enctype="multipart/form-data" method="post">
-    <div class="apply_form">
-        <p>认证方式：身份证</p>
-        <div class="apply_img clearfix" >
-            <div class="img_box" id="imgdiv" style="position: relative;">
-                <img id="imgShow" width="300" height="200" <if condition=" $tuser.card_img  neq NULL "> src="{$tuser.card_img}" </if> />
-                <div style="position: absolute; top:0; left:100px;">照片预览</div>
-            </div>
-            <div class="text_info">
-                <p>必须本人手持身份证，保持头像清晰可辨认，保持身份证信息清晰可见。</p>
-                <p>格式要求：支持.jpg .png格式，大小不超过2M</p>
-                <a href="javascript:;" style="position: relative; display: inline-block;" >
-                    上传照片
-                    <input type="button"   value="上传照片"  id="up_img" style="opacity: 0; position: absolute; width:100%; height:100%; top:0; left:0;"  />
-                </a>
-                <input type="hidden" name="card_img" id="card_img" value=""/>
-            </div>
-        </div>
+<link rel="stylesheet" href="__TMPL__Public/home/css/auditing.css">
+<style>
+    label{font-weight:normal;display: block}
+    input[type="checkbox"], input[type="radio"]{ margin: 0px}
+    .identify .person-info li input{ height: 50px}
+</style>
+<!-- 申请高手 -->
+<div class="audit-main">
+    <div class="banner">
+        <a href=""><img src="__TMPL__Public/home/images/home/apply_banner.png" alt=""></a>
+    </div>
+    <div class="wp">
+        <!-- 顶部审核状态 -->
         
-        <div class="form_info">
-            <p>真实姓名：<input name="real_name" value="{$tuser.real_name}" type="text" datatype="*" nullmsg="请填写真实姓名！" errormsg="真实姓名格式不正确" placeholder="名字和身份证必须一致"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>手机号码：<input name="mobile"    value="{$tuser.mobile}" type="text" datatype="*" nullmsg="请填写手机号！"   errormsg="手机号格式不正确" placeholder="能联系到您的手机号码"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>邮&nbsp;箱：<input name="email"  value="{$tuser.email}" type="text" datatype="*" nullmsg="请填写邮箱！"   errormsg="邮箱格式不正确" placeholder="填写邮箱"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
-            <p>微信号码：<input name="wechat"    value="{$tuser.wechat}" type="text" placeholder="填写您常用的微信(选填)"></p>
-           
-           
-            <p>擅长领域：<input name="adept_info" value="{$tuser.adept_info}" type="text" placeholder="请填写擅长领域">
-                <select name="adept_type">
-                    <if condition=" $adeptType  neq NULL ">
-                    <foreach name="adeptType" item="val" key="key">
-                        <if condition=" $tuser.adept_type  eq $key ">
-                            <option value="{$key}" selected="selected">{$val}</option>
-                        <else/>
-                            <option value="{$key}">{$val}</option>
-                        </if>
-                    </foreach>
-                    </if>
-                </select>
-            </p>
-            <p>资格证：<input name="cert_num" value="{$tuser.cert_num}" type="text" placeholder="请填写证书编号">
-                <select name="cert_type" style="width: auto">
-                    <if condition=" $cardType  neq NULL ">
-                    <foreach name="cardType" item="val" key="key">
-                        <if condition=" $tuser.cert_type  eq $key ">
-                            <option value="{$key}" selected="selected">{$val}</option>
-                        <else/>
-                            <option value="{$key}">{$val}</option>
-                        </if>
-                    </foreach>
-                    </if>
-                </select>
-            </p>
-            <p>注册类型：
-                <span style="padding-right:10px;">
-                    <input name="type" type="radio" <if condition=" $tuser.type  eq 0 ">  checked="checked" </if> style="vertical-align:middle;margin-top:-2px;" value="0" /> &nbsp;个人&nbsp;&nbsp; 
-                    <input name="type" type="radio" <if condition=" $tuser.type  eq 1 ">  checked="checked" </if>  style="vertical-align:middle;margin-top:-2px;" value="1" /> &nbsp;机构&nbsp;&nbsp;
-                <span>
-            </p>
-            <p>机构名称：<input name="type_name" value="{$tuser.type_name}" type="text" placeholder="填写机构名称"></p>
-            <p style="height:auto; background:#f6f8f8;">
-                个人介绍：（机构/商户）
-                <textarea name="intro" id="" placeholder="在此输入--- ">{$tuser.intro}</textarea>
-            </p>
+        <notempty name="killerInfo['id']">
+        <div class="top">
+            <span class="left">已提交申请</span>
+            <span class="middle">审核中…</span>
+            <span class="right">审核结果</span>
+            <div class="schedule">
+                <if condition="$killerInfo['status'] eq 0">
+                    <img src="__TMPL__Public/home/images/home/pay_state1.png" alt="">
+                </if>
+                <if condition="$killerInfo['status'] eq 1">
+                    <img src="__TMPL__Public/home/images/home/pay_state3.png" alt="">
+                </if>
+                <if condition="$killerInfo['status'] eq 2">
+                    <img src="__TMPL__Public/home/images/home/pay_state2.png" alt="">
+                </if>    
+            </div>
+            
+            <if condition="$killerInfo['status'] eq 0">
+                <h2><i><img src="__TMPL__Public/home/images/home/pay_ok.png" alt=""></i>提交成功，请等待管理员审核</h2>
+            </if>
+            <if condition="$killerInfo['status'] eq 1">
+                <h2><i><img src="__TMPL__Public/home/images/home/pay_ok.png" alt=""></i>恭喜您已通过审核！</h2>
+            </if>
+            <if condition="$killerInfo['status'] eq 2">
+                <h2><i><img src="__TMPL__Public/home/images/home/pay_ok.png" alt=""></i>{$killerInfo.refuse_cause}</h2>
+            </if>
+            <!--<h2><i><img src="__TMPL__Public/home/images/home/pay_ok.png" alt=""></i>提交成功，请等待管理员审核</h2>-->
         </div>
-        <div class="apply_btn">
-            <a href="javascript:void(0)" onclick="$('#killerRegist').submit()" >提交</a>
+        </notempty>   
+        
+           
+        <!-- 上传身份证 -->
+        <div class="audit-con">
+            <form class="form" id="killerRegist"  action="{:C('APP_HOST')}Killer/registKiller" enctype="multipart/form-data" method="post">
+                <input type="hidden" name="uid" value="{$user.id}"/>
+                <input type="hidden" name="token" value="{$user.token}"/>
+                <input type="hidden" name="id" value="{$killerInfo.id}"/>
+                <div class="identify">
+                    <div class="g-tit" style="height: 62px">
+                        <h3>认证方式：身份证</h3>
+                    </div>
+                    <div class="id-card" style="width: 100%">
+                        <!-- 展示身份证照片 -->
+                        <div class="pic">
+                            <if condition="$killerInfo['card_img'] neq ''">
+                                <img id="uploadCard_show" width="300" height="200" src="{$killerInfo.card_img}" />
+                            <else/>
+                                <img id="uploadCard_show" style="display: none"  width="300" height="200" src="" />
+                            </if>
+                            <input  id="uploadCard_val"  type="hidden" name="card_img" value="{$killerInfo.card_img}"/>
+                            <span class="g-delet" style="display: none;">删除</span>
+                        </div>
+                        <div class="txt" style=" width: 500px;">
+                            <p>必须本人手持身份证，保持头像清晰可辨认，保持身份证信息清晰可见。</br>格式要求：支持.jpg .png格式，大小不超过2M</p>
+                            <span class="upload" id="uploadCard">上传照片</span>
+                        </div>
+                    </div>
+                    <ul class="person-info">
+                        <li>
+                            <label><span>真实姓名</span><input type="text" name='real_name' value="{$killerInfo.real_name}" datatype="*" nullmsg="请填写真实姓名！" errormsg="真实姓名格式不正确"  placeholder="名字和身份证必须一致"></label><em>*</em>
+                        </li>
+                        <li>
+                            <label><span>手机号码</span><input type="text" name='mobile'  value="{$killerInfo.mobile}"  datatype="*" nullmsg="请填写手机号码！" errormsg="手机号码格式不正确"  placeholder="能联系到您的手机号码"></label><em>*</em>
+                        </li>
+                        <li>
+                            <label><span>微信号</span><input type="text" name='wechat'  value="{$killerInfo.wechat}"  placeholder="填写您常用的微信(选填）"></label>
+                        </li>
+                        <li>
+                            <label><span>邮箱</span><input type="text" name='email' value="{$killerInfo.email}"  placeholder="填写您常用的邮箱(选填）"></label>
+                        </li>
+                        <li>
+                            <label><span>机构</span><input type="text" name='company' value="{$killerInfo.company}"  placeholder="填写您所属机构(选填）"></label>
+                        </li>
+                        <li>
+                            <span>擅长领域</span>
+                            <div>
+     
+                                <foreach name="adeptType" item="value">
+                                    <if condition="in_Array($value,$killerInfo['adept_names'])">
+                                        <label><input type="checkbox" name="adept_names[]" value="{$value}" checked="checked">{$value}</label> 
+                                    <else/>  
+                                        <label><input type="checkbox" name="adept_names[]" value="{$value}" >{$value}</label>
+                                    </if>
+                                </foreach>
+              
+                            </div><em>*</em>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 上传证书 -->
+                <div class="certify">
+                    <div class="g-tit" style="height: 62px">
+                        <h3>可上传的证书，包含以下类型等：<em>*</em></h3>
+                    </div>
+                    <p style=" text-align: left; margin-top: 10px">提示：每张图片大小不超过2M</p>
+                    <ul class="certify-list">
+                        
+                        
+                        <foreach name="cardType" item="value"> 
+                        <li>
+                            <div class="up-load"  id="uploadCertify{$key}">
+                                <!-- 上传文件控件 -->
+                                <div class="pic-certify">
+                                    <if condition="!empty($killerInfo['cert_imgs'][$key-1])">
+                                        <input id="uploadCertify{$key}_val"  type="hidden" name="cert_imgs[{$key-1}]" value="{$killerInfo['cert_imgs'][$key-1]}"/>
+                                    <else/>  
+                                        <input id="uploadCertify{$key}_val"  type="hidden" name="cert_imgs[{$key-1}]" value=""/>
+                                    </if>
+                                </div>
+                                <!-- 展示证书照片 -->
+                                <div class="pic">
+                                   
+                                    <if condition="!empty($killerInfo['cert_imgs'][$key-1])">
+                                        <span style=" display: none">上传</span>
+                                        <img id="uploadCertify{$key}_show" width="220" height="200" src="{$killerInfo['cert_imgs'][$key-1]}" />
+                                    <else/>  
+                                        <span>上传</span>
+                                        <img id="uploadCertify{$key}_show" width="220" height="200" src="" style=" display: none" />
+                                    </if>
+                                </div>
+                            </div>
+                            <p>证券交易</p>
+                        </li>
+                        </foreach>    
+                    </ul>
+                    <div class="introduc">
+                        <p>个人介绍:<span>（机构/散户）</span></p>
+                        <textarea resize="none" name="intro" placeholder="在此输入...">{$killerInfo.intro}</textarea>
+                    </div>
+                </div>
+                <button class="submit-btn" id="submit_info" onclick="$('#killerRegist').submit()">提交</button>
+            </form>
         </div>
     </div>
-    </form>
 </div>
 
+<tc_include file="Public:footer" />
 
 <!--<script src="__TMPL__Public/home/lib/uploadPreview.js"></script>-->
-<script>
-    window.onload = function () {
-        //new uploadPreview({ UpBtn: "up_img", DivShow: "imgdiv", ImgShow: "imgShow" });
-        initUploadImage("up_img","imgShow","card_img");//初始化图片上传
+<script> 
+    uploadLocal("uploadCard"); //初始视频化上传组建
+   
+    for(var i=1;i<7;i++){
+        uploadLocal("uploadCertify"+i); //初始视频化上传组建
     }
+
+    //上传回调函数
+    function plupload_callback(uploader,res){
+        layer.closeAll('loading');
+        layer.msg(res.msg);
+        $("#"+uploader+"_show").attr('src',res.data.list[0].remote_url).show();//显示图片
+        $("#"+uploader+"_val").val(res.data.list[0].local_url);
+        $(".pic span").hide();
+    }       
 </script>
 
-
-<tc_include file="Public:footer" />

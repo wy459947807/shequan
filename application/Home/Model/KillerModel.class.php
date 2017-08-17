@@ -11,7 +11,7 @@ class KillerModel extends CommonModel {
 
         $this->sqlFrom="tg_killer";         //数据库查询表
         $this->sqlField="*";                //数据库查询字段
-        $this->sqlWhere=" (1=1) ";          //数据库查询条件
+        $this->sqlWhere=" (1=1)  and  status = 1 ";          //数据库查询条件
         $this->bindValues=array();
         if(!empty($params['page'])) $this->page = $params['page'];
         if(!empty($params['pageLimit'])) $this->pageLimit = $params['pageLimit'];
@@ -31,11 +31,11 @@ class KillerModel extends CommonModel {
             }
         }
   
-        
+        /*
         if(!empty($params['status'])){
             $this->sqlWhere.=" and  status = %d "; 
             $this->bindValues[] = $params['status'];
-        }
+        }*/
         
         $listInfo=$this->getPageList();
         //$listInfo['data']['list']=$this->listProcess($listInfo['data']['list']);
@@ -136,8 +136,9 @@ class KillerModel extends CommonModel {
             if(!empty($userId)){
                 $focusList= M("KillerFans")->where(array("killer_id"=>array('in',$ids)))->select();
                 foreach ($focusList as $key=>$val){
-                    $focusArray[$val['killer_id']."_".$userId]=true;
+                    $focusArray[$val['killer_id']."_".$val['users_id']]=true;
                 }
+                
                 foreach ($listInfo as $key=>$val){
                     if(isset($focusArray[$val['id']."_".$userId])){
                         $listInfo[$key]['is_focused']=true;

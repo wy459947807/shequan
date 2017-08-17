@@ -1,8 +1,21 @@
-body{font-family: "Helvetica Neue",  Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif; font-size: 16px; background:#f1f2f2;}
+*{margin: 0;padding:0;}
+table{border-collapse:collapse; border-spacing:0; } 
+fieldset,img{border:0; } ol,ul{list-style:none; }
+.clear{clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0; } 
+.n,em{font-weight:normal; font-style:normal; } 
+.b{font-weight:bold; }
+.i{font-style:italic;}
+a{text-decoration:none; }
+a:hover{color:#FF6600 }
+body{background-color: #fff; font-family:"微软雅黑","Microsoft Yahei"; font-size: 14px; }
+input[type="text"],input[type="button"],input[type="submit"],input[type="reset"],button,select{font-family:"微软雅黑","Microsoft Yahei"; -webkit-appearance: none; cursor: pointer; outline: none;border: 0;}
+::-webkit-input-placeholder {font-family:"微软雅黑","Microsoft Yahei"; color: #555; }
+::-moz-placeholder {font-family:"微软雅黑","Microsoft Yahei"; color: #555; }
+::-ms-input-placeholder {font-family:"微软雅黑","Microsoft Yahei"; color: #555; }
 body a{color:#666;}
 body a:hover{text-decoration: none; color:#666;}
 #header_nav{background:white; padding-bottom:10px;}
-
+.wp{width: 1000px;margin: 0 auto;}
 li,ul{list-style: none;}
 #foot{background:white; margin-top:30px; padding-top:30px;}
 .public_foot{width:1140px; margin:0 auto;}
@@ -31,6 +44,13 @@ li,ul{list-style: none;}
 .clearfix {clear: both;zoom: 1;}
 .header>ul>li {float: left;}
 .header>ul>li>a {color: white;font-size: 14px;display: inline-block;line-height: 45px;padding: 0 22px;}
+/* 页面样式 */
+#pages {width:650px;text-align:center;line-height:110px;margin:0 auto;}
+#pages a { display:inline-block; height:35px; line-height:35px; background:#fff; border:1px solid #ececec; text-align:center; color:#333; margin-left:5px; padding:0 12px;border-radius: 3px;}
+#pages span{ display:inline-block; padding: 0 12px; height:35px; line-height:35px; background:#f53232; border:1px solid #f53232; color:#fff; text-align:center;border-radius: 3px; }
+#pages a.current { display:inline-block; width:35px; height:22px; line-height:22px; background:#ff7800; border:1px solid #E69D00; color:#fff; text-align:center; }
+#pages a.page_prev,#pages a.page_first,#pages a.page_last,#pages a.page_next { background:red ;padding:  0 5px; width:50px;}
+#pages a:hover { background:#f53232; color:#fff; text-decoration:none;}
 
 
 

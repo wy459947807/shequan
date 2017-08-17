@@ -1,0 +1,70 @@
+<tc_include file="Public:head" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+
+<style>
+    .my-deal .search li{margin: 0;}
+    .pages .searchPage{padding: 10px; margin: 0}
+    
+
+</style>
+<div class="l_warp">
+    <div class="user_box clearfix">
+        <tc_include file="Public:usernav" />
+        <div class="fr_context">
+            <div class="my-fans my-follow">
+                <div class="user_public_title">
+                    <span>我的粉丝</span><em>{$pageInfo.num}人</em>
+                </div>
+                <div class="con">
+                    <ul>
+                        <notempty name="fansItem">
+                            <foreach name="fansItem" item="value">
+                            <li>
+                                <div class="pic"><img src="{$value.avatar}" alt=""></div>
+                                <p>{$value.user_nicename}</p>
+                            </li>    
+                            </foreach>
+                        </notempty>
+                        
+                        <empty name="fansItem">
+                            暂无数据
+                        </empty>
+                    </ul>
+                    <!--<div id="pages"><span class="current">1</span> <a href="">2</a> <a href="">3</a> <a href="">4</a> <a href="">5</a> <a href="">6</a> <a href="">下一页&gt;</a> <a href="">最后一页</a></div>-->
+                    
+                    <div id="page"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<tc_include file="Public:foot" />
+
+
+
+<script>
+
+    initPage();//初始化分页
+    
+    //翻页调用
+    function PageCallback(index, jq) {
+        var dataInfo={
+            "page":index+1
+        }
+        jumpPage(dataInfo);
+    }
+    
+    function initPage(){
+        var pageInfo={
+            'page':"{$pageInfo.page}",
+            'pageLimit':"{$pageInfo.pageLimit}",
+            'num':"{$pageInfo.num}",
+            'pageNum':"{$pageInfo.pageNum}"
+        };
+        getTemplate(pageInfo, "{:U('index/ajaxPage')}", "#page");
+    }
+    
+   
+
+</script>
+

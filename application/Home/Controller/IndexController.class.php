@@ -52,7 +52,9 @@ class IndexController extends HomebaseController {
                 $tadayTopList['data']=D('killer')->listProcess($tadayTopList['data']['list'],$userId);
             }
             
- 
+            $msgList =  D("Home/TalksLog")->getList(array("pageLimit"=>3,"msg_type"=>1,"is_charge"=>0,"role"=>1));//最新观点
+  
+            $this->assign('msgList', $msgList['data']['list']);     //最新观点
             $this->assign('topList', $topList);                     //高手榜
             $this->assign('adeptType', $adeptType);                 //分类
             $this->assign('tadayTopList',  $tadayTopList['data']);    //今日推荐

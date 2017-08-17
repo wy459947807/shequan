@@ -1,0 +1,75 @@
+<tc_include file="Public:head" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/home.css">
+
+<style>
+    .my-deal .search li{margin: 0;}
+    .pages .searchPage{padding: 10px; margin: 0}
+    
+
+</style>
+<div class="l_warp">
+    <div class="user_box clearfix">
+        <tc_include file="Public:usernav" />
+        <div class="fr_context">
+            <div class="my-yjbao">
+                <div class="user_public_title">
+                    <span>已获赢家宝</span>
+                </div>
+                <div class="con">
+                    <div class="mybao-info" data-page="1" data-load='true'>
+                        <table>
+                            <tr>
+                                <td width="20%">消费ID</td>
+                                <td width="22%">兑换产品</td>
+                                <td width="16%">兑换方式</td>
+                                <td width="22%">兑换时间</td>
+                                <td width="20%">获得赢家宝</td>
+                            </tr>
+                            
+                            <notempty name="subscribes">
+                                <foreach name="subscribes" item="value">
+                                <tr>
+                                    <td>{$value.user_name}</td>
+                                    <td>{$value.teacher_name}老师分享直播</td>
+                                    <td>{$value.num}{$unitList[$value['type']]}</td>
+                                    <td>{$value.expire_time}</td>
+                                    <td>{$value.price_total}赢家宝</td>
+                                </tr>
+                                </foreach>
+                            </notempty>
+
+                        </table>
+                    </div>
+                    <p class="sum-bao">总计已获得赢家宝：{$totalPrice}个</p>
+                    <!--<div id="pages"><span class="current">1</span> <a href="">2</a> <a href="">3</a> <a href="">4</a> <a href="">5</a> <a href="">6</a> <a href="">下一页&gt;</a> <a href="">最后一页</a></div>-->
+                
+                    <div id="page"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<tc_include file="Public:foot" />
+
+<script>
+    initPage();//初始化分页
+    
+    //翻页调用
+    function PageCallback(index, jq) {
+        var dataInfo={
+            "page":index+1
+        }
+        jumpPage(dataInfo);
+    }
+    
+    function initPage(){
+        var pageInfo={
+            'page':"{$pageInfo.page}",
+            'pageLimit':"{$pageInfo.pageLimit}",
+            'num':"{$pageInfo.num}",
+            'pageNum':"{$pageInfo.pageNum}"
+        };
+        getTemplate(pageInfo, "{:U('index/ajaxPage')}", "#page");
+    }
+</script>
+
