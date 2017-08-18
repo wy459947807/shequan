@@ -29,7 +29,8 @@
 .talk-main .tit img{width: 52px;height: 52px;border-radius: 50%;vertical-align:middle;margin-right: 5px;}
 .talk-main .tit i{font-style: normal;color:#f53232;}
 .talk-main .tit span{display: inline-block;padding-left: 10px;color: #807f7f;}
-.talk-main ul.talk-list{padding: 5px 0;height: 480px;overflow-y: auto;}
+.talk-main .talk-box{height:480px;overflow-y: scroll;}
+.talk-main ul.talk-list{padding: 5px 0;}
 .talk-main .teawz .info,.talk-main .teawz-unfree .info{margin-left: 54px;margin-top: -4px;padding-right: 5px; padding-left: 11px;position: relative;}
 .talk-main .teawz .info i,.talk-main .teawz-unfree .info i{position: absolute;z-index: 2; width: 11px;left: 1px;top: 10px; height: 22px;background: url(../images/home/talk_point1.jpg) 0 0 no-repeat;background-size: 11px auto;}
 .talk-main .teawz .info span,.talk-main .teawz-unfree .info span{display:inline-block; color:#f53232;line-height: 1.4em; border: 1px solid #f64949;border-radius: 5px;padding:10px 8px;}

@@ -120,10 +120,18 @@ function getLayerTemplate(winId, title, width, zIndex) {
     if (!width) {
         width = "90%";
     }
+    
+    var closeBtn=1;
+    if(!title){
+        title=false;
+        closeBtn=0;
+    }
+    
 
     var layerName = layer.open({
         type: 1,
         title: title,
+        closeBtn: closeBtn,
         shadeClose: true,
         zIndex: zIndex,
         shade: 0.3,
@@ -452,6 +460,37 @@ function initVideo(videoId,src){
 }
 
 
+
+
+function bindTemplate(data, boxId, tempId, append) {
+    if (boxId) {
+        var list_tpl = template(tempId, data);
+        if (!append) {
+            $('#' + boxId).html(list_tpl);
+        } else if(append==1) {
+            $('#' + boxId).append(list_tpl);
+        }else{
+            $('#' + boxId).prepend(list_tpl);
+        }
+    }
+}
+
+//计算数组长度
+function count(obj) {
+    var objType = typeof obj;
+    if (objType == "string") {
+        return obj.length;
+    } else if (objType == "object") {
+        var objLen = 0;
+        for (var i in obj) {
+            objLen++;
+        }
+        return objLen;
+    }
+    return false;
+}
+
+
 //合并数组
 function mergeArray(arrayA,arrayB){
     var tempArray={};
@@ -481,5 +520,51 @@ $.fn.serializeObject = function () {
     });
     return o;
 };
+
+
+
+//格式话日期
+template.helper('dateFormat', function(dateTime, formatTime) {
+    
+    var reg = /^\+?[1-9][0-9]*$/;
+    if(reg.test(dateTime)){
+        return moment(parseInt(dateTime)*1000).format(formatTime);
+    }
+    
+    return moment(dateTime).format(formatTime);
+    
+});
+
+
+template.helper('emotionFormat', function(msg) {
+
+    for(index in dataInfo.emotion){
+        regExp = new RegExp("\\["+dataInfo.emotion[index]+"\\]", "g");
+        msg = msg.replace(regExp, '<img src="/public/images/emotion/'+index+'.gif" title="'+dataInfo.emotion[index]+'"/>');
+    }
+    return msg;
+    
+});
+
+//格式化网址
+template.helper('urlFormat', function(url) {
+    var reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
+    if(reg.test(url)){
+        return url;
+    }
+    return serviceUrl+url;
+});
+
+//判断数组是否存在某个元素
+template.helper('inArray', function(arrayData,val) {
+    for(index in arrayData){
+        if(arrayData[index]==val){
+            return true;
+        }
+    }
+    return false;
+});
+
+
 
 

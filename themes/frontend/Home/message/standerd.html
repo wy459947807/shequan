@@ -1,0 +1,83 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/standerd.css">
+<style>
+    .standerd-main .top{
+        height: 130px;
+    }
+</style>
+  <!-- 订阅标准主体开始 -->
+    <div class="standerd-main">
+    <div class="wp">
+    <!-- 主体头部信息 -->
+        <div class="top">
+            <div class="pic">
+                <img src="__TMPL__Public/home/images/home/icon-teach.png" alt="">
+            </div>
+            <div class="txt">
+                <h4>早晨好，股海浪子一天之计在于晨，鼓足马力奋斗</h4>
+                <p>赢家宝余额：<span>1500.00个</span></p>
+            </div>
+        </div>
+        <!-- 选择支付 -->
+        <div class="con">
+            <div class="tit">
+                <h2><i></i>您选定邵立胜老师的直播分享课程，请选择以下支付方式：</h2>
+                <p>请选择定购方式</p>
+            </div>
+            <div class="info">
+                <table class="course-time">
+                    <tr>
+                        <td width="20%">订购方式</td>
+                        <td width="30%">单价（赢家宝）</td>
+                        <td width="20%">数量</td>
+                        <td>小计（赢家宝）</td>
+                    </tr>
+                    
+
+                    <notempty name="killerInfo['subscribe']">
+                        <foreach name="killerInfo['subscribe']" item="value">
+                            <tr  <if condition="$key eq 0"> class="on" </if> data-type="{{key}}">
+                            <td><label><input type="radio" name="time"  <if condition="$key eq 0"> checked="checked" </if>>&nbsp;{$unitList[$key]}</label></td>
+                                <td>{$value}</td>
+                                <td><input type="text" name="number" placeholder="0" value="1"></td>
+                                <td><span>{$value}</span></td>
+                            </tr>
+                        </foreach>
+                    </notempty>
+
+                </table>
+                <p class="last-pay">实付赢家宝：<span id="sum_yjbao">{$killerInfo['subscribe'][0]}个</span></p>
+                <button class="pay-btn" id="pay_yjbao">立即支付</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- 弹出框 -->
+    <div class="yjbao-tip" id="no_yjbao" style="display: none;">
+        <div class="con">
+            <span class="close" onclick="layer.closeAll();"></span>
+            <h3><i></i>抱歉~您的赢家宝余额不足！</h3>
+            <a href="course_list.html">点击查看如何获得赢家宝</a>
+        </div>
+    </div>
+    <div class="yjbao-tip" id="confirm_pay" style="display: none;">
+        <div class="con">
+            <span class="close" onclick="layer.closeAll();"></span>
+            <h3>您将订购邵立胜老师的周播私密分享课程，是否确认支付</h3>
+            <span class="confirm-btn">是</span>
+            <span class="confirm-btn">否</span>
+        </div>
+    </div>
+    <div class="yjbao-tip" id="pay_result" style="display: none;">
+        <div class="con">
+            <span class="close" onclick="layer.closeAll();"></span>
+            <h3><i></i>恭喜你已成功订购邵立胜老师直播私密分享课程2周</h3>
+            <p>即日起，你即可随时收看邵立胜老师社圈私密分享~</p>
+        </div>
+    </div>
+<tc_include file="Public:footer" />
+
+<script src="__TMPL__Public/home/js/pay.js"></script>
+<script>
+    $.pay.standerd();
+</script>

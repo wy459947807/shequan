@@ -65,7 +65,7 @@ function initData() {
 
 
 var ws;
-WEB_SOCKET_SWF_LOCATION = "../public/js/live/WebSocketMain.swf";
+WEB_SOCKET_SWF_LOCATION = "/public/js/live/WebSocketMain.swf";
 WEB_SOCKET_DEBUG = true;
 // 连接服务端
 function connect() {
@@ -110,7 +110,7 @@ function onmessage(e) {
         case 'say':
             dataInfo.messageList = {list: {0: data}};
             bindTemplate(dataInfo, "talk_list", "messageList_tpl", 1);//绑定模版
-            $('.talk-main').animate({scrollTop: $('.talk-main')[0].scrollHeight}, 1);  //滚动到底部
+            $('.talk-box').animate({scrollTop: $('.talk-box')[0].scrollHeight}, 1);  //滚动到底部
             break;
             // 用户退出 更新用户列表
         case 'logout':
@@ -168,19 +168,74 @@ $(document).ready(function () {
     });
     
     
-    //发送礼物
-    $("#gift-box li").click(function () {
+    //选择礼物
+    $(".gift-list li").click(function () {
         dataInfo.alertInfo.gift_id=$(this).attr("data-id");
         dataInfo.alertInfo.type="gift";
         dataInfo.alertInfo.gift_img=$(this).attr("data-img");
         dataInfo.alertInfo.expend=$(this).attr("data-expend");
+        /*
         bindTemplate(dataInfo, "alertBox", "alertBox_tpl");//绑定模版
-        getLayerTemplate("alertA");
+        getLayerTemplate("alertA",'',"520px");*/
     });
     
-    $(".unread").click(function () {
-        $('.talk-main').animate({scrollTop: 0}, 1);  //滚动到顶部
+    //发送礼物
+    $("#send-gift").click(function () {
+        
+        var expendCoin= parseInt($("#bao_sum").html());
+        var giftSum = parseInt($("#gift_sum").val());
+        if(!expendCoin){
+            layer.msg("请选择礼物！");
+            return;
+        }
+        
+        if(configInfo.userInfo.win_coin<expendCoin){
+            dataInfo.alertInfo.expend=expendCoin;
+            bindTemplate(dataInfo, "alertBox", "alertBox_tpl");//绑定模版
+            getLayerTemplate("alertB",'',"520px");//赢家宝不足
+            return;
+        }
+       
+  
+        if(dataInfo.alertInfo.type=="gift"){
+            
+            for(var i = 0;i < giftSum;i++){
+                var retInfo = getRemoteData(mergeArray(configInfo.tokenInfo, {killer_id: dataInfo.killerInfo.id,gift_id:dataInfo.alertInfo.gift_id}), configInfo.apiUrl + "Message/sendGift",1);
+                dataInfo.sendInfo.msg_type=4;
+                dataInfo.sendInfo.attach_url=dataInfo.alertInfo.gift_img;
+                sendMsg(1,0);
+            }
+            
+            var gift = new Image();
+            var gift_src = $('.gift-list .selected').children("img").attr("src");
+            gift.src = gift_src;
+            $(".talk-list").append(gift);
+            setTimeout(function(){
+                    gift.remove();
+            },3000);
+
+        }
+        
+        /*
+        bindTemplate(dataInfo, "alertBox", "alertBox_tpl");//绑定模版
+        getLayerTemplate("alertA",'',"520px");*/
     });
+    
+    
+    $(".unread").click(function () {
+        $('.talk-box').animate({scrollTop: 0}, 1);  //滚动到顶部
+    });
+    
+    
+    $(".unfree").click(function () {
+        dataInfo.sendInfo.is_charge=1;
+    });
+    
+    
+    $(".free").click(function () {
+        dataInfo.sendInfo.is_charge=0;
+    });
+    
 
 });
 
@@ -194,7 +249,7 @@ function expendCoin(){
             layer.closeAll();
         }else{
             layer.closeAll();
-            getLayerTemplate("alertB");
+            getLayerTemplate("alertB",'',"520px");
         }
     }
 }
@@ -208,12 +263,13 @@ function checkMsg(val,id){
         $('#new_num').html(newNum-1);
     }else{
         bindTemplate(dataInfo, "alertBox", "alertBox_tpl");//绑定模版
-        getLayerTemplate("alertC");
+        getLayerTemplate("alertC","","520px");
     }
 }
 
 //发送消息
 function sendMsg(step,is_charge){
+    /*
     if(!step){
         if(dataInfo.config.userInfo.killer_id==dataInfo.killerInfo.id){
             getLayerTemplate("alertD");
@@ -221,7 +277,7 @@ function sendMsg(step,is_charge){
         }
     }
     layer.closeAll();
-    dataInfo.sendInfo.is_charge=0;
+    dataInfo.sendInfo.is_charge=0;*/
     dataInfo.sendInfo.reply_id=0;
     dataInfo.sendInfo.to_client_name="";
     if(is_charge){
@@ -229,7 +285,7 @@ function sendMsg(step,is_charge){
     }
     
     var msgCon=$("#msg_area").val();
-    if(msgCon==""){
+    if(msgCon==""&&dataInfo.sendInfo.msg_type==1){
         layer.msg("消息内容不能为空！");
         return;
     }
@@ -252,7 +308,7 @@ function replyMsg(){
 function openReply(id,name){
     dataInfo.sendInfo.reply_id=id;
     dataInfo.sendInfo.to_client_name=name;
-    getLayerTemplate("alertE");
+    getLayerTemplate("alertE",'',"520px");
 }
 
 //关注高手

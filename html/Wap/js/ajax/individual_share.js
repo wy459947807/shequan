@@ -229,7 +229,7 @@ function sendMsg(step,is_charge){
     }
     
     var msgCon=$("#msg_area").val();
-    if(msgCon==""){
+    if(msgCon==""&&dataInfo.sendInfo.msg_type==1){
         layer.msg("消息内容不能为空！");
         return;
     }

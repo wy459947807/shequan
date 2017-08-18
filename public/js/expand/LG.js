@@ -4,6 +4,7 @@ var LG = (function (lg) {
         this.href = "";//?前面部分
         this.params = {};//url参数对象
         this.jing = "";//#及后面部分
+        this.host = location.protocol+"//"+location.hostname+"/";//#域名
         this.init();
     }
     //分析url,得到?前面存入this.href,参数解析为this.params对象，#号及后面存入this.jing

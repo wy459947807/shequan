@@ -199,11 +199,10 @@
         if ($(val).html() != "已关注") {
             var dataInfo = {};
             dataInfo['id'] = id;
-            var retData = getRemoteData(dataInfo, "{:U('index/focusKiller')}");
-            //alert(retData.status);
-
+            var retData = getRemoteData(dataInfo, "{:U('index/focusKiller')}",1);
             if (retData.status == 200) {
                 getKillerList(killerInfo['orderType'], killerInfo['page']);//刷新高手列表板块
+                
             }
 
         }

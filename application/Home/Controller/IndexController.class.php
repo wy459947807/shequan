@@ -103,6 +103,14 @@ class IndexController extends HomebaseController {
             exit($html);
         }
     }
+    
+    public function getUserInfo(){
+        if (!sp_is_user_login()) {
+            $this->ajaxReturn(500, "已经退出登录！",array());
+        }
+        
+        $this->ajaxReturn(200, "成功！", sp_get_current_user());
+    }
 
     public function test() {
         echo "sss";

@@ -10,7 +10,7 @@ body{background: #f1f2f2;}
 .standerd-main .top .txt p span{color: #fc534c;}
 .standerd-main .con{background: #fff;overflow: hidden;padding:20px 72px 40px;font-size: 16px;}
 .standerd-main .con .tit h2{font-size: 16px;line-height: 1.6em;height: 1.6em; padding: 20px 0 30px;color: #202020;}
-.standerd-main .con .tit i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/icon_tip1.png) center no-repeat;background-size: cover;vertical-align: middle;}
+.standerd-main .con .tit i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/home/icon_tip1.png) center no-repeat;background-size: cover;vertical-align: middle;}
 .standerd-main .con .tit p{color: #202020;margin-bottom: 15px;font-size: 18px;}
 .standerd-main .info{overflow: hidden;padding-bottom: 10px;}
 .standerd-main .info table{width: 100%;text-align: center;}
@@ -26,10 +26,10 @@ body{background: #f1f2f2;}
 .standerd-main .pay-btn{float: right;width: 180px;height: 52px;line-height: 52px;color: #fff;text-align: center;background: #fc534c;border-radius: 5px;font-size: 20px;}
 /* 弹出框样式 */
 .yjbao-tip{position: relative; width: 492px; margin:0 auto;overflow: hidden;background: #ffffff;padding: 42px 10px 64px;border-radius: 5px;}
-.yjbao-tip .close{position: absolute;right: 10px;top: 6px; width: 25px;height: 25px;background: url(../images/close2.png) center no-repeat;background-size: cover;}
+.yjbao-tip .close{position: absolute;right: 10px;top: 6px; width: 25px;height: 25px;background: url(../images/home/close2.png) center no-repeat;background-size: cover;}
 .yjbao-tip .con{font-size: 14px;overflow: hidden;text-align: center;}
 .yjbao-tip .con h3{font-size: 16px;color: #000;margin-bottom: 10px;}
-.yjbao-tip .con h3 i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/icon_tip1.png) center no-repeat;background-size: cover;vertical-align: middle;}
+.yjbao-tip .con h3 i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/home/icon_tip1.png) center no-repeat;background-size: cover;vertical-align: middle;}
 .yjbao-tip .con p{font-size: 14px;color: #757575;margin-bottom: 20px;}
 .yjbao-tip .con a{font-size: 14px;color: #ff4b4b; line-height: 32px;}
 .yjbao-tip .confirm-btn{border-top:1px solid #e3e3e3; display: inline-block;float: left; width: 300px; height: 100px;line-height: 100px;text-align:center;font-size: 16px;color: #202020;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
@@ -38,7 +38,7 @@ body{background: #f1f2f2;}
 #confirm_pay{width: 600px;padding: 0;padding-top: 35px;}
 #confirm_pay .con h3{margin-bottom: 35px;}
 #pay_result h3{color:#ff5454;}
-#pay_result h3 i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/pay_ok.png) center no-repeat;background-size: cover;vertical-align: middle;}
+#pay_result h3 i{margin-right: 3px; display: inline-block;vertical-align: middle; width: 30px;height: 30px;background: url(../images/home/pay_ok.png) center no-repeat;background-size: cover;vertical-align: middle;}
 
 
 

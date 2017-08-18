@@ -71,22 +71,24 @@ class HomebaseController extends AppframeController {
     protected function check_user_login(){
         
         /*测试帐号登录*/
-        /*$_SESSION['uc_user']=array(
+        
+        $_SESSION['uc_user']=array(
             "uid"=>"1252",
             'username'=>"测试帐号",
             'headimgurl_small'=>"http://www.10jrw.com/data/upload/avatar/000/00/80/fbb5d2cf4558b47551ad4a26ce3f11a0_48.jpg",
             'gender'=>"1",
             'mobile'=>"18739178217"
-        );*/
+        );
         
-         /*测试高手帐号登录*/
+        /*测试高手帐号登录*/
+        /*
         $_SESSION['uc_user']=array(
             "uid"=>"8074",
             'username'=>"汪勇",
             'headimgurl_small'=>"http://www.10jrw.com/data/upload/avatar/000/00/80/fbb5d2cf4558b47551ad4a26ce3f11a0_48.jpg",
             'gender'=>"1",
             'mobile'=>"18739178207"
-        );
+        );*/
         
         if(!empty($_SESSION['uc_user'])){
             $ucUser=$_SESSION['uc_user'];
@@ -97,9 +99,11 @@ class HomebaseController extends AppframeController {
             $tempData['sex']=$ucUser['gender'];
             $tempData['mobile']=$ucUser['mobile'];
             
-            $tokenInfo = json_decode(http_Post($tempData,C('APP_HOST').'index/getToken'),true);  
+            $tokenInfo = json_decode(http_Post($tempData,C('APP_HOST').'index/getToken'),true);
+
             if(!empty($tokenInfo['data'])){
                $userInfo= json_decode(http_Post($tokenInfo['data'],C('APP_HOST').'User/userInfo'),true);
+  
                $userInfo['data']['token']=$tokenInfo['data']['token'];
                if(!empty($userInfo['data'])){ 
                    session('user', $userInfo['data']);

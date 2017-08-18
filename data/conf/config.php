@@ -21,5 +21,5 @@
   'SP_MAIL_LOGINNAME' => 'yl459947807@163.com',
   'SP_MAIL_PASSWORD' => '375195711',  
   'CLOUD_HOST'=>'http://oqhjh5opr.bkt.clouddn.com/',//云服务器域名
-  'APP_HOST'=>'http://www.shequan.dev/index.php/App/',//云服务器域名
+  'APP_HOST'=>'http://shequan.10jrw.com/index.php/App/',//云服务器域名
 );
