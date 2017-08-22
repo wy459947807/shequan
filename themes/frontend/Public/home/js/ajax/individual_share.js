@@ -318,7 +318,7 @@ function focusKiller(obj,id){
     //setTimeout("window.location.reload()",2000);//延时两秒刷新页面
     if(retInfo.status==1){
         if(retInfo.msg.indexOf("取消") > -1){
-            $(obj).html("关注");
+            $(obj).html("+关注");
         }else{
             $(obj).html("已关注");
         }

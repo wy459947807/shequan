@@ -28,5 +28,12 @@ class KillerController extends HomebaseController {
         $this->display(":killer:index");
 
     }
+    
+        //我的课程
+    public function help_page(){
+        $this->display(":test:help_page");  
+    }
+    
+ 
    
 }

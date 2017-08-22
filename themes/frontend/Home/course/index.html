@@ -15,7 +15,7 @@
             <div class="box">
                 <div class="pic">
                     <if condition="$val['buy_status'] eq 2">
-                        <a href="video.html">
+                        <a href="{:U('course/video',array('id'=>$val['id']))}">
                     <else/>
                         <a href="{:U('course/info',array('id'=>$val['id']))}">
                     </if>  
@@ -63,5 +63,10 @@
         };
         getTemplate(pageInfo, "{:U('index/ajaxPage')}", "#page");
     }
+
+    $(document).ready(function () {
+        $(".col-md-offset-1 .row").find(".col-md-2 a").css("color","#666");
+        $(".col-md-offset-1 .row").find(".col-md-2").eq(1).find("a").css("color","red");
+    });
 
 </script>

@@ -24,7 +24,7 @@ class IndexController extends HomebaseController {
 
             //综合排序
             $listInfo = D('killer')->getList(array("status" => 1, "orderType" => 0, "page" => 1, "pageLimit" => 30)); //综合排序
-
+            
 
             //今日推荐
             $tadayTopList = D('killer')->getTopList(array("orderType" => 1, "dateTime" => date("Y-m-d H:i:s"))); //今日推荐

@@ -5,7 +5,7 @@
         <notempty name="messages">
             <foreach name="messages" item="value">
             <li>
-                <a href="">
+                <a href="{:U('Message/individualShare',array('id'=>$value['room_id']))}">
                     <div class="pic"><img src="{$value.avatar}" alt=""></div>
                     <div class="txt">
                         <p class="tit">{$value.from_client_name}老师<span>{:date("H:i",strtotime($value['saytime']))}</span></p>

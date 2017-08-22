@@ -46,7 +46,9 @@ class KillerModel extends CommonModel
                 $dataInfo["data"]['subscribe']= unserialize($dataInfo["data"]['subscribe'])?unserialize($dataInfo["data"]['subscribe']):null;//获取订阅标准
                 $dataInfo["data"]['cert_imgs']= unserialize($dataInfo["data"]['cert_imgs'])?unserialize($dataInfo["data"]['cert_imgs']):null;//获取订阅标准
                 $dataInfo["data"]['adept_names']= unserialize($dataInfo["data"]['adept_names'])?unserialize($dataInfo["data"]['adept_names']):null;//获取擅长领域
- 
+                $dataInfo["data"]['tag']= !empty($dataInfo["data"]['tag'])?array_filter(explode("|",$dataInfo["data"]['tag'])):null;
+                
+                
                 $courseList=D("Common/Course")->courseList(array("killer_id"=>$dataInfo["data"]['id']));
                 $dataInfo["data"]['courseList']=$courseList['data']['list'];
                 

@@ -43,12 +43,16 @@
         <!-- 个人分享顶部老师简介开始 -->
         <div class="share-top">
             <div class="wp">
-                <div class="pic"><img src="__TMPL__Public/home/images/home/share_pic1.png" alt=""></div>
+                <div class="pic"><img src="{{killerInfo.avatar}}" alt=""></div>
                 <div class="txt">
                     <h4>{{killerInfo.real_name}}<span>股票期货高手</span></h4>
                     <p class="person-tab">投资顾问</p>
                     <p class="person-info">简介：{{killerInfo.intro}}</p>
-                    <p class="person-goodat">TA的擅长<span>紧跟趋势</span><span>紧跟趋势</span><span>紧跟趋势</span></p>
+                    <p class="person-goodat">TA的擅长
+                        {{each killerInfo.tag as value key}}
+                        <span>{{value}}</span>
+                        {{/each}}  
+                    </p>
                 </div>
                 <div class="introduc">
                     <ul class="signal-list">
@@ -65,9 +69,15 @@
                             <strong>{{killerInfo.notice}}</strong>
                         </li>
                     </ul>
-                    <p class="gift">收到礼物：<strong>88</strong>个</p>
-                    <span class="follow" id="follow">+关注</span>
-                    <span class="follow" id="followed" style="display: none;">已关注</span>
+                    <p class="gift">收到礼物：<strong>{$giftCount}</strong>个</p>
+                    
+                    {{if killerInfo.is_focused}}
+                        <span class="follow" id="followed" style="display: none;">已关注</span>
+                    {{else}}
+                        <span class="follow" id="follow" onclick="focusKiller(this,{{killerInfo.id}})">+关注</span>
+                    {{/if}}
+                    
+                   
                 </div>
             </div>
         </div>

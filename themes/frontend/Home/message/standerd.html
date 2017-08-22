@@ -15,7 +15,7 @@
             </div>
             <div class="txt">
                 <h4>早晨好，股海浪子一天之计在于晨，鼓足马力奋斗</h4>
-                <p>赢家宝余额：<span>1500.00个</span></p>
+                <p>赢家宝余额：<span  id="user_win_coin">1500.00个</span></p>
             </div>
         </div>
         <!-- 选择支付 -->
@@ -36,17 +36,17 @@
 
                     <notempty name="killerInfo['subscribe']">
                         <foreach name="killerInfo['subscribe']" item="value">
-                            <tr  <if condition="$key eq 0"> class="on" </if> data-type="{{key}}">
+                            <tr  class="check_item  <if condition='$key eq 0'> on </if>" data-type="{$key}">
                             <td><label><input type="radio" name="time"  <if condition="$key eq 0"> checked="checked" </if>>&nbsp;{$unitList[$key]}</label></td>
-                                <td>{$value}</td>
-                                <td><input type="text" name="number" placeholder="0" value="1"></td>
-                                <td><span>{$value}</span></td>
+                                <td class="coin_item">{$value}</td>
+                                <td><input class="num"  type="text" name="number" placeholder="0" value="1"></td>
+                                <td><span class="sum_item">{$value}</span></td>
                             </tr>
                         </foreach>
                     </notempty>
 
                 </table>
-                <p class="last-pay">实付赢家宝：<span id="sum_yjbao">{$killerInfo['subscribe'][0]}个</span></p>
+                <p class="last-pay">实付赢家宝：<span id="sum_yjbao" id="sum_yjbao">{$killerInfo['subscribe'][0]}个</span></p>
                 <button class="pay-btn" id="pay_yjbao">立即支付</button>
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="con">
             <span class="close" onclick="layer.closeAll();"></span>
             <h3><i></i>抱歉~您的赢家宝余额不足！</h3>
-            <a href="course_list.html">点击查看如何获得赢家宝</a>
+            <a href="{:U('Course/index')}">点击获得赢家宝</a>
         </div>
     </div>
     <div class="yjbao-tip" id="confirm_pay" style="display: none;">
@@ -78,6 +78,66 @@
 <tc_include file="Public:footer" />
 
 <script src="__TMPL__Public/home/js/pay.js"></script>
+
+<script>
+var dataInfo={
+    userInfo:{},
+    tokenInfo:{
+        uid:"{$user.id}",
+        token:"{$user.token}"
+    },
+    subscribeInfo:{
+        killer_id:{$killerInfo['id']},
+        num:1,
+        type:0,
+    },
+}
+
+    
+//事件绑定
+$(document).ready(function(){
+    //输入事件
+    $(".num").bind('input propertychange', function () {
+        var re =/^[1-9]+[0-9]*]*$/;
+        if (!re.test($(this).val())) {
+            layer.msg("请输入大于0的正整数！");
+            $(this).val(1);
+        }  
+        dataInfo.subscribeInfo.num = parseInt($(this).val());
+        dataInfo.subscribeInfo.type = parseInt($(this).parents("tr").attr("data-type"));
+        
+        var coin_item=parseInt($(this).parents("tr").find(".coin_item").html());
+        var sum_item=dataInfo.subscribeInfo.num*coin_item;
+        $(this).parents("tr").find(".sum_item").html(sum_item);
+        $("#sum_yjbao").html(sum_item); 
+    });
+    
+    //点击事件
+    $(".check_item").click(function (){
+        dataInfo.subscribeInfo.num = parseInt($(this).find(".num").val());
+        dataInfo.subscribeInfo.type = parseInt($(this).attr("data-type"));
+        var coin_item=parseInt($(this).find(".coin_item").html());
+        var sum_item=dataInfo.subscribeInfo.num*coin_item;
+        $("#sum_yjbao").html(sum_item); 
+    });
+    $("#pay_yjbao").click(function (){
+      
+        var retInfo = getRemoteData(mergeArray(dataInfo.tokenInfo,dataInfo.subscribeInfo), "{:C('APP_HOST')}User/subscribeKiller",1);
+       
+        if(retInfo.status==1){
+            layer.msg(retInfo.msg);  
+            dataInfo.userInfo  = getRemoteData(configInfo.tokenInfo,"{:C('APP_HOST')}User/userInfo"); 
+            $("#user_win_coin").html(dataInfo.userInfo.win_coin);
+
+        }else{
+            getLayerTemplate("no_yjbao",'','495px');
+        }
+    });
+});
+    
+    
+</script>
+
 <script>
     $.pay.standerd();
 </script>

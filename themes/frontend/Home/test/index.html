@@ -1,0 +1,65 @@
+<tc_include file="Public:header" />
+<link rel="stylesheet" href="__TMPL__Public/home/css/apply.css">
+<script src="__TMPL__Public/home/lib/uploadPreview.js"></script>
+<script>
+    window.onload = function () {
+        new uploadPreview({ UpBtn: "up_img", DivShow: "imgdiv", ImgShow: "imgShow" });
+    }
+</script>
+<div class="apply_banner">
+    <img style="width:100%;" src="__TMPL__Public/home/images/farmerkiller/apply_banner.png" alt="">
+</div>
+<div class="container" >
+    <div class="apply_form">
+        <p>认证方式：身份证</p>
+        <div class="apply_img clearfix" >
+            <div class="img_box" id="imgdiv" style="position: relative;">
+                <img id="imgShow" width="300" height="200" />
+                <div style="position: absolute; top:0; left:100px;">照片预览</div>
+            </div>
+            <div class="text_info">
+                <p>必须本人手持身份证，保持头像清晰可辨认，保持身份证信息清晰可见。</p>
+                <p>格式要求：支持.jpg .png格式，大小不超过2M</p>
+                <a href="javascript:;" style="position: relative; display: inline-block;" >
+                    上传照片
+                    <input type="file" value="上传照片"  id="up_img" style="opacity: 0; position: absolute; width:100%; height:100%; top:0; left:0;"  />
+                </a>
+
+            </div>
+        </div>
+        <div class="form_info">
+            <p>真实姓名：<input type="text" placeholder="名字和身份证必须一致"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>手机号码：<input type="text" placeholder="能联系到您的手机号码"><span style="float: right; color:red;padding-right:10px;">*(必填项)</span></p>
+            <p>微信号码：<input type="text" placeholder="填写您常用的微信(选填)"></p>
+            <p>微信号码：<input type="text" placeholder="填写您常用的微信(选填)"></p>
+            <p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input type="text" placeholder="填写您常用的邮箱(选填)"></p>
+            <p>擅长领域：<input type="text" placeholder="从右侧下拉选项选择">
+                <select >
+                    <option value="">请选择</option>
+                    <option value="">股票</option>
+                    <option value="">期货</option>
+                    <option value="">外汇</option>
+                    <option value="">外盘</option>
+                </select>
+            </p>
+            <p>资格证种类：<input type="text" placeholder="从右侧下拉选项选择">
+                <select>
+                    <option value="">请选择</option>
+                    <option value="">资格证种类1</option>
+                    <option value="">资格证种类2</option>
+                    <option value="">资格证种类3</option>
+                    <option value="">资格证种类4</option>
+                </select>
+            </p>
+            <p style="height:auto; background:#f6f8f8;">
+                个人介绍：（机构/商户）
+                <textarea name="" id="" placeholder="在此输入--- "></textarea>
+            </p>
+        </div>
+        <div class="apply_btn">
+            <a href="">提交</a>
+        </div>
+    </div>
+</div>
+
+<tc_include file="Public:footer" />

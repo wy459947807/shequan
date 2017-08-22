@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+var serviceUrl="http://shequan.10jrw.com/";//远程服务器地址
+
 //表单自定义验证
 var datatype = {
     "price": /^\d+(?:\.\d{1,2})?$/,

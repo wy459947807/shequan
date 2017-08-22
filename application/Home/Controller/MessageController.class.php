@@ -10,12 +10,14 @@ class MessageController extends HomebaseController {
     protected $course_model;
     protected $comment_model;
     protected $user_model;
+    protected $user_gift;
     
     public function _initialize() {
         parent::_initialize();
         $this->course_model = D("Common/Course");//课程模块
         $this->comment_model = D("Common/Comments");//评论模块
         $this->user_model = D("Home/Users");//加载用户model
+        $this->user_gift = D("Home/UserGift");//加载用户model
         
         $unitList=array(0=>"条",1=>"天", 2=>"周",3=>"月",4=>"季",5=>"年");
         $this->assign('unitList', $unitList); //总共多少赢家宝
@@ -37,12 +39,18 @@ class MessageController extends HomebaseController {
     
 
     public function individualShare(){
-       
+        if (!sp_is_user_login()) {//判断是否登录  
+            redirect(C('JRW_URL')."/userlogin.html");   
+        }
+
         $rules = array(
             array('id','require','id不得为空！',1,'regex',3),  
         );
-        
         $this->checkField($rules, $this->params);//验证字段
+        
+        $giftCount= $this->user_gift->where(array("killer_id"=>$this->params['id']))->count();
+        
+        $this->assign('giftCount', $giftCount); //分页信息
         $this->display(":message:individual_share");  
     }
     

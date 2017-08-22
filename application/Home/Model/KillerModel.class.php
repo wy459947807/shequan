@@ -226,6 +226,10 @@ class KillerModel extends CommonModel {
         S('waihuiRankList',null);*/
         //S('rankList',null);
         
+        if(!empty(S("rankList"))){
+            return;
+        }
+        
         $adeptType= C('ADEPT_TYPE');
         $rankList= json_decode(S('rankList'),true);//排名缓存
         foreach($adeptType as $key=>$val){

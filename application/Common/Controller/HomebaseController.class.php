@@ -71,14 +71,14 @@ class HomebaseController extends AppframeController {
     protected function check_user_login(){
         
         /*测试帐号登录*/
-        
+        /*
         $_SESSION['uc_user']=array(
             "uid"=>"1252",
             'username'=>"测试帐号",
             'headimgurl_small'=>"http://www.10jrw.com/data/upload/avatar/000/00/80/fbb5d2cf4558b47551ad4a26ce3f11a0_48.jpg",
             'gender'=>"1",
             'mobile'=>"18739178217"
-        );
+        );*/
         
         /*测试高手帐号登录*/
         /*

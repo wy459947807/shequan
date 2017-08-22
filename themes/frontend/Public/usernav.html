@@ -1,11 +1,11 @@
 <div class="fl_list">
     <div class="urse_img_info">
-        <img src="images/default.jpg" style="width:117px;height:117px;border-radius:117px;">
-        <h4>東北散人</h4>
+        <img src="{$user.avatar}" style="width:117px;height:117px;border-radius:117px;">
+        <h4>{$user.user_nicename}</h4>
         <p>
             <span><i class="level"></i>普通会员</span>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span><i class="jifen"></i>积分:1000</span></p>
+            <span><i class="jifen"></i>赢家宝:{$user.win_coin}</span></p>
     </div>
     <div class="info_list">
         <div class="group1">
@@ -20,14 +20,14 @@
         <div class="shequan">
             <h4><i></i>贏家社圈<em></em></h4>
             <ul>
-                <li><a href="" class="on">我购买的课程</a></li>
-                <li><a href="">已获得赢家宝</a></li>
-                <li><a href="">订阅标准</a></li>
-                <li><a href="">我的订阅</a></li>
-                <li><a href="">我的交易</a></li>
-                <li><a href="">收到的礼物</a></li>
-                <li><a href="">我的关注</a></li>
-                <li><a href="">我的粉丝</a></li>
+                <li><a href="{:U('User/myCourse')}" <if condition="[type] eq 'myCourse'"> class="on" </if>>我购买的课程</a></li>
+                <li><a href="{:U('User/myYjbao')}" <if condition="[type] eq 'myYjbao'"> class="on" </if>>已获得赢家宝</a></li>
+                <li><a href="{:U('User/myStanderd')}" <if condition="[type] eq 'myStanderd'"> class="on" </if>>订阅标准</a></li>
+                <li><a href="{:U('User/myRead')}" <if condition="[type] eq 'myRead'"> class="on" </if>>我的订阅</a></li>
+                <li><a href="{:U('User/myDeal')}" <if condition="[type] eq 'myDeal'"> class="on" </if>>我的交易</a></li>
+                <li><a href="{:U('User/myGift')}" <if condition="[type] eq 'myGift'"> class="on" </if>>收到的礼物</a></li>
+                <li><a href="{:U('User/myFocus')}" <if condition="[type] eq 'myFocus'"> class="on" </if>>我的关注</a></li>
+                <li><a href="{:U('User/myFans')}" <if condition="[type] eq 'myFans'"> class="on" </if>>我的粉丝</a></li>
             </ul>
         </div>
         <div class="group2">

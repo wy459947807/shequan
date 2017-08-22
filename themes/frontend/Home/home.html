@@ -21,12 +21,12 @@
     <!-- 新增最近观点 -->
     <div class="new-viewpoint">
         <div class="col-left">
-            <h3>最新观点<a href="">更多></a></h3>
+            <h3>最新观点<a href="{:U('Message/msgList')}">更多></a></h3>
             <ul>
                 <notempty name="msgList">
                 <foreach name="msgList" item="value">
                 <li>
-                    <a href="">
+                    <a href="{:U('Message/individualShare',array('id'=>$value['room_id']))}">
                         <div class="pic"><img src="{$value.avatar}" alt=""></div>
                         <div class="txt">
                             <p class="tit">{$value.from_client_name}<span>{:date("H:i",strtotime($value['saytime']))}</span></p>
@@ -39,7 +39,7 @@
             </ul>
         </div>
         <div class="col-right">
-            <a href=""><img src="__TMPL__Public/home/images/home/Auditing.jpg" alt=""></a>
+            <a href="{:U('Killer/index')}"><img src="__TMPL__Public/home/images/home/Auditing.jpg" alt=""></a>
         </div>
     </div>
 
@@ -53,7 +53,7 @@
                 if(!empty($tadayTopList)){
                 foreach($tadayTopList as $l){     
                 ?>
-                <div class="swiper-slide" data-url="{:U('live/index',array('t_id'=>$l['id']))}">
+                <div class="swiper-slide" data-url="{:U('Message/individualShare',array('id'=>$l['id']))}">
                     <div class="row">
                         <div class="col-md-5">
                             <div class="img_box">
@@ -138,7 +138,7 @@
                         <br>
                         <php>foreach($topList[$key]['data'] as $k=>$v){</php>
 
-                        <a href="/index.php?g=&m=live&a=index&t_id=<?php echo $v['id'] ?>">
+                        <a href="{:U('Message/individualShare',array('id'=>$v['id']))}">
                             <p>
                                 <i style="width:26px; display: inline-block"><img style="width:100%;" src="__TMPL__Public/home/images/home/home_top_<?php echo $k+1?>.png" alt=""></i>
                                 <i style="width:50px;display: inline-block"> <img width="35" height="35" src="<?php echo sp_get_asset_upload_path($v['avatar']) ;?>" alt=""></i>
@@ -201,6 +201,7 @@
             dataInfo['id'] = id;
             var retData = getRemoteData(dataInfo, "{:U('index/focusKiller')}",1);
             if (retData.status == 200) {
+                layer.msg(retData.msg);
                 getKillerList(killerInfo['orderType'], killerInfo['page']);//刷新高手列表板块
                 
             }

@@ -88,6 +88,18 @@ class CourseController extends HomebaseController {
         $this->display(":course:buy_success");
     }
     
+    public function video(){
+        
+        $rules = array(
+            array('id','require','id不得为空！',1,'regex',3),  
+        );
+        $this->checkField($rules, $this->params);//验证字段
+        
+        $videoInfo = get_remote_data($this->params, "Course/getOne");
+        $this->assign('videoInfo', $videoInfo['data']);  //列表信息
+        $this->display(":course:video");
+    }
+    
     
     
 
